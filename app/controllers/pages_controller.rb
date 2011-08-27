@@ -4,5 +4,8 @@ class PagesController < ApplicationController
 
   def products
   end
+  
+  def outlets
+  end
 
 end
