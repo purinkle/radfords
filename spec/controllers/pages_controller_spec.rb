@@ -8,6 +8,12 @@ describe PagesController do
       get 'home'
       response.should be_success
     end
+    
+    it "should have the right title" do
+      get 'home'
+      response.should have_selector("title",
+                                    :content => "Home | Radfords of Somerford")
+    end
   end
 
   describe "GET 'products'" do
@@ -15,12 +21,24 @@ describe PagesController do
       get 'products'
       response.should be_success
     end
+    
+    it "should have the right title" do
+      get 'products'
+      response.should have_selector("title",
+                                 :content => "Products | Radfords of Somerford")
+    end
   end
   
   describe "GET 'outlets'" do
     it "should be successful" do
       get 'outlets'
       response.should be_success
+    end
+    
+    it "should have the right title" do
+      get 'outlets'
+      response.should have_selector("title",
+                                  :content => "Outlets | Radfords of Somerford")
     end
   end
 
