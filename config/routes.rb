@@ -1,4 +1,8 @@
 Radfords::Application.routes.draw do
+  get "pages/home"
+
+  get "pages/products"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
