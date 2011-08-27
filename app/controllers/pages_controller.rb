@@ -10,5 +10,8 @@ class PagesController < ApplicationController
   def outlets
     @title = "Outlets"
   end
+  
+  def contact
+  end
 
 end
