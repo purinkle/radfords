@@ -20,4 +20,16 @@ describe "LayoutLinks" do
     get '/contact'
     response.should have_selector('title', :content => "Contact")
   end
+  
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "Products"
+    response.should have_selector('title', :content => "Products")
+    click_link "Where to buy"
+    response.should have_selector('title', :content => "Outlets")
+    click_link "Contact us"
+    response.should have_selector('title', :content => "Contact")
+    click_link "Home"
+    response.should have_selector('title', :content => "Home")
+  end
 end

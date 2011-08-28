@@ -1,0 +1,6 @@
+# Logfile created on Sun Aug 28 10:05:58 +0100 2011 by logger.rb/1.2.6
+REQUESTING PAGE: GET / with {} and HTTP headers {}
+REQUESTING PAGE: GET /products with {} and HTTP headers {"HTTP_REFERER"=>"/"}
+REQUESTING PAGE: GET /outlets with {} and HTTP headers {"HTTP_REFERER"=>"/products"}
+REQUESTING PAGE: GET /contact with {} and HTTP headers {"HTTP_REFERER"=>"/outlets"}
+REQUESTING PAGE: GET / with {} and HTTP headers {"HTTP_REFERER"=>"/contact"}
