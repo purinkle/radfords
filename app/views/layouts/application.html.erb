@@ -6,23 +6,23 @@
   <%= csrf_meta_tag %>
   <%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>
   <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>
-  <!--[if lt IE 8]><link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection" /><![endif]-->
-  <link rel="stylesheet" type="text/css" href="css/radfords.css" />
+  <!--[if lt IE 8]><%= stylesheet_link_tag 'blueprint/ie' %><![endif]-->
+  <%= stylesheet_link_tag 'radfords', :media => 'screen' %>
 </head>
 
 <body>
-  <div class="container ">
+  <div class="container">
     <div id="content-main" class="span-18 prepend-3 last">
       <div id="header" class=" span-18 last">
-        <span id="image-logo" ></span>
+        <span id="image-logo"></span>
         <h1 id="title">Radfords of Somerford</h1>
       </div>
       <div id="navbar-holder" class="span-18 last">
         <ul id="navbar">
-            <li class=""><a href="index.html">Home</a></li>
-            <li class=""><a href="products.html"> Products</a></li>
-            <li class=""><a href="outlets.html">Where to buy</a></li>
-            <li class=""><a href="contact.html">Contact us</a></li>
+          <li><%= link_to "Home", '#' %></li>
+          <li><%= link_to "Products", '#' %></li>
+          <li><%= link_to "Where to buy", '#' %></li>
+          <li><%= link_to "Contact us", '#' %></li>
         </ul>
       </div>
       <div id="roll" class="span-18 last">
