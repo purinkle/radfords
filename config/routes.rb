@@ -1,8 +1,7 @@
 Radfords::Application.routes.draw do
-  get "pages/home"
-  get "pages/products"
-  get "pages/outlets"
-  get "pages/contact"
+  match '/products', :to => 'pages#products'
+  match '/outlets',  :to => 'pages#outlets'
+  match '/contact',  :to => 'pages#contact'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
