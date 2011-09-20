@@ -12,6 +12,9 @@
     <div id="content-main" class="span-18 prepend-3 last">
       <%= render 'layouts/header' %>
       <div id="roll" class="span-18 last">
+        <% flash.each do | key, value | %>
+          <div class="flash <%= key %>"><%= value %></div>
+        <% end %>
         <%= yield %>
       </div>
       <%= render 'layouts/footer' %>
