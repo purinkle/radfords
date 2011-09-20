@@ -1,13 +1,14 @@
 Radfords::Application.routes.draw do
-  get "sessions/new"
-
-  get "events/new"
+  resources :events
+  resources :sessions, :only => [ :new, :create, :destroy ]
+  
+  root :to => 'pages#home'
 
   match '/products', :to => 'pages#products'
   match '/outlets',  :to => 'pages#outlets'
   match '/contact',  :to => 'pages#contact'
-  
-  root :to => 'pages#home'
+  match '/signin',   :to => 'sessions#new'
+  match '/signout',  :to => 'sessions#destroy'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
