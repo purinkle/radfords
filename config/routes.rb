@@ -1,4 +1,6 @@
 Radfords::Application.routes.draw do
+  get "sessions/new"
+
   get "events/new"
 
   match '/products', :to => 'pages#products'
