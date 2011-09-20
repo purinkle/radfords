@@ -1,4 +1,6 @@
 Radfords::Application.routes.draw do
+  get "events/new"
+
   match '/products', :to => 'pages#products'
   match '/outlets',  :to => 'pages#outlets'
   match '/contact',  :to => 'pages#contact'
