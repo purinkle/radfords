@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     else
       sign_in user
       
-      redirect_to( { :action => 'index', :controller => 'events' } )
+      redirect_to events_path
     end
   end
 end

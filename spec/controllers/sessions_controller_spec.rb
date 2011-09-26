@@ -58,7 +58,7 @@ describe SessionsController do
       it 'should redirect to the new event page' do
         post :create, :session => @attr
         
-        response.should redirect_to( { :action => 'index', :controller => 'events' } )
+        response.should redirect_to events_path
       end
     end
   end
