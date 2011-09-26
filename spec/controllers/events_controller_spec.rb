@@ -16,4 +16,12 @@ describe EventsController do
       response.should have_selector('title', :content => 'New Event')
     end
   end
+  
+  describe 'GET "index"' do
+    it 'should be successful' do
+      get 'index'
+      
+      response.should be_success
+    end
+  end
 end
