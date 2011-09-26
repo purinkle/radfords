@@ -15,6 +15,12 @@ describe EventsController do
       
       response.should have_selector('title', :content => 'New Event')
     end
+    
+    it 'should have a name field' do
+      get :new
+      
+      response.should have_selector("input[name='event[name]'][type='text']")
+    end
   end
   
   describe 'GET "index"' do
