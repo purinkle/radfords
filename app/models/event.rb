@@ -14,4 +14,12 @@ class Event < ActiveRecord::Base
   validates :name, :presence => true;
   validates :takes_place_on, :presence => true;
   validates :location, :presence => true;
+  
+  def takes_place_on
+    if read_attribute(:takes_place_on) 
+      read_attribute(:takes_place_on).strftime('%e %B %Y')
+    else
+      nil
+    end
+  end
 end
