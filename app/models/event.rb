@@ -11,4 +11,7 @@
 #
 
 class Event < ActiveRecord::Base
+  validates :name, :presence => true;
+  validates :takes_place_on, :presence => true;
+  validates :location, :presence => true;
 end

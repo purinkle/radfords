@@ -1,8 +1,23 @@
 <h1 id="new_event">New event</h1>
 
 <%= form_for @event do |f| %>
+  <%= render '/shared/error_messages' %>
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :takes_place_on %><br />
+    <%= f.text_field :takes_place_on %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit "Add event" %>
   </div>
 <% end %>
