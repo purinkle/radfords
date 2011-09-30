@@ -37,6 +37,12 @@ describe EventsController do
       
       response.should have_selector( 'h2', :content => @event.takes_place_on )
     end
+    
+    it 'should include the event\'s location' do
+      get :show, :id => @event
+      
+      response.should have_selector( 'h2', :content => @event.location )
+    end
   end
   
   describe 'GET "new"' do
