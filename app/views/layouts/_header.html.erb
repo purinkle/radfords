@@ -8,5 +8,8 @@
     <li><%= link_to "Products", products_path %></li>
     <li><%= link_to "Where to buy", outlets_path %></li>
     <li><%= link_to "Contact us", contact_path %></li>
+	<% if signed_in? %>
+	<li><%= link_to "Sign out", signout_path %></li>
+	<% end %>
   </ul>
 </div>
