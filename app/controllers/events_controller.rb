@@ -24,6 +24,7 @@ class EventsController < ApplicationController
 
   def index
     @title = 'Listing events'
+    @events = Event.all
   end
 
   def edit

@@ -141,9 +141,19 @@ describe EventsController do
 
   describe 'GET "index"' do
     before (:each) do
+      test_sign_in( Factory(:user) )
+
       @event = Factory(:event)
 
-      test_sign_in( Factory(:user) )
+      second = Factory( :event, :name => "This Event",
+                                :takes_place_on => "13 June 2019",
+                                :location => "London, UK" )
+
+      third = Factory( :event, :name => "That Event",
+                               :takes_place_on => "24 February 1962",
+                               :location => "New York, NY" )
+
+      @events = [ @event, second, third ]
     end
 
     it 'should be successful' do
@@ -156,6 +166,14 @@ describe EventsController do
       get 'index'
 
       response.should have_selector( 'title', :content => 'Listing events' )
+    end
+
+    it "should have an element for each user" do
+      get :index
+
+      @events.each do |event|
+        response.should have_selector( 'td', :content => event.name )
+      end
     end
   end
 
