@@ -1,6 +1,7 @@
 <h1>Listing events</h1>
 <% if !@events.blank? %>
 <%= will_paginate %>
+<h2><%= @events.count %></h2>
 <table>
   <tr>
     <th>Name</th>
@@ -11,9 +12,7 @@
     <th></th>
   </tr>
 
-<% @events.each do |event| %>
-	<%= render @events %>
-<% end %>
+  <%= render @events %>
 </table>
 <%= will_paginate %>
 <% end %>
