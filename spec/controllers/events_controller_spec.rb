@@ -6,6 +6,8 @@ describe EventsController do
   describe 'GET "show"' do
     before (:each) do
       @event = Factory(:event)
+
+      test_sign_in( Factory(:user) )
     end
 
     it 'should be successful' do
@@ -46,6 +48,10 @@ describe EventsController do
   end
 
   describe 'GET "new"' do
+    before (:each) do
+      test_sign_in( Factory(:user) )
+    end
+
     it 'should be successful' do
       get 'new'
 
@@ -80,6 +86,8 @@ describe EventsController do
   describe 'POST "create"' do
     describe 'failure' do
       before (:each) do
+        test_sign_in( Factory(:user) )
+
         @attr = {
           :name           => '',
           :takes_place_on => '',
@@ -108,6 +116,8 @@ describe EventsController do
 
     describe 'success' do
       before (:each) do
+        test_sign_in( Factory(:user) )
+
         @attr = {
           :name           => 'Macclesfield Farmers Market',
           :takes_place_on => '2 October 2011',
@@ -130,6 +140,12 @@ describe EventsController do
   end
 
   describe 'GET "index"' do
+    before (:each) do
+      @event = Factory(:event)
+
+      test_sign_in( Factory(:user) )
+    end
+
     it 'should be successful' do
       get 'index'
 
@@ -160,6 +176,50 @@ describe EventsController do
       get :edit, :id => @event
 
       response.should have_selector( :title, :content => "Edit event" )
+    end
+  end
+
+  describe "authentication of all pages" do
+    before (:each) do
+      @event = Factory(:event)
+
+      @attr = {
+        :name           => 'Macclesfield Farmers Market',
+        :takes_place_on => '2 October 2011',
+        :location       => 'Town Hall, Macclesfield'
+      }
+    end
+
+    describe "for non-signed-in users" do
+      it "should deny access to 'index'" do
+        get :index
+
+        response.should redirect_to(signin_path)
+      end
+
+      it "should deny access to 'create'" do
+        post :create, :event => @attr
+
+        response.should redirect_to(signin_path)
+      end
+
+      it "should deny access to 'new'" do
+        get :new
+
+        response.should redirect_to(signin_path)
+      end
+
+      it "should deny access to 'edit'" do
+        get :edit, :id => @event
+
+        response.should redirect_to(signin_path)
+      end
+
+      it "should deny access to 'show'" do
+        get :show, :id => @event
+
+        response.should redirect_to(signin_path)
+      end
     end
   end
 end

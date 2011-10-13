@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  before_filter :authenticate, :only => [ :index, :create, :new, :edit, :show ]
+
   def show
     @event = Event.find( params[:id] )
     @title = @event.name
@@ -28,4 +30,9 @@ class EventsController < ApplicationController
     @event = Event.find( params[:id] )
     @title = "Edit event"
   end
+
+  private
+    def authenticate
+      deny_access unless signed_in?
+    end
 end
