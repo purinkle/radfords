@@ -154,6 +154,10 @@ describe EventsController do
                                :location => "New York, NY" )
 
       @events = [ @event, second, third ]
+
+      30.times do
+        @events << Factory(:event)
+      end
     end
 
     it 'should be successful' do
@@ -171,9 +175,20 @@ describe EventsController do
     it "should have an element for each user" do
       get :index
 
-      @events.each do |event|
+      @events[ 0..2 ].each do |event|
         response.should have_selector( 'td', :content => event.name )
       end
+    end
+
+    it "should paginate events" do
+      get :index
+
+      response.should have_selector("div.pagination")
+      response.should have_selector( "span.disabled", :content => "Previous" )
+      response.should have_selector( "a", :href => "/events?page=2",
+                                          :content => "2" )
+      response.should have_selector( "a", :href => "/events?page=2",
+                                          :content => "Next" )
     end
   end
 

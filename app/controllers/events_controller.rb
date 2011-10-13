@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 
   def index
     @title = 'Listing events'
-    @events = Event.all
+    @events = Event.paginate( :page => params[:page] )
   end
 
   def edit
