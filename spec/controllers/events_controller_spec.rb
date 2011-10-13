@@ -220,6 +220,67 @@ describe EventsController do
 
         response.should redirect_to(signin_path)
       end
+
+      it "should deny access to 'update'" do
+        put :update, :id => @event, :event => @attr
+
+        response.should redirect_to(signin_path)
+      end
+    end
+  end
+
+  describe "PUT 'update'" do
+    before (:each) do
+      @event = Factory(:event)
+
+      test_sign_in( Factory(:user) )
+    end
+
+    describe "failure" do
+      before (:each) do
+        @attr = { :name => "", :takes_place_on => "", :location => "" }
+      end
+
+      it "should render the 'edit' page" do
+        put :update, :id => @event, :event => @attr
+
+        response.should render_template("edit")
+      end
+
+      it "should have the right title" do
+        put :update, :id => @event, :event => @attr
+
+        response.should have_selector( :title, :content => "Edit event" )
+      end
+    end
+
+    describe "success" do
+      before (:each) do
+        @attr = { :name => "New Name", :takes_place_on => "13 October 2011",
+                  :location => "New Location" }
+      end
+
+      it "should change the event's attributes" do
+        put :update, :id => @event, :event => @attr
+
+        @event.reload
+
+        @event.name.should == @attr[:name]
+        @event.takes_place_on.should == @attr[:takes_place_on]
+        @event.location.should == @attr[:location]
+      end
+
+      it "should redirect to the user show page" do
+        put :update, :id => @event, :event => @attr
+
+        response.should redirect_to( event_path(@event) )
+      end
+
+      it "should have a flash message" do
+        put :update, :id => @event, :event => @attr
+
+        flash[:success].should =~ /updated/
+      end
     end
   end
 end

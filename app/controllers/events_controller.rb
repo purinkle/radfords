@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate, :only => [ :index, :create, :new, :edit, :show ]
+  before_filter :authenticate, :except => :destroy
 
   def show
     @event = Event.find( params[:id] )
@@ -29,6 +29,19 @@ class EventsController < ApplicationController
   def edit
     @event = Event.find( params[:id] )
     @title = "Edit event"
+  end
+
+  def update
+    @event = Event.find( params[:id] )
+
+    if @event.update_attributes( params[:event] )
+      flash[:success] = "Profile updated."
+
+      redirect_to @event
+    else
+      @title = "Edit event"
+      render "edit"
+    end
   end
 
   private
