@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     else
       sign_in user
 
-      redirect_to events_path
+      redirect_back_or events_path
     end
   end
 
