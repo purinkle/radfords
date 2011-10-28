@@ -57,4 +57,6 @@ describe Event do
     no_location_event = Event.create( @attr.merge( :location => '' ) )
     no_location_event.should_not be_valid
   end
+  
+  
 end
