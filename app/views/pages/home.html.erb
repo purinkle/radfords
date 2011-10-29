@@ -12,7 +12,7 @@
   <h3>Made in Cheshire</h3>
   <%= image_tag("made_in_cheshire.png", :alt => "Made in Cheshire", :class => "decorate-post") %>
   <p>
-    A member of 'Made in Cheshire', all products are homemade and the majority of ingredients are sourced locally wherever possible.      
+    A member of 'Made in Cheshire', all products are homemade and the majority of ingredients are sourced locally wherever possible.
   </p>
 </div>
 <div class="topic span-8 last">
@@ -20,7 +20,19 @@
   <p>
     We will be running a stall at the following events:
   </p>
-  <ul class="events">
-    <li>No events currently planned</li>
+  <ul id="upcoming">
+    <% if @event.blank? %>
+      <li>No upcoming events</li>
+    <% else %>
+    	<li><div class="img_speaking">
+    	  <img src="/images/Google_Chrome.png"
+    	  alt="Front End Conference" /><span class="mask">.</span>
+    	</div>
+
+    	<span class="title"><%= @event.name %></span>
+    	<span class="date"><%= @event.takes_place_on %></span>
+
+    	<h5><%= @event.location %></h5></li>
+  	<% end %>
   </ul>
 </div>

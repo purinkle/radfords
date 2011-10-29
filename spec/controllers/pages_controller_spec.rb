@@ -18,6 +18,23 @@ describe PagesController do
       response.should have_selector("title",
                                     :content => "Home | " + @base_title)
     end
+
+    it "should display the next event" do
+      event1 = Factory( :event, name: "Melton Mowbray Farmers' Market",
+                                takes_place_on: 1.week.ago,
+                                location: "Cattle Market, Scarlford Road" )
+      event2 = Factory( :event, name: "Huntingdon Farmer's Market",
+                                takes_place_on: 1.week.from_now,
+                                location: "Market Square" )
+      event3 = Factory( :event, name: "Otley Farmer's Market",
+                                takes_place_on: 1.day.from_now,
+                                location: "Market Square")
+
+      get :home
+
+      response.should have_selector("span.title",
+                                    :content => event3.name)
+    end
   end
 
   describe "GET 'products'" do
