@@ -21,18 +21,20 @@
     We will be running a stall at the following events:
   </p>
   <ul id="upcoming">
-    <% if @event.blank? %>
-      <li>No upcoming events</li>
+    <% if @events %>
+      <% @events.each do |event| %>
+  	<li><div class="img_speaking">
+  	  <img src="/images/Google_Chrome.png"
+  	  alt="Front End Conference" /><span class="mask">.</span>
+  	</div>
+
+  	<span class="title"><%= event.name %></span>
+  	<span class="date"><%= event.takes_place_on %></span>
+
+  	<h5><%= event.location %></h5></li>
+  	<% end %>
     <% else %>
-    	<li><div class="img_speaking">
-    	  <img src="/images/Google_Chrome.png"
-    	  alt="Front End Conference" /><span class="mask">.</span>
-    	</div>
-
-    	<span class="title"><%= @event.name %></span>
-    	<span class="date"><%= @event.takes_place_on %></span>
-
-    	<h5><%= @event.location %></h5></li>
+      <li>No upcoming events</li>
   	<% end %>
   </ul>
 </div>

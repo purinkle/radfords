@@ -1,8 +1,9 @@
 class PagesController < ApplicationController
   def home
     @title = "Home"
-    @event = Event.find(:first, conditions: [ "takes_place_on > ?", Time.now ],
-                                order: "takes_place_on ASC" )
+    @events = Event.find(:all, conditions: [ "takes_place_on > ?", Time.now ],
+                              order: "takes_place_on ASC",
+                              limit: 3 )
   end
 
   def products
