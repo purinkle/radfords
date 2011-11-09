@@ -1,2 +1,17 @@
-<h1><%= @event.name %></h1>
-<h2><%= @event.takes_place_on %> @ <%= @event.location %></h2>
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Takes place on:</strong>
+  <%= @event.takes_place_on %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @event.location %>
+</p>
+
+<%= link_to "Edit", edit_event_path(@event) %>
+<%= link_to "Back", events_path %>
