@@ -31,19 +31,19 @@ describe EventsController do
     it 'should include the event\'s name' do
       get :show, :id => @event
 
-      response.should have_selector( 'h1', :content => @event.name )
+      response.should have_selector( 'p', :content => @event.name )
     end
 
     it 'should include the event\'s date' do
       get :show, :id => @event
 
-      response.should have_selector( 'h2', :content => @event.takes_place_on )
+      response.should have_selector( 'p', :content => @event.takes_place_on )
     end
 
     it 'should include the event\'s location' do
       get :show, :id => @event
 
-      response.should have_selector( 'h2', :content => @event.location )
+      response.should have_selector( 'p', :content => @event.location )
     end
   end
 
@@ -143,14 +143,14 @@ describe EventsController do
     before (:each) do
       test_sign_in( Factory(:user) )
 
-      @event = Factory(:event)
+      @event = Factory(:event, takes_place_on: 1.hour.from_now )
 
       second = Factory( :event, :name => "This Event",
-                                :takes_place_on => "13 June 2019",
+                                takes_place_on: 1.hour.from_now,
                                 :location => "London, UK" )
 
       third = Factory( :event, :name => "That Event",
-                               :takes_place_on => "24 February 1962",
+                               takes_place_on: 1.hour.from_now,
                                :location => "New York, NY" )
 
       @events = [ @event, second, third ]
@@ -172,7 +172,7 @@ describe EventsController do
       response.should have_selector( 'title', :content => 'Listing events' )
     end
 
-    it "should have an element for each user" do
+    it "should have an element for each event" do
       get :index
 
       @events[ 0..2 ].each do |event|
