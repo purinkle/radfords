@@ -120,7 +120,7 @@ describe EventsController do
 
         @attr = {
           :name           => 'Macclesfield Farmers Market',
-          :takes_place_on => '2 October 2011',
+          :takes_place_on => 1.week.from_now,
           :location       => 'Town Hall, Macclesfield'
         }
       end

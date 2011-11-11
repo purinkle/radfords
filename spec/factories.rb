@@ -7,6 +7,6 @@ end
 
 Factory.define :event do |event|
   event.name           'Macclesfield Farmers Market'
-  event.takes_place_on '2 October 2011'
+  event.takes_place_on 1.week.from_now
   event.location       'Town Hall, Macclesfield'
 end

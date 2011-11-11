@@ -36,7 +36,7 @@ describe 'Events' do
           visit new_event_path
 
           fill_in 'Name',           :with => 'Macclesfield Farmers Market'
-          fill_in 'Takes place on', :with => '2 October 2011'
+          fill_in 'Takes place on', :with => 1.week.from_now
           fill_in 'Location',       :with => 'Town Hall, Macclesfield'
 
           click_button
