@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_filter :authenticate, :except => :destroy
+  before_filter :authenticate, except: :destroy
 
   def show
     @event = Event.find( params[:id] )
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 
   def index
     @title = 'Listing events'
-    @events = Event.paginate( :page => params[:page] )
+    @events = Event.paginate( page: params[:page] )
   end
 
   def edit

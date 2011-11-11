@@ -2,8 +2,7 @@ class PagesController < ApplicationController
   def home
     @title = "Home"
     @events = Event.find(:all, conditions: [ "takes_place_on > ?", Time.now ],
-                              order: "takes_place_on ASC",
-                              limit: 3 )
+                               limit: 3 )
   end
 
   def products
