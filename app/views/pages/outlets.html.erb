@@ -18,90 +18,19 @@
 </div>
 <div class="span-17 last topic">
   <h3>Delicatessens / Farm Shops</h3>
-  <ul class="outlet-list">
-    <li>
-      <h4>Bread & Basil</h4>
-      <p>                
-        5 Bridge Street<br />
-        Congleton<br />
-        Cheshire<br />
-        CW12 1AY<br />
-        <a href="http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=bread+and+basil&sll=53.252069,-2.357941&sspn=0.424782,1.234589&ie=UTF8&hq=bread+and+basil&hnear=&z=9&iwloc=AQ">View map</a>
-      </p>
-      <p class="telephone">
-        01260 270511
-      </p>
-    </li>
-    <li>
-      <h4>Livesey's Delicatessen</h4>
-      <p>
-        Livesey's Delicatessen<br />
-        15 High Street<br />
-        Bollington<br />
-        Cheshire<br />
-        SK10 5PN
-      </p>
-      <p>
-        <a href="http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=15+High+St+Bollington,+Macclesfield+SK10+5PH&sll=53.443899,-2.359314&sspn=0.804864,2.469177&ie=UTF8&hq=&hnear=15+High+St,+Bollington,+Macclesfield+SK10+5PH,+United+Kingdom&ll=53.297889,-2.096329&spn=0.00663,0.01929&z=16&iwloc=A">View map</a>
-      </p>
-      <p class="telephone">
-        01625 575491
-      </p>
-    </li>
-    <li class="last">
-      <h4>M G Williams & Sons Ltd</h4>
-      <p >
-        2 The Square<br />
-        Holmes Chapel<br />
-        Crewe<br />
-        CW4 7AA
-      </p>
-      <p >
-        <a href="http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=M+G+Williams+%26+Sons+Ltd,+Crewe&sll=53.800651,-4.064941&sspn=13.440126,39.506836&ie=UTF8&hq=mg+williams+%26+sons+ltd&hnear=Crewe,+United+Kingdom&ll=53.252069,-2.357941&spn=0.424782,1.234589&z=10&iwloc=A">View map</a>
-      </p>
-      <p class="telephone">
-        0147 753 3237
-      </p>
-    </li>
-  </ul>
-  <ul class="outlet-list">
-    <li>
-      <h4>Delissimo</h4>
-      <p >
-        9 Crewe Road<br />
-        Alsager<br />
-        Cheshire<br />
-        ST7 2EW 
-      </p>
-      <p>
-        <a href="http://www.delissimo.biz/">Website</a>
-      </p>
-      <p>
-        <a href="http://maps.google.co.uk/maps?hl=en&georestrict=input_srcid:ed0ee5466d007236&ie=UTF8&view=map&cid=13787839109298959433&q=Delissimo+-+incorporating+Sunflower...at+Home&ved=0CEQQpQY&ei=nnBFTKi9JMnJjAeHvPTsAg&hq=Delissimo+-+incorporating+Sunflower...at+Home&hnear=&t=h&source=embed&ll=53.096066,-2.305608&spn=0.007267,0.01929&z=16&iwloc=A">View map</a>
-      </p>
-      <p class="telephone">
-        01270 884200
-      </p>
-    </li>
-    <li>
-      <h4>Cheshire Smokehouse</h4>
-      <p >
-        Vost Farm,<br />
-        Morley Green,<br />
-        Wilmslow,<br />
-        Cheshire,<br />
-        SK9 5NU
-      </p>
-      <p>
-        <a href="http://www.cheshiresmokehouse.co.uk/">Website</a>
-      </p>
-      <p>
-        <a href="http://maps.google.co.uk/maps?f=q&source=s_q&hl=en&geocode=&q=Cheshire+Smokehouse+Ltd,+Wilmslow&sll=53.800651,-4.064941&sspn=13.440126,39.506836&ie=UTF8&hq=Cheshire+Smokehouse+Ltd,&hnear=Wilmslow,+United+Kingdom&z=13">View map</a>
-      </p>
-      <p class="telephone">
-        01625 548499
-      </p>
-    </li>
-    <li class="last"></li>
-  </ul>
+  <% unless @suppliers.blank? %>
+    <ul class="outlet-list">
+      <% @suppliers.each do |supplier| %>
+        <li>
+          <h4><%= supplier.name %></h4>
+          <p><%= supplier.address %></p>
+          <% if supplier.website %>
+            <p><%= supplier.website %></p>
+          <% end %>
+          <p class="telephone"><%= supplier.telephone_number %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <a href="<%= new_supplier_path %>">New supplier</a>
 </div>

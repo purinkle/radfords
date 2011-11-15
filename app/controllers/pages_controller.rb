@@ -11,6 +11,7 @@ class PagesController < ApplicationController
 
   def outlets
     @title = "Outlets"
+    @suppliers = Supplier.all
   end
 
   def contact

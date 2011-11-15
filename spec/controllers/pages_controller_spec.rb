@@ -50,9 +50,20 @@ describe PagesController do
     end
   end
 
-  describe "GET 'outlets'" do
-    it "should be successful" do
-      get 'outlets'
+  describe 'GET "outlets"' do
+    before(:each) do
+      @supplier = Factory(:supplier)
+      second = Factory(:supplier, address: '75 Lairg Road, Newcastle upon Type NE1 0TF', name: 'Jasmine Haynes', telephone_number: '070 0060 9200', website: 'http://marketingtickets.com/')
+      third = Factory(:supplier, address: '27 Vicar Lane, Saron SA44 8HH', name: 'Jamie Hunter', telephone_number: '079 8825 0308', website: 'http://aromatherapyjobs.com/')
+      @suppliers = [@supplier, second, third]
+
+      30.times do
+        @suppliers << Factory(:supplier)
+      end
+    end
+
+    it 'should be successful' do
+      get :outlets
       response.should be_success
     end
 
@@ -60,6 +71,14 @@ describe PagesController do
       get 'outlets'
       response.should have_selector("title",
                                     :content => "Outlets | " + @base_title)
+    end
+
+    it 'should have an element for each supplier' do
+      get :outlets
+
+      @suppliers[0..2].each do |supplier|
+        response.body.should have_selector('h4', content: supplier.name)
+      end
     end
   end
 
