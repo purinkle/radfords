@@ -1,6 +1,7 @@
 class SuppliersController < ApplicationController
   def new
     @supplier = Supplier.new
+    @title = 'New supplier'
   end
 
   def create
@@ -9,6 +10,8 @@ class SuppliersController < ApplicationController
     if @supplier.save
       redirect_to @supplier
     else
+      @title = 'New supplier'
+
       render 'new'
     end
   end
@@ -19,6 +22,6 @@ class SuppliersController < ApplicationController
   end
 
   def edit
-
+    @title = 'Edit supplier'
   end
 end

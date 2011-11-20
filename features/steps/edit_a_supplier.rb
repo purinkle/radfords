@@ -1,3 +1,5 @@
+require 'spinach/capybara'
+
 class EditASupplier < Spinach::FeatureSteps
   feature 'Edit a supplier'
   Given 'I am on the show supplier page' do
@@ -15,6 +17,6 @@ class EditASupplier < Spinach::FeatureSteps
   end
 
   Then 'I should be shown the edit supplier page' do
-    should have_selector(:title, content: 'Edit supplier')
+    should have_selector('title', text: 'Edit supplier')
   end
 end

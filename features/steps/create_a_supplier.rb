@@ -40,16 +40,16 @@ class CreateASupplier < Spinach::FeatureSteps
   end
 
   Then 'I should be shown the page for the supplier' do
-    should have_selector(:title, content: supplier_name)
+    should have_selector('head title', text: supplier_name)
   end
 
   Then 'I should be shown the new supplier page' do
-    should have_selector(:title, content: 'New supplier')
+    should have_selector('head title', text: 'New supplier')
   end
 
   And 'all the suppliers details should be listed' do
-    should have_selector('p', content: supplier_name)
-    should have_selector('p', content: supplier_address)
-    should have_selector('p', content: supplier_telephone_number)
+    should have_selector('p', text: supplier_name)
+    should have_selector('p', text: supplier_address)
+    should have_selector('p', text: supplier_telephone_number)
   end
 end
