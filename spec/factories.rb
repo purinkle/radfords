@@ -14,6 +14,6 @@ end
 Factory.define :supplier do |supplier|
   supplier.address '4 Buckingham Road, Thorpe Larches TS21 6FF'
   supplier.name 'Jack Green'
-  supplier.telephone_number '077 3552 2248'
+  supplier.telephone_number '07735 522248'
   supplier.website 'http://soldierresources.com/'
 end
