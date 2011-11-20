@@ -17,4 +17,8 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find(params[:id])
     @title = @supplier.name
   end
+
+  def edit
+
+  end
 end

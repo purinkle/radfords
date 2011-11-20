@@ -62,4 +62,14 @@ describe SuppliersController do
       assigns(:supplier).should == supplier
     end
   end
+
+  describe 'GET "edit"' do
+    it 'should be successful' do
+      supplier = Factory(:supplier)
+
+      get :edit, id: supplier
+
+      response.should be_success
+    end
+  end
 end
