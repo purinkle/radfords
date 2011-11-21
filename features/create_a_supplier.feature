@@ -15,3 +15,4 @@ Feature: Create a supplier
     When I complete the form incorrectly
     And I submit the form
     Then I should be shown the new supplier page
+    And an error message should be displayed
