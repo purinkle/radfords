@@ -20,8 +20,6 @@ group :test do
   gem 'autotest-growl', '0.2.9'
   gem 'spork', '0.9.0.rc8'
   gem 'factory_girl_rails', '1.0'
-  gem 'spinach-rails', '0.0.6.1'
-  gem 'capybara', '1.1.1'
   gem 'escape_utils', '0.2.4'
 end
 
