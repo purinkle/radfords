@@ -16,27 +16,26 @@
     You are welcome to order products directly from us.  Please email for further details.
   </p>
 </div>
-<div class="span-17 last topic">
+<div class="wide-topic">
   <h3>Delicatessens / Farm Shops</h3>
   <% unless @suppliers.blank? %>
-    <ul class="outlet-list">
+    <div class="suppliers">
       <% @suppliers.each do |supplier| %>
-        <li>
+        <div class="supplier">
           <h4><%= supplier.name %></h4>
           <p><%= supplier.address %></p>
           <% if supplier.website %>
             <p><%= supplier.website %></p>
           <% end %>
           <p class="telephone"><%= supplier.telephone_number %></p>
-        </li>
           <% if signed_in? %>
             <p><a href="<%= edit_supplier_path(supplier) %>">Edit</a></p>
           <% end %>
         </div>
       <% end %>
-    </ul>
+    </div>
   <% end %>
   <% if signed_in? %>
-    <a href="<%= new_supplier_path %>">New supplier</a>
+    <p><a href="<%= new_supplier_path %>">New supplier</a></p>
   <% end %>
 </div>
