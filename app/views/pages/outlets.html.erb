@@ -23,7 +23,8 @@
       <% @suppliers.each do |supplier| %>
         <div class="supplier">
           <h4><%= supplier.name %></h4>
-          <%= raw sanitize(simple_format(supplier.address), :tags => %w(br p) ) %>
+          <p><%= supplier.address %></p>
+          <p><a href="http://maps.google.com/?q=<%= supplier.address %>">View map</a></p>
           <% if supplier.website %>
             <p><%= supplier.website %></p>
           <% end %>
