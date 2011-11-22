@@ -29,6 +29,10 @@
           <% end %>
           <p class="telephone"><%= supplier.telephone_number %></p>
         </li>
+          <% if signed_in? %>
+            <p><a href="<%= edit_supplier_path(supplier) %>">Edit</a></p>
+          <% end %>
+        </div>
       <% end %>
     </ul>
   <% end %>
