@@ -23,8 +23,8 @@
       <% @suppliers.each do |supplier| %>
         <div class="supplier">
           <h4><%= supplier.name %></h4>
-          <p><%= supplier.address %></p>
-          <p><a href="http://maps.google.com/?q=<%= supplier.address %>">View map</a></p>
+          <%= raw(supplier.address.gsub("\n", '<br />')) %>
+          <p><a href="http://maps.google.com/?q=<%= URI.escape(supplier.address) %>">View map</a></p>
           <% if supplier.website %>
             <p><%= supplier.website %></p>
           <% end %>

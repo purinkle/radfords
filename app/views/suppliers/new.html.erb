@@ -1,22 +1,5 @@
 <%= form_for @supplier do |f| %>
-  <%= render '/shared/error_messages', :object => f.object %>
-
-  <div class="field">
-    <%= f.label :name, 'Name' %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :address, 'Address' %><br />
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :website, 'Website' %><br />
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :telephone_number, 'Telephone Number' %><br />
-    <%= f.text_field :telephone_number %>
-  </div>
+  <%= render 'fields', f: f %>
   <div class="actions">
     <%= f.submit 'Add supplier' %>
   </div>
