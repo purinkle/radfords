@@ -18,10 +18,11 @@
 </div>
 <div class="wide-topic">
   <h3>Delicatessens / Farm Shops</h3>
+
   <% unless @suppliers.blank? %>
-    <div class="suppliers">
+    <ul class="suppliers">
       <% @suppliers.each do |supplier| %>
-        <div class="supplier">
+        <li>
           <h4><%= supplier.name %></h4>
           <%= raw(supplier.address.gsub("\n", '<br />')) %>
           <p><a href="http://maps.google.com/?q=<%= URI.escape(supplier.address) %>">View map</a></p>
@@ -32,10 +33,11 @@
           <% if signed_in? %>
             <p><a href="<%= edit_supplier_path(supplier) %>">Edit</a></p>
           <% end %>
-        </div>
+        </li>
       <% end %>
-    </div>
+    </ul>
   <% end %>
+
   <% if signed_in? %>
     <p><a href="<%= new_supplier_path %>">New supplier</a></p>
   <% end %>
