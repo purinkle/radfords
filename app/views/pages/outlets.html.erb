@@ -16,26 +16,23 @@
     You are welcome to order products directly from us.  Please email for further details.
   </p>
 </div>
-<div class="wide-topic">
+<div class="suppliers">
   <h3>Delicatessens / Farm Shops</h3>
 
   <% unless @suppliers.blank? %>
-    <ul class="suppliers">
-      <% @suppliers.each do |supplier| %>
-        <li>
-          <h4><%= supplier.name %></h4>
-          <%= raw(supplier.address.gsub("\n", '<br />')) %>
-          <p><a href="http://maps.google.com/?q=<%= URI.escape(supplier.address) %>">View map</a></p>
-          <% if supplier.website %>
-            <p><%= supplier.website %></p>
-          <% end %>
-          <p class="telephone"><%= supplier.telephone_number %></p>
-          <% if signed_in? %>
-            <p><a href="<%= edit_supplier_path(supplier) %>">Edit</a></p>
-          <% end %>
-        </li>
+    <ul>
+    <% @suppliers.each do |supplier| %><li>
+      <h4><%= supplier.name %></h4>
+      <p><%= raw(supplier.address.gsub("\n", '<br />')) %></p>
+      <p><a href="http://maps.google.com/?q=<%= URI.escape(supplier.address) %>">View map</a></p>
+      <% if supplier.website %>
+        <p><%= supplier.website %></p>
       <% end %>
-    </ul>
+      <p class="telephone"><%= supplier.telephone_number %></p>
+      <% if signed_in? %>
+        <p><a href="<%= edit_supplier_path(supplier) %>">Edit</a></p>
+      <% end %>
+    </li><% end %></ul>
   <% end %>
 
   <% if signed_in? %>

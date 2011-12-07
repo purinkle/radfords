@@ -246,23 +246,44 @@ li.twitter {
     width: 212px;
 }
 
-.wide-topic {
+.suppliers {
     float: left;
     width: 720px;
 }
 
-.wide-topic h3 {
+.suppliers h3 {
     border-bottom: solid 1px #a676b1;
+    font-family: Georgia, Times, serif;
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 17px;
 }
 
-.suppliers {
+.suppliers ul {
   margin: 0;
   padding: 0;
 }
 
 .suppliers li {
-  width: 220px;
+  width: 230px;
   display: inline-block;
   margin-right: 10px;
   vertical-align: top;
+}
+
+.suppliers h4 {
+  color: #5A006D;
+  font-family: Georgia, Times, serif;
+  font-size: 18px;
+  line-height: 36px;
+  margin-bottom: 0;
+}
+
+.suppliers p {
+  margin-bottom: 18px;
+}
+
+.suppliers .telephone {
+  padding-left: 18px;
+  background-position: 0 3px;
 }
