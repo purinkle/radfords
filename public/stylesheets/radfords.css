@@ -26,6 +26,7 @@ span#image-logo {
 
 #roll {
     background-color: white;
+    width: 720px;
 }
 
 h1 {
@@ -247,6 +248,7 @@ li.twitter {
 }
 
 .suppliers {
+/*  background: url(http://blueprintcss.org/blueprint/src/grid.png);*/
     float: left;
     width: 720px;
 }
@@ -283,7 +285,57 @@ li.twitter {
   margin-bottom: 18px;
 }
 
+.suppliers .actions {
+  line-height: 27px;
+  margin-bottom: 9px;
+}
+
 .suppliers .telephone {
   padding-left: 18px;
   background-position: 0 3px;
+}
+
+.suppliers img {
+  border: 1px solid #bbb;
+  float: left;
+  margin-bottom: 18px;
+  padding: 9px;
+}
+
+#map_canvas {
+  height: 252px;
+  width: 480px;
+}
+
+label {
+  display: block;
+  line-height: 18px;
+}
+
+input[type=text] {
+  height: 23px;
+  margin: 0;
+  margin-bottom: 9px;
+  width: 226px;
+}
+
+textarea {
+  display: block;
+  height: 212px;
+  line-height: 18px;
+  margin: 0;
+  padding: 1px;
+  resize: none;
+  width: 226px;
+}
+
+.address {
+  float: left;
+  margin-right: 10px;
+  text-align: right;
+  width: 230px;
+}
+
+input[type=button], input[type=submit] {
+  margin: 9px 0;
 }

@@ -7,7 +7,7 @@
   <%= render 'layouts/stylesheets' %>
 </head>
 
-<body class="with-js-events">
+<body class="with-js-events with-js-geocode">
   <div class="container">
     <div id="content-main" class="span-18 prepend-3 last">
       <%= render 'layouts/header' %>
@@ -21,6 +21,6 @@
       <%= debug(params) if Rails.env.development? %>
     </div>
   </div>
-  <%= javascript_include_tag "jquery-1.7.min.js", 'jquery-ui-1.8.16.custom.min.js', 'application', 'events' %>
+  <%= javascript_include_tag "jquery-1.7.min.js", 'jquery-ui-1.8.16.custom.min.js', 'http://maps.googleapis.com/maps/api/js?sensor=false', 'application', 'events', 'script' %>
 </body>
 </html>

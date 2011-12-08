@@ -1,17 +1,25 @@
 <%= render '/shared/error_messages', :object => f.object %>
-<div class="field">
-	<%= f.label :name %><br />
-	<%= f.text_field :name %>
+<div>
+  <input id="supplier_lat" name="supplier[lat]" type="hidden" />
+  <input id="supplier_lng" name="supplier[lng]" type="hidden" />
 </div>
 <div class="field">
-	<%= f.label :address %><br />
-	<%= f.text_area :address %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
 </div>
 <div class="field">
-	<%= f.label :website %><br />
-	<%= f.text_field :website %>
+  <%= f.label :address %>
+  <div class="address">
+    <%= f.text_area :address %>
+    <input id="find" type="button" value="Find" />
+  </div>
+  <div id="map_canvas"></div>
 </div>
 <div class="field">
-	<%= f.label :telephone_number %><br />
-	<%= f.text_field :telephone_number %>
+  <%= f.label :website %>
+  <%= f.text_field :website %>
+</div>
+<div class="field">
+  <%= f.label :telephone_number %>
+  <%= f.text_field :telephone_number %>
 </div>

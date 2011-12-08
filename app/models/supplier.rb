@@ -12,7 +12,7 @@
 #
 
 class Supplier < ActiveRecord::Base
-  attr_accessible :address, :name, :telephone_number, :website
+  attr_accessible :address, :lat, :lng, :name, :telephone_number, :website
   validates :address, presence: true
   validates :name, presence: true
   validates :telephone_number, presence: true
