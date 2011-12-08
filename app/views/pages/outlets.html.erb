@@ -26,7 +26,7 @@
       <% if signed_in? %>
         <p class="actions"><a href="<%= edit_supplier_path(supplier) %>">Edit</a> | <a href="#">Delete</a></p>
       <% end %>
-      <p><a href="http://maps.google.com/?q=<%= supplier.lat %>+<%= supplier.lng %>"><img src="http://maps.google.com/maps/api/staticmap?size=210x214&amp;maptype=roadmap&amp;sensor=false&amp;center=<%= supplier.lat %>%2C<%= supplier.lng %>&amp;zoom=12&amp;style=feature%3Aall%7Celement%3Aall%7Csaturation%3A-100&amp;markers=color%3A0xe87eff%7C<%= supplier.lat %>%2C<%= supplier.lng %>" /></a></p>
+      <p><a href="http://maps.google.com/?q=<%= supplier.lat %>+<%= supplier.lng %>"><img src="http://maps.google.com/maps/api/staticmap?size=210x214&amp;maptype=roadmap&amp;sensor=false&amp;center=<%= supplier.lat %>%2C<%= supplier.lng %>&amp;zoom=15&amp;style=feature%3Aall%7Celement%3Aall%7Csaturation%3A-100&amp;markers=color%3A0xe87eff%7C<%= supplier.lat %>%2C<%= supplier.lng %>" /></a></p>
       <p><%= raw(supplier.address.gsub("\n", '<br />')) %></p>
       <% if supplier.website %>
         <p><%= supplier.website %></p>
