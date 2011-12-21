@@ -1,40 +1,81 @@
-<div class=" topic span-8">
-  <h3>The Company</h3>
-  <p>
-    Radfords of Somerford produces homemade foods often drawing on Mediterranean influences we have a large range of products e.g. jams, pickles, preserves and dips.
-  </p>
-</div>
-<div class="topic span-8 last">
-  <h3>The Name</h3>
-  <p>Radford is a family name which has passed on recipes through the generations.</p>
-</div>
-<div class="topic span-8">
-  <h3>Made in Cheshire</h3>
-  <%= image_tag("made_in_cheshire.png", :alt => "Made in Cheshire", :class => "decorate-post") %>
-  <p>
-    A member of 'Made in Cheshire', all products are homemade and the majority of ingredients are sourced locally wherever possible.
-  </p>
-</div>
-<div class="topic span-8 last">
-  <h3>Events / News</h3>
-  <p>
-    We will be running a stall at the following events:
-  </p>
-  <ul id="upcoming">
-    <% if @events %>
-      <% @events.each do |event| %>
-  	<li><div class="img_speaking">
-  	  <img src="/images/Google_Chrome.png"
-  	  alt="Front End Conference" /><span class="mask">.</span>
-  	</div>
+<div class="section">
+  <div class="article">
+    <h2>
+      The Company
+    </h2>
 
-  	<span class="title"><%= event.name %></span>
-  	<span class="date"><%= event.takes_place_on %></span>
+    <p>
+      Radfords of Somerford produces homemade foods often drawing on
+      Mediterranean influences we have a large range of products e.g. jams,
+      pickles, preserves and dips.
+    </p>
+  </div>
 
-  	<h5><%= event.location %></h5></li>
-  	<% end %>
-    <% else %>
-      <li>No upcoming events</li>
-  	<% end %>
-  </ul>
+  <div class="article last">
+    <h2>
+      The Name
+    </h2>
+
+    <p>
+      Radford is a family name which has passed on recipes through the
+      generations.
+    </p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="article made-in-cheshire">
+    <h2>
+      Made in Cheshire
+    </h2>
+
+    <%= image_tag('made_in_cheshire.png', alt: 'Made in Cheshire') %>
+
+    <p>
+      A member of 'Made in Cheshire', all products are homemade and the majority
+      of ingredients are sourced locally wherever possible.
+    </p>
+  </div>
+
+  <div class="article last">
+    <h2>
+      Events/News
+    </h2>
+
+    <p>
+      We will be running a stall at the following events:
+    </p>
+
+    <ul id="upcoming">
+      <% if @events %>
+        <% @events.each do |event| %>
+          <li>
+            <div class="img_speaking">
+              <img src="/images/Google_Chrome.png" alt="Front End Conference" />
+
+              <span class="mask">
+                .
+              </span>
+            </div>
+
+            <span class="title">
+              <%= event.name %>
+            </span>
+
+            <span class="date">
+              <%= event.takes_place_on %>
+            </span>
+
+            <h3>
+              <%= event.location %>
+            </h3>
+          </li>
+        <% end %>
+      <% else %>
+        <li>
+          No upcoming events
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>

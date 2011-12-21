@@ -1,341 +1,218 @@
 .container {
-    height: 100%;
+/*    background: url(http://blueprintcss.org/blueprint/src/grid.png);*/
+    color: #554D40;
+    font-size: 13px;
 }
 
-#header {
-    background-image: url(/images/purple_logo.png);
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    background-color: #5A006D;
-    height: 154px;
-    -moz-border-radius-bottomright: 10px;
-    border-radius: 0 0 10px 0;
-    -webkit-border-bottom-right-radius: 10px;
+/* HEADER */
+
+.header {
     margin-bottom: 18px;
-    padding-left: 10px;
-    overflow: hidden;
 }
 
-span#image-logo {
-    background-image: url(/images/jar.png);
-    background-repeat: no-repeat;
-    height: 154px !important;
-    width: 145px !important;
-    display: inline-block;
-}
-
-#roll {
-    background-color: white;
-    width: 720px;
+.hgroup {
+    background: #5A006D url(/images/purple_logo.png) no-repeat right bottom;
+    margin-bottom: 18px;
+    vertical-align: bottom;
 }
 
 h1 {
-  margin: 5px;
-  color: #5A006D;
+    background: url(/images/jar.png) no-repeat 10px bottom;
+    height: 162px;
+    width: 145px;
+    text-indent: -9999em;
 }
 
-.topic {
-    padding: 10px 20px 0px 20px;
-    margin-bottom: 20px;
+.nav {
+    background: #5A006D url(/images/jar_bottom.png) no-repeat;
+    text-align: right;
 }
 
-
-.topic h3 {
-    border-bottom: solid 1px #a676b1; #5A006D;
+.nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
 }
 
-.product-list {
-    margin-right: 10px;
-}
-
-.product-list h4 {
-    margin-bottom: 5px;
-    border-bottom: solid 1px #AAAAAA
-}
-
-div#navbar-holder {
-    background-color: #5A006D;
-    padding-left: 10px;
-    padding-bottom: 3px;
-    margin-bottom: 30px;
-    background-image: url(/images/jar_bottom.png);
-    background-repeat: no-repeat;
-}
-
-ul#navbar {
-    list-style: none;
-    margin-bottom: 0;
-    margin-left: 100px;
-}
-
-ul.product-list  {
-    list-style: none;
-}
-
-ul#navbar li {
+.nav ul li {
     display: inline;
-    margin-left: 20px;
 }
 
-ul#navbar a {
+.nav ul li a:link, .nav ul li a:visited {
+    background: #5A006D;
+    color: #FFF;
+    font-family: Gotham;
+    font-size: 12px;
+    line-height: 36px;
+    margin-right: 10px;
     text-decoration: none;
-    font-size: larger;
-    color: white;
+    text-transform: uppercase;
 }
 
-ul#navbar li.active a {
+.nav ul li a:hover, .nav ul li a:active {
     text-decoration: underline;
 }
 
-img.decorate-post {
-    float: left;
-    margin-right: 10px;
-}
-
-img.decorate-post-right {
-    float: right;
-    margin-left: 10px;
-}
-
-img.bordered {
-    border: solid 1px #5A006D;
-}
-
-div#footer {
-    border-top:  solid 2px #5A006D;
-    text-align: right;
-    margin-top: 20px;
-    padding: 5px;
-}
-
-span.contact {
-    float: left;
-}
-
-a {
-    color: black;
-}
-
-ul.outlet-list {
-    list-style: none;
-    float: left;
-}
-
-ul.outlet-list li {
-    float: left;
-    margin-right: 80px;
-}
-
-ul.outlet-list li.last {
-    margin-right: 0;
-    clear: right;
-}
-
-.center-post {
-    margin-top: 5em;
-}
-
-p.telephone {
-    background-image: url(/images/phone_1.png);
-    background-repeat: no-repeat;
-    padding-left: 16px;
-}
-
-.outlet-list p {
-    margin: 4px;
-}
-
-.outlet-list h4 {
-    margin: 24px 0 12px 0;
-}
-
-ul.market-list li {
-    margin-bottom: 4px;
-}
-
-ul.events, ul#contact-methods {
-    list-style: none;
-    padding-left: 0;
-}
-
-
-
-ul#contact-methods li {
-    background-repeat: no-repeat;
-    padding-left: 24px;
-    margin-bottom: 12px;
-
-}
-
-li.email {
-    background-image: url(/images/email_16.png);
-}
-
-li.facebook {
-    background-image: url(/images/facebook_16.png);
-}
-
-li.twitter {
-    background-image: url(/images/twitter_16.png);
-}
-
-#upcoming {
-    color: #554D40;
-    float: left;
-    font: 13px/18px "helvetica neue", Helvetica, Arial, Georgia, serif;
-    list-style: none;
-    margin: 0;
-    margin-bottom: 10px;
-    padding: 0;
-}
-
-#upcoming li {
-    float: left;
-    margin-bottom: 20px;
-    width: 310px;
-}
-
-#upcoming div {
-    float: right;
-    margin-top: 5px;
-    position: relative;
-}
-
-#upcoming img {
-    float: right;
-    height: 80px;
-    width: 80px;
-}
-
-#upcoming div span {
-    background-image: url(/images/overlay.png);
-    display: block;
-    height: 80px;
-    position: absolute;
-    right: 0;
-    text-indent: -9999px;
-    width: 80px;
-    z-index: 100;
-}
-
-#upcoming .title {
-    color: #484848;
-    display: block;
-    float: left;
-    font: 19px/28px;
-    text-shadow: white 0 1px 0;
-    text-transform: uppercase;
-    width: 212px;
-}
-
-#upcoming .date {
-    float: left;
-    font-size: 11px;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-    text-transform: uppercase;
-}
-
-#upcoming h5 {
-    background: url(/images/location.png) no-repeat;
-    clear: left;
-    color: #5A006D;
-    font-size: 15px;
-    margin: 0;
-    padding-left: 14px;
-    text-shadow: white 0 1px 0;
-    width: 212px;
-}
-
-.suppliers {
-/*  background: url(http://blueprintcss.org/blueprint/src/grid.png);*/
-    float: left;
-    width: 720px;
-}
-
-.suppliers h3 {
-    border-bottom: solid 1px #a676b1;
+h2 {
+    border-bottom: solid 1px #A676B1;
     font-family: Georgia, Times, serif;
     font-size: 28px;
     line-height: 36px;
     margin-bottom: 17px;
 }
 
+/* BODY */
+
+.section:after, .section:after {
+    clear: both;
+    content: "\0020";
+    display: block;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.section {
+    display: block;
+}
+
+.article {
+    float: left;
+    margin-right: 10px;
+    width: 470px;
+}
+
+.last {
+    margin-right: 0;
+}
+
+.made-in-cheshire img {
+    float: left;
+    margin-bottom: 8px;
+    margin-right: 10px;
+}
+
+/* PRODUCTS */
+
+.product img {
+    border: 1px solid #BBB;
+    float: right;
+    margin-bottom: 18px;
+    margin-left: 10px;
+    padding: 8px 9px;
+}
+
+.product ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* SUPPLIERS */
+
 .suppliers ul {
-  margin: 0;
-  padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .suppliers li {
-  width: 230px;
-  display: inline-block;
-  margin-right: 10px;
-  vertical-align: top;
+    width: 310px;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: top;
 }
 
-.suppliers h4 {
-  color: #5A006D;
-  font-family: Georgia, Times, serif;
-  font-size: 18px;
-  line-height: 36px;
-  margin-bottom: 0;
-}
-
-.suppliers p {
-  margin-bottom: 18px;
-}
-
-.suppliers .actions {
-  line-height: 27px;
-  margin-bottom: 9px;
+.suppliers h3 {
+    color: #5A006D;
+    font-family: Georgia, Times, serif;
+    font-size: 18px;
+    line-height: 36px;
+    margin-bottom: 0;
 }
 
 .suppliers .telephone {
-  padding-left: 18px;
-  background-position: 0 3px;
+    background: url(/images/phone_1.png) no-repeat;
+    padding-left: 18px;
+    background-position: 0 3px;
 }
 
 .suppliers img {
-  border: 1px solid #bbb;
-  float: left;
-  margin-bottom: 18px;
-  padding: 9px;
+    border: 1px solid #bbb;
+    float: left;
+    margin-bottom: 18px;
+    padding: 9px;
 }
 
-#map_canvas {
-  height: 252px;
-  width: 480px;
+/* CONTACT */
+
+.denise {
+    text-align: right;
 }
 
-label {
-  display: block;
-  line-height: 18px;
+.denise img {
+    border: 1px solid #BBB;
+    margin-bottom: 18px;
+    padding: 9px;
 }
 
-input[type=text] {
-  height: 23px;
-  margin: 0;
-  margin-bottom: 9px;
-  width: 226px;
+.social ul {
+    list-style-type: none;
+    margin: 0;
+    margin-top: 18px;
+    padding: 0;
+    width: 212px;
 }
 
-textarea {
-  display: block;
-  height: 212px;
-  line-height: 18px;
-  margin: 0;
-  padding: 1px;
-  resize: none;
-  width: 226px;
+.social li {
+    background: no-repeat;
+    margin: 9px 0;
+    padding-left: 24px;
 }
 
-.address {
-  float: left;
-  margin-right: 10px;
-  text-align: right;
-  width: 230px;
+.social .email {
+    background-image: url(/images/email_16.png);
 }
 
-input[type=button], input[type=submit] {
-  margin: 9px 0;
+.social .facebook {
+    background-image: url(/images/facebook_16.png);
+}
+
+.social .twitter {
+    background-image: url(/images/twitter_16.png);
+}
+
+/* FOOTER */
+
+.footer {
+    border-top: 2px solid #5A006D;
+    line-height: 36px;
+    margin-top: 16px;
+}
+
+.footer ul {
+    float: left;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer li {
+    display: inline;
+    margin-right: 15px;
+}
+
+.footer a:link, .footer a:visited {
+    color: #554D40;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+
+.footer a:hover, .footer a:active {
+    color: #CA00F5;
+}
+
+.footer p {
+    float: right;
 }

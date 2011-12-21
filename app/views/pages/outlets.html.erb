@@ -1,41 +1,84 @@
-<div class="span-8 topic">
-  <h3>Farmers' Markets</h3>
-  <p>
-    We regularly attend local famers' markets / food events.
-    <ul class="market-list">
-      <li>Treacle market, Macclesfield</li>
-      <li>Barclays Bank Farmers' Market (staff only), Knutsford</li>
-      <li>Congleton Food Fair</li>
+<div class="section">
+  <div class="article">
+    <h2>
+      Farmers' Markets
+    </h2>
+
+    <p>
+      We regularly attend local famers' markets / food events.
+    </p>
+
+    <ul>
+      <li>
+        Treacle market, Macclesfield
+      </li>
+
+      <li>
+        Barclays Bank Farmers' Market (staff only), Knutsford
+      </li>
+
+      <li>
+        Congleton Food Fair
+      </li>
     </ul>
-    Please see the <a href="index.html">events / news section</a> for the latest information on upcoming events or follow us on <a href="http://twitter.com/r_of_somerford">Twitter</a> or <a href="http://www.facebook.com/pages/Radfords-of-Somerford/170415869654554?ref=ts&v=wall">Facebook </a>.
-  </p>
+
+    <p>
+      Please see the <a href="/">events/news section</a> for the latest
+      information on upcoming events or follow us on
+      <a href="http://twitter.com/r_of_somerford">Twitter</a> or
+      <a href="http://www.facebook.com/pages/Radfords-of-Somerford/170415869654554?ref=ts&amp;v=wall">Facebook</a>.
+    </p>
+  </div>
+
+  <div class="article last">
+    <h2>
+      Buy Direct
+    </h2>
+
+    <p>
+      You are welcome to order products directly from us.  Please email for
+      further details.
+    </p>
+  </div>
 </div>
-  <div class="span-8 last topic">
-  <h3>Buy Direct</h3>
-  <p>
-    You are welcome to order products directly from us.  Please email for further details.
-  </p>
-</div>
-<div class="suppliers">
-  <h3>Delicatessens / Farm Shops</h3>
+
+<div class="section suppliers">
+  <h2>Delicatessens / Farm Shops</h2>
 
   <% unless @suppliers.blank? %>
     <ul>
-    <% @suppliers.each do |supplier| %><li>
-      <h4><%= supplier.name %></h4>
-      <% if signed_in? %>
-        <p class="actions"><a href="<%= edit_supplier_path(supplier) %>">Edit</a> | <a href="#">Delete</a></p>
-      <% end %>
-      <p><a href="http://maps.google.com/?q=<%= supplier.lat %>+<%= supplier.lng %>"><img src="http://maps.google.com/maps/api/staticmap?size=210x214&amp;maptype=roadmap&amp;sensor=false&amp;center=<%= supplier.lat %>%2C<%= supplier.lng %>&amp;zoom=12&amp;style=feature%3Aall%7Celement%3Aall%7Csaturation%3A-100&amp;markers=color%3A0xe87eff%7C<%= supplier.lat %>%2C<%= supplier.lng %>" /></a></p>
-      <p><%= raw(supplier.address.gsub("\n", '<br />')) %></p>
-      <% if supplier.website %>
-        <p><%= supplier.website %></p>
-      <% end %>
-      <p class="telephone"><%= supplier.telephone_number %></p>
-    </li><% end %></ul>
+      <% @suppliers.each do |supplier| %><li>
+        <h3><%= supplier.name %></h3>
+
+        <% if signed_in? %>
+          <p class="actions">
+            <a href="<%= edit_supplier_path(supplier) %>">Edit</a> |
+            <a href="#">Delete</a>
+          </p>
+        <% end %>
+
+        <p>
+          <a href="http://maps.google.com/?q=<%= supplier.lat %>+<%= supplier.lng %>"><img src="http://maps.google.com/maps/api/staticmap?size=290x286&amp;maptype=roadmap&amp;sensor=false&amp;center=<%= supplier.lat %>%2C<%= supplier.lng %>&amp;zoom=12&amp;style=feature%3Aall%7Celement%3Aall%7Csaturation%3A-100&amp;markers=color%3A0xe87eff%7C<%= supplier.lat %>%2C<%= supplier.lng %>" /></a>
+        </p>
+
+        <p>
+          <%= raw(supplier.address.gsub("\n", '<br />')) %>
+        </p>
+
+        <% if supplier.website %>
+          <p><%= supplier.website %></p>
+        <% end %>
+
+        <p class="telephone">
+          <%= supplier.telephone_number %>
+        </p>
+      </li><% end %>
+    </ul>
   <% end %>
 
   <% if signed_in? %>
-    <p><a href="<%= new_supplier_path %>">New supplier</a></p>
+    <p>
+      <a href="<%= new_supplier_path %>">New supplier</a>
+    </p>
   <% end %>
 </div>

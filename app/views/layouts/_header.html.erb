@@ -1,16 +1,35 @@
-<div id="header" class=" span-18 last">
-  <span id="image-logo"></span>
-  <h1 id="title">Radfords of Somerford</h1>
-</div>
-<div id="navbar-holder" class="span-18 last">
-  <ul id="navbar">
-    <li><%= link_to "Home", root_path %></li>
-    <li><%= link_to "Products", products_path %></li>
-    <li><%= link_to "Where to buy", outlets_path %></li>
-    <li><%= link_to "Contact us", contact_path %></li>
-	<% if signed_in? %>
-	<li><%= link_to "Events", events_path %></li>
-	<li><%= link_to "Sign out", signout_path %></li>
-	<% end %>
-  </ul>
+<div class="header">
+  <div class="hgroup">
+    <h1>Radfords of Somerford</h1>
+  </div>
+
+  <div class="nav">
+    <ul>
+      <li>
+        <%= link_to "Home", root_path %>
+      </li>
+
+      <li>
+        <%= link_to "Products", products_path %>
+      </li>
+
+      <li>
+        <%= link_to "Where to buy", outlets_path %>
+      </li>
+
+      <li>
+        <%= link_to "Contact us", contact_path %>
+      </li>
+
+      <% if signed_in? %>
+        <li>
+          <%= link_to "Events", events_path %>
+        </li>
+
+        <li>
+          <%= link_to "Sign out", signout_path %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 </div>
