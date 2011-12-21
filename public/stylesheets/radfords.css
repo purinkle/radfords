@@ -124,6 +124,10 @@ h2 {
     vertical-align: top;
 }
 
+.suppliers .last {
+    margin-right: 0;
+}
+
 .suppliers h3 {
     color: #5A006D;
     font-family: Georgia, Times, serif;
