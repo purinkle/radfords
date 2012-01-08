@@ -3,3 +3,11 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-Agent: *
 # Disallow: /
+User-Agent: *
+Disallow: /events
+Disallow: /sessions
+Disallow: /suppliers
+Disallow: /signin
+Disallow: /signout
+
+Sitemap: http://radfordsofsomerford.co.uk/sitemap_index.xml.gz
