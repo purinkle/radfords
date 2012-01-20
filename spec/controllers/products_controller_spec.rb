@@ -207,7 +207,7 @@ describe ProductsController do
   end
 
   describe 'GET "new"' do
-    it 'should be successful' do
+    it 'is successful' do
       get :new
 
       response.should be_success
