@@ -7,6 +7,12 @@ describe ProductsController do
 
       response.should be_success
     end
+
+    it 'sets the title to "Products"' do
+      get :index
+
+      assigns(:title).should == 'Products'
+    end
   end
 
   describe 'GET "new"' do
