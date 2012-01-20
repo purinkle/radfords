@@ -7,3 +7,9 @@ Feature: Create a new product
     Given I am logged in
     When I visit the Products page
     Then there is a link to create a new product
+
+  Scenario: Display the new product form
+    Given I am logged in
+    And I visit the Products page
+    When I click the new product link
+    Then I am shown the new product page

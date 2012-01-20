@@ -20,8 +20,16 @@ class CreateANewProduct < Spinach::FeatureSteps
     click_button 'Sign in'
   end
 
+  When 'I click the new product link' do
+    click_link 'New product'
+  end
+
   When 'I visit the Products page' do
     visit products_path
+  end
+
+  Then 'I am shown the new product page' do
+    should have_selector('title', text: 'New product')
   end
 
   Then 'there is a link to create a new product' do

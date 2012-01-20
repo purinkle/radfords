@@ -8,4 +8,18 @@ describe ProductsController do
       response.should be_success
     end
   end
+
+  describe 'GET "new"' do
+    it 'should be successful' do
+      get :new
+
+      response.should be_success
+    end
+
+    it 'sets the title to "New product"' do
+      get :new
+
+      assigns(:title).should == 'New product'
+    end
+  end
 end
