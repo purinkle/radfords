@@ -37,19 +37,6 @@ describe PagesController do
     end
   end
 
-  describe "GET 'products'" do
-    it "should be successful" do
-      get 'products'
-      response.should be_success
-    end
-
-    it "should have the right title" do
-      get 'products'
-      response.should have_selector("title",
-                                    :content => "Products | " + @base_title)
-    end
-  end
-
   describe 'GET "outlets"' do
     before(:each) do
       @supplier = Factory(:supplier)
