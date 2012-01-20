@@ -43,4 +43,8 @@ class ProductsController < ApplicationController
     @product.update_attributes(params[:product])
     redirect_to(@product)
   end
+
+  def new
+    @title = 'New product'
+  end
 end
