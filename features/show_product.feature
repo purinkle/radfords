@@ -42,4 +42,3 @@ Feature: Show product
     And the updated description is displayed
     And the updated image is displayed
     And the updated price is displayed
-

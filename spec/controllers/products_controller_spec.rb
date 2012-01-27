@@ -213,10 +213,10 @@ describe ProductsController do
       response.should be_success
     end
 
-    it 'sets the title to "New product"' do
+    it 'sets the title to "New Product"' do
       get :new
 
-      assigns(:title).should == 'New product'
+      assigns(:title).should == 'New Product'
     end
 
     it 'creates a new Product record' do
@@ -255,6 +255,13 @@ describe ProductsController do
       Product.stub(:find).with(id).and_return(product)
       get :show, id: id
       assigns(:title).should == 'Lorem Ipsum'
+    end
+
+    it 'finds the right product' do
+      product = mock_model(Product, attr).as_null_object
+      Product.stub(:find).with(id).and_return(product)
+      get :show, id: id
+      assigns(:product).should == product
     end
   end
 end
