@@ -12,3 +12,10 @@ Feature: Show product
     And the product's description is displayed
     And an image of the product is displayed
     And the product's price is displayed
+
+  Scenario: Display an "Edit" link
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    When I create a valid product
+    Then there is an "Edit" link

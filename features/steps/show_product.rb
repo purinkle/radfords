@@ -19,4 +19,8 @@ class ShowProduct < Spinach::FeatureSteps
   And 'the product\'s price is displayed' do
     should have_selector('p', text: '19.95')
   end
+
+  Then 'there is an "Edit" link' do
+    should have_selector('a', text: 'Edit')
+  end
 end
