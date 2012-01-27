@@ -24,6 +24,10 @@ class ShowProduct < Spinach::FeatureSteps
     should have_selector('a', text: 'Edit')
   end
 
+  And 'there is a "Back" link' do
+    should have_selector('a', text: 'Back')
+  end
+
   Then 'the "Edit Product" page is displayed' do
     should have_selector('title', text: 'Edit Product')
   end

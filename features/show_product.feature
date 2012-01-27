@@ -13,6 +13,7 @@ Feature: Show product
     And an image of the product is displayed
     And the product's price is displayed
     And there is an "Edit" link
+    And there is a "Back" link
 
   Scenario: Display the "Edit" page
     Given I am logged in
