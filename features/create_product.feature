@@ -14,6 +14,19 @@ Feature: Create product
     When I click the "New Product" link
     Then the "New Product" page is displayed
 
+  Scenario: Display a "Back" link
+    Given I am logged in
+    And I click the "Products" link
+    When I click the "New Product" link
+    Then there is a "Back" link
+
+  Scenario: Display the "Product" page
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    When I click the "Back" link
+    Then the "Products" page is displayed
+
   Scenario: Redirect to a product page
     Given I am logged in
     And I click the "Products" link
