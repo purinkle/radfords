@@ -8,11 +8,12 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @title = 'New product'
+    @title = 'New Product'
     @product = Product.new
   end
 
   def show
-    @title = Product.find(params[:id]).title
+    @product = Product.find(params[:id])
+    @title = @product.title
   end
 end
