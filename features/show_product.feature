@@ -15,7 +15,7 @@ Feature: Show product
     And there is an "Edit" link
     And there is a "Back" link
 
-  Scenario: Display the "Edit" page
+  Scenario: Display the "Edit Product" page
     Given I am logged in
     And I click the "Products" link
     And I click the "New Product" link
