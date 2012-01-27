@@ -31,4 +31,8 @@ class ShowProduct < Spinach::FeatureSteps
   Then 'the "Edit Product" page is displayed' do
     should have_selector('title', text: 'Edit Product')
   end
+
+  Then 'the "Products" page is displayed' do
+    should have_selector('title', text: 'Products')
+  end
 end
