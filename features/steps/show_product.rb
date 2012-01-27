@@ -13,10 +13,10 @@ class ShowProduct < Spinach::FeatureSteps
   end
 
   And 'an image of the product is displayed' do
-    should have_selector('img[src$="lorem.jpg"]');
+    should have_selector('img[src$="lorem.jpg"]')
   end
 
   And 'the product\'s price is displayed' do
-    should have_selector('p', text: '19.95');
+    should have_selector('p', text: '19.95')
   end
 end
