@@ -51,4 +51,8 @@ class ShowProduct < Spinach::FeatureSteps
   And 'the updated price is displayed' do
     should have_selector('p', text: '3.00')
   end
+
+  And 'the product\'s price is displayed' do
+    should have_selector('p', text: '19.95');
+  end
 end
