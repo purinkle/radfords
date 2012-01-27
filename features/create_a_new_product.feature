@@ -13,3 +13,9 @@ Feature: Create a new product
     And I visit the Products page
     When I click the new product link
     Then I am shown the new product page
+
+  Scenario: Create a new product
+    Given I am logged in
+    And I visit the New Product page
+    When I submit valid data
+    Then I am shown a Product page

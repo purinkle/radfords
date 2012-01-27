@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe ProductsController do
+  let(:id) { 1 }
+
   describe 'GET "index"' do
     it 'is successful' do
       get :index
@@ -26,6 +28,44 @@ describe ProductsController do
       get :new
 
       assigns(:title).should == 'New product'
+    end
+
+    it 'creates a new Product record' do
+      get :new
+
+      assigns(:product).should be_new_record
+    end
+  end
+
+  describe 'POST "create"' do
+    let(:product) { mock_model(Product, id: id).as_null_object }
+
+    it 'redirects to the product show page' do
+      Product.should_receive(:create).and_return(product);
+
+      post :create, product: {}
+
+      response.should redirect_to(product_path(id))
+    end
+  end
+
+  describe 'GET "show"' do
+    let (:attr) do
+      { id: id }
+    end
+
+    it 'is successful' do
+      product = mock_model(Product, attr).as_null_object
+      Product.stub(:find).with(id).and_return(product)
+      get :show, id: id
+      response.should be_success
+    end
+
+    it 'sets the page title' do
+      product = mock_model(Product, attr.merge(title: 'Lorem Ipsum'))
+      Product.stub(:find).with(id).and_return(product)
+      get :show, id: id
+      assigns(:title).should == 'Lorem Ipsum'
     end
   end
 end
