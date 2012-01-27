@@ -10,3 +10,4 @@ Feature: Show product
     When I create a valid product
     Then the product's title is displayed
     And the product's description is displayed
+    And an image of the product is displayed
