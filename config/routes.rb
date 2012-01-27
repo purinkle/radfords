@@ -2,7 +2,7 @@ Radfords::Application.routes.draw do
   resources :events
   resources :sessions, :only => [ :new, :create, :destroy ]
   resources :suppliers
-  resources :products, except: [:destroy, :edit, :update]
+  resources :products, except: [:destroy, :update]
 
   root :to => 'pages#home'
 

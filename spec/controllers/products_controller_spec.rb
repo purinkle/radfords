@@ -75,4 +75,16 @@ describe ProductsController do
       assigns(:product).should == product
     end
   end
+
+  describe 'GET "edit"' do
+    it 'is successful' do
+      get :edit, id: id
+      response.should be_success
+    end
+
+    it 'sets the page title' do
+      get :edit, id: id
+      assigns(:title).should == 'Edit Product'
+    end
+  end
 end

@@ -3,6 +3,10 @@ class ProductsController < ApplicationController
     redirect_to(Product.create(params[:product]))
   end
 
+  def edit
+    @title = 'Edit Product'
+  end
+
   def index
     @title = 'Products'
   end

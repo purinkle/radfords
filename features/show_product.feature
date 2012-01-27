@@ -19,3 +19,11 @@ Feature: Show product
     And I click the "New Product" link
     When I create a valid product
     Then there is an "Edit" link
+
+  Scenario: Display the "Edit" page
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    When I click the "Edit" link
+    Then the "Edit Product" page is displayed

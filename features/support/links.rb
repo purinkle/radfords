@@ -5,6 +5,10 @@ module Links
     click_link 'Back'
   end
 
+  When 'I click the "Edit" link' do
+    click_link 'Edit'
+  end
+
   When 'I click the "New Product" link' do
     click_link 'New Product'
   end
