@@ -5,6 +5,11 @@ module Links
     click_link 'Edit'
   end
 
+
+  When 'I click a "Show" link' do
+    click_link 'Show'
+  end
+
   When 'I click an "Edit" link' do
     click_edit
   end
