@@ -23,10 +23,6 @@ class IndexProducts < Spinach::FeatureSteps
     should have_selector('a', text: 'Show')
   end
 
-  And 'the product\'s page is displayed' do
-    should have_selector('title', text: 'Lorem Ipsum')
-  end
-
   And 'there is an "Edit" link' do
     should have_selector('a', text: 'Edit')
   end
@@ -57,5 +53,9 @@ class IndexProducts < Spinach::FeatureSteps
 
   Then 'I am redirected back to the "Products" page' do
     should have_selector('title', text: 'Products')
+  end
+
+  And 'the product is no longer displayed' do
+    should_not have_selector('td', text: 'Lorem Ipsum')
   end
 end
