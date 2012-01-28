@@ -43,14 +43,4 @@ class ProductsController < ApplicationController
     @product.update_attributes(params[:product])
     redirect_to(@product)
   end
-
-  def new
-    @title = 'New Product'
-    @product = Product.new
-  end
-
-  def show
-    @product = Product.find(params[:id])
-    @title = @product.title
-  end
 end
