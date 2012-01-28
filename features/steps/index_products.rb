@@ -23,6 +23,10 @@ class IndexProducts < Spinach::FeatureSteps
     should have_selector('a', text: 'Show')
   end
 
+  And 'the product\'s page is displayed' do
+    should have_selector('title', text: 'Lorem Ipsum')
+  end
+
   And 'there is an "Edit" link' do
     should have_selector('a', text: 'Edit')
   end
