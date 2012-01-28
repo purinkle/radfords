@@ -10,5 +10,9 @@ module Forms
 
       click_button 'Create Product'
     end
+
+    When 'I delete a product' do
+      click_button 'Delete'
     end
+  end
 end

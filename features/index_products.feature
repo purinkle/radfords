@@ -15,7 +15,7 @@ Feature: Index products
     And the product's price is displayed
     And there is a "Show" link
     And there is an "Edit" link
-    And there is a "Delete" link
+    And there is a "Delete" button
 
   Scenario: Display the "Edit Product" page
     Given I am logged in
@@ -41,5 +41,6 @@ Feature: Index products
     And I click the "New Product" link
     And I create a valid product
     And I click the "Back" link
-    When I click a "Delete" link
+    When I delete a product
     Then I am redirected back to the "Products" page
+    And the product is no longer displayed

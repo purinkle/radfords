@@ -23,23 +23,27 @@ class IndexProducts < Spinach::FeatureSteps
     should have_selector('a', text: 'Show')
   end
 
-  And 'the product\'s page is displayed' do
-    should have_selector('title', text: 'Lorem Ipsum')
-  end
-
   And 'there is an "Edit" link' do
     should have_selector('a', text: 'Edit')
   end
 
-  And 'the "Edit Product" page is displayed' do
-    should have_selector('title', text: 'Edit Product')
+  And 'there is a "Delete" button' do
+    should have_selector('input[value="Delete"]')
   end
 
-  And 'there is a "Delete" link' do
-    should have_selector('a', text: 'Delete')
+  Then 'the product\'s page is displayed' do
+    should have_selector('title', text: 'Lorem Ipsum')
+  end
+
+  Then 'the "Edit Product" page is displayed' do
+    should have_selector('title', text: 'Edit Product')
   end
 
   Then 'I am redirected back to the "Products" page' do
     should have_selector('title', text: 'Products')
+  end
+
+  And 'the product is no longer displayed' do
+    should_not have_selector('td', text: 'Lorem Ipsum')
   end
 end
