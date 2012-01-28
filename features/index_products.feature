@@ -13,3 +13,4 @@ Feature: Index products
     And the product's description is displayed
     And the product's image is displayed
     And the product's price is displayed
+    And there is an "Edit" link

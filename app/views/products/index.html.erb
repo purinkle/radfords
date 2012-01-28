@@ -7,6 +7,8 @@
     <th>Image</th>
 
     <th>Price</th>
+
+    <th>Actions</th>
   </tr>
 
   <% @products.each do |product| %>
@@ -18,6 +20,12 @@
       <td><%= image_tag(product.image_url) %></td>
 
       <td><%= product.price %></td>
+
+      <td>
+        <ul>
+          <li><%= link_to 'Edit', '#' %></li>
+        </ul>
+      </td>
     </tr>
   <% end %>
 </table>
