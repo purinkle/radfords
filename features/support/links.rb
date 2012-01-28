@@ -5,6 +5,9 @@ module Links
     click_link 'Edit'
   end
 
+  When 'I click a "Delete" link' do
+    click_link 'Delete'
+  end
 
   When 'I click a "Show" link' do
     click_link 'Show'

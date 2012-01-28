@@ -38,4 +38,8 @@ class IndexProducts < Spinach::FeatureSteps
   And 'there is a "Delete" link' do
     should have_selector('a', text: 'Delete')
   end
+
+  Then 'I am redirected back to the "Products" page' do
+    should have_selector('title', text: 'Products')
+  end
 end
