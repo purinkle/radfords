@@ -15,6 +15,7 @@ Feature: Index products
     And the product's price is displayed
     And there is a "Show" link
     And there is an "Edit" link
+    And there is a "Delete" link
 
   Scenario: Display the "Edit Product" page
     Given I am logged in
