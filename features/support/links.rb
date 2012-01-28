@@ -1,6 +1,10 @@
 module Links
   include Spinach::DSL
 
+  When 'I click an "Edit" link' do
+    click_link 'Edit'
+  end
+
   When 'I click the "Back" link' do
     click_link 'Back'
   end

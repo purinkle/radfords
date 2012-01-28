@@ -22,4 +22,8 @@ class IndexProducts < Spinach::FeatureSteps
   And 'there is an "Edit" link' do
     should have_selector('a', text: 'Edit')
   end
+
+  And 'the "Edit Product" page is displayed' do
+    should have_selector('title', text: 'Edit Product')
+  end
 end
