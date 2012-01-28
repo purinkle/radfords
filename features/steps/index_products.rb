@@ -10,4 +10,8 @@ class IndexProducts < Spinach::FeatureSteps
   And 'the product\'s description is displayed' do
     should have_selector('td', text: 'Wibbles are fun!')
   end
+
+  And 'the product\'s image is displayed' do
+    should have_selector('img[src$="lorem.jpg"]')
+  end
 end
