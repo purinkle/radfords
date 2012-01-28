@@ -1,8 +1,12 @@
 module Links
   include Spinach::DSL
 
-  When 'I click an "Edit" link' do
+  def click_edit
     click_link 'Edit'
+  end
+
+  When 'I click an "Edit" link' do
+    click_edit
   end
 
   When 'I click the "Back" link' do
@@ -10,7 +14,7 @@ module Links
   end
 
   When 'I click the "Edit" link' do
-    click_link 'Edit'
+    click_edit
   end
 
   When 'I click the "New Product" link' do
