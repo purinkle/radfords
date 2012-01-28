@@ -12,3 +12,4 @@ Feature: Index products
     Then the product's title is displayed
     And the product's description is displayed
     And the product's image is displayed
+    And the product's price is displayed
