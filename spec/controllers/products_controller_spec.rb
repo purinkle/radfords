@@ -15,6 +15,13 @@ describe ProductsController do
 
       assigns(:title).should == 'Products'
     end
+
+    it 'should find the right products' do
+      products = [mock_model(Product), mock_model(Product)]
+      Product.should_receive(:all).and_return(products)
+      get :index
+      assigns(:products).should == products
+    end
   end
 
   describe 'GET "new"' do
