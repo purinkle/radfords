@@ -10,3 +10,4 @@ Feature: Index products
     And I create a valid product
     When I click the "Back" link
     Then the product's title is displayed
+    And the product's description is displayed
