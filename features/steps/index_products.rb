@@ -19,6 +19,10 @@ class IndexProducts < Spinach::FeatureSteps
     should have_selector('td', text: '19.95')
   end
 
+  And 'there is a "Show" link' do
+    should have_selector('a', text: 'Show')
+  end
+
   And 'there is an "Edit" link' do
     should have_selector('a', text: 'Edit')
   end
