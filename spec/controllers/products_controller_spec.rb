@@ -205,26 +205,4 @@ describe ProductsController do
       response.should redirect_to(product)
     end
   end
-
-  describe 'DELETE "destroy"' do
-    before(:each) do
-      @product = mock_model(Product)
-      Product.stub(:find).with(id).and_return(@product)
-    end
-
-    it 'redirects to the index' do
-      delete :destroy, id: id
-      response.should redirect_to(products_path)
-    end
-
-    it 'finds the right product' do
-      delete :destroy, id: id
-      assigns(:product).should == @product
-    end
-
-    it 'destroys the product' do
-      @product.should_receive(:destroy)
-      delete :destroy, id: id
-    end
-  end
 end
