@@ -11,3 +11,4 @@ Feature: Edit product
     When I click the "Edit" link
     Then the product's title is displayed
     And the product's description is displayed
+    And the product's image URL is displayed

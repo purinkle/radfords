@@ -11,4 +11,8 @@ class EditProduct < Spinach::FeatureSteps
   And 'the product\'s description is displayed' do
     should have_selector('textarea', text: 'Wibbles are fun!')
   end
+
+  And 'the product\'s image URL is displayed' do
+    should have_selector('input[value="lorem.jpg"]')
+  end
 end
