@@ -15,4 +15,8 @@ class EditProduct < Spinach::FeatureSteps
   And 'the product\'s image URL is displayed' do
     should have_selector('input[value="lorem.jpg"]')
   end
+
+  And 'the product\'s price is displayed' do
+    should have_selector('input[value="19.95"]')
+  end
 end
