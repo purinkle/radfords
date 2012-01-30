@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
 
   def edit
     @title = 'Edit Product'
+    @product = Product.find(params[:id])
   end
 
   def index

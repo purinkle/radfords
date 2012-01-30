@@ -84,6 +84,11 @@ describe ProductsController do
   end
 
   describe 'GET "edit"' do
+    before(:each) do
+      @product = mock_model(Product)
+      Product.stub(:find).with(id).and_return(@product)
+    end
+
     it 'is successful' do
       get :edit, id: id
       response.should be_success
@@ -92,6 +97,11 @@ describe ProductsController do
     it 'sets the page title' do
       get :edit, id: id
       assigns(:title).should == 'Edit Product'
+    end
+
+    it 'finds the right product' do
+      get :edit, id: id
+      assigns(:product).should == @product
     end
   end
 
