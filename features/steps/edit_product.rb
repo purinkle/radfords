@@ -55,4 +55,8 @@ class EditProduct < Spinach::FeatureSteps
   And 'the updated description is displayed' do
     should have_selector('p', text: 'Bursting with blackcurrant flavour')
   end
+
+  And 'the updated image is displayed' do
+    should have_selector('img[src$="blackcurrant.jpg"]')
+  end
 end
