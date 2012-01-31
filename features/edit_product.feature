@@ -37,3 +37,4 @@ Feature: Edit product
     And the updated title is displayed
     And the updated description is displayed
     And the updated image is displayed
+    And the updated price is displayed
