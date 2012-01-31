@@ -25,3 +25,12 @@ Feature: Edit product
     And the product's description is displayed
     And the product's image URL is displayed
     And the product's price is displayed
+
+  Scenario: Change a product
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Edit" link
+    When I update the product with valid attributes
+    Then the product's page is displayed

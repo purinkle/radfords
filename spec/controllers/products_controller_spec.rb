@@ -126,4 +126,27 @@ describe ProductsController do
       delete :destroy, id: id
     end
   end
+
+  describe 'PUT "update"' do
+    it 'finds the correct product' do
+      product = mock_model(Product, id: id).as_null_object
+      Product.should_receive(:find).with(id).and_return(product)
+      put :update, id: id, product: {}
+      assigns(:product).should == product
+    end
+
+    it 'updates the product\'s attributes' do
+      product = mock_model(Product, id: id).as_null_object
+      Product.stub(:find).and_return(product)
+      product.should_receive(:update_attributes).with({})
+      put :update, id: id, product: {}
+    end
+
+    it 'redirects to the product show page' do
+      product = mock_model(Product, id: id).as_null_object
+      Product.stub(:find).and_return(product)
+      put :update, id: id, product: {}
+      response.should redirect_to(product)
+    end
+  end
 end

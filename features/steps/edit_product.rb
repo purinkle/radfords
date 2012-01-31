@@ -19,4 +19,8 @@ class EditProduct < Spinach::FeatureSteps
   And 'the product\'s price is displayed' do
     should have_selector('input[value="19.95"]')
   end
+
+  Then 'the product\'s page is displayed' do
+    should have_selector('title', text: 'Blackcurrant Jam')
+  end
 end
