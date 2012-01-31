@@ -39,4 +39,8 @@ class EditProduct < Spinach::FeatureSteps
   Then 'the products index is displayed' do
     should have_selector('title', text: 'Products')
   end
+
+  And 'the updated description is displayed' do
+    should have_selector('p', text: 'Bursting with blackcurrant flavour')
+  end
 end
