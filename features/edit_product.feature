@@ -34,3 +34,4 @@ Feature: Edit product
     And I click the "Edit" link
     When I update the product with valid attributes
     Then the product's page is displayed
+    And the updated title is displayed
