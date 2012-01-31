@@ -131,6 +131,11 @@ describe ProductsController do
       @product.should_receive(:destroy)
       delete :destroy, id: id
     end
+
+    it 'creates a success flash' do
+      post :destroy, id: id
+      flash[:success].should match(/deleted the product/)
+    end
   end
 
   describe 'PUT "update"' do

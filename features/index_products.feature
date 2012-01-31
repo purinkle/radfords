@@ -44,3 +44,4 @@ Feature: Index products
     When I delete a product
     Then I am redirected back to the "Products" page
     And the product is no longer displayed
+    And a success flash is displayed

@@ -46,4 +46,8 @@ class IndexProducts < Spinach::FeatureSteps
   And 'the product is no longer displayed' do
     should_not have_selector('td', text: 'Lorem Ipsum')
   end
+
+  And 'a success flash is displayed' do
+    should have_selector('.success', text: 'deleted the product')
+  end
 end
