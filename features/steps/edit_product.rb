@@ -27,4 +27,8 @@ class EditProduct < Spinach::FeatureSteps
   And 'the updated title is displayed' do
     should have_selector('p', text: 'Blackcurrant Jam')
   end
+
+  And 'the updated description is displayed' do
+    should have_selector('p', text: 'Bursting with blackcurrant flavour')
+  end
 end
