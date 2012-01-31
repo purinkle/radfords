@@ -50,12 +50,4 @@ class IndexProducts < Spinach::FeatureSteps
   And 'a success flash is displayed' do
     should have_selector('.success', text: 'deleted the product')
   end
-
-  Then 'I am redirected back to the "Products" page' do
-    should have_selector('title', text: 'Products')
-  end
-
-  And 'the product is no longer displayed' do
-    should_not have_selector('td', text: 'Lorem Ipsum')
-  end
 end
