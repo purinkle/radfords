@@ -59,4 +59,8 @@ class EditProduct < Spinach::FeatureSteps
   And 'the updated image is displayed' do
     should have_selector('img[src$="blackcurrant.jpg"]')
   end
+
+  And 'the updated price is displayed' do
+    should have_selector('p', text: '3.00')
+  end
 end
