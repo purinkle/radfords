@@ -33,3 +33,4 @@ Feature: Create product
     And I click the "New Product" link
     When I create a valid product
     Then I am shown a product page
+    And a success flash is displayed

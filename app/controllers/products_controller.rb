@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   def create
+    flash[:success] = 'You successfully created a new product.'
     redirect_to(Product.create(params[:product]))
   end
 

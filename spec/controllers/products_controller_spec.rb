@@ -54,6 +54,12 @@ describe ProductsController do
 
       response.should redirect_to(product_path(id))
     end
+
+    it 'creates a success flash' do
+      Product.stub(:create).and_return(product);
+      post :create, product: {}
+      flash[:success].should match(/created a new product/)
+    end
   end
 
   describe 'GET "show"' do

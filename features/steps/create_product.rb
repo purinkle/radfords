@@ -23,4 +23,8 @@ class CreateProduct < Spinach::FeatureSteps
   Then 'I am shown a product page' do
     should have_selector('title', text: 'Lorem Ipsum')
   end
+
+  And 'a success flash is displayed' do
+    should have_selector('.success', text: 'created a new product')
+  end
 end
