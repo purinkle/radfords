@@ -23,20 +23,4 @@ class EditProduct < Spinach::FeatureSteps
   Then 'the product\'s page is displayed' do
     should have_selector('title', text: 'Blackcurrant Jam')
   end
-
-  And 'the updated title is displayed' do
-    should have_selector('p', text: 'Blackcurrant Jam')
-  end
-
-  And 'the updated description is displayed' do
-    should have_selector('p', text: 'Bursting with blackcurrant flavour')
-  end
-
-  And 'the updated image is displayed' do
-    should have_selector('img[src$="blackcurrant.jpg"]')
-  end
-
-  And 'the updated price is displayed' do
-    should have_selector('p', text: '3.00')
-  end
 end

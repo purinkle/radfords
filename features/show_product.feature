@@ -30,3 +30,16 @@ Feature: Show product
     And I create a valid product
     When I click the "Back" link
     Then the "Products" page is displayed
+
+  Scenario: Display updated product details
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Edit" link
+    When I update the product with valid attributes
+    Then the updated title is displayed
+    And the updated description is displayed
+    And the updated image is displayed
+    And the updated price is displayed
+
