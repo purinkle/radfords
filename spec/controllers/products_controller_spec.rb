@@ -99,6 +99,12 @@ describe ProductsController do
         response.should render_template('new')
       end
     end
+
+    it 'creates a success flash' do
+      Product.stub(:create).and_return(product);
+      post :create, product: {}
+      flash[:success].should match(/created a new product/)
+    end
   end
 
   describe 'GET "show"' do
