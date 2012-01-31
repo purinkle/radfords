@@ -35,3 +35,4 @@ Feature: Edit product
     When I update the product with valid attributes
     Then the product's page is displayed
     And the updated title is displayed
+    And the updated description is displayed
