@@ -36,3 +36,4 @@ Feature: Edit product
     Then the product's page is displayed
     And the updated title is displayed
     And the updated description is displayed
+    And the updated image is displayed
