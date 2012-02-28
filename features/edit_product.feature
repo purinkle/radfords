@@ -13,6 +13,7 @@ Feature: Edit product
     And the product's description is displayed
     And the product's image URL is displayed
     And the product's price is displayed
+    And a "Show" link is displayed
 
   Scenario: Edit a product from the "Products" page
     Given I am logged in
@@ -25,6 +26,7 @@ Feature: Edit product
     And the product's description is displayed
     And the product's image URL is displayed
     And the product's price is displayed
+    And a "Show" link is displayed
 
   Scenario: Change a product
     Given I am logged in
