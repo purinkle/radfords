@@ -5,8 +5,12 @@ module Links
     click_link 'Edit'
   end
 
-  When 'I click a "Show" link' do
+  def click_show
     click_link 'Show'
+  end
+
+  When 'I click a "Show" link' do
+    click_show
   end
 
   When 'I click an "Edit" link' do
@@ -27,5 +31,9 @@ module Links
 
   When 'I click the "Products" link' do
     click_link 'Products'
+  end
+
+  When 'I click the "Show" link' do
+    click_show
   end
 end

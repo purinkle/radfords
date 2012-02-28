@@ -35,4 +35,13 @@ Feature: Edit product
     And I create a valid product
     And I click the "Edit" link
     When I update the product with valid attributes
+    Then the updated product's page is displayed
+
+  Scenario: Show the product
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Edit" link
+    When I click the "Show" link
     Then the product's page is displayed

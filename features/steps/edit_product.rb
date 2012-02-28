@@ -24,7 +24,11 @@ class EditProduct < Spinach::FeatureSteps
     should have_selector('a', text: 'Show')
   end
 
-  Then 'the product\'s page is displayed' do
+  Then 'the updated product\'s page is displayed' do
     should have_selector('title', text: 'Blackcurrant Jam')
+  end
+
+  Then 'the product\'s page is displayed' do
+    should have_selector('title', text: 'Lorem Ipsum')
   end
 end
