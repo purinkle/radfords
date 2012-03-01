@@ -31,4 +31,8 @@ class EditProduct < Spinach::FeatureSteps
   Then 'the product\'s page is displayed' do
     should have_selector('title', text: 'Lorem Ipsum')
   end
+
+  Then 'a "Back" link is displayed' do
+    should have_selector('a', text: 'Back')
+  end
 end
