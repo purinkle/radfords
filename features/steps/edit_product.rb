@@ -35,4 +35,8 @@ class EditProduct < Spinach::FeatureSteps
   Then 'a "Back" link is displayed' do
     should have_selector('a', text: 'Back')
   end
+
+  Then 'the products index is displayed' do
+    should have_selector('title', text: 'Products')
+  end
 end
