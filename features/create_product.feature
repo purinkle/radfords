@@ -41,3 +41,10 @@ Feature: Create product
     And I click the "New Product" link
     When I create an invalid product
     Then I stay on the new product page
+
+  Scenario: Display a "Title can't be blank" message
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    When I leave the title blank
+    Then a "Title can't be blank" message is displayed

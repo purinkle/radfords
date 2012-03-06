@@ -31,4 +31,8 @@ class CreateProduct < Spinach::FeatureSteps
   Then 'I stay on the new product page' do
     should have_selector('title', text: 'New Product')
   end
+
+  Then 'a "Title can\'t be blank" message is displayed' do
+    should have_selector('li', text: 'Title can\'t be blank')
+  end
 end
