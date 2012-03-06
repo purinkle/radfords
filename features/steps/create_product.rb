@@ -35,4 +35,8 @@ class CreateProduct < Spinach::FeatureSteps
   Then 'a "Title can\'t be blank" message is displayed' do
     should have_selector('li', text: 'Title can\'t be blank')
   end
+
+  Then 'a "Description can\'t be blank" message is displayed' do
+    should have_selector('li', text: 'Description can\'t be blank')
+  end
 end

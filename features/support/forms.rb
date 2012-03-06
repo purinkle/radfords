@@ -57,5 +57,11 @@ module Forms
       title('')
       click_button 'Create Product'
     end
+
+    When 'I leave the description blank' do
+      valid_product
+      description('')
+      click_button 'Create Product'
+    end
   end
 end

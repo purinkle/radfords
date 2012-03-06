@@ -16,4 +16,11 @@ describe Product do
       product.should validate_presence_of(:title)
     end
   end
+
+  context 'when there is no description' do
+    it 'is not valid' do
+      product = Product.new
+      product.should validate_presence_of(:description)
+    end
+  end
 end
