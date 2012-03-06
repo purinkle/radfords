@@ -140,5 +140,14 @@ module Forms
     When 'I click the "Delete" button' do
       click_button('Delete')
     end
+
+    When 'I create an invalid product' do
+      fill_in 'product_title', with: ''
+      fill_in 'product_description', with: ''
+      fill_in 'product_image_url', with: ''
+      fill_in 'product_price', with: ''
+
+      click_button 'Create Product'
+    end
   end
 end
