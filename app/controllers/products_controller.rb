@@ -1,7 +1,14 @@
 class ProductsController < ApplicationController
   def create
-    flash[:success] = 'You successfully created a new product.'
-    redirect_to(Product.create(params[:product]))
+    @product = Product.new(params[:product])
+
+    if @product.save
+      flash[:success] = 'You successfully created a new product.'
+      redirect_to(Product.create(params[:product]))
+    else
+      @title = 'New Product'
+      render 'new'
+    end
   end
 
   def destroy

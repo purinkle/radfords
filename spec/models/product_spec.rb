@@ -9,4 +9,11 @@ describe Product do
       price: 19.95
     })
   end
+
+  context 'when there is no title' do
+    it 'is not valid' do
+      product = Product.new
+      product.should validate_presence_of(:title)
+    end
+  end
 end

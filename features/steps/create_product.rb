@@ -27,4 +27,8 @@ class CreateProduct < Spinach::FeatureSteps
   And 'a success flash is displayed' do
     should have_selector('.success', text: 'created a new product')
   end
+
+  Then 'I stay on the new product page' do
+    should have_selector('title', text: 'New Product')
+  end
 end

@@ -121,6 +121,11 @@ GEM
       ffi (~> 1.0)
       multi_json (~> 1.0)
       rubyzip
+    shoulda (3.0.1)
+      shoulda-context (~> 1.0.0)
+      shoulda-matchers (~> 1.0.0)
+    shoulda-context (1.0.0)
+    shoulda-matchers (1.0.0)
     sitemap_generator (2.2.1)
     spinach (0.3.0)
       colorize
@@ -163,6 +168,7 @@ DEPENDENCIES
   pg (= 0.13.2)
   rails (= 3.0.9)
   rspec-rails (= 2.6.1)
+  shoulda (= 3.0.1)
   sitemap_generator (= 2.2.1)
   spinach (= 0.3.0)
   spinach-rails (= 0.0.6.1)

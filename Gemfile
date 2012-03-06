@@ -26,5 +26,6 @@ group :test do
   gem 'spinach-rails', '0.0.6.1'
   gem 'database_cleaner', '0.7.1'
   gem 'launchy'
+  gem 'shoulda', '3.0.1'
 end
 
