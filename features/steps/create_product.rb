@@ -47,4 +47,8 @@ class CreateProduct < Spinach::FeatureSteps
   Then 'a "Price is not a number" message is displayed' do
     should have_selector('li', text: 'Price is not a number')
   end
+
+  Then 'a "Price must be greater than or equal to 0.01" message is displayed' do
+    should have_selector('li', text: 'Price must be greater than or equal to 0.01')
+  end
 end

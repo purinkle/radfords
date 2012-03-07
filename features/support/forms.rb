@@ -78,5 +78,11 @@ module Forms
       price('foo')
       create_product
     end
+
+    When 'I enter a price that\'s less than 0.01' do
+      valid_product
+      price(0)
+      create_product
+    end
   end
 end

@@ -37,4 +37,11 @@ describe Product do
       product.valid?.should be_false
     end
   end
+
+  context 'when the price is less than 0.01' do
+    it 'is not valid' do
+      product = Product.new(price: 0)
+      product.valid?.should be_false
+    end
+  end
 end
