@@ -13,6 +13,7 @@ group :development do
 end
 
 group :test do
+  gem 'launchy', '2.0.5'
   gem 'rspec-rails', '2.6.1'
   gem 'webrat', '0.7.1'
   gem 'autotest', '4.4.6'
@@ -25,7 +26,6 @@ group :test do
   gem 'spinach', '0.3.0'
   gem 'spinach-rails', '0.0.6.1'
   gem 'database_cleaner', '0.7.1'
-  gem 'launchy'
   gem 'shoulda', '3.0.1'
 end
 

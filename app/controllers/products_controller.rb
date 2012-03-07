@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
     if @product.save
       flash[:success] = 'You successfully created a new product.'
-      redirect_to(Product.create(params[:product]))
+      redirect_to(@product)
     else
       @title = 'New Product'
       render 'new'
