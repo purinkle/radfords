@@ -87,3 +87,10 @@ Feature: Create product
     When I create a valid product
     Then a "Title has already been taken" message is displayed
 
+  Scenario: Display the number of errors
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    When I create an invalid product
+    Then the error count is displayed
+
