@@ -72,5 +72,11 @@ module Forms
       image_url('')
       create_product
     end
+
+    When 'I enter a price that\'s not a number' do
+      valid_product
+      price('foo')
+      create_product
+    end
   end
 end

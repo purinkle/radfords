@@ -62,3 +62,10 @@ Feature: Create product
     And I click the "New Product" link
     When I leave the image URL blank
     Then an "Image URL can't be blank" message is displayed
+
+  Scenario: Display a "Price is not a number" message
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    When I enter a price that's not a number
+    Then a "Price is not a number" message is displayed

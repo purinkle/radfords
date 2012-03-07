@@ -43,4 +43,8 @@ class CreateProduct < Spinach::FeatureSteps
   Then 'an "Image URL can\'t be blank" message is displayed' do
     should have_selector('li', text: 'Image url can\'t be blank')
   end
+
+  Then 'a "Price is not a number" message is displayed' do
+    should have_selector('li', text: 'Price is not a number')
+  end
 end

@@ -30,4 +30,11 @@ describe Product do
       product.should validate_presence_of(:image_url)
     end
   end
+
+  context 'when the price is not a number' do
+    it 'is not valid' do
+      product = Product.new(price: 'foo')
+      product.valid?.should be_false
+    end
+  end
 end
