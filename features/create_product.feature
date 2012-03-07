@@ -55,3 +55,10 @@ Feature: Create product
     And I click the "New Product" link
     When I leave the description blank
     Then a "Description can't be blank" message is displayed
+
+  Scenario: Display an "Image URL can't be blank" message
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    When I leave the image URL blank
+    Then an "Image URL can't be blank" message is displayed

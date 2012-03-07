@@ -25,9 +25,13 @@ module Forms
       price(19.95)
     end
 
+    def create_product
+      click_button 'Create Product'
+    end
+
     When 'I create a valid product' do
       valid_product
-      click_button 'Create Product'
+      create_product
     end
 
     When 'I delete a product' do
@@ -48,20 +52,25 @@ module Forms
       description('')
       image_url('')
       price('')
-
-      click_button 'Create Product'
+      create_product
     end
 
     When 'I leave the title blank' do
       valid_product
       title('')
-      click_button 'Create Product'
+      create_product
     end
 
     When 'I leave the description blank' do
       valid_product
       description('')
-      click_button 'Create Product'
+      create_product
+    end
+
+    When 'I leave the image URL blank' do
+      valid_product
+      image_url('')
+      create_product
     end
   end
 end

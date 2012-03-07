@@ -23,4 +23,11 @@ describe Product do
       product.should validate_presence_of(:description)
     end
   end
+
+  context 'when there is no image URL' do
+    it 'is not valid' do
+      product = Product.new
+      product.should validate_presence_of(:image_url)
+    end
+  end
 end
