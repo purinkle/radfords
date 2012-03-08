@@ -71,3 +71,12 @@ Feature: Edit product
     And I click the "Edit" link
     When I update the product with invalid attributes
     Then I stay on the edit product page
+
+  Scenario: Display a "Title can't be blank" message
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Edit" link
+    When I update the product with a blank title
+    Then a "Title can't be blank" message is displayed

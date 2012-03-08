@@ -95,5 +95,11 @@ module Forms
       price(0)
       create_product
     end
+
+    When 'I update the product with a blank title' do
+      valid_product
+      title('')
+      update_product
+    end
   end
 end
