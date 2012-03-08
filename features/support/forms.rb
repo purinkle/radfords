@@ -113,5 +113,11 @@ module Forms
       image_url('')
       update_product
     end
+
+    When 'I update the product with a price that\'s not a number' do
+      valid_product
+      price('foo')
+      update_product
+    end
   end
 end
