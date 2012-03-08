@@ -40,7 +40,12 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update_attributes(params[:product])
-    redirect_to(@product)
+
+    if @product.update_attributes(params[:product])
+      redirect_to(@product, notice: 'Product was successfully updated.')
+    else
+      @title = 'Edit Product'
+      render action: 'edit'
+    end
   end
 end

@@ -29,6 +29,10 @@ module Forms
       click_button 'Create Product'
     end
 
+    def update_product
+      click_button 'Update Product'
+    end
+
     When 'I create a valid product' do
       valid_product
       create_product
@@ -43,8 +47,15 @@ module Forms
       description('Bursting with blackcurrant flavour')
       image_url('blackcurrant.jpg')
       price(3.00)
+      update_product
+    end
 
-      click_button 'Update Product'
+    When 'I update the product with invalid attributes' do
+      title('')
+      description('')
+      image_url('')
+      price('')
+      update_product
     end
 
     When 'I create an invalid product' do

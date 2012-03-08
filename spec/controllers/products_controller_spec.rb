@@ -215,25 +215,54 @@ describe ProductsController do
   end
 
   describe 'PUT "update"' do
-    it 'finds the correct product' do
-      product = mock_model(Product, id: id).as_null_object
-      Product.should_receive(:find).with(id).and_return(product)
-      put :update, id: id, product: {}
+    let(:attr) { {} }
+    let(:product) { mock_model(Product).as_null_object }
+
+    before(:each) do
+      Product.stub(find: product)
+    end
+
+    it 'finds the product' do
+      Product.should_receive(:find).with(id)
+      put :update, id: id, product: attr
+    end
+
+    it 'stores the product' do
+      put :update, id: id, product: attr
       assigns(:product).should == product
     end
 
-    it 'updates the product\'s attributes' do
-      product = mock_model(Product, id: id).as_null_object
-      Product.stub(:find).and_return(product)
-      product.should_receive(:update_attributes).with({})
-      put :update, id: id, product: {}
+    it 'tries to update the product' do
+      product.should_receive(:update_attributes).with(attr)
+      put :update, id: id, product: attr
     end
 
-    it 'redirects to the product show page' do
-      product = mock_model(Product, id: id).as_null_object
-      Product.stub(:find).and_return(product)
-      put :update, id: id, product: {}
-      response.should redirect_to(product)
+    context 'when the product is updated' do
+      it 'sets the notice flash' do
+        put :update, id: id, product: attr
+        flash[:notice].should == 'Product was successfully updated.'
+      end
+
+      it 'redirects to the product\'s page' do
+        put :update, id: id, product: attr
+        response.should redirect_to(product)
+      end
+    end
+
+    context 'when the product is not updated' do
+      before(:each) do
+        product.stub(update_attributes: false)
+      end
+
+      it 'sets the title' do
+        put :update, id: id, product: attr
+        assigns(:title).should == 'Edit Product'
+      end
+
+      it 'renders the edit product page' do
+        put :update, id: id, product: attr
+        response.should render_template('edit')
+      end
     end
   end
 end

@@ -57,7 +57,6 @@ class CreateProduct < Spinach::FeatureSteps
   end
 
   Then 'the error count is displayed' do
-    save_and_open_page
     should have_selector('h2', text: '4 errors')
   end
 end
