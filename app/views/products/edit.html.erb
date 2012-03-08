@@ -1,25 +1,3 @@
-<%= form_for(@product) do |f| %>
-  <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <ul>
-        <% @product.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <ol>
-    <li><%= f.label :title %> <%= f.text_field :title %></li>
-
-    <li><%= f.label :description %> <%= f.text_area :description %></li>
-
-    <li><%= f.label :image_url %> <%= f.text_field :image_url %></li>
-
-    <li><%= f.label :price %> <%= f.text_field :price %></li>
-
-    <li><%= f.submit %></li>
-  </ol>
-<% end %>
+<%= render partial: 'form' %>
 
 <%= link_to 'Show', @product %> | <%= link_to('Back', products_path) %>

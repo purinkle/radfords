@@ -87,4 +87,8 @@ class EditProduct < Spinach::FeatureSteps
   Then 'a "Title has already been taken" message is displayed' do
     should have_selector('li', text: 'Title has already been taken')
   end
+
+  Then 'the error count is displayed' do
+    should have_selector('h2', text: '4 errors')
+  end
 end

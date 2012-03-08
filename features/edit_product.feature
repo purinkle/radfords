@@ -128,3 +128,12 @@ Feature: Edit product
     And I click the "Edit" link
     When I update the product with a taken title
     Then a "Title has already been taken" message is displayed
+
+  Scenario: Display the number of errors
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Edit" link
+    When I update the product with invalid attributes
+    Then the error count is displayed
