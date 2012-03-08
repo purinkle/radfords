@@ -36,4 +36,8 @@ module Links
   When 'I click the "Show" link' do
     click_show
   end
+
+  When 'I click the "Sign Out" link' do
+    click_link 'Sign out'
+  end
 end

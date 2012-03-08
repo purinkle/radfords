@@ -21,5 +21,6 @@ module Sessions
   end
 
   Given 'I am logged out' do
+    visit root_path
   end
 end

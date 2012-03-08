@@ -52,11 +52,23 @@ class IndexProducts < Spinach::FeatureSteps
     should have_selector('.success', text: 'deleted the product')
   end
 
-  Then 'I am redirected to the sign in page' do
-    should have_selector('title', text: 'Sign In')
+  Then 'the "New Product" link is hidden' do
+    should_not have_selector('a', text: 'New Product')
   end
 
-  Then 'a sign in message is displayed' do
-    should have_selector('.error', text: 'Please sign in to access this page.')
+  Then 'the "Show" links are hidden' do
+    should_not have_selector('a', text: 'Show')
+  end
+
+  Then 'the "Edit" links are hidden' do
+    should_not have_selector('a', text: 'Edit')
+  end
+
+  Then 'the "Delete" buttons are hidden' do
+    should_not have_selector('input')
+  end
+
+  Then 'the "Actions" column is hidden' do
+    should_not have_selector('th', text: 'Actions')
   end
 end

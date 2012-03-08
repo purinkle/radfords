@@ -45,3 +45,40 @@ Feature: Index products
     Then I am redirected back to the "Products" page
     And the product is no longer displayed
     And a success flash is displayed
+
+  Scenario: Hide the "New Product" link
+    Given I am logged out
+    When I click the "Products" link
+    Then the "New Product" link is hidden
+
+  Scenario: Hide the "Show" links
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Sign Out" link
+    When I click the "Products" link
+    Then the "Show" links are hidden
+
+  Scenario: Hide the "Edit" links
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Sign Out" link
+    When I click the "Products" link
+    Then the "Edit" links are hidden
+
+  Scenario: Hide the "Delete" buttons
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Sign Out" link
+    When I click the "Products" link
+    Then the "Delete" buttons are hidden
+
+  Scenario: Hide the "Actions" column
+    Given I am logged out
+    When I click the "Products" link
+    Then the "Actions" column is hidden
