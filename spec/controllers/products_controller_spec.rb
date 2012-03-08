@@ -204,19 +204,32 @@ describe ProductsController do
       Product.stub(:find).with(id).and_return(@product)
     end
 
-    it 'is successful' do
-      get :edit, id: id
-      response.should be_success
+    context 'when signed in' do
+      before(:each) do
+        controller.stub(signed_in?: true)
+      end
+
+      it 'is successful' do
+        get :edit, id: id
+        response.should be_success
+      end
+
+      it 'sets the page title' do
+        get :edit, id: id
+        assigns(:title).should == 'Edit Product'
+      end
+
+      it 'finds the right product' do
+        get :edit, id: id
+        assigns(:product).should == @product
+      end
     end
 
-    it 'sets the page title' do
-      get :edit, id: id
-      assigns(:title).should == 'Edit Product'
-    end
-
-    it 'finds the right product' do
-      get :edit, id: id
-      assigns(:product).should == @product
+    context 'when not signed in' do
+      it 'redirects to the sign in page' do
+        get :edit, id: id
+        response.should redirect_to(signin_path)
+      end
     end
   end
 

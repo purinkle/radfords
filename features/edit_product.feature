@@ -137,3 +137,8 @@ Feature: Edit product
     And I click the "Edit" link
     When I update the product with invalid attributes
     Then the error count is displayed
+
+  Scenario: Redirect to the sign in page
+    Given I am logged out
+    When I visit the edit product page
+    Then I am redirected to the sign in page
