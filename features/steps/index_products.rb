@@ -5,11 +5,11 @@ class IndexProducts < Spinach::FeatureSteps
   include Sessions
 
   Then 'the product\'s title is displayed' do
-    should have_selector('td', text: 'Lorem Ipsum')
+    should have_selector('h3', text: 'Lorem Ipsum')
   end
 
   And 'the product\'s description is displayed' do
-    should have_selector('td', text: 'Wibbles are fun!')
+    should have_selector('p', text: 'Wibbles are fun!')
   end
 
   And 'the product\'s image is displayed' do
@@ -17,7 +17,7 @@ class IndexProducts < Spinach::FeatureSteps
   end
 
   And 'the product\'s price is displayed' do
-    should have_selector('td', text: '19.95')
+    should have_selector('p', text: '19.95')
   end
 
   And 'there is a "Show" link' do
@@ -45,7 +45,7 @@ class IndexProducts < Spinach::FeatureSteps
   end
 
   And 'the product is no longer displayed' do
-    should_not have_selector('td', text: 'Lorem Ipsum')
+    should_not have_selector('h3', text: 'Lorem Ipsum')
   end
 
   And 'a success flash is displayed' do
