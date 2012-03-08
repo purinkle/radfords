@@ -107,5 +107,11 @@ module Forms
       description('')
       update_product
     end
+
+    When 'I update the product with a blank image url' do
+      valid_product
+      image_url('')
+      update_product
+    end
   end
 end
