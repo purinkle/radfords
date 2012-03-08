@@ -1,6 +1,7 @@
 class CreateProduct < Spinach::FeatureSteps
   include Forms::Product
   include Links
+  include Paths
   include Sessions
 
   feature 'Create product'
@@ -58,5 +59,9 @@ class CreateProduct < Spinach::FeatureSteps
 
   Then 'the error count is displayed' do
     should have_selector('h2', text: '4 errors')
+  end
+
+  Then 'I am redirected to the sign in page' do
+    should have_selector('title', text: 'Sign In')
   end
 end

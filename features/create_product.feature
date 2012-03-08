@@ -94,3 +94,7 @@ Feature: Create product
     When I create an invalid product
     Then the error count is displayed
 
+  Scenario: Redirect to the sign in page
+    Given I am logged out
+    When I visit the new product page
+    Then I am redirected to the sign in page

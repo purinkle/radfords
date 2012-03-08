@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :authenticate, only: :new
+
   def create
     @product = Product.new(params[:product])
 
@@ -48,4 +50,9 @@ class ProductsController < ApplicationController
       render action: 'edit'
     end
   end
+
+  private
+    def authenticate
+      deny_access unless signed_in?
+    end
 end

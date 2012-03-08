@@ -19,4 +19,7 @@ module Sessions
 
     click_button 'Sign in'
   end
+
+  Given 'I am logged out' do
+  end
 end

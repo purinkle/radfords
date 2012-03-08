@@ -25,22 +25,35 @@ describe ProductsController do
   end
 
   describe 'GET "new"' do
-    it 'is successful' do
-      get :new
+    context 'when signed in' do
+      before(:each) do
+        controller.stub(signed_in?: true)
+      end
 
-      response.should be_success
+      it 'is successful' do
+        get :new
+
+        response.should be_success
+      end
+
+      it 'sets the title to "New Product"' do
+        get :new
+
+        assigns(:title).should == 'New Product'
+      end
+
+      it 'creates a new Product record' do
+        get :new
+
+        assigns(:product).should be_new_record
+      end
     end
 
-    it 'sets the title to "New Product"' do
-      get :new
-
-      assigns(:title).should == 'New Product'
-    end
-
-    it 'creates a new Product record' do
-      get :new
-
-      assigns(:product).should be_new_record
+    context 'when not signed in' do
+      it 'redirects to the sign in page' do
+        get :new
+        response.should redirect_to(signin_path)
+      end
     end
   end
 
