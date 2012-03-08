@@ -1,6 +1,7 @@
 class IndexProducts < Spinach::FeatureSteps
   include Forms::Product
   include Links
+  include Paths
   include Sessions
 
   Then 'the product\'s title is displayed' do
@@ -49,5 +50,13 @@ class IndexProducts < Spinach::FeatureSteps
 
   And 'a success flash is displayed' do
     should have_selector('.success', text: 'deleted the product')
+  end
+
+  Then 'I am redirected to the sign in page' do
+    should have_selector('title', text: 'Sign In')
+  end
+
+  Then 'a sign in message is displayed' do
+    should have_selector('.error', text: 'Please sign in to access this page.')
   end
 end

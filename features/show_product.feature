@@ -42,3 +42,13 @@ Feature: Show product
     And the updated description is displayed
     And the updated image is displayed
     And the updated price is displayed
+
+  Scenario: Redirect to the sign in page
+    Given I am logged out
+    When I visit a product page
+    Then I am redirected to the sign in page
+
+  Scenario: Display a sign in message
+    Given I am logged out
+    When I visit a product page
+    Then a sign in message is displayed

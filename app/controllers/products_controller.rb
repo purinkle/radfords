@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate, only: [:create, :edit, :new]
+  before_filter :authenticate, except: :index
 
   def create
     @product = Product.new(params[:product])

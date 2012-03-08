@@ -1,6 +1,7 @@
 class ShowProduct < Spinach::FeatureSteps
   include Forms::Product
   include Links
+  include Paths
   include Sessions
 
   feature 'Show product'
