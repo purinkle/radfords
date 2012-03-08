@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate, only: :new
+  before_filter :authenticate, only: [:new, :create]
 
   def create
     @product = Product.new(params[:product])
