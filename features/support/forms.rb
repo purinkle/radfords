@@ -101,5 +101,11 @@ module Forms
       title('')
       update_product
     end
+
+    When 'I update the product with a blank description' do
+      valid_product
+      description('')
+      update_product
+    end
   end
 end
