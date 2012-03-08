@@ -83,4 +83,8 @@ class EditProduct < Spinach::FeatureSteps
   Then 'a "Price must be greater than or equal to 0.01" message is displayed' do
     should have_selector('li', text: 'Price must be greater than or equal to 0.01')
   end
+
+  Then 'a "Title has already been taken" message is displayed' do
+    should have_selector('li', text: 'Title has already been taken')
+  end
 end

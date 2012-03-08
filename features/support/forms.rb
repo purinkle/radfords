@@ -125,5 +125,16 @@ module Forms
       price(0)
       update_product
     end
+
+    When 'I create another product' do
+      valid_product
+      title('Apricot Preserve')
+      create_product
+    end
+
+    When 'I update the product with a taken title' do
+      valid_product
+      update_product
+    end
   end
 end
