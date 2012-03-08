@@ -119,5 +119,11 @@ module Forms
       price('foo')
       update_product
     end
+
+    When 'I update the product with a price that\'s less than 0.01' do
+      valid_product
+      price(0)
+      update_product
+    end
   end
 end

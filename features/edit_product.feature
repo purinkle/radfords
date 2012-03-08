@@ -107,3 +107,12 @@ Feature: Edit product
     And I click the "Edit" link
     When I update the product with a price that's not a number
     Then a "Price is not a number" message is displayed
+
+  Scenario: Display a "Price must be greater than or equal to 0.01" message
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Edit" link
+    When I update the product with a price that's less than 0.01
+    Then a "Price must be greater than or equal to 0.01" message is displayed
