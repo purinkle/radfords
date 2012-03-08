@@ -98,3 +98,8 @@ Feature: Create product
     Given I am logged out
     When I visit the new product page
     Then I am redirected to the sign in page
+
+  Scenario: Display a sign in message
+    Given I am logged out
+    When I visit the new product page
+    Then a sign in message is displayed

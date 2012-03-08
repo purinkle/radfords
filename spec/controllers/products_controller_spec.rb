@@ -54,6 +54,11 @@ describe ProductsController do
         get :new
         response.should redirect_to(signin_path)
       end
+
+      it 'sets the error flash' do
+        get :new
+        flash[:error].should == 'Please sign in to access this page.'
+      end
     end
   end
 
