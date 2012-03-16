@@ -25,7 +25,7 @@ describe 'Events' do
           click_button
 
           response.should render_template('events/new')
-          response.should have_selector('div#error_explanation')
+          response.should have_selector('.alert-block')
         end.should_not change( Event, :count )
       end
     end

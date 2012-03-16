@@ -26,7 +26,7 @@ describe 'Suppliers' do
           click_button
 
           response.should render_template('suppliers/new')
-          response.should have_selector('div#error_explanation')
+          response.should have_selector('.alert-block')
         end.should_not change( Supplier, :count )
       end
     end
