@@ -13,7 +13,7 @@ Feature: Index products
     And the product's description is displayed
     And the product's image is displayed
     And the product's price is displayed
-    And there is a "Show" link
+    And there is a product link
     And there is an "Edit" link
     And there is a "Delete" button
 
@@ -32,7 +32,7 @@ Feature: Index products
     And I click the "New Product" link
     And I create a valid product
     And I click the "Back" link
-    When I click a "Show" link
+    When I click a product link
     Then the product's page is displayed
 
   Scenario: Delete the product

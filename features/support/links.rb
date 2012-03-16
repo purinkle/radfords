@@ -21,6 +21,10 @@ module Links
     click_link 'Back'
   end
 
+  When 'I click the "Cancel" link' do
+    click_link 'Cancel'
+  end
+
   When 'I click the "Edit" link' do
     click_edit
   end
@@ -39,5 +43,9 @@ module Links
 
   When 'I click the "Sign Out" link' do
     click_link 'Sign out'
+  end
+
+  When 'I click a product link' do
+    click_link 'Lorem Ipsum'
   end
 end

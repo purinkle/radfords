@@ -46,13 +46,13 @@ Feature: Edit product
     When I click the "Show" link
     Then the product's page is displayed
 
-  Scenario: Display a "Back" link
+  Scenario: Display a "Cancel" link
     Given I am logged in
     And I click the "Products" link
     And I click the "New Product" link
     And I create a valid product
     When I click the "Edit" link
-    Then a "Back" link is displayed
+    Then a "Cancel" link is displayed
 
   Scenario: Link to the products index
     Given I am logged in
@@ -60,7 +60,7 @@ Feature: Edit product
     And I click the "New Product" link
     And I create a valid product
     And I click the "Edit" link
-    When I click the "Back" link
+    When I click the "Cancel" link
     Then the products index is displayed
 
   Scenario: Stay on the edit product page

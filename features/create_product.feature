@@ -14,17 +14,17 @@ Feature: Create product
     When I click the "New Product" link
     Then the "New Product" page is displayed
 
-  Scenario: Display a "Back" link
+  Scenario: Display a "Cancel" link
     Given I am logged in
     And I click the "Products" link
     When I click the "New Product" link
-    Then there is a "Back" link
+    Then there is a "Cancel" link
 
   Scenario: Display the "Product" page
     Given I am logged in
     And I click the "Products" link
     And I click the "New Product" link
-    When I click the "Back" link
+    When I click the "Cancel" link
     Then the "Products" page is displayed
 
   Scenario: Redirect to a product page

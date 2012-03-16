@@ -20,8 +20,8 @@ class IndexProducts < Spinach::FeatureSteps
     should have_selector('p', text: '19.95')
   end
 
-  And 'there is a "Show" link' do
-    should have_selector('a', text: 'Show')
+  And 'there is a product link' do
+    should have_selector('a', text: 'Lorem Ipsum')
   end
 
   And 'there is an "Edit" link' do

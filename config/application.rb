@@ -8,6 +8,10 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Radfords
   class Application < Rails::Application
+    ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
+      include ActionView::Helpers::RawOutputHelper
+      raw %(<span class="control-group error">#{html_tag}</span>)
+    end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -1,10 +1,10 @@
 <%= form_for(@product) do |f| %>
   <% if @product.errors.any? %>
-    <div id="error_explanation">
-      <h2>
+    <div class="alert alert-block alert-error">
+      <h4 class="alert-heading">
         <%= pluralize(@product.errors.count, 'error') %> prohibited this
         product from being saved:
-      </h2>
+      </h4>
 
       <ul>
         <% @product.errors.full_messages.each do |msg| %>
@@ -17,12 +17,16 @@
   <ol>
     <li><%= f.label :title %> <%= f.text_field :title %></li>
 
-    <li><%= f.label :description %> <%= f.text_area :description %></li>
+    <li><%= f.label :description %> <%= f.text_area :description, cols: nil, rows: 3 %></li>
 
     <li><%= f.label :image_url %> <%= f.text_field :image_url %></li>
 
     <li><%= f.label :price %> <%= f.text_field :price %></li>
 
-    <li><%= f.submit %></li>
+    <li class="form-actions"><ul>
+      <li><%= link_to('Cancel', products_path, class: 'btn')%></li>
+
+      <li><%= f.submit nil, class: 'btn btn-primary' %></li>
+    </ul></li>
   </ol>
 <% end %>

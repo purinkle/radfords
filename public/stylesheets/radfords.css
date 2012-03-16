@@ -2,6 +2,7 @@
 /*    background: url(http://blueprintcss.org/blueprint/src/grid.png);*/
     color: #554D40;
     font-size: 13px;
+    width: 950px;
 }
 
 /* HEADER */
@@ -162,17 +163,18 @@ h2 {
 
 .suppliers .actions li {
   display: inline;
+  margin: 0;
 }
 
 .suppliers .actions form, .suppliers .actions form div {
   display: inline;
 }
 
-.suppliers .actions form {
+.suppliersx .actions form {
   float: right;
 }
 
-.suppliers .actions .btn {
+.suppliersx .actions .btn {
   display: inline-block;
   padding: 4px 10px 4px;
   margin: 0;
@@ -203,13 +205,13 @@ h2 {
   *margin-left: .3em;
 }
 
-.suppliers .actions .btn-danger,
-.suppliers .actions .btn-danger:hover {
+.suppliersx .actions .btn-danger,
+.suppliersx .actions .btn-danger:hover {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   color: #ffffff;
 }
 
-.suppliers .actions .btn-danger {
+.suppliersx .actions .btn-danger {
   background-color: #da4f49;
   background-image: -moz-linear-gradient(top, #ee5f5b, #bd362f);
   background-image: -ms-linear-gradient(top, #ee5f5b, #bd362f);
@@ -228,6 +230,10 @@ h2 {
 
 .products img {
   height: 214px;
+}
+
+.products h3 a {
+  color: #551A8B;
 }
 
 /* CONTACT */
@@ -302,6 +308,35 @@ h2 {
     float: right;
 }
 
+/* FLASHES */
+
+.flash {
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #FCF8E3;
+  border: 1px solid #FBEED5;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.flash {
+  color: #C09853;
+}
+
+.success {
+  background-color: #DFF0D8;
+  border-color: #D6E9C6;
+}
+
+.success {
+  color: #468847;
+}
+
+form ol {
+  list-style-type: none;
+}
 /* EVENTS */
 
 #events {
@@ -355,4 +390,45 @@ h2 {
   font-weight: bold;
   line-height: 18px;
   margin-bottom: 25px;
+}
+
+label {
+  font-weight: normal;
+}
+
+input[type="text"] {
+  color: #555;
+  margin: 0;
+  margin-bottom: 9px;
+}
+
+input[type="text"]:focus,
+input:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+}
+
+textarea {
+  resize: none;
+}
+
+.btn:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+
+.form-actions ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.form-actions ul li {
+  display: inline;
+}
+
+.control-group {
+  background: transparent;
+  padding: 0;
+  border: none;
 }

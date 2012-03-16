@@ -33,8 +33,8 @@ class EditProduct < Spinach::FeatureSteps
     should have_selector('title', text: 'Lorem Ipsum')
   end
 
-  Then 'a "Back" link is displayed' do
-    should have_selector('a', text: 'Back')
+  Then 'a "Cancel" link is displayed' do
+    should have_selector('a', text: 'Cancel')
   end
 
   Then 'the products index is displayed' do
@@ -90,7 +90,7 @@ class EditProduct < Spinach::FeatureSteps
   end
 
   Then 'the error count is displayed' do
-    should have_selector('h2', text: '4 errors')
+    should have_selector('h4', text: '4 errors')
   end
 
   Then 'I am redirected to the sign in page' do

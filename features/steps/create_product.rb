@@ -13,8 +13,8 @@ class CreateProduct < Spinach::FeatureSteps
     should have_selector('title', text: 'New Product')
   end
 
-  Then 'there is a "Back" link' do
-    should have_selector('a', text: 'Back')
+  Then 'there is a "Cancel" link' do
+    should have_selector('a', text: 'Cancel')
   end
 
   Then 'the "Products" page is displayed' do
@@ -58,7 +58,7 @@ class CreateProduct < Spinach::FeatureSteps
   end
 
   Then 'the error count is displayed' do
-    should have_selector('h2', text: '4 errors')
+    should have_selector('h4', text: '4 errors')
   end
 
   Then 'I am redirected to the sign in page' do
