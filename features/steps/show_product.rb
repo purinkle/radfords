@@ -56,4 +56,8 @@ class ShowProduct < Spinach::FeatureSteps
   And 'the product\'s price is displayed' do
     should have_selector('p', text: '19.95')
   end
+
+  Then 'a "Delete" button is displayed' do
+    should have_selector('input[value="Delete"]')
+  end
 end

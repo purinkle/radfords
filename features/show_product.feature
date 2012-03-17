@@ -52,3 +52,10 @@ Feature: Show product
     Given I am logged out
     When I visit a product page
     Then a sign in message is displayed
+
+  Scenario: Display a "Delete" button
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    When I create a valid product
+    Then a "Delete" button is displayed

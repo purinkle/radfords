@@ -6,5 +6,12 @@
 
 <p><strong>Price:</strong> <%= number_to_currency(@product.price, unit: '£') %></p>
 
-<p><%= link_to('Edit', edit_product_path(@product)) %> |
-<%= link_to('Back', products_path) %></p>
+<div class="form-actions">
+  <ul>
+    <li><%= link_to('Edit', edit_product_path(@product), class: 'btn') %></li>
+
+    <li><%= link_to('Back', products_path, class: 'btn') %></li>
+
+    <li><%= button_to('Delete', nil, class: 'btn btn-danger') %></li>
+  </ul>
+</div>
