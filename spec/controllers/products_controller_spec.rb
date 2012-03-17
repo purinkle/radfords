@@ -332,7 +332,7 @@ describe ProductsController do
       context 'when the product is updated' do
         it 'sets the notice flash' do
           put :update, id: id, product: attr
-          flash[:notice].should == 'Product was successfully updated.'
+          flash[:success].should == 'Product was successfully updated.'
         end
 
         it 'redirects to the product\'s page' do

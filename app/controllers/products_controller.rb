@@ -44,7 +44,8 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
 
     if @product.update_attributes(params[:product])
-      redirect_to(@product, notice: 'Product was successfully updated.')
+      flash[:success] = 'Product was successfully updated.'
+      redirect_to(@product)
     else
       @title = 'Edit Product'
       render action: 'edit'
