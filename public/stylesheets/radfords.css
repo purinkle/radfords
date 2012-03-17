@@ -166,7 +166,10 @@ h2 {
   margin: 0;
 }
 
-.suppliers .actions form, .suppliers .actions form div {
+.suppliers .actions form,
+.suppliers .actions form div,
+.form-actions form,
+.form-actions form div {
   display: inline;
 }
 
