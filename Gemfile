@@ -5,6 +5,7 @@ gem 'pg', '0.13.2'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
 gem 'sitemap_generator', '2.2.1'
+gem 'draper', '0.11.1'
 
 group :development do
   gem 'rspec-rails', '2.6.1'

@@ -4,6 +4,13 @@ describe ProductsController do
   let(:id) { 1 }
 
   describe 'GET "index"' do
+    let(:products) { stub }
+
+    before(:each) do
+      Product.stub(all: products)
+      ProductDecorator.stub(decorate: products)
+    end
+
     it 'is successful' do
       get :index
 
@@ -16,9 +23,17 @@ describe ProductsController do
       assigns(:title).should == 'Products'
     end
 
-    it 'should find the right products' do
-      products = [mock_model(Product), mock_model(Product)]
-      Product.should_receive(:all).and_return(products)
+    it 'gets the products' do
+      Product.should_receive(:all)
+      get :index
+    end
+
+    it 'decorates the products' do
+      ProductDecorator.should_receive(:decorate).with(products)
+      get :index
+    end
+
+    it 'stores the products' do
       get :index
       assigns(:products).should == products
     end

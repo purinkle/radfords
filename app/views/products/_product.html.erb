@@ -1,13 +1,13 @@
-<%= content_tag('li', class: (product_counter + 1) % 3 == 0 ? 'last' : nil) do %>
+<%= content_tag('li', class: product.class_name(product_counter)) do %>
   <h3>
     <%= link_to(product.title, product_path(product)) %>
   </h3>
 
-  <p><%= link_to(image_tag(product.image_url), product_path(product)) %></p>
+  <p><%= link_to(product.image, product_path(product)) %></p>
 
   <p><%= product.description %></p>
 
-  <p><%= number_to_currency(product.price, unit: '£') %></p>
+  <p><%= product.price %></p>
 
   <% if signed_in? %>
     <div class="actions">
