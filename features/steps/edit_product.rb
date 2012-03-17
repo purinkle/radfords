@@ -21,10 +21,6 @@ class EditProduct < Spinach::FeatureSteps
     should have_selector('input[value="19.95"]')
   end
 
-  And 'a "Show" link is displayed' do
-    should have_selector('a', text: 'Show')
-  end
-
   Then 'the updated product\'s page is displayed' do
     should have_selector('title', text: 'Blackcurrant Jam')
   end
