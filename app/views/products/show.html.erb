@@ -2,9 +2,9 @@
 
 <p><strong>Description:</strong> <%= @product.description %></p>
 
-<p><%= image_tag(@product.image_url) %></p>
+<p><%= @product.image %></p>
 
-<p><strong>Price:</strong> <%= number_to_currency(@product.price, unit: '£') %></p>
+<p><strong>Price:</strong> <%= @product.price %></p>
 
 <div class="form-actions">
   <ul>

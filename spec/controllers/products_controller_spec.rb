@@ -192,27 +192,29 @@ describe ProductsController do
     end
 
     context 'when signed in' do
+      let(:product) { stub(title: 'foo') }
+
       before(:each) do
         controller.stub(signed_in?: true)
+        ProductDecorator.stub(find: product)
       end
 
       it 'is successful' do
-        product = mock_model(Product, attr).as_null_object
-        Product.stub(:find).with(id).and_return(product)
         get :show, id: id
         response.should be_success
       end
 
       it 'sets the page title' do
-        product = mock_model(Product, attr.merge(title: 'Lorem Ipsum'))
-        Product.stub(:find).with(id).and_return(product)
         get :show, id: id
-        assigns(:title).should == 'Lorem Ipsum'
+        assigns(:title).should == 'foo'
+      end
+
+      it 'decorates the product' do
+        ProductDecorator.should_receive(:find).with(id)
+        get :show, id: id
       end
 
       it 'finds the right product' do
-        product = mock_model(Product, attr).as_null_object
-        Product.stub(:find).with(id).and_return(product)
         get :show, id: id
         assigns(:product).should == product
       end
