@@ -12,6 +12,11 @@
 
     <li><%= link_to('Back', products_path, class: 'btn') %></li>
 
-    <li><%= button_to('Delete', nil, class: 'btn btn-danger') %></li>
+    <li><%= button_to(
+      'Delete',
+      @product,
+      method: :delete,
+      class: 'btn btn-danger'
+    ) %></li>
   </ul>
 </div>

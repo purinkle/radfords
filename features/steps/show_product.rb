@@ -60,4 +60,8 @@ class ShowProduct < Spinach::FeatureSteps
   Then 'a "Delete" button is displayed' do
     should have_selector('input[value="Delete"]')
   end
+
+  Then 'the product is not displayed' do
+    should_not have_selector('h3', text: 'Lorem Ipsum')
+  end
 end

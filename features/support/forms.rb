@@ -136,5 +136,9 @@ module Forms
       valid_product
       update_product
     end
+
+    When 'I click the "Delete" button' do
+      click_button('Delete')
+    end
   end
 end
