@@ -435,3 +435,18 @@ textarea {
   padding: 0;
   border: none;
 }
+
+.show-product .image,
+.show-product .information {
+  float: left;
+  margin-right: 10px;
+  width: 470px;
+}
+
+.show-product .information {
+  margin-right: 0;
+}
+
+.show-product .form-actions {
+  clear: both;
+}

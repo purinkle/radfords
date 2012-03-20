@@ -1,10 +1,18 @@
-<p><strong>Title:</strong> <%= @product.title %></p>
+<% content_for(:body_class, 'show-product') %>
 
-<p><strong>Description:</strong> <%= @product.description %></p>
+<div class="image">
+  <%= @product.image %>
+</div>
 
-<p><%= @product.image %></p>
+<div class="information">
+  <h2>
+    <%= @product.title %>
+  </h2>
 
-<p><strong>Price:</strong> <%= @product.price %></p>
+  <p><%= @product.description %></p>
+
+  <p><%= @product.price %></p>
+</div>
 
 <div class="form-actions">
   <ul>

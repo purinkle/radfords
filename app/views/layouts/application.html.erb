@@ -8,7 +8,7 @@
   <%= render 'layouts/stylesheets' %>
 </head>
 
-<body class="with-js-events with-js-geocode">
+<%= content_tag(:body, class: content_for(:body_class)) do %>
   <div class="container">
     <%= render 'layouts/header' %>
     <div class="main">
@@ -20,5 +20,5 @@
     <%= render 'layouts/footer' %>
   </div>
   <%= javascript_include_tag "jquery-1.7.min.js", 'jquery-ui-1.8.16.custom.min.js', 'http://maps.googleapis.com/maps/api/js?sensor=false', 'application', 'events', 'script' %>
-</body>
+<% end %>
 </html>

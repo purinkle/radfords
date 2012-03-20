@@ -6,7 +6,7 @@ class ShowProduct < Spinach::FeatureSteps
 
   feature 'Show product'
   Then 'the product\'s title is displayed' do
-    should have_selector('p', text: 'Lorem Ipsum')
+    should have_selector('h2', text: 'Lorem Ipsum')
   end
 
   And 'the product\'s description is displayed' do
@@ -38,7 +38,7 @@ class ShowProduct < Spinach::FeatureSteps
   end
 
   Then 'the updated title is displayed' do
-    should have_selector('p', text: 'Blackcurrant Jam')
+    should have_selector('h2', text: 'Blackcurrant Jam')
   end
 
   And 'the updated description is displayed' do
