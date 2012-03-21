@@ -17,7 +17,7 @@ class IndexProducts < Spinach::FeatureSteps
   end
 
   And 'the product\'s price is displayed' do
-    should have_selector('p', text: '19.95')
+    should have_selector('.price', text: '19.95')
   end
 
   And 'there is a product link' do
@@ -65,7 +65,7 @@ class IndexProducts < Spinach::FeatureSteps
   end
 
   Then 'the "Delete" buttons are hidden' do
-    should_not have_selector('input')
+    should_not have_selector('input[value="Delete"]')
   end
 
   Then 'the "Actions" column is hidden' do
