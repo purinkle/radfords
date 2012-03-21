@@ -191,45 +191,30 @@ describe ProductsController do
       { id: id }
     end
 
-    context 'when signed in' do
-      let(:product) { stub(title: 'foo') }
+    let(:product) { stub(title: 'foo') }
 
-      before(:each) do
-        controller.stub(signed_in?: true)
-        ProductDecorator.stub(find: product)
-      end
-
-      it 'is successful' do
-        get :show, id: id
-        response.should be_success
-      end
-
-      it 'sets the page title' do
-        get :show, id: id
-        assigns(:title).should == 'foo'
-      end
-
-      it 'decorates the product' do
-        ProductDecorator.should_receive(:find).with(id)
-        get :show, id: id
-      end
-
-      it 'finds the right product' do
-        get :show, id: id
-        assigns(:product).should == product
-      end
+    before(:each) do
+      ProductDecorator.stub(find: product)
     end
 
-    context 'when not signed in' do
-      it 'redirects to the sign in page' do
-        get :show, id: id
-        response.should redirect_to(signin_path)
-      end
+    it 'is successful' do
+      get :show, id: id
+      response.should be_success
+    end
 
-      it 'sets the error flash' do
-        get :show, id: id
-        flash[:error].should == 'Please sign in to access this page.'
-      end
+    it 'sets the page title' do
+      get :show, id: id
+      assigns(:title).should == 'foo'
+    end
+
+    it 'decorates the product' do
+      ProductDecorator.should_receive(:find).with(id)
+      get :show, id: id
+    end
+
+    it 'finds the right product' do
+      get :show, id: id
+      assigns(:product).should == product
     end
   end
 
