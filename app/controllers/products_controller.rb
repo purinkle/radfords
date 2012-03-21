@@ -52,6 +52,11 @@ class ProductsController < ApplicationController
     end
   end
 
+  def check_title
+    product = Product.find_by_title(params[:title])
+    render json: !product
+  end
+
   private
     def authenticate
       deny_access unless signed_in?

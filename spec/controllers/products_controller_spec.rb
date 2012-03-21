@@ -372,4 +372,45 @@ describe ProductsController do
       end
     end
   end
+
+  context '#check_title' do
+    let(:title) { stub }
+
+    before(:each) do
+      Product.stub(:find_by_title)
+      controller.stub(signed_in?: true)
+    end
+
+    it 'is successful' do
+      get :check_title, title: title
+      response.should be_success
+    end
+
+    it 'looks for a product with the title' do
+      Product.should_receive(:find_by_title)
+      get :check_title, title: title
+    end
+
+    context 'when the title is not found' do
+      before(:each) do
+        Product.stub(find_by_title: false)
+      end
+
+      it 'returns true' do
+        get :check_title, title: title
+        response.body.should == 'true'
+      end
+    end
+
+    context 'when the title is not unique' do
+      before(:each) do
+        Product.stub(find_by_title: true)
+      end
+
+      it 'returns false' do
+        get :check_title, title: title
+        response.body.should == 'false'
+      end
+    end
+  end
 end
