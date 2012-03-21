@@ -447,6 +447,7 @@ textarea {
   margin-right: 0;
 }
 
-.show-product .form-actions {
+.show-product .form-actions,
+.show-product .footer {
   clear: both;
 }
