@@ -7,7 +7,13 @@
 
   <p><%= product.description %></p>
 
-  <p><%= product.price %></p>
+  <div class="price-line">
+    <span class="price">
+      <%= product.price %>
+    </span>
+
+    <%= button_to 'Add to Cart', nil, class: 'btn btn-primary' %>
+  </div>
 
   <% if signed_in? %>
     <div class="actions">

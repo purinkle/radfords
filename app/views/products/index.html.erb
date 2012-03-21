@@ -1,3 +1,5 @@
+<% content_for(:body_class, 'index-products') %>
+
 <div class="section suppliers products">
   <% unless @products.blank? %>
     <ul><%= render partial: 'product', collection: @products -%></ul>

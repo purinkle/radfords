@@ -82,3 +82,11 @@ Feature: Index products
     Given I am logged out
     When I click the "Products" link
     Then the "Actions" column is hidden
+
+  Scenario: Display an "Add to Cart" button
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    When I click the "Back" link
+    Then an "Add to Cart" button is displayed

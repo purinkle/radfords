@@ -467,3 +467,17 @@ textarea {
 .show-product .footer {
   clear: both;
 }
+
+.index-products .price {
+  line-height: 28px;
+}
+
+.index-products .price-line {
+  margin-bottom: 18px;
+}
+
+.index-products .price-line form,
+.index-products .price-line div {
+  display: inline;
+  float: right;
+}

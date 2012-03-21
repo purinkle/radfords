@@ -71,4 +71,8 @@ class IndexProducts < Spinach::FeatureSteps
   Then 'the "Actions" column is hidden' do
     should_not have_selector('th', text: 'Actions')
   end
+
+  Then 'an "Add to Cart" button is displayed' do
+    should have_selector('input[value="Add to Cart"]')
+  end
 end
