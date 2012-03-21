@@ -147,43 +147,6 @@ describe ProductsController do
         flash[:error].should == 'Please sign in to access this page.'
       end
     end
-
-    it 'tries to save the new product' do
-      product.should_receive(:save)
-      post :create, product: {}
-    end
-
-    context 'when the product is valid' do
-      before(:each) do
-        product.stub(save: true)
-      end
-
-      it 'creates a success flash' do
-        post :create, product: {}
-        flash[:success].should match(/created a new product/)
-      end
-
-      it 'redirects to the product\'s page' do
-        post :create, product: {}
-        response.should redirect_to(product_path(id))
-      end
-    end
-
-    context 'when the product is invalid' do
-      before(:each) do
-        product.stub(save: false)
-      end
-
-      it 'sets the title' do
-        post :create, product: {}
-        assigns(:title).should == 'New Product'
-      end
-
-      it 'renders the new product page' do
-        post :create, product: {}
-        response.should render_template('new')
-      end
-    end
   end
 
   describe 'GET "show"' do
