@@ -1,4 +1,5 @@
 class IndexProducts < Spinach::FeatureSteps
+  include Baskets
   include Forms::Product
   include Links
   include Paths
@@ -74,5 +75,9 @@ class IndexProducts < Spinach::FeatureSteps
 
   Then 'an "Add to Cart" button is displayed' do
     should have_selector('input[value="Add to Cart"]')
+  end
+
+  Then 'the "Basket" page is displayed' do
+    should have_selector('title', text: 'Basket')
   end
 end
