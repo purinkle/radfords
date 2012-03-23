@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe LineItemsController do
   context '#create' do
-    let(:line_item) { stub(basket: stub(id: basket_id), save: nil) }
+    let(:line_item_basket) { stub(id: basket_id) }
+    let(:line_item) { stub(basket: line_item_basket, save: nil) }
     let(:basket) { stub(id: basket_id, line_items: stub(build: line_item)) }
     let(:basket_id) { stub }
     let(:product) { stub }
@@ -66,8 +67,13 @@ describe LineItemsController do
       post :create, product_id: product_id
     end
 
+    it 'sets the success flash' do
+      post :create, product_id: product_id
+      flash[:success].should == 'Line item was successfully created.'
+    end
+
     it 'gets the line item\'s basket' do
-      line_item.should_receive(:basket)
+      line_item_basket.should_receive(:id)
       post :create, product_id: product_id
     end
 

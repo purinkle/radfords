@@ -99,3 +99,12 @@ Feature: Index products
     And I click the "Back" link
     When I click an "Add to Cart" button
     Then the "Basket" page is displayed
+
+  Scenario: Display a "Line item was successfully created" message
+    Given I am logged in
+    And I click the "Products" link
+    And I click the "New Product" link
+    And I create a valid product
+    And I click the "Back" link
+    When I click an "Add to Cart" button
+    Then a "Line item was successfully created" message is displayed

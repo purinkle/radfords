@@ -80,4 +80,8 @@ class IndexProducts < Spinach::FeatureSteps
   Then 'the "Basket" page is displayed' do
     should have_selector('title', text: 'Basket')
   end
+
+  Then 'a "Line item was successfully created" message is displayed' do
+    should have_selector('.success', text: 'successfully created')
+  end
 end
