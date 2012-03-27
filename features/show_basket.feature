@@ -5,6 +5,7 @@ Feature: Show basket
 
   Scenario: Display a basket's items
     Given I am a customer
-    And I am on the "Products" page
+    And some products have been created
+    And I visit the products page
     When I click an "Add to Cart" button
     Then the product is listed
