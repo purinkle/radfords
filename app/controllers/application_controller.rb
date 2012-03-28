@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   APP_DOMAIN = 'radfordsofsomerford.co.uk'
 
   def ensure_domain
-    return unless Rails.env.production?
+    return unless ENV['RACK_ENV'] == 'production'
 
     if request.env['HTTP_HOST'] != APP_DOMAIN
       redirect_to "http://#{APP_DOMAIN}", status: 301
