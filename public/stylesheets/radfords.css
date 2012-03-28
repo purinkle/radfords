@@ -220,3 +220,58 @@ h2 {
 .footer p {
     float: right;
 }
+
+/* EVENTS */
+
+#events {
+  margin: 0;
+  padding: 0;
+}
+
+#events li {
+  border-bottom: 1px solid #ccc;
+  clear: both;
+  list-style-type: none;
+  margin-bottom: 17px;
+}
+
+#events .event .img {
+  float: right;
+  position: relative;
+}
+
+#events .event span {
+  display: block;
+  font-size: 11px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+#events .event .img img {
+  height: 80px;
+  width: 80px;
+}
+
+#events .event .img span {
+  background: url(/images/overlay.png);
+  height: 80px;
+  position: absolute;
+  top: 0;
+  width: 80px;
+}
+
+#events .event .title {
+  font-family: Georgia, Times, serif;
+  font-size: 19px;
+  line-height: 28px;
+  margin-bottom: 8px;
+  text-transform: none;
+}
+
+#events .event h3 {
+  color: #5A006D;
+  font-size: 15px;
+  font-weight: bold;
+  line-height: 18px;
+  margin-bottom: 25px;
+}
