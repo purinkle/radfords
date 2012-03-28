@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.9'
-gem 'sqlite3', '1.3.3'
+gem 'pg', '0.13.2'
 gem 'gravatar_image_tag', '1.0.0.pre2'
 gem 'will_paginate', '3.0.pre2'
 gem 'sitemap_generator', '2.2.1'
@@ -22,5 +22,9 @@ group :test do
   gem 'spork', '0.9.0.rc8'
   gem 'factory_girl_rails', '1.0'
   gem 'escape_utils', '0.2.4'
+  gem 'spinach', '0.3.0'
+  gem 'spinach-rails', '0.0.6.1'
+  gem 'database_cleaner', '0.7.1'
+  gem 'launchy'
 end
 

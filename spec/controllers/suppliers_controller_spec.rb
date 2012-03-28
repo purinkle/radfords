@@ -26,12 +26,6 @@ describe SuppliersController do
       response.should have_selector("input[name='supplier[name]'][type='text']")
     end
 
-    it 'should have a address field' do
-      get :new
-
-      response.should have_selector("input[name='supplier[address]'][type='text']")
-    end
-
     it 'should have a website field' do
       get :new
 

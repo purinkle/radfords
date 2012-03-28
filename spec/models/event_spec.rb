@@ -57,10 +57,4 @@ describe Event do
     no_location_event = Event.create( @attr.merge( :location => '' ) )
     no_location_event.should_not be_valid
   end
-
-  it 'should return in the right order' do
-    event1 = Event.create(@attr.merge( takes_place_on: 1.day.from_now ))
-    event2 = Event.create(@attr.merge( takes_place_on: 1.hour.from_now ))
-    Event.all.should == [event2, event1]
-  end
 end

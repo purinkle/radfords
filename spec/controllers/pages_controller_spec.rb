@@ -72,14 +72,6 @@ describe PagesController do
       response.should have_selector("title",
                                     :content => "Outlets | " + @base_title)
     end
-
-    it 'should have an element for each supplier' do
-      get :outlets
-
-      @suppliers[0..2].each do |supplier|
-        response.body.should have_selector('h4', content: supplier.name)
-      end
-    end
   end
 
   describe "GET 'contact'" do
