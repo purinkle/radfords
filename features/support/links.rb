@@ -36,4 +36,8 @@ module Links
   When 'I click a product link' do
     click_link 'Lorem Ipsum'
   end
+
+  When 'I click the first product link' do
+    click_link 'Blueberry and Apple Preserve'
+  end
 end

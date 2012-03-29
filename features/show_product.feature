@@ -59,3 +59,9 @@ Feature: Show product
     Then the "Products" page is displayed
     And the product is not displayed
 
+  Scenario: Display an "Add to Basket" button
+    Given I am a customer
+    And some products have been created
+    And I visit the products page
+    When I click the first product link
+    Then an "Add to Basket" button is displayed

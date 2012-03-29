@@ -1,7 +1,9 @@
 class ShowProduct < Spinach::FeatureSteps
+  include Actors
   include Forms::Product
   include Links
   include Paths
+  include Products
   include Sessions
 
   feature 'Show product'
@@ -50,11 +52,11 @@ class ShowProduct < Spinach::FeatureSteps
   end
 
   And 'the updated price is displayed' do
-    should have_selector('p', text: '3.00')
+    should have_selector('.price', text: '3.00')
   end
 
   And 'the product\'s price is displayed' do
-    should have_selector('p', text: '19.95')
+    should have_selector('.price', text: '19.95')
   end
 
   Then 'a "Delete" button is displayed' do
@@ -63,5 +65,9 @@ class ShowProduct < Spinach::FeatureSteps
 
   Then 'the product is not displayed' do
     should_not have_selector('h3', text: 'Lorem Ipsum')
+  end
+
+  Then 'an "Add to Basket" button is displayed' do
+    should have_selector('input[value="Add to Basket"]')
   end
 end
