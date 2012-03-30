@@ -36,4 +36,26 @@ class IndexSuppliers < Spinach::FeatureSteps
       should have_selector('h3', text: supplier)
     end
   end
+
+  Then 'a "Delete" button is displayed' do
+    should have_selector('input[value="Delete"]')
+  end
+
+  When 'I click a "Delete" button' do
+    within('.suppliers li:nth-of-type(1)') do
+      click_button('Delete')
+    end
+  end
+
+  Then 'I am redirected back to the "Outlets" page' do
+    should have_selector('title', text: 'Outlets')
+  end
+
+  Then 'the supplier is no longer displayed' do
+    should_not have_selector('h3', text: 'Foo')
+  end
+
+  Then 'a success flash is displayed' do
+    should have_selector('div.flash.success')
+  end
 end

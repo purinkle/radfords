@@ -214,4 +214,54 @@ describe SuppliersController do
       end
     end
   end
+
+  describe 'DELETE "destroy"' do
+    let(:id) { stub }
+
+    context 'when signed in' do
+      let(:supplier) { stub.as_null_object }
+
+      before(:each) do
+        controller.stub(signed_in?: true)
+        Supplier.stub(find: supplier)
+      end
+
+      it 'finds the supplier' do
+        Supplier.should_receive(:find).with(id)
+        delete :destroy, id: id
+      end
+
+      it 'stores the supplier' do
+        delete :destroy, id: id
+        assigns(:supplier).should == supplier
+      end
+
+      it 'destroys the supplier' do
+        supplier.should_receive(:destroy)
+        delete :destroy, id: id
+      end
+
+      it 'sets the success flash' do
+        delete :destroy, id: id
+        flash[:success].should == 'You successfully deleted the product.'
+      end
+
+      it 'redirects to the outlets page' do
+        delete :destroy, id: id
+        response.should redirect_to(outlets_path)
+      end
+    end
+
+    context 'when not signed in' do
+      it 'sets the error flash' do
+        post :destroy, id: id
+        flash[:error].should == 'Please sign in to access this page.'
+      end
+
+      it 'redirects to the sign in page' do
+        post :destroy, id: id
+        response.should redirect_to(signin_path)
+      end
+    end
+  end
 end

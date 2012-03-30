@@ -1,6 +1,13 @@
 class SuppliersController < ApplicationController
   before_filter :authenticate
 
+  def destroy
+    @supplier = Supplier.find(params[:id])
+    @supplier.destroy
+    flash[:success] = 'You successfully deleted the product.'
+    redirect_to(outlets_path)
+  end
+
   def new
     @supplier = Supplier.new
     @title = 'New Supplier'

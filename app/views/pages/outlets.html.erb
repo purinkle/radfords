@@ -51,10 +51,22 @@
         <h3><%= supplier.name %></h3>
 
         <% if signed_in? %>
-          <p class="actions">
-            <a href="<%= edit_supplier_path(supplier) %>">Edit</a> |
-            <a href="#">Delete</a>
-          </p>
+          <div class="actions">
+            <ul>
+              <li><%= link_to(
+                'Edit',
+                edit_supplier_path(supplier),
+                class: 'btn'
+              ) %></li>
+
+              <li><%= button_to(
+                'Delete',
+                supplier,
+                method: :delete,
+                class: 'btn btn-danger'
+              ) %></li>
+            </ul>
+          </div>
         <% end %>
 
         <p>
