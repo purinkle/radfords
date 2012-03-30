@@ -228,6 +228,22 @@ h2 {
   filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
 }
 
+.address {
+  width: 220px;
+  float: left;
+  margin-right: 10px;
+}
+
+#map_canvas {
+  height: 416px;
+  width: 720px;
+  float: left;
+}
+
+#map_canvas img {
+  max-width: none;
+}
+
 .products p {
 }
 
