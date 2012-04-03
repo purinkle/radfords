@@ -2,13 +2,12 @@ Radfords::Application.routes.draw do
   resources :events
   resources :sessions, :only => [ :new, :create, :destroy ]
   resources :suppliers
-  match '/products/check_title', to: 'products#check_title'
-  resources :products
 
   root :to => 'pages#home'
 
   match '/outlets',  :to => 'pages#outlets'
   match '/contact',  :to => 'pages#contact'
+  match '/products', :to => 'pages#products'
   match '/signin',   :to => 'sessions#new'
   match '/signout',  :to => 'sessions#destroy'
 
