@@ -53,8 +53,15 @@ class ProductsController < ApplicationController
   end
 
   def check_title
-    product = Product.find_by_title(params[:title])
-    render json: !product
+    product = Product.find_by_title(params[:product][:title])
+    is_valid = !product
+    id = params[:product][:id]
+
+    if product && !id.blank? && product == Product.find(id)
+      is_valid = true
+    end
+
+    render json: is_valid
   end
 
   private

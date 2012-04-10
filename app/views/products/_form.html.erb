@@ -1,5 +1,11 @@
+<% content_for(:body_class, 'with-js-products') %>
+
 <%= form_for(@product) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+
+  <div>
+    <%= f.hidden_field :id %>
+  </div>
 
   <ol>
     <li><%= f.label :title %> <%= f.text_field :title %></li>
