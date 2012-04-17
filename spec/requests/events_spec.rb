@@ -57,7 +57,7 @@ describe 'Events' do
 
         click_button
 
-        response.should have_selector( "div.flash.error", :content => "Invalid" )
+        response.should have_selector( "div.alert-error", :content => "Invalid" )
       end
     end
 

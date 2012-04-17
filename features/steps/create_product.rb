@@ -26,7 +26,7 @@ class CreateProduct < Spinach::FeatureSteps
   end
 
   And 'a success flash is displayed' do
-    should have_selector('.success', text: 'created a new product')
+    should have_selector('.alert-success', text: 'created a new product')
   end
 
   Then 'I stay on the new product page' do
@@ -66,6 +66,6 @@ class CreateProduct < Spinach::FeatureSteps
   end
 
   Then 'a sign in message is displayed' do
-    should have_selector('.error', text: 'Please sign in to access this page.')
+    should have_selector('.alert-error', text: 'Please sign in to access this page.')
   end
 end

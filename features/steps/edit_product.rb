@@ -94,7 +94,7 @@ class EditProduct < Spinach::FeatureSteps
   end
 
   Then 'a sign in message is displayed' do
-    should have_selector('.error', text: 'Please sign in to access this page.')
+    should have_selector('.alert-error', text: 'Please sign in to access this page.')
   end
 
   Then 'I stay on the edit product page' do

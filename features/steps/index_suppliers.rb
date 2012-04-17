@@ -56,6 +56,6 @@ class IndexSuppliers < Spinach::FeatureSteps
   end
 
   Then 'a success flash is displayed' do
-    should have_selector('div.flash.success')
+    should have_selector('div.alert-success')
   end
 end

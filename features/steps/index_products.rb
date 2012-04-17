@@ -50,7 +50,7 @@ class IndexProducts < Spinach::FeatureSteps
   end
 
   And 'a success flash is displayed' do
-    should have_selector('.success', text: 'deleted the product')
+    should have_selector('.alert-success', text: 'deleted the product')
   end
 
   Then 'the "New Product" link is hidden' do
@@ -82,6 +82,6 @@ class IndexProducts < Spinach::FeatureSteps
   end
 
   Then 'a "Line item was successfully created" message is displayed' do
-    should have_selector('.success', text: 'successfully created')
+    should have_selector('.alert-success', text: 'successfully created')
   end
 end
