@@ -16,4 +16,8 @@ module Paths
   When 'I visit a product page' do
     visit product_path(1)
   end
+
+  When 'I visit an invalid basket' do
+    visit basket_path('wibble')
+  end
 end

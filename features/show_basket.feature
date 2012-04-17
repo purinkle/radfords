@@ -9,3 +9,9 @@ Feature: Show basket
     And I visit the products page
     When I click an "Add to Cart" button
     Then the product is listed
+
+  Scenario: Redirect to the Products page
+    Given I am a customer
+    When I visit an invalid basket
+    Then I am redirected to the Products page
+    And an "Invalid basket" message is displayed
