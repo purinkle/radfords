@@ -4,9 +4,9 @@ describe LineItemsController do
   context '#create' do
     let(:line_item_basket) { stub(id: basket_id) }
     let(:line_item) { stub(basket: line_item_basket, save: nil) }
-    let(:basket) { stub(id: basket_id, line_items: stub(build: line_item)) }
+    let(:basket) { stub(id: basket_id, add_product: line_item) }
     let(:basket_id) { stub }
-    let(:product) { stub }
+    let(:product) { stub(id: product_id) }
     let(:product_id) { stub }
 
     before(:each) do
@@ -52,8 +52,8 @@ describe LineItemsController do
       post :create, product_id: product_id
     end
 
-    it 'builds the basket' do
-      basket.line_items.should_receive(:build).with(product: product)
+    it 'adds the product to the basket' do
+      basket.should_receive(:add_product).with(product_id)
       post :create, product_id: product_id
     end
 

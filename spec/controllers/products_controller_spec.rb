@@ -345,13 +345,13 @@ describe ProductsController do
     end
 
     it 'is successful' do
-      get :check_title, title: title
+      get :check_title, product: {title: title}
       response.should be_success
     end
 
     it 'looks for a product with the title' do
       Product.should_receive(:find_by_title)
-      get :check_title, title: title
+      get :check_title, product: {title: title}
     end
 
     context 'when the title is not found' do
@@ -360,7 +360,7 @@ describe ProductsController do
       end
 
       it 'returns true' do
-        get :check_title, title: title
+        get :check_title, product: {title: title}
         response.body.should == 'true'
       end
     end
@@ -371,7 +371,7 @@ describe ProductsController do
       end
 
       it 'returns false' do
-        get :check_title, title: title
+        get :check_title, product: {title: title}
         response.body.should == 'false'
       end
     end

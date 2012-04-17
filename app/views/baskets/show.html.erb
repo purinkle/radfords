@@ -1,5 +1,5 @@
-<ul>
+<ul class="items">
   <% @basket.line_items.each do |item| %>
-    <li><%= item.product.title %></li>
+    <li><%= item.quantity %> &times; <%= item.product.title %></li>
   <% end %>
 </ul>
