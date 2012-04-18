@@ -3,3 +3,11 @@
     <li><%= item.quantity %> &times; <%= item.product.title %></li>
   <% end %>
 </ul>
+
+<%= button_to(
+  'Empty basket',
+  @basket,
+  method: :delete,
+  confirm: 'Are you sure?',
+  class: 'btn btn-danger'
+) %>

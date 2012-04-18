@@ -16,4 +16,8 @@ class ShowBasket < Spinach::FeatureSteps
   Then 'an "Invalid basket" message is displayed' do
     find('.alert-error').text.should =~ /Invalid basket\.$/
   end
+
+  Then 'an "Empty basket" button is displayed' do
+    find('.btn-danger').value.should == 'Empty basket'
+  end
 end

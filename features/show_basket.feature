@@ -9,6 +9,7 @@ Feature: Show basket
     And I visit the products page
     When I click an "Add to Cart" button
     Then the product is listed
+    And an "Empty basket" button is displayed
 
   Scenario: Redirect to the Products page
     Given I am a customer
