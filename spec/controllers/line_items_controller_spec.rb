@@ -67,11 +67,6 @@ describe LineItemsController do
       post :create, product_id: product_id
     end
 
-    it 'sets the success flash' do
-      post :create, product_id: product_id
-      flash[:success].should == 'Line item was successfully created.'
-    end
-
     it 'gets the line item\'s basket' do
       line_item_basket.should_receive(:id)
       post :create, product_id: product_id
