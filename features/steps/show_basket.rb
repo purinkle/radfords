@@ -6,7 +6,10 @@ class ShowBasket < Spinach::FeatureSteps
   include Products
 
   Then 'the product is listed' do
-    find('.items li:first-child').text.should == '1 × Blueberry and Apple Preserve'
+    within('tr:first-child') do
+      find('td:nth-of-type(1)').text.should == '1 ×'
+      find('td:nth-of-type(2)').text.should == 'Blueberry and Apple Preserve'
+    end
   end
 
   Then 'I am redirected to the Products page' do
@@ -19,5 +22,10 @@ class ShowBasket < Spinach::FeatureSteps
 
   Then 'an "Empty basket" button is displayed' do
     find('.btn-danger').value.should == 'Empty basket'
+  end
+
+  Then 'the total price for each product is displayed' do
+    find('tr:nth-of-type(1) .item_price').text.should == '£5.70'
+    find('tr:nth-of-type(2) .item_price').text.should == '£2.85'
   end
 end

@@ -1,8 +1,14 @@
-<ul class="items">
+<table>
   <% @basket.line_items.each do |item| %>
-    <li><%= item.quantity %> &times; <%= item.product.title %></li>
+    <tr>
+      <td><%= item.quantity %> &times;</td>
+
+      <td><%= item.product.title %></td>
+
+      <td class="item_price"><%= item.total_price %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
 <%= button_to(
   'Empty basket',

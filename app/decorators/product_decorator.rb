@@ -14,6 +14,6 @@ class ProductDecorator < ApplicationDecorator
   end
 
   def price
-    h.number_to_currency(model.price, unit: '£')
+    display_as_pounds(model.price)
   end
 end

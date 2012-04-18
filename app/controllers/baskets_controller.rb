@@ -9,7 +9,7 @@ class BasketsController < ApplicationController
 
   def show
     begin
-      @basket = Basket.find(params[:id])
+      @basket = BasketDecorator.find(params[:id])
       @title = 'Basket'
     rescue ActiveRecord::RecordNotFound
       logger.error("Attempt to access invalid basket #{params[:id]}")

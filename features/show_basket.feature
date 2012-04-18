@@ -16,3 +16,10 @@ Feature: Show basket
     When I visit an invalid basket
     Then I am redirected to the Products page
     And an "Invalid basket" message is displayed
+
+  Scenario: Display total item price
+    Given I am a customer
+    And some products have been created
+    And I visit the products page
+    When I add some products to my basket
+    Then the total price for each product is displayed

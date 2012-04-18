@@ -33,17 +33,29 @@ module Products
     end
   end
 
+  def add_to_basket(id)
+    within(".products li:nth-of-type(#{id})") do
+      click_button('Add to Cart')
+    end
+  end
+
   And 'some products have been created' do
     setup_products
   end
 
   And 'I click an "Add to Cart" button' do
-    within('.products li:first-child') do
-      click_button('Add to Cart')
-    end
+    add_to_basket(1)
   end
 
   When 'I click "Empty basket"' do
     click_button('Empty basket')
+  end
+
+  When 'I add some products to my basket' do
+    add_to_basket(1)
+    click_link('Products')
+    add_to_basket(1)
+    click_link('Products')
+    add_to_basket(2)
   end
 end
