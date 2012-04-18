@@ -72,4 +72,42 @@ describe Basket do
       basket.add_product(product_id).should == current_item
     end
   end
+
+  context '#total_price' do
+    let(:array) { stub(sum: nil) }
+    let(:basket) { Basket.new }
+    let(:item_1) { stub(total_price: nil) }
+    let(:item_2) { stub(total_price: nil) }
+    let(:line_items) { stub(to_a: array) }
+
+    before(:each) do
+      array.stub(:sum).and_yield(item_1).and_yield(item_2)
+      basket.stub(line_items: line_items)
+    end
+
+    it 'exists' do
+      basket.should respond_to(:total_price)
+    end
+
+    it 'gets the items' do
+      basket.should_receive(:line_items)
+      basket.total_price
+    end
+
+    it 'converts the items to an array' do
+      line_items.should_receive(:to_a)
+      basket.total_price
+    end
+
+    it 'sums the items' do
+      array.should_receive(:sum)
+      basket.total_price
+    end
+
+    it 'gets the total price of each item' do
+      item_1.should_receive(:total_price)
+      item_2.should_receive(:total_price)
+      basket.total_price
+    end
+  end
 end

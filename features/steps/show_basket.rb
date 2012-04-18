@@ -28,4 +28,8 @@ class ShowBasket < Spinach::FeatureSteps
     find('tr:nth-of-type(1) .item_price').text.should == '£5.70'
     find('tr:nth-of-type(2) .item_price').text.should == '£2.85'
   end
+
+  Then 'the basket\'s total price is displayed' do
+    find('.total_line .total_cell').text.should == '£8.55'
+  end
 end

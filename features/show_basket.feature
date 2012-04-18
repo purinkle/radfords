@@ -23,3 +23,4 @@ Feature: Show basket
     And I visit the products page
     When I add some products to my basket
     Then the total price for each product is displayed
+    And the basket's total price is displayed

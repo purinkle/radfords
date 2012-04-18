@@ -8,6 +8,12 @@
       <td class="item_price"><%= item.total_price %></td>
     </tr>
   <% end %>
+
+  <tr class="total_line">
+    <td colspan="2">Total</td>
+
+    <td class="total_cell"><%= @basket.total_price %></td>
+  </tr>
 </table>
 
 <%= button_to(
