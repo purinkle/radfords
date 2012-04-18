@@ -82,6 +82,11 @@ describe BasketsController do
       session[:basket_id].should == nil
     end
 
+    it 'sets the info flash' do
+      delete :destroy, id: id
+      flash[:info].should == 'Your basket is currently empty.'
+    end
+
     it 'redirects to the Products page' do
       delete :destroy, id: id
       should redirect_to(products_path)

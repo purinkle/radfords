@@ -3,6 +3,7 @@ class BasketsController < ApplicationController
     @basket = current_basket
     @basket.destroy
     session[:basket_id] = nil
+    flash[:info] = 'Your basket is currently empty.'
     redirect_to(products_path)
   end
 
