@@ -42,4 +42,8 @@ module Products
       click_button('Add to Cart')
     end
   end
+
+  When 'I click "Empty basket"' do
+    click_button('Empty basket')
+  end
 end

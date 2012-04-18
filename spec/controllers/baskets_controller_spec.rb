@@ -53,4 +53,38 @@ describe BasketsController do
       end
     end
   end
+
+  context '#destroy' do
+    let(:current_basket) { stub(destroy: nil) }
+    let(:id) { stub }
+
+    before(:each) do
+      controller.stub(current_basket: current_basket)
+    end
+
+    it 'gets the current basket' do
+      controller.should_receive(:current_basket)
+      delete :destroy, id: id
+    end
+
+    it 'stores the current basket' do
+      delete :destroy, id: id
+      assigns(:basket).should == current_basket
+    end
+
+    it 'destroys the current basket' do
+      current_basket.should_receive(:destroy)
+      delete :destroy, id: id
+    end
+
+    it 'resets the basket identifier in the session' do
+      delete :destroy, id: id
+      session[:basket_id].should == nil
+    end
+
+    it 'redirects to the Products page' do
+      delete :destroy, id: id
+      should redirect_to(products_path)
+    end
+  end
 end
