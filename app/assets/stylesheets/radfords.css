@@ -481,3 +481,11 @@ textarea {
   display: inline;
   float: right;
 }
+
+.baskets .item_price, .baskets .total_line td {
+  text-align: right;
+}
+
+.baskets .total_line .total_cell {
+  font-weight: bold;
+}
