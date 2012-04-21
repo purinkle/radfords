@@ -17,6 +17,7 @@ end
 gem 'jquery-rails'
 
 group :development do
+  gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'annotate', '2.4.0'
   gem 'faker', '0.3.1'
 end
