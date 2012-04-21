@@ -1,13 +1,5 @@
 <table class="table table-bordered table-striped">
-  <% @basket.line_items.each do |item| %>
-    <tr>
-      <td><%= item.quantity %> &times;</td>
-
-      <td><%= item.product.title %></td>
-
-      <td class="item_price"><%= item.total_price %></td>
-    </tr>
-  <% end %>
+  <%= render(@basket.line_items) %>
 
   <tr class="total_line">
     <td colspan="2">Total</td>

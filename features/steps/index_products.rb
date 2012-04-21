@@ -1,8 +1,10 @@
 class IndexProducts < Spinach::FeatureSteps
+  include Actors
   include Baskets
   include Forms::Product
   include Links
   include Paths
+  include Products
   include Sessions
 
   Then 'the product\'s title is displayed' do
@@ -79,5 +81,9 @@ class IndexProducts < Spinach::FeatureSteps
 
   Then 'the "Basket" page is displayed' do
     should have_selector('title', text: 'Basket')
+  end
+
+  Then 'the total number of items is displayed' do
+    find('.nav li:last-child').text.should =~ /Basket \(3\)$/
   end
 end

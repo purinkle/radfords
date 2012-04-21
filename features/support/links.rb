@@ -40,4 +40,8 @@ module Links
   When 'I click the first product link' do
     click_link 'Blueberry and Apple Preserve'
   end
+
+  When 'I click the "Basket" link' do
+    find('.nav li:last-child a').click
+  end
 end

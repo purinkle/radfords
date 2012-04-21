@@ -9,6 +9,7 @@
 
 .header {
     margin-bottom: 18px;
+    position: relative;
 }
 
 .hgroup {
@@ -488,4 +489,15 @@ textarea {
 
 .baskets .total_line .total_cell {
   font-weight: bold;
+}
+
+#account_cart {
+  background: white;
+  color: #551A8B;
+  font-size: 18px;
+  line-height: 36px;
+  padding: 0 9px;
+  position: absolute;
+  right: 36px;
+  top: 0;
 }

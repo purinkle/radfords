@@ -34,7 +34,7 @@ module Products
   end
 
   def add_to_basket(id)
-    within(".products li:nth-of-type(#{id})") do
+    within("div.products li:nth-of-type(#{id})") do
       click_button('Add to Cart')
     end
   end

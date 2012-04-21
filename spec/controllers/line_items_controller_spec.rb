@@ -67,14 +67,9 @@ describe LineItemsController do
       post :create, product_id: product_id
     end
 
-    it 'gets the line item\'s basket' do
-      line_item_basket.should_receive(:id)
+    it 'redirects to the product index' do
       post :create, product_id: product_id
-    end
-
-    it 'redirects to the line item\'s basket' do
-      post :create, product_id: product_id
-      response.should redirect_to(basket_path(basket_id))
+      should redirect_to(products_path)
     end
   end
 end

@@ -3,12 +3,15 @@ Feature: Show basket
   As a customer
   I need to see the contents of my basket
 
-  Scenario: Display a basket's items
+  Scenario: Display total item price
     Given I am a customer
     And some products have been created
     And I visit the products page
-    When I click an "Add to Cart" button
-    Then the product is listed
+    And I add some products to my basket
+    When I click the "Basket" link
+    Then the products are listed
+    And the total price for each product is displayed
+    And the basket's total price is displayed
     And an "Empty basket" button is displayed
 
   Scenario: Redirect to the Products page
@@ -16,11 +19,3 @@ Feature: Show basket
     When I visit an invalid basket
     Then I am redirected to the Products page
     And an "Invalid basket" message is displayed
-
-  Scenario: Display total item price
-    Given I am a customer
-    And some products have been created
-    And I visit the products page
-    When I add some products to my basket
-    Then the total price for each product is displayed
-    And the basket's total price is displayed

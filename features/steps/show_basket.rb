@@ -2,13 +2,19 @@
 
 class ShowBasket < Spinach::FeatureSteps
   include Actors
+  include Links
   include Paths
   include Products
 
-  Then 'the product is listed' do
-    within('tr:first-child') do
-      find('td:nth-of-type(1)').text.should == '1 ×'
+  Then 'the products are listed' do
+    within('tr:nth-of-type(1)') do
+      find('td:nth-of-type(1)').text.should == '2 ×'
       find('td:nth-of-type(2)').text.should == 'Blueberry and Apple Preserve'
+    end
+
+    within('tr:nth-of-type(2)') do
+      find('td:nth-of-type(1)').text.should == '1 ×'
+      find('td:nth-of-type(2)').text.should == 'Apricot and Ginger Preserve'
     end
   end
 

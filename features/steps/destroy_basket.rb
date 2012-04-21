@@ -1,5 +1,6 @@
 class DestroyBasket < Spinach::FeatureSteps
   include Actors
+  include Links
   include Paths
   include Products
 

@@ -30,6 +30,8 @@
           <%= link_to "Sign out", signout_path %>
         </li>
       <% end %>
+
+      <li><%= link_to(content_tag('i', nil, class: 'icon-shopping-cart') + " Basket (#{@basket.total_items})", basket_path(@basket)) %></li>
     </ul>
   </div>
 </div>

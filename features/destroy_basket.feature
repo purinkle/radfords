@@ -8,6 +8,7 @@ Feature: Destroy basket
     And some products have been created
     And I visit the products page
     And I click an "Add to Cart" button
+    And I click the "Basket" link
     When I click "Empty basket"
     Then I am redirected to "Products"
     And "Your basket is currently empty" is displayed

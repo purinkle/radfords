@@ -97,5 +97,19 @@ Feature: Index products
     And I click the "New Product" link
     And I create a valid product
     And I click the "Back" link
-    When I click an "Add to Cart" button
+    When I click the "Basket" link
     Then the "Basket" page is displayed
+
+  Scenario: Display the number of basket items
+    Given I am a customer
+    And some products have been created
+    And I visit the products page
+    When I add some products to my basket
+    Then the total number of items is displayed
+
+  Scenario: Stay on the Products page
+    Given I am a customer
+    And some products have been created
+    And I visit the products page
+    When I click an "Add to Cart" button
+    Then I am redirected back to the "Products" page

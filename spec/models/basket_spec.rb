@@ -110,4 +110,29 @@ describe Basket do
       basket.total_price
     end
   end
+
+  context '#total_items' do
+    let(:basket) { Basket.new }
+    let(:item_1) { stub(quantity: 1) }
+    let(:item_2) { stub(quantity: 2) }
+
+    before(:each) do
+      basket.stub(line_items: [item_1, item_2])
+    end
+
+    it 'gets all the items' do
+      basket.should_receive(:line_items)
+      basket.total_items
+    end
+
+    it 'gets the quantity of each item' do
+      item_1.should_receive(:quantity)
+      item_2.should_receive(:quantity)
+      basket.total_items
+    end
+
+    it 'returns the total number of items' do
+      basket.total_items.should == 3
+    end
+  end
 end
