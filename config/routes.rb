@@ -2,6 +2,7 @@ Radfords::Application.routes.draw do
   resources :baskets, only: [ :destroy, :show ]
   resources :events
   resources :line_items, only: :create
+  resources :orders, only: :new
   resources :sessions, :only => [ :new, :create, :destroy ]
   match '/products/check_title' => 'products#check_title'
   resources :products

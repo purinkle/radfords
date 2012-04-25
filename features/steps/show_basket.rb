@@ -2,6 +2,7 @@
 
 class ShowBasket < Spinach::FeatureSteps
   include Actors
+  include Baskets
   include Links
   include Paths
   include Products
@@ -26,6 +27,10 @@ class ShowBasket < Spinach::FeatureSteps
     find('.alert-error').text.should =~ /Invalid basket\.$/
   end
 
+  Then 'a "Checkout" button is displayed' do
+    find('.btn-primary').value.should == 'Checkout'
+  end
+
   Then 'an "Empty basket" button is displayed' do
     find('.btn-danger').value.should == 'Empty basket'
   end
@@ -37,5 +42,9 @@ class ShowBasket < Spinach::FeatureSteps
 
   Then 'the basket\'s total price is displayed' do
     find('.total_line .total_cell').text.should == '£8.55'
+  end
+
+  Then 'the new order page is shown' do
+    find('title').text.should =~ /^New order/
   end
 end
