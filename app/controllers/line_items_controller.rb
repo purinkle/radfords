@@ -4,6 +4,10 @@ class LineItemsController < ApplicationController
     product = Product.find(params[:product_id])
     @line_item = @basket.add_product(product.id)
     @line_item.save
-    redirect_to(products_path)
+
+    respond_to do |format|
+      format.html { redirect_to(products_path) }
+      format.js
+    end
   end
 end

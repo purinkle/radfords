@@ -31,7 +31,7 @@
         </li>
       <% end %>
 
-      <li><%= link_to(content_tag('i', nil, class: 'icon-shopping-cart') + " Basket (#{@basket.total_items})", basket_path(@basket)) %></li>
+      <li id="basket"><%= render @basket %></a>
     </ul>
   </div>
 </div>
