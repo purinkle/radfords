@@ -13,3 +13,10 @@ Feature: New order
     Then there is a "Name" field
     And there is an "Address" field
     And there is an "Email" field
+
+  Scenario: Redirect empty baskets
+    Given I am a customer
+    And I visit the home page
+    And I click the "Basket" link
+    When I click the "Checkout" button
+    Then I am shown the products page

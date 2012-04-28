@@ -20,4 +20,8 @@ module Paths
   When 'I visit an invalid basket' do
     visit basket_path('wibble')
   end
+
+  When 'I visit the home page' do
+    visit root_path
+  end
 end

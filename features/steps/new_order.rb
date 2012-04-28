@@ -25,4 +25,8 @@ class NewOrder < Spinach::FeatureSteps
       should have_selector('input[type=email]#order_email')
     end
   end
+
+  Then 'I am shown the products page' do
+    find('title').text.should =~ /^Products/
+  end
 end
