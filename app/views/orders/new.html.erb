@@ -1,0 +1,9 @@
+<%= form_for(@order) do |f| %>
+  <ol>
+    <li><%= f.label :name %> <%= f.text_field :name %></li>
+
+    <li><%= f.label :address %> <%= f.text_area :address, rows: 3 %></li>
+
+    <li><%= f.label :email %> <%= f.email_field :email %></li>
+  </ol>
+<% end %>

@@ -1,0 +1,15 @@
+Feature: New order
+  In order to buy products
+  As a customer
+  I want to create orders
+
+  Scenario: Display the order form
+    Given I am a customer
+    And some products have been created
+    And I visit the products page
+    And I add some products to my basket
+    And I click the "Basket" link
+    When I click the "Checkout" button
+    Then there is a "Name" field
+    And there is an "Address" field
+    And there is an "Email" field
