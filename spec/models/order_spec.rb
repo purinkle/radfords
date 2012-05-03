@@ -27,6 +27,12 @@ describe Order do
     end
   end
 
+  context 'when there is no email' do
+    it 'is not valid' do
+      order.should validate_presence_of(:email)
+    end
+  end
+
   context '#add_line_items_from_basket' do
     let(:basket) { stub(line_items: line_items) }
     let(:line_item_1) { stub(:basket_id= => nil) }

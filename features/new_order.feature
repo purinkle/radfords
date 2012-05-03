@@ -33,3 +33,4 @@ Feature: New order
     Then I am shown the new order page
     And a "Name can't be blank" message is shown
     And an "Address can't be blank" message is shown
+    And an "Email can't be blank" message is shown
