@@ -34,3 +34,13 @@ Feature: New order
     And a "Name can't be blank" message is shown
     And an "Address can't be blank" message is shown
     And an "Email can't be blank" message is shown
+
+  Scenario: Submit a valid order
+    Given I am a customer
+    And some products have been created
+    And I visit the products page
+    And I add some products to my basket
+    And I click the "Basket" link
+    And I click the "Checkout" button
+    When I create a valid order
+    Then I am shown the products page
