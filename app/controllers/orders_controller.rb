@@ -16,7 +16,8 @@ class OrdersController < ApplicationController
     if @order.save
       Basket.destroy(session[:basket_id])
       session[:basket_id] = nil
-      redirect_to(products_path, notice: 'Thank you for your order.')
+      flash[:success] = 'Thank you for your order.'
+      redirect_to(products_path)
     else
       @title = 'New order'
       render(action: 'new')

@@ -44,3 +44,4 @@ Feature: New order
     And I click the "Checkout" button
     When I create a valid order
     Then I am shown the products page
+    And a "Thank you for your order" message is shown

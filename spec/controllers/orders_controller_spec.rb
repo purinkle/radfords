@@ -153,9 +153,9 @@ describe OrdersController do
         session[:basket_id].should be_nil
       end
 
-      it 'sets the notice flash' do
+      it 'sets the success flash' do
         post :create, order: order
-        flash[:notice].should == 'Thank you for your order.'
+        flash[:success].should == 'Thank you for your order.'
       end
 
       it 'redirects to the products page' do

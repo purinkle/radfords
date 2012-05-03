@@ -58,4 +58,8 @@ class NewOrder < Spinach::FeatureSteps
       find('li:nth-of-type(3)').text.should == 'Email can\'t be blank'
     end
   end
+
+  Then 'a "Thank you for your order" message is shown' do
+    find('.alert-success').text.should =~ /Thank you for your order\.$/
+  end
 end
