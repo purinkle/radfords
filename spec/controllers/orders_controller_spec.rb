@@ -81,4 +81,98 @@ describe OrdersController do
       response.should be_success
     end
   end
+  
+  context 'POST "create"' do
+    let(:basket) { stub }
+    let(:basket_id) { stub }
+    let(:order) { stub(add_line_items_from_basket: nil, save: true) }
+
+    before(:each) do
+      Basket.stub(find: basket, destroy: nil)
+      Order.stub(new: order)
+      session[:basket_id] = basket_id
+    end
+
+    it 'tries to find the current basket' do
+      Basket.should_receive(:find).with(basket_id)
+      post :create, order: order
+    end
+
+    context 'when a basket cannot be found' do
+      before(:each) do
+        basket.stub(id: basket_id)
+        Basket.stub(:find).and_raise(ActiveRecord::RecordNotFound)
+        Basket.stub(create: basket)
+        order.stub(save: false)
+      end
+
+      it 'creates a basket' do
+        Basket.should_receive(:create).with(no_args)
+        post :create, order: order
+      end
+
+      it 'gets the basket identifier' do
+        basket.should_receive(:id).with(no_args)
+        post :create, order: order
+      end
+
+      it 'stores the basker identifier' do
+        post :create, order: order
+        session[:basket_id].should == basket_id
+      end
+    end
+
+    it 'creates a new order' do
+      Order.should_receive(:new).with(order)
+      post :create, order: order
+    end
+
+    it 'stores the order' do
+      post :create, order: order
+      assigns(:order).should == order
+    end
+
+    it 'adds items from the basket to the order' do
+      order.should_receive(:add_line_items_from_basket).with(basket)
+      post :create, order: order
+    end
+
+    it 'tries to save the order' do
+      order.should_receive(:save).with(no_args)
+      post :create, order: order
+    end
+
+    context 'when the order is saved successfully' do
+      it 'deletes the basket' do
+        Basket.should_receive(:destroy).with(basket_id)
+        post :create, order: order
+      end
+
+      it 'deletes the basket identifier from the session' do
+        post :create, order: order
+        session[:basket_id].should be_nil
+      end
+
+      it 'sets the notice flash' do
+        post :create, order: order
+        flash[:notice].should == 'Thank you for your order.'
+      end
+
+      it 'redirects to the products page' do
+        post :create, order: order
+        response.should redirect_to(products_path)
+      end
+    end
+
+    context 'when the order is not saved successfully' do
+      before(:each) do
+        order.stub(save: false)
+      end
+
+      it 'renders the new order page' do
+        post :create, order: order
+        response.should render_template('new')
+      end
+    end
+  end
 end

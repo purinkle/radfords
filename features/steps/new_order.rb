@@ -2,6 +2,7 @@ class NewOrder < Spinach::FeatureSteps
   include Actors
   include Baskets
   include Links
+  include Orders
   include Paths
   include Products
 
@@ -26,7 +27,23 @@ class NewOrder < Spinach::FeatureSteps
     end
   end
 
+  Then 'there is a "Place Order" button' do
+    within('form li:last-child') do
+      find('input[type=submit]').value.should == 'Place Order'
+    end
+  end
+
   Then 'I am shown the products page' do
     find('title').text.should =~ /^Products/
+  end
+
+  Then 'I am shown the new order page' do
+    find('title').text.should =~ /^New order/
+  end
+
+  Then 'a "Name can\'t be blank" message is shown' do
+    within('.alert-error ul') do
+      find('li:nth-of-type(1)').text.should == 'Name can\'t be blank'
+    end
   end
 end

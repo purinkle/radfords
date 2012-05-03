@@ -13,6 +13,7 @@ Feature: New order
     Then there is a "Name" field
     And there is an "Address" field
     And there is an "Email" field
+    And there is a "Place Order" button
 
   Scenario: Redirect empty baskets
     Given I am a customer
@@ -20,3 +21,14 @@ Feature: New order
     And I click the "Basket" link
     When I click the "Checkout" button
     Then I am shown the products page
+
+  Scenario: Validate "Name" field
+    Given I am a customer
+    And some products have been created
+    And I visit the products page
+    And I add some products to my basket
+    And I click the "Basket" link
+    And I click the "Checkout" button
+    When I create an invalid order
+    Then I am shown the new order page
+    And a "Name can't be blank" message is shown

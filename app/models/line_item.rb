@@ -1,4 +1,5 @@
 class LineItem < ActiveRecord::Base
+  belongs_to(:order)
   belongs_to(:basket)
   belongs_to(:product)
 
