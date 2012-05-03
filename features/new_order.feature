@@ -22,7 +22,7 @@ Feature: New order
     When I click the "Checkout" button
     Then I am shown the products page
 
-  Scenario: Validate "Name" field
+  Scenario: Validate submitted fields
     Given I am a customer
     And some products have been created
     And I visit the products page
@@ -32,3 +32,4 @@ Feature: New order
     When I create an invalid order
     Then I am shown the new order page
     And a "Name can't be blank" message is shown
+    And an "Address can't be blank" message is shown

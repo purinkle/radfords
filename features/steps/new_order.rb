@@ -46,4 +46,10 @@ class NewOrder < Spinach::FeatureSteps
       find('li:nth-of-type(1)').text.should == 'Name can\'t be blank'
     end
   end
+
+  Then 'an "Address can\'t be blank" message is shown' do
+    within('.alert-error ul') do
+      find('li:nth-of-type(2)').text.should == 'Address can\'t be blank'
+    end
+  end
 end
