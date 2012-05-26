@@ -2,10 +2,16 @@
 
 <div class="section suppliers products">
   <% unless @products.blank? %>
-    <ul><%= render partial: 'product', collection: @products -%></ul>
-<% end %>
+    <ul>
+      <%= render(@products) %>
+    </ul>
+  <% end %>
 
-<% if signed_in? %>
-  <p class="form-actions"><%= link_to 'New Product', new_product_path, class: 'btn btn-primary' %></p>
-<% end %>
+  <% if signed_in? %>
+    <p class="form-actions"><%= link_to(
+      'New Product',
+      new_product_path,
+      class: 'btn btn-primary'
+    ) %></p>
+  <% end %>
 </div>

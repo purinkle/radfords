@@ -256,6 +256,10 @@ h2 {
   color: #551A8B;
 }
 
+.products ul {
+  font-size: 0;
+}
+
 /* CONTACT */
 
 .denise {
