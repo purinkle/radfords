@@ -1,6 +1,29 @@
 require 'spec_helper'
 
 describe OrdersController do
+  context "#index" do
+    let(:orders) { stub }
+
+    before(:each) do
+      Order.stub(all: orders)
+    end
+
+    it "gets all the orders" do
+      Order.should_receive(:all).with(no_args)
+      get :index
+    end
+
+    it "stores the orders" do
+      get :index
+      assigns(:orders).should == orders
+    end
+
+    it "is successful" do
+      get :index
+      response.should be_success
+    end
+  end
+
   context '#new' do
     let(:basket) { stub(line_items: stub(empty?: false)) }
     let(:basket_id) { stub }
@@ -81,7 +104,7 @@ describe OrdersController do
       response.should be_success
     end
   end
-  
+
   context 'POST "create"' do
     let(:basket) { stub }
     let(:basket_id) { stub }

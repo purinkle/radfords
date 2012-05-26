@@ -1,0 +1,31 @@
+<div class="page-header">
+  <h2>Orders</h2>
+</div>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>ID</th>
+
+      <th>Name</th>
+
+      <th>Address</th>
+
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.id %></td>
+
+        <td><%= order.name %></td>
+
+        <td><%= order.address %></td>
+
+        <td><%= order.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
