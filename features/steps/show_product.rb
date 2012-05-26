@@ -16,7 +16,7 @@ class ShowProduct < Spinach::FeatureSteps
   end
 
   And 'an image of the product is displayed' do
-    should have_selector('img[src$="lorem.jpg"]')
+    should have_selector('img[src$="products/1/large/lorem.jpg"]')
   end
 
   And 'the product\'s price is displayed' do
@@ -48,7 +48,7 @@ class ShowProduct < Spinach::FeatureSteps
   end
 
   And 'the updated image is displayed' do
-    should have_selector('img[src$="blackcurrant.jpg"]')
+    should have_selector('img[src$="/products/1/large/blackcurrant.jpg"]')
   end
 
   And 'the updated price is displayed' do

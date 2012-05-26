@@ -1,5 +1,5 @@
 .container {
-/*    background: url(http://blueprintcss.org/blueprint/src/grid.png);*/
+    background: url(http://blueprintcss.org/blueprint/src/grid.png);
     color: #554D40;
     font-size: 13px;
     width: 950px;
@@ -258,6 +258,14 @@ h2 {
 
 .products ul {
   font-size: 0;
+}
+
+.products .image img {
+  border: 1px solid #BBB;
+  height: 250px;
+  margin-bottom: 18px;
+  padding: 9px;
+  width: 450px;
 }
 
 /* CONTACT */
