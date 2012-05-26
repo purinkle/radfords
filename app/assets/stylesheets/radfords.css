@@ -1,5 +1,5 @@
 .container {
-    background: url(http://blueprintcss.org/blueprint/src/grid.png);
+    /*background: url(http://blueprintcss.org/blueprint/src/grid.png);*/
     color: #554D40;
     font-size: 13px;
     width: 950px;
@@ -493,6 +493,10 @@ textarea {
 .price-line div {
   display: inline;
   float: right;
+}
+
+.baskets .image {
+  width: 80px;
 }
 
 .baskets .item_price, .baskets .total_line td {

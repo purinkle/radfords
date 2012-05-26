@@ -10,12 +10,20 @@ class ShowBasket < Spinach::FeatureSteps
   Then 'the products are listed' do
     within('tr:nth-of-type(1)') do
       find('td:nth-of-type(1)').text.should == '2 ×'
-      find('td:nth-of-type(2)').text.should == 'Blueberry and Apple Preserve'
+
+      find('td:nth-of-type(2) img')[:src].should ==
+        '/images/products/1/small/apple_and_blueberry_preserve.jpg'
+
+      find('td:nth-of-type(3)').text.should == 'Blueberry and Apple Preserve'
     end
 
     within('tr:nth-of-type(2)') do
       find('td:nth-of-type(1)').text.should == '1 ×'
-      find('td:nth-of-type(2)').text.should == 'Apricot and Ginger Preserve'
+
+      find('td:nth-of-type(2) img')[:src] ==
+        '/images/products/1/small/apricot_and_ginger§_preserve.jpg'
+
+      find('td:nth-of-type(3)').text.should == 'Apricot and Ginger Preserve'
     end
   end
 

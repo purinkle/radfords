@@ -17,6 +17,10 @@ class ProductDecorator < ApplicationDecorator
     h.image_tag("products/#{model.id}/large/#{model.image_url}")
   end
 
+  def small_image
+    h.image_tag("products/#{model.id}/small/#{model.image_url}")
+  end
+
   def price
     display_as_pounds(model.price)
   end
