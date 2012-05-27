@@ -13,6 +13,10 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  def show
+    @order = OrderDecorator.find(params[:id])
+  end
+
   def create
     @order = Order.new(params[:order])
     @order.add_line_items_from_basket(@basket)

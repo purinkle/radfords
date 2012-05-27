@@ -105,6 +105,25 @@ describe OrdersController do
     end
   end
 
+  context 'GET "show"' do
+    let(:order) { stub }
+    let(:params) { {id: 1} }
+
+    before(:each) do
+      OrderDecorator.stub(find: order)
+    end
+
+    it "should find the decorated order" do
+      OrderDecorator.should_receive(:find).with(params[:id])
+      get :show, params
+    end
+
+    it "stores the order" do
+      get :show, params
+      assigns(:order).should == order
+    end
+  end
+
   context 'POST "create"' do
     let(:basket) { stub }
     let(:basket_id) { stub }

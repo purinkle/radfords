@@ -34,4 +34,48 @@ module Orders
       }
     )
   end
+
+  When 'an order has been created' do
+    order = FactoryGirl.create(
+      :order,
+      {
+        name: 'Randall Waters',
+        address: '20383 Sawayn Inlet',
+        email: 'waters.randall@kerluke.info'
+      }
+    )
+
+    FactoryGirl.create(
+      :line_item,
+      {
+        quantity: 2,
+        product: FactoryGirl.create(
+          :product,
+          {
+            title: 'Blueberry and Apple Preserve',
+            description: 'Blueberries and apples blended together with sugar and
+              a dash of lemon juice to create a simple flavour which is not too
+              sweet.'
+          }
+        ),
+        order: order
+      }
+    )
+
+    FactoryGirl.create(
+      :line_item,
+      {
+        quantity: 3,
+        product: FactoryGirl.create(
+          :product,
+          {
+            title: 'Apricot and Ginger Preserve',
+            description: 'Sweet apricots infused with ginger, with sugar and a
+              dash of lemon.'
+          }
+        ),
+        order: order
+      }
+    )
+  end
 end

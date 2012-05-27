@@ -531,3 +531,12 @@ textarea {
   line-height: 36px;
   margin-bottom: 0;
 }
+
+.orders .image {
+  width: 80px;
+}
+
+.orders .image img {
+  height: 44px;
+  width: 80px;
+}

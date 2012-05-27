@@ -28,4 +28,8 @@ module Paths
   When 'I visit the order index' do
     visit orders_path
   end
+
+  When 'I visit the order\'s page' do
+    visit order_path(1)
+  end
 end

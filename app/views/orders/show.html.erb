@@ -1,0 +1,43 @@
+<div class="page-header">
+  <h2>Order</h2>
+</div>
+
+<dl class="dl-horizontal">
+  <dt><strong>ID</strong></dt>
+  <dd><%= @order.id %></dd>
+
+  <dt><strong>Name</strong></dt>
+  <dd><%= @order.name %></dd>
+
+  <dt><strong>Address</strong></dt>
+  <dd><%= @order.address %></dd>
+
+  <dt><strong>Email</strong></dt>
+  <dd><%= @order.email %></dd>
+</dl>
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th colspan="2">Product</th>
+
+      <th>Quantity</th>
+
+      <th>Total Price</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @order.line_items.each do |line_item| %>
+      <tr>
+        <td class="image"><%= line_item.product.small_image %></td>
+
+        <td><%= line_item.product.title %></td>
+
+        <td><%= line_item.quantity %></td>
+
+        <td><%= line_item.total_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
