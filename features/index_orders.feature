@@ -8,3 +8,4 @@ Feature: Index orders
     And several orders have been created
     When I visit the order index
     Then each order is shown
+    And there's a link to each order

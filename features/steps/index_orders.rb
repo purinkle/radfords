@@ -18,4 +18,10 @@ class IndexOrders < Spinach::FeatureSteps
       find('td:nth-of-type(4)').text.should == 'o_keefe_retta@langkshlerin.us'
     end
   end
+
+  Then 'there\'s a link to each order' do
+    within('tbody tr:nth-of-type(1) td:nth-of-type(1)') do
+      find('a')[:href].should == '/orders/1'
+    end
+  end
 end
