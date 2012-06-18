@@ -23,7 +23,7 @@ group :test do
   gem 'spork', '0.9.0.rc8'
   gem 'factory_girl_rails', '1.0'
   gem 'escape_utils', '0.2.4'
-  gem 'spinach', '0.3.0'
+  gem 'spinach', '0.5.2'
   gem 'spinach-rails', '0.0.6.1'
   gem 'database_cleaner', '0.7.1'
   gem 'shoulda', '3.0.1'
