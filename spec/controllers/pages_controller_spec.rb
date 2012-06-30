@@ -20,13 +20,13 @@ describe PagesController do
     end
 
     it "should display the next event" do
-      event1 = Factory( :event, name: "Melton Mowbray Farmers' Market",
+      event1 = FactoryGirl.create( :event, name: "Melton Mowbray Farmers' Market",
                                 takes_place_on: 1.week.ago,
                                 location: "Cattle Market, Scarlford Road" )
-      event2 = Factory( :event, name: "Huntingdon Farmer's Market",
+      event2 = FactoryGirl.create( :event, name: "Huntingdon Farmer's Market",
                                 takes_place_on: 1.week.from_now,
                                 location: "Market Square" )
-      event3 = Factory( :event, name: "Otley Farmer's Market",
+      event3 = FactoryGirl.create( :event, name: "Otley Farmer's Market",
                                 takes_place_on: 1.day.from_now,
                                 location: "Market Square")
 
@@ -39,13 +39,13 @@ describe PagesController do
 
   describe 'GET "outlets"' do
     before(:each) do
-      @supplier = Factory(:supplier)
-      second = Factory(:supplier, address: '75 Lairg Road, Newcastle upon Type NE1 0TF', name: 'Jasmine Haynes', telephone_number: '070 0060 9200', website: 'http://marketingtickets.com/')
-      third = Factory(:supplier, address: '27 Vicar Lane, Saron SA44 8HH', name: 'Jamie Hunter', telephone_number: '079 8825 0308', website: 'http://aromatherapyjobs.com/')
+      @supplier = FactoryGirl.create(:supplier)
+      second = FactoryGirl.create(:supplier, address: '75 Lairg Road, Newcastle upon Type NE1 0TF', name: 'Jasmine Haynes', telephone_number: '070 0060 9200', website: 'http://marketingtickets.com/')
+      third = FactoryGirl.create(:supplier, address: '27 Vicar Lane, Saron SA44 8HH', name: 'Jamie Hunter', telephone_number: '079 8825 0308', website: 'http://aromatherapyjobs.com/')
       @suppliers = [@supplier, second, third]
 
       30.times do
-        @suppliers << Factory(:supplier)
+        @suppliers << FactoryGirl.create(:supplier)
       end
     end
 

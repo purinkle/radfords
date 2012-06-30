@@ -5,9 +5,9 @@ describe EventsController do
 
   describe 'GET "show"' do
     before (:each) do
-      @event = Factory(:event)
+      @event = FactoryGirl.create(:event)
 
-      test_sign_in( Factory(:user) )
+      test_sign_in( FactoryGirl.create(:user) )
     end
 
     it 'should be successful' do
@@ -49,7 +49,7 @@ describe EventsController do
 
   describe 'GET "new"' do
     before (:each) do
-      test_sign_in( Factory(:user) )
+      test_sign_in( FactoryGirl.create(:user) )
     end
 
     it 'should be successful' do
@@ -86,7 +86,7 @@ describe EventsController do
   describe 'POST "create"' do
     describe 'failure' do
       before (:each) do
-        test_sign_in( Factory(:user) )
+        test_sign_in( FactoryGirl.create(:user) )
 
         @attr = {
           :name           => '',
@@ -116,7 +116,7 @@ describe EventsController do
 
     describe 'success' do
       before (:each) do
-        test_sign_in( Factory(:user) )
+        test_sign_in( FactoryGirl.create(:user) )
 
         @attr = {
           :name           => 'Macclesfield Farmers Market',
@@ -141,22 +141,22 @@ describe EventsController do
 
   describe 'GET "index"' do
     before (:each) do
-      test_sign_in( Factory(:user) )
+      test_sign_in( FactoryGirl.create(:user) )
 
-      @event = Factory(:event, takes_place_on: 1.hour.from_now )
+      @event = FactoryGirl.create(:event, takes_place_on: 1.hour.from_now )
 
-      second = Factory( :event, :name => "This Event",
+      second = FactoryGirl.create( :event, :name => "This Event",
                                 takes_place_on: 1.hour.from_now,
                                 :location => "London, UK" )
 
-      third = Factory( :event, :name => "That Event",
+      third = FactoryGirl.create( :event, :name => "That Event",
                                takes_place_on: 1.hour.from_now,
                                :location => "New York, NY" )
 
       @events = [ @event, second, third ]
 
       30.times do
-        @events << Factory(:event)
+        @events << FactoryGirl.create(:event)
       end
     end
 
@@ -175,9 +175,9 @@ describe EventsController do
 
   describe "GET 'edit'" do
     before (:each) do
-      @event = Factory(:event)
+      @event = FactoryGirl.create(:event)
 
-      test_sign_in( Factory(:user) )
+      test_sign_in( FactoryGirl.create(:user) )
     end
 
     it "should be successful" do
@@ -195,7 +195,7 @@ describe EventsController do
 
   describe "authentication of all pages" do
     before (:each) do
-      @event = Factory(:event)
+      @event = FactoryGirl.create(:event)
 
       @attr = {
         :name           => 'Macclesfield Farmers Market',
@@ -245,9 +245,9 @@ describe EventsController do
 
   describe "PUT 'update'" do
     before (:each) do
-      @event = Factory(:event)
+      @event = FactoryGirl.create(:event)
 
-      test_sign_in( Factory(:user) )
+      test_sign_in( FactoryGirl.create(:user) )
     end
 
     describe "failure" do

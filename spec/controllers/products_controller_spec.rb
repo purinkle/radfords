@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ProductsController do
-  let(:id) { 1 }
+  let(:id) { '1' }
 
   describe 'GET "index"' do
     let(:products) { stub }

@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'Suppliers' do
   describe 'creation' do
     before (:each) do
-      user = Factory(:user)
+      user = FactoryGirl.create(:user)
 
       visit signin_path
 
@@ -60,7 +60,7 @@ describe 'Suppliers' do
 
   describe 'when signed in' do
     before (:each) do
-      user = Factory(:user)
+      user = FactoryGirl.create(:user)
 
       visit signin_path
 

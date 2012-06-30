@@ -5,7 +5,7 @@ describe SuppliersController do
 
   describe 'GET "new"' do
     before (:each) do
-      test_sign_in( Factory(:user) )
+      test_sign_in( FactoryGirl.create(:user) )
     end
 
     it 'should be successful' do
@@ -42,7 +42,7 @@ describe SuppliersController do
   describe 'POST "create"' do
     describe 'failure' do
       before (:each) do
-        test_sign_in( Factory(:user) )
+        test_sign_in( FactoryGirl.create(:user) )
 
         @attr = {
           :name => '',
@@ -73,7 +73,7 @@ describe SuppliersController do
 
     describe 'success' do
       before (:each) do
-        test_sign_in( Factory(:user) )
+        test_sign_in( FactoryGirl.create(:user) )
 
         @attr = {
           :name => 'Ethan Perry',
@@ -99,9 +99,9 @@ describe SuppliersController do
 
   describe "GET 'edit'" do
     before (:each) do
-      @supplier = Factory(:supplier)
+      @supplier = FactoryGirl.create(:supplier)
 
-      test_sign_in( Factory(:user) )
+      test_sign_in( FactoryGirl.create(:user) )
     end
 
     it "should be successful" do
@@ -119,7 +119,7 @@ describe SuppliersController do
 
   describe "authentication of all pages" do
     before (:each) do
-      @supplier = Factory(:supplier)
+      @supplier = FactoryGirl.create(:supplier)
 
       @attr = {
         :name => 'Ethan Perry',
@@ -158,9 +158,9 @@ describe SuppliersController do
 
   describe "PUT 'update'" do
     before (:each) do
-      @supplier = Factory(:supplier)
+      @supplier = FactoryGirl.create(:supplier)
 
-      test_sign_in( Factory(:user) )
+      test_sign_in( FactoryGirl.create(:user) )
     end
 
     describe "failure" do
@@ -216,7 +216,7 @@ describe SuppliersController do
   end
 
   describe 'DELETE "destroy"' do
-    let(:id) { stub }
+    let(:id) { '1' }
 
     context 'when signed in' do
       let(:supplier) { stub.as_null_object }

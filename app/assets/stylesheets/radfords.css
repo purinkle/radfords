@@ -12,20 +12,20 @@
 }
 
 .hgroup {
-    background: #5A006D url(/images/purple_logo.png) no-repeat right bottom;
+    background: #5A006D url(/assets/purple_logo.png) no-repeat right bottom;
     margin-bottom: 18px;
     vertical-align: bottom;
 }
 
 h1 {
-    background: url(/images/jar.png) no-repeat 10px bottom;
+    background: url(/assets/jar.png) no-repeat 10px bottom;
     height: 162px;
     width: 145px;
     text-indent: -9999em;
 }
 
 .nav {
-    background: #5A006D url(/images/jar_bottom.png) no-repeat;
+    background: #5A006D url(/assets/jar_bottom.png) no-repeat;
     text-align: right;
 }
 
@@ -138,7 +138,7 @@ h2 {
 }
 
 .suppliers .telephone {
-    background: url(/images/phone_1.png) no-repeat;
+    background: url(/assets/phone_1.png) no-repeat;
     padding-left: 18px;
     background-position: 0 3px;
 }
@@ -282,15 +282,15 @@ h2 {
 }
 
 .social .email {
-    background-image: url(/images/email_16.png);
+    background-image: url(/assets/email_16.png);
 }
 
 .social .facebook {
-    background-image: url(/images/facebook_16.png);
+    background-image: url(/assets/facebook_16.png);
 }
 
 .social .twitter {
-    background-image: url(/images/twitter_16.png);
+    background-image: url(/assets/twitter_16.png);
 }
 
 /* FOOTER */
@@ -388,7 +388,7 @@ form ol {
 }
 
 #events .event .img span {
-  background: url(/images/overlay.png);
+  background: url(/assets/overlay.png);
   height: 80px;
   position: absolute;
   top: 0;
