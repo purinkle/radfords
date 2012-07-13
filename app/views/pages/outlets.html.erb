@@ -47,7 +47,44 @@
 
   <% unless @suppliers.blank? %>
     <ul>
-    <%= render(@suppliers) %>
+      <% @suppliers.each_with_index do |supplier, index| %><li <%= 'class=last' if ( index + 1 ) % 3 == 0 %>>
+        <h3><%= supplier.name %></h3>
+
+        <% if signed_in? %>
+          <div class="actions">
+            <ul>
+              <li><%= link_to(
+                'Edit',
+                edit_supplier_path(supplier),
+                class: 'btn'
+              ) %></li>
+
+              <li><%= button_to(
+                'Delete',
+                supplier,
+                method: :delete,
+                class: 'btn btn-danger'
+              ) %></li>
+            </ul>
+          </div>
+        <% end %>
+
+        <p>
+          <a href="http://maps.google.com/?q=<%= supplier.latitude %>+<%= supplier.longitude %>"><img src="http://maps.google.com/maps/api/staticmap?size=290x286&amp;maptype=roadmap&amp;sensor=false&amp;center=<%= supplier.latitude %>%2C<%= supplier.longitude %>&amp;zoom=12&amp;style=feature%3Aall%7Celement%3Aall%7Csaturation%3A-100&amp;markers=color%3A0xe87eff%7C<%= supplier.latitude %>%2C<%= supplier.longitude %>" /></a>
+        </p>
+
+        <p>
+          <%= raw(supplier.address.gsub("\n", '<br />')) %>
+        </p>
+
+        <% if supplier.website %>
+          <p><%= supplier.website %></p>
+        <% end %>
+
+        <p class="telephone">
+          <%= supplier.telephone_number %>
+        </p>
+      </li><% end %>
     </ul>
   <% end %>
 
