@@ -10,3 +10,4 @@ doc/
 .DS_Store
 .sass_cache/
 /public/images/products/
+config/heroku.yml
