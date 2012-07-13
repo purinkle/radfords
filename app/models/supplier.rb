@@ -16,4 +16,6 @@ class Supplier < ActiveRecord::Base
   validates :address, presence: true
   validates :name, presence: true
   validates :telephone_number, presence: true
+  geocoded_by :address
+  after_validation :geocode
 end
