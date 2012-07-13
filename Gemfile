@@ -7,6 +7,7 @@ gem 'will_paginate', '3.0.3'
 gem 'sitemap_generator', '2.2.1'
 gem 'draper', '0.15.0rc1'
 gem 'friendly_id', '4.0.4'
+gem 'geocoder'
 
 group :assets do
   gem 'sass-rails', '3.2.5'
