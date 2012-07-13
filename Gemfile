@@ -21,6 +21,7 @@ group :development do
   gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'annotate', '2.4.0'
   gem 'faker', '0.3.1'
+  gem 'thin', '1.4.1'
 end
 
 group :test do
