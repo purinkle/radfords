@@ -31,19 +31,19 @@ describe EventsController do
     it 'should include the event\'s name' do
       get :show, :id => @event
 
-      response.should have_selector( 'p', :content => @event.name )
+      response.should have_selector( 'dd', :content => @event.name )
     end
 
     it 'should include the event\'s date' do
       get :show, :id => @event
 
-      response.should have_selector( 'p', :content => @event.takes_place_on )
+      response.should have_selector( 'dd', :content => @event.takes_place_on )
     end
 
     it 'should include the event\'s location' do
       get :show, :id => @event
 
-      response.should have_selector( 'p', :content => @event.location )
+      response.should have_selector( 'dd', :content => @event.location )
     end
   end
 

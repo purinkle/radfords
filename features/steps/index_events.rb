@@ -49,11 +49,7 @@ class IndexEvents < Spinach::FeatureSteps
     end
   end
 
-  Then 'the pagination section is displayed' do
-    should have_selector('div.pagination')
-  end
-
-  And 'the "Previous" link is disabled' do
+  Then 'the "Previous" link is disabled' do
     should have_selector('span.disabled', text: 'Previous')
   end
 

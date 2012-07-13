@@ -19,7 +19,7 @@ class CreateSupplier < Spinach::FeatureSteps
   end
 
   When 'I click the "New supplier" link' do
-    click_link('New supplier')
+    click_link('New')
   end
 
   Then 'an address field is displayed' do

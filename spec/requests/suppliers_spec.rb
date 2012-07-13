@@ -74,7 +74,7 @@ describe 'Suppliers' do
       visit outlets_path
 
       response.should have_selector('a', href: new_supplier_path,
-                                         content: 'New supplier')
+                                         content: 'New')
     end
   end
 end
