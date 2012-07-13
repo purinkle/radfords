@@ -1,13 +1,20 @@
 <tr>
+  <td><%= link_to event.id, event_path(event) %></td>
+
   <td><%= event.name %></td>
+
   <td><%= event.takes_place_on %></td>
+
   <td><%= event.location %></td>
-  <td><%= link_to 'Show', event %></td>
-  <td><%= link_to 'Edit', edit_event_path(event) %></td>
-  <td><%= link_to(
+
+  <td><%= event.created_at %></td>
+
+  <td><%= link_to 'Edit', edit_event_path(event), class: 'btn btn-mini' %>
+  <%= link_to(
     'Destroy',
-    event,
-    data: {confirm: 'Are you sure?'},
-    method: :delete
+    event_path(event),
+    method: :delete,
+    confirm: 'Are you sure?',
+    class: 'btn btn-mini btn-danger'
   ) %></td>
 </tr>

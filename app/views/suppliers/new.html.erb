@@ -1,6 +1,7 @@
-<%= form_for @supplier do |f| %>
-  <%= render 'fields', f: f %>
-  <div class="actions">
-    <%= f.submit 'Add supplier' %>
-  </div>
-<% end %>
+<% content_for :body_class, controller.controller_name %>
+
+<div class="page-header">
+  <h2>New Supplier</h2>
+</div>
+
+<%= render partial: 'form' %>

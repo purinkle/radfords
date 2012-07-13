@@ -5,7 +5,6 @@ Radfords::Application.routes.draw do
   resources :orders, only: [:create, :index, :new, :show]
   resources :sessions, :only => [ :new, :create, :destroy ]
   match '/products/check_title' => 'products#check_title'
-  resources :products
   resources :suppliers
 
   root :to => 'pages#home'

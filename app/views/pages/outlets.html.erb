@@ -52,8 +52,6 @@
   <% end %>
 
   <% if signed_in? %>
-    <p>
-      <a href="<%= new_supplier_path %>">New supplier</a>
-    </p>
+    <%= link_to 'New', new_supplier_path, class: 'btn btn-primary' %>
   <% end %>
 </div>

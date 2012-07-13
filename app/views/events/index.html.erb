@@ -1,20 +1,29 @@
-<h1>Listing events</h1>
-<% if !@events.blank? %>
-<%= will_paginate %>
-<h2><%= @events.count %></h2>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Takes place on</th>
-    <th>Location</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<% content_for :body_class, controller.controller_name %>
 
-  <%= render @events %>
+<div class="page-header">
+  <h2>Events</h2>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+
+      <th>Name</th>
+
+      <th>Takes place on</th>
+
+      <th>Location</th>
+
+      <th>Created at</th>
+
+      <th>Actions</th>
+    </tr>
+
+    <tbody>
+      <%= render @events %>
+    </tbody>
+  </thead>
 </table>
-<%= will_paginate %>
-<% end %>
 
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New', new_event_path, class: 'btn btn-primary' %>

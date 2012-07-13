@@ -1,22 +1,7 @@
-<% content_for(:body_class, 'with-js-events') %>
+<% content_for :body_class, controller.controller_name %>
 
-<h1>Edit event</h1>
+<div class="page-header">
+  <h2>Edit Event</h2>
+</div>
 
-<%= form_for @event do |f| %>
-  	<% render "shared/error_messages", :object => f.object %>
-	<div class="field">
-		<%= f.label :name %><br />
-		<%= f.text_field :name %>
-	</div>
-	<div class="field">
-		<%= f.label :takes_place_on %><br />
-		<%= f.text_field :takes_place_on %>
-	</div>
-	<div class="field">
-		<%= f.label :location %><br />
-		<%= f.text_field :location %>
-	</div>
-	<div class="actions">
-	 	<%= f.submit "Update" %>
-	</div>
-<% end %>
+<%= render partial: 'form' %>
