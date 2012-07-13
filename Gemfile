@@ -22,6 +22,7 @@ group :development do
   gem 'rails-footnotes', '>= 3.7.5.rc4'
   gem 'annotate', '2.4.0'
   gem 'faker', '0.3.1'
+  gem 'heroku_san', '3.0.2'
 end
 
 group :test do
