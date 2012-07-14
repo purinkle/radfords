@@ -1,15 +1,28 @@
-<%= form_for( :session, url: sessions_path ) do |f| %>
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+<% content_for :body_class, controller.controller_name %>
+
+<div class="page-header">
+  <h2>Sign In</h2>
+</div>
+
+
+<%= form_for :session, url: sessions_path do |f| %>
+  <div class="control-group">
+    <%= f.label :email, class: 'control-label' %>
+
+    <div class="controls">
+      <%= f.text_field :email, class: 'text_field' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+  <div class="control-group">
+    <%= f.label :password, class: 'control-label' %>
+
+    <div class="controls">
+      <%= f.password_field :password, class: 'password_field' %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit 'Sign in' %>
+  <div class="form-actions">
+    <%= f.submit 'Sign in', class: 'btn btn-primary' %>
   </div>
 <% end %>
