@@ -1,6 +1,10 @@
 <%= form_for @supplier do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
+  <div>
+    <%= f.hidden_field :latitude %><%= f.hidden_field :longitude %>
+  </div>
+
   <div class="control-group">
     <%= f.label :name, class: 'control-label' %>
 
