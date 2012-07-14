@@ -13,7 +13,12 @@
     <%= f.label :takes_place_on, class: 'control-label' %>
 
     <div class="controls">
-      <%= f.text_field :takes_place_on, class: 'text_field' %>
+      <%= f.text_field(
+        :takes_place_on,
+        class: 'text_field',
+        data: {'date-format' => 'dd/mm/yyyy'},
+        value: Time.now.strftime('%d/%m/%Y')
+      ) %>
     </div>
   </div>
 
