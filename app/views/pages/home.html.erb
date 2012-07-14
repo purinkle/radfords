@@ -42,40 +42,28 @@
       Events/News
     </h2>
 
-    <p>
-      We will be running a stall at the following events:
-    </p>
+    <% if @events.any? %>
+      <p>We will be running a stall at the following events:</p>
 
-    <ul id="events">
-      <% if @events %>
+      <ul id="events">
         <% @events.each_with_index do |event, index| %>
-          <li class="event">
-            <div class="img">
-              <%= image_tag("event_#{index}.jpg") %>
+          <li class="event"><div class="img">
+            <%= image_tag("event_#{index}.jpg") %> <span>.</span>
+          </div>
 
-              <span>
-                .
-              </span>
-            </div>
+          <span class="title"><%= event.name %></span>
+          <span><%= event.takes_place_on %></span>
 
-            <span class="title">
-              <%= event.name %>
-            </span>
-
-            <span>
-              <%= event.takes_place_on %>
-            </span>
-
-            <h3>
-              <%= event.location %>
-            </h3>
-          </li>
+          <h3><%= event.location %></h3></li>
         <% end %>
+      </ul>
       <% else %>
-        <li>
-          No upcoming events
-        </li>
+        <div class="contact-us">
+          <p>We haven't got any events lined up at the moment.</p>
+
+          <p><a href="mailto:radfords@hotmail.co.uk">Contact us</a> about
+          appearing at your next event.</p>
+        </div>
       <% end %>
-    </ul>
   </div>
 </div>
