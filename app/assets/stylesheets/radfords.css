@@ -540,3 +540,7 @@ textarea {
   height: 44px;
   width: 80px;
 }
+
+[class^="icon-"], [class*=" icon-"] {
+  background-image: url("/img/glyphicons-halflings.png");
+}
