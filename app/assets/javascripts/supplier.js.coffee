@@ -1,5 +1,5 @@
 $ ->
-  $('body.suppliers form.new_supplier').submit (event) ->
+  $('body.suppliers form.new_supplier, body.suppliers form.edit_supplier').submit (event) ->
     event.preventDefault()
     geocoder = new google.maps.Geocoder
     params =
