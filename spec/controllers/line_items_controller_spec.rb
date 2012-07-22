@@ -7,7 +7,7 @@ describe LineItemsController do
     let(:basket) { stub(id: basket_id, add_product: line_item) }
     let(:basket_id) { stub }
     let(:product) { stub(id: product_id) }
-    let(:product_id) { stub }
+    let(:product_id) { '1' }
 
     before(:each) do
       Basket.stub(find: basket)

@@ -107,7 +107,7 @@ describe OrdersController do
 
   context 'GET "show"' do
     let(:order) { stub }
-    let(:params) { {id: 1} }
+    let(:params) { {id: '1'} }
 
     before(:each) do
       OrderDecorator.stub(find: order)
@@ -165,8 +165,8 @@ describe OrdersController do
     end
 
     it 'creates a new order' do
-      Order.should_receive(:new).with(order)
-      post :create, order: order
+      Order.should_receive(:new).with({})
+      post :create, order: {}
     end
 
     it 'stores the order' do

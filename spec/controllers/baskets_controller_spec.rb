@@ -3,7 +3,7 @@ require 'spec_helper'
 describe BasketsController do
   context '#show' do
     let(:basket) { stub(line_items: line_items) }
-    let(:id) { stub }
+    let(:id) { '1' }
     let(:line_items) { stub }
 
     before(:each) do
