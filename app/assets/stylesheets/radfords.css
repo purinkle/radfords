@@ -144,7 +144,7 @@ div.suppliers li {
     background-position: 0 3px;
 }
 
-.suppliers img {
+div.suppliers img {
     border: 1px solid #bbb;
     float: left;
     margin-bottom: 18px;
