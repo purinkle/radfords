@@ -32,4 +32,8 @@ module Paths
   When 'I visit the order\'s page' do
     visit order_path(1)
   end
+
+  When 'I am on the new supplier page' do
+    visit new_supplier_path
+  end
 end

@@ -1,4 +1,7 @@
 class CreateSupplier < Spinach::FeatureSteps
+  include Paths
+  include Suppliers
+
   Given 'I am logged in' do
     email = 'user@example.com'
     password = 'password'
@@ -24,5 +27,9 @@ class CreateSupplier < Spinach::FeatureSteps
 
   Then 'an address field is displayed' do
     should have_selector('#supplier_address')
+  end
+
+  Then 'the outlet page is shown' do
+    should have_xpath '//title', text: 'Outlets'
   end
 end
