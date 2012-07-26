@@ -39,4 +39,6 @@ group :test do
   gem 'spinach-rails', '0.0.6.1'
   gem 'database_cleaner', '0.7.1'
   gem 'shoulda', '3.0.1'
+  gem 'vcr', '2.2.3'
+  gem 'fakeweb', '1.3.0'
 end

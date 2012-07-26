@@ -40,6 +40,10 @@ describe SuppliersController do
   end
 
   describe 'POST "create"' do
+    before(:each) do
+      Supplier.any_instance.stub :geocode
+    end
+
     describe 'failure' do
       before (:each) do
         test_sign_in( FactoryGirl.create(:user) )
@@ -99,6 +103,7 @@ describe SuppliersController do
 
   describe "GET 'edit'" do
     before (:each) do
+      Supplier.any_instance.stub :geocode
       @supplier = FactoryGirl.create(:supplier)
 
       test_sign_in( FactoryGirl.create(:user) )
@@ -119,6 +124,7 @@ describe SuppliersController do
 
   describe "authentication of all pages" do
     before (:each) do
+      Supplier.any_instance.stub :geocode
       @supplier = FactoryGirl.create(:supplier)
 
       @attr = {
@@ -158,6 +164,7 @@ describe SuppliersController do
 
   describe "PUT 'update'" do
     before (:each) do
+      Supplier.any_instance.stub :geocode
       @supplier = FactoryGirl.create(:supplier)
 
       test_sign_in( FactoryGirl.create(:user) )

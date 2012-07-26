@@ -1,0 +1,330 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://maps.googleapis.com/maps/api/geocode/json?address=1+Example+Street&language=en&sensor=false
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      accept-encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      accept:
+      - ! '*/*'
+      user-agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      content-type:
+      - application/json; charset=UTF-8
+      date:
+      - Thu, 26 Jul 2012 20:21:32 GMT
+      expires:
+      - Fri, 27 Jul 2012 20:21:32 GMT
+      cache-control:
+      - public, max-age=86400
+      server:
+      - mafe
+      x-xss-protection:
+      - 1; mode=block
+      x-frame-options:
+      - SAMEORIGIN
+      connection:
+      - close
+    body:
+      encoding: US-ASCII
+      string: ! "{\n   \"results\" : [\n      {\n         \"address_components\" :
+        [\n            {\n               \"long_name\" : \"Example St\",\n               \"short_name\"
+        : \"Example St\",\n               \"types\" : [ \"route\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Gap Civil\",\n               \"short_name\"
+        : \"Gap Civil\",\n               \"types\" : [ \"administrative_area_level_3\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Alleghany\",\n               \"short_name\" : \"Alleghany\",\n               \"types\"
+        : [ \"administrative_area_level_2\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"North Carolina\",\n               \"short_name\"
+        : \"NC\",\n               \"types\" : [ \"administrative_area_level_1\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"United
+        States\",\n               \"short_name\" : \"US\",\n               \"types\"
+        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"28675\",\n               \"short_name\" : \"28675\",\n               \"types\"
+        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
+        : \"Example St, Gap Civil, NC 28675, USA\",\n         \"geometry\" : {\n            \"location\"
+        : {\n               \"lat\" : 36.50089510,\n               \"lng\" : -81.07576370\n
+        \           },\n            \"location_type\" : \"GEOMETRIC_CENTER\",\n            \"viewport\"
+        : {\n               \"northeast\" : {\n                  \"lat\" : 36.50224408029150,\n
+        \                 \"lng\" : -81.07441471970849\n               },\n               \"southwest\"
+        : {\n                  \"lat\" : 36.49954611970850,\n                  \"lng\"
+        : -81.07711268029151\n               }\n            }\n         },\n         \"partial_match\"
+        : true,\n         \"types\" : [ \"route\" ]\n      },\n      {\n         \"address_components\"
+        : [\n            {\n               \"long_name\" : \"1\",\n               \"short_name\"
+        : \"1\",\n               \"types\" : [ \"street_number\" ]\n            },\n
+        \           {\n               \"long_name\" : \"W Sample Rd\",\n               \"short_name\"
+        : \"W Sample Rd\",\n               \"types\" : [ \"route\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Pompano Beach\",\n               \"short_name\"
+        : \"Pompano Beach\",\n               \"types\" : [ \"locality\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"Broward\",\n
+        \              \"short_name\" : \"Broward\",\n               \"types\" : [
+        \"administrative_area_level_2\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Florida\",\n               \"short_name\"
+        : \"FL\",\n               \"types\" : [ \"administrative_area_level_1\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"United
+        States\",\n               \"short_name\" : \"US\",\n               \"types\"
+        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"33064\",\n               \"short_name\" : \"33064\",\n               \"types\"
+        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
+        : \"1 W Sample Rd, Pompano Beach, FL 33064, USA\",\n         \"geometry\"
+        : {\n            \"location\" : {\n               \"lat\" : 26.27624420,\n
+        \              \"lng\" : -80.12217249999999\n            },\n            \"location_type\"
+        : \"ROOFTOP\",\n            \"viewport\" : {\n               \"northeast\"
+        : {\n                  \"lat\" : 26.27759318029150,\n                  \"lng\"
+        : -80.12082351970849\n               },\n               \"southwest\" : {\n
+        \                 \"lat\" : 26.27489521970849,\n                  \"lng\"
+        : -80.12352148029150\n               }\n            }\n         },\n         \"partial_match\"
+        : true,\n         \"types\" : [ \"street_address\" ]\n      },\n      {\n
+        \        \"address_components\" : [\n            {\n               \"long_name\"
+        : \"1\",\n               \"short_name\" : \"1\",\n               \"types\"
+        : [ \"street_number\" ]\n            },\n            {\n               \"long_name\"
+        : \"Sample Rd\",\n               \"short_name\" : \"Sample Rd\",\n               \"types\"
+        : [ \"route\" ]\n            },\n            {\n               \"long_name\"
+        : \"Hamilton\",\n               \"short_name\" : \"Hamilton\",\n               \"types\"
+        : [ \"locality\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Reily\",\n               \"short_name\" : \"Reily\",\n               \"types\"
+        : [ \"administrative_area_level_3\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Butler\",\n               \"short_name\"
+        : \"Butler\",\n               \"types\" : [ \"administrative_area_level_2\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Ohio\",\n               \"short_name\" : \"OH\",\n               \"types\"
+        : [ \"administrative_area_level_1\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"United States\",\n               \"short_name\"
+        : \"US\",\n               \"types\" : [ \"country\", \"political\" ]\n            },\n
+        \           {\n               \"long_name\" : \"45013\",\n               \"short_name\"
+        : \"45013\",\n               \"types\" : [ \"postal_code\" ]\n            }\n
+        \        ],\n         \"formatted_address\" : \"1 Sample Rd, Hamilton, OH
+        45013, USA\",\n         \"geometry\" : {\n            \"bounds\" : {\n               \"northeast\"
+        : {\n                  \"lat\" : 39.39144760,\n                  \"lng\" :
+        -84.76119949999999\n               },\n               \"southwest\" : {\n
+        \                 \"lat\" : 39.39144760,\n                  \"lng\" : -84.76120050000002\n
+        \              }\n            },\n            \"location\" : {\n               \"lat\"
+        : 39.39144760,\n               \"lng\" : -84.76120050000002\n            },\n
+        \           \"location_type\" : \"RANGE_INTERPOLATED\",\n            \"viewport\"
+        : {\n               \"northeast\" : {\n                  \"lat\" : 39.39279658029150,\n
+        \                 \"lng\" : -84.75985101970851\n               },\n               \"southwest\"
+        : {\n                  \"lat\" : 39.39009861970850,\n                  \"lng\"
+        : -84.76254898029151\n               }\n            }\n         },\n         \"partial_match\"
+        : true,\n         \"types\" : [ \"street_address\" ]\n      },\n      {\n
+        \        \"address_components\" : [\n            {\n               \"long_name\"
+        : \"1\",\n               \"short_name\" : \"1\",\n               \"types\"
+        : [ \"street_number\" ]\n            },\n            {\n               \"long_name\"
+        : \"Sample Bridge Rd\",\n               \"short_name\" : \"Sample Bridge Rd\",\n
+        \              \"types\" : [ \"route\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Silver Spring\",\n               \"short_name\"
+        : \"Silver Spring\",\n               \"types\" : [ \"administrative_area_level_3\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Cumberland\",\n               \"short_name\" : \"Cumberland\",\n               \"types\"
+        : [ \"administrative_area_level_2\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Pennsylvania\",\n               \"short_name\"
+        : \"PA\",\n               \"types\" : [ \"administrative_area_level_1\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"United
+        States\",\n               \"short_name\" : \"US\",\n               \"types\"
+        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"17050\",\n               \"short_name\" : \"17050\",\n               \"types\"
+        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
+        : \"1 Sample Bridge Rd, Silver Spring, PA 17050, USA\",\n         \"geometry\"
+        : {\n            \"bounds\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 40.24649110,\n                  \"lng\" : -77.01914210\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 40.24649090,\n
+        \                 \"lng\" : -77.01914309999999\n               }\n            },\n
+        \           \"location\" : {\n               \"lat\" : 40.24649090,\n               \"lng\"
+        : -77.01914309999999\n            },\n            \"location_type\" : \"RANGE_INTERPOLATED\",\n
+        \           \"viewport\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 40.24783998029150,\n                  \"lng\" : -77.01779361970848\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 40.24514201970850,\n
+        \                 \"lng\" : -77.02049158029151\n               }\n            }\n
+        \        },\n         \"partial_match\" : true,\n         \"types\" : [ \"street_address\"
+        ]\n      },\n      {\n         \"address_components\" : [\n            {\n
+        \              \"long_name\" : \"1\",\n               \"short_name\" : \"1\",\n
+        \              \"types\" : [ \"street_number\" ]\n            },\n            {\n
+        \              \"long_name\" : \"E Sample Rd\",\n               \"short_name\"
+        : \"E Sample Rd\",\n               \"types\" : [ \"route\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Bloomington\",\n               \"short_name\"
+        : \"Bloomington\",\n               \"types\" : [ \"locality\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"Washington\",\n
+        \              \"short_name\" : \"Washington\",\n               \"types\"
+        : [ \"administrative_area_level_3\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Monroe\",\n               \"short_name\"
+        : \"Monroe\",\n               \"types\" : [ \"administrative_area_level_2\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Indiana\",\n               \"short_name\" : \"IN\",\n               \"types\"
+        : [ \"administrative_area_level_1\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"United States\",\n               \"short_name\"
+        : \"US\",\n               \"types\" : [ \"country\", \"political\" ]\n            },\n
+        \           {\n               \"long_name\" : \"47408\",\n               \"short_name\"
+        : \"47408\",\n               \"types\" : [ \"postal_code\" ]\n            }\n
+        \        ],\n         \"formatted_address\" : \"1 E Sample Rd, Bloomington,
+        IN 47408, USA\",\n         \"geometry\" : {\n            \"bounds\" : {\n
+        \              \"northeast\" : {\n                  \"lat\" : 39.26597470,\n
+        \                 \"lng\" : -86.52173650\n               },\n               \"southwest\"
+        : {\n                  \"lat\" : 39.26597390,\n                  \"lng\" :
+        -86.52173650\n               }\n            },\n            \"location\" :
+        {\n               \"lat\" : 39.26597470,\n               \"lng\" : -86.52173650\n
+        \           },\n            \"location_type\" : \"RANGE_INTERPOLATED\",\n
+        \           \"viewport\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 39.26732328029150,\n                  \"lng\" : -86.52038751970851\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 39.26462531970851,\n
+        \                 \"lng\" : -86.52308548029151\n               }\n            }\n
+        \        },\n         \"partial_match\" : true,\n         \"types\" : [ \"street_address\"
+        ]\n      },\n      {\n         \"address_components\" : [\n            {\n
+        \              \"long_name\" : \"1\",\n               \"short_name\" : \"1\",\n
+        \              \"types\" : [ \"street_number\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Sample Rd\",\n               \"short_name\"
+        : \"Sample Rd\",\n               \"types\" : [ \"route\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Hartselle\",\n               \"short_name\"
+        : \"Hartselle\",\n               \"types\" : [ \"locality\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"Morgan\",\n
+        \              \"short_name\" : \"Morgan\",\n               \"types\" : [
+        \"administrative_area_level_2\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Alabama\",\n               \"short_name\"
+        : \"AL\",\n               \"types\" : [ \"administrative_area_level_1\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"United
+        States\",\n               \"short_name\" : \"US\",\n               \"types\"
+        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"35640\",\n               \"short_name\" : \"35640\",\n               \"types\"
+        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
+        : \"1 Sample Rd, Hartselle, AL 35640, USA\",\n         \"geometry\" : {\n
+        \           \"bounds\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 34.43251560,\n                  \"lng\" : -86.81930260\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 34.43251480,\n
+        \                 \"lng\" : -86.81930269999999\n               }\n            },\n
+        \           \"location\" : {\n               \"lat\" : 34.43251480,\n               \"lng\"
+        : -86.81930269999999\n            },\n            \"location_type\" : \"RANGE_INTERPOLATED\",\n
+        \           \"viewport\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 34.43386418029150,\n                  \"lng\" : -86.81795366970849\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 34.43116621970850,\n
+        \                 \"lng\" : -86.82065163029149\n               }\n            }\n
+        \        },\n         \"partial_match\" : true,\n         \"types\" : [ \"street_address\"
+        ]\n      },\n      {\n         \"address_components\" : [\n            {\n
+        \              \"long_name\" : \"1\",\n               \"short_name\" : \"1\",\n
+        \              \"types\" : [ \"street_number\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Sample Rd\",\n               \"short_name\"
+        : \"Sample Rd\",\n               \"types\" : [ \"route\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Rutherford\",\n               \"short_name\"
+        : \"Rutherford\",\n               \"types\" : [ \"locality\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"Gibson\",\n
+        \              \"short_name\" : \"Gibson\",\n               \"types\" : [
+        \"administrative_area_level_2\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Tennessee\",\n               \"short_name\"
+        : \"TN\",\n               \"types\" : [ \"administrative_area_level_1\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"United
+        States\",\n               \"short_name\" : \"US\",\n               \"types\"
+        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"38369\",\n               \"short_name\" : \"38369\",\n               \"types\"
+        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
+        : \"1 Sample Rd, Rutherford, TN 38369, USA\",\n         \"geometry\" : {\n
+        \           \"bounds\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 36.11485770,\n                  \"lng\" : -88.87816810\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 36.11485770,\n
+        \                 \"lng\" : -88.87816909999999\n               }\n            },\n
+        \           \"location\" : {\n               \"lat\" : 36.11485770,\n               \"lng\"
+        : -88.87816909999999\n            },\n            \"location_type\" : \"RANGE_INTERPOLATED\",\n
+        \           \"viewport\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 36.11620668029150,\n                  \"lng\" : -88.87681961970848\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 36.11350871970851,\n
+        \                 \"lng\" : -88.87951758029149\n               }\n            }\n
+        \        },\n         \"partial_match\" : true,\n         \"types\" : [ \"street_address\"
+        ]\n      },\n      {\n         \"address_components\" : [\n            {\n
+        \              \"long_name\" : \"1\",\n               \"short_name\" : \"1\",\n
+        \              \"types\" : [ \"street_number\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Sample Rd\",\n               \"short_name\"
+        : \"Sample Rd\",\n               \"types\" : [ \"route\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Belden\",\n               \"short_name\"
+        : \"Belden\",\n               \"types\" : [ \"sublocality\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"Pontotoc\",\n
+        \              \"short_name\" : \"Pontotoc\",\n               \"types\" :
+        [ \"administrative_area_level_2\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Mississippi\",\n               \"short_name\"
+        : \"MS\",\n               \"types\" : [ \"administrative_area_level_1\", \"political\"
+        ]\n            },\n            {\n               \"long_name\" : \"United
+        States\",\n               \"short_name\" : \"US\",\n               \"types\"
+        : [ \"country\", \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"38826\",\n               \"short_name\" : \"38826\",\n               \"types\"
+        : [ \"postal_code\" ]\n            }\n         ],\n         \"formatted_address\"
+        : \"1 Sample Rd, Belden, MS 38826, USA\",\n         \"geometry\" : {\n            \"bounds\"
+        : {\n               \"northeast\" : {\n                  \"lat\" : 34.29255520,\n
+        \                 \"lng\" : -88.90939539999999\n               },\n               \"southwest\"
+        : {\n                  \"lat\" : 34.29255460,\n                  \"lng\" :
+        -88.90939619999999\n               }\n            },\n            \"location\"
+        : {\n               \"lat\" : 34.29255520,\n               \"lng\" : -88.90939619999999\n
+        \           },\n            \"location_type\" : \"RANGE_INTERPOLATED\",\n
+        \           \"viewport\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 34.29390388029150,\n                  \"lng\" : -88.90804681970849\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 34.29120591970850,\n
+        \                 \"lng\" : -88.91074478029151\n               }\n            }\n
+        \        },\n         \"partial_match\" : true,\n         \"types\" : [ \"street_address\"
+        ]\n      },\n      {\n         \"address_components\" : [\n            {\n
+        \              \"long_name\" : \"1\",\n               \"short_name\" : \"1\",\n
+        \              \"types\" : [ \"street_number\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Sample Rd\",\n               \"short_name\"
+        : \"Sample Rd\",\n               \"types\" : [ \"route\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Roland\",\n               \"short_name\"
+        : \"Roland\",\n               \"types\" : [ \"locality\", \"political\" ]\n
+        \           },\n            {\n               \"long_name\" : \"Big Rock\",\n
+        \              \"short_name\" : \"Big Rock\",\n               \"types\" :
+        [ \"administrative_area_level_3\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"Pulaski\",\n               \"short_name\"
+        : \"Pulaski\",\n               \"types\" : [ \"administrative_area_level_2\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Arkansas\",\n               \"short_name\" : \"AR\",\n               \"types\"
+        : [ \"administrative_area_level_1\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"United States\",\n               \"short_name\"
+        : \"US\",\n               \"types\" : [ \"country\", \"political\" ]\n            },\n
+        \           {\n               \"long_name\" : \"72135\",\n               \"short_name\"
+        : \"72135\",\n               \"types\" : [ \"postal_code\" ]\n            }\n
+        \        ],\n         \"formatted_address\" : \"1 Sample Rd, Roland, AR 72135,
+        USA\",\n         \"geometry\" : {\n            \"bounds\" : {\n               \"northeast\"
+        : {\n                  \"lat\" : 34.89799940,\n                  \"lng\" :
+        -92.65321999999999\n               },\n               \"southwest\" : {\n
+        \                 \"lat\" : 34.89799870,\n                  \"lng\" : -92.65322069999999\n
+        \              }\n            },\n            \"location\" : {\n               \"lat\"
+        : 34.89799870,\n               \"lng\" : -92.65321999999999\n            },\n
+        \           \"location_type\" : \"RANGE_INTERPOLATED\",\n            \"viewport\"
+        : {\n               \"northeast\" : {\n                  \"lat\" : 34.89934803029149,\n
+        \                 \"lng\" : -92.65187136970849\n               },\n               \"southwest\"
+        : {\n                  \"lat\" : 34.89665006970849,\n                  \"lng\"
+        : -92.65456933029149\n               }\n            }\n         },\n         \"partial_match\"
+        : true,\n         \"types\" : [ \"street_address\" ]\n      },\n      {\n
+        \        \"address_components\" : [\n            {\n               \"long_name\"
+        : \"1\",\n               \"short_name\" : \"1\",\n               \"types\"
+        : [ \"street_number\" ]\n            },\n            {\n               \"long_name\"
+        : \"E Sample Rd\",\n               \"short_name\" : \"E Sample Rd\",\n               \"types\"
+        : [ \"route\" ]\n            },\n            {\n               \"long_name\"
+        : \"Pompano Beach\",\n               \"short_name\" : \"Pompano Beach\",\n
+        \              \"types\" : [ \"locality\", \"political\" ]\n            },\n
+        \           {\n               \"long_name\" : \"Broward\",\n               \"short_name\"
+        : \"Broward\",\n               \"types\" : [ \"administrative_area_level_2\",
+        \"political\" ]\n            },\n            {\n               \"long_name\"
+        : \"Florida\",\n               \"short_name\" : \"FL\",\n               \"types\"
+        : [ \"administrative_area_level_1\", \"political\" ]\n            },\n            {\n
+        \              \"long_name\" : \"United States\",\n               \"short_name\"
+        : \"US\",\n               \"types\" : [ \"country\", \"political\" ]\n            },\n
+        \           {\n               \"long_name\" : \"33064\",\n               \"short_name\"
+        : \"33064\",\n               \"types\" : [ \"postal_code\" ]\n            }\n
+        \        ],\n         \"formatted_address\" : \"1 E Sample Rd, Pompano Beach,
+        FL 33064, USA\",\n         \"geometry\" : {\n            \"bounds\" : {\n
+        \              \"northeast\" : {\n                  \"lat\" : 26.27512170,\n
+        \                 \"lng\" : -80.12256429999999\n               },\n               \"southwest\"
+        : {\n                  \"lat\" : 26.27512080,\n                  \"lng\" :
+        -80.12256429999999\n               }\n            },\n            \"location\"
+        : {\n               \"lat\" : 26.27512170,\n               \"lng\" : -80.12256429999999\n
+        \           },\n            \"location_type\" : \"RANGE_INTERPOLATED\",\n
+        \           \"viewport\" : {\n               \"northeast\" : {\n                  \"lat\"
+        : 26.27647023029150,\n                  \"lng\" : -80.12121531970848\n               },\n
+        \              \"southwest\" : {\n                  \"lat\" : 26.27377226970850,\n
+        \                 \"lng\" : -80.12391328029150\n               }\n            }\n
+        \        },\n         \"partial_match\" : true,\n         \"types\" : [ \"street_address\"
+        ]\n      }\n   ],\n   \"status\" : \"OK\"\n}\n"
+    http_version: '1.1'
+  recorded_at: Thu, 26 Jul 2012 20:21:32 GMT
+recorded_with: VCR 2.2.3

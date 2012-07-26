@@ -16,6 +16,7 @@ require 'spec_helper'
 describe Supplier do
   before(:each) do
     @attr = { address: '98 St Denys Road, Portslade BN41 4DS', name: 'Paige Pritchard', telephone_number: '070 8158 4942', website: 'http://funerallife.com/' }
+    Supplier.any_instance.stub :geocode
   end
 
   it 'should create a new instance given valid attributes' do

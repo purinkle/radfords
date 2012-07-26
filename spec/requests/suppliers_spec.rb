@@ -32,6 +32,10 @@ describe 'Suppliers' do
     end
 
     describe 'success' do
+      before(:each) do
+        Supplier.any_instance.stub :geocode
+      end
+
       it 'should make a supplier' do
         lambda do
           visit new_supplier_path

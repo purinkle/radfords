@@ -15,16 +15,21 @@ class IndexSuppliers < Spinach::FeatureSteps
   end
 
   And 'some suppliers have been created' do
-    Supplier.create({
-      name: 'Foo',
-      address: '1 Example Street',
-      telephone_number: '01234 567890'
-    })
-    Supplier.create({
-      name: 'Bar',
-      address: '1 Example Street',
-      telephone_number: '01234 567890'
-    })
+    VCR.use_cassette 'supplier/foo' do
+      Supplier.create({
+        name: 'Foo',
+        address: '1 Example Street',
+        telephone_number: '01234 567890'
+      })
+    end
+
+    VCR.use_cassette 'supplier/bar' do
+      Supplier.create({
+        name: 'Bar',
+        address: '1 Example Street',
+        telephone_number: '01234 567890'
+      })
+    end
   end
 
   When 'I click the "Where to buy" link' do
