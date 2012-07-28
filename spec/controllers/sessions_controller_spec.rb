@@ -73,5 +73,10 @@ describe SessionsController do
 
       response.should redirect_to(root_path)
     end
+
+    it 'sets the success flash' do
+      delete :destroy
+      flash[:success].should == 'You successfully signed out.'
+    end
   end
 end
