@@ -36,4 +36,8 @@ module Paths
   When 'I am on the new supplier page' do
     visit new_supplier_path
   end
+
+  When 'I am on the suppliers page' do
+    visit outlets_path
+  end
 end

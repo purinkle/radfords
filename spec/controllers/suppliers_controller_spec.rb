@@ -250,7 +250,7 @@ describe SuppliersController do
 
       it 'sets the success flash' do
         delete :destroy, id: id
-        flash[:success].should == 'You successfully deleted the product.'
+        flash[:success].should == 'The supplier was destroyed successfully.'
       end
 
       it 'redirects to the outlets page' do

@@ -4,8 +4,9 @@ class SuppliersController < ApplicationController
   def destroy
     @supplier = Supplier.find(params[:id])
     @supplier.destroy
-    flash[:success] = 'You successfully deleted the product.'
-    redirect_to(outlets_path)
+    redirect_to outlets_path, flash: {
+      success: 'The supplier was destroyed successfully.'
+    }
   end
 
   def new
