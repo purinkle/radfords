@@ -219,6 +219,13 @@ describe SuppliersController do
 
         response.should redirect_to( outlets_path )
       end
+
+      it 'sets the success flash' do
+        supplier = stub update_attributes: true
+        Supplier.stub find: supplier
+        put :update, :id => '1'
+        flash[:success].should == 'The supplier was updated successfully.'
+      end
     end
   end
 

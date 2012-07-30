@@ -40,4 +40,8 @@ module Paths
   When 'I am on the suppliers page' do
     visit outlets_path
   end
+
+  When 'I am editing a supplier' do
+    visit edit_supplier_path 1
+  end
 end

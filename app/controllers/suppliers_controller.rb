@@ -40,7 +40,9 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find(params[:id])
 
     if @supplier.update_attributes(params[:supplier])
-      redirect_to outlets_path
+      redirect_to outlets_path, flash: {
+        success: 'The supplier was updated successfully.'
+      }
     else
       @title = 'Edit Supplier'
 
