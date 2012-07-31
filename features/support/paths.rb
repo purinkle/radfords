@@ -44,4 +44,8 @@ module Paths
   When 'I am editing a supplier' do
     visit edit_supplier_path 1
   end
+
+  When 'I am creating a supplier' do
+    visit new_supplier_path
+  end
 end

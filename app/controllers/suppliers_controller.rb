@@ -18,7 +18,9 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.new(params[:supplier])
 
     if @supplier.save
-      redirect_to outlets_path
+      redirect_to outlets_path, flash: {
+        success: 'The supplier was created successfully.'
+      }
     else
       @title = 'New Supplier'
 

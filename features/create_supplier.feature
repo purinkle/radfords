@@ -14,3 +14,10 @@ Feature: Create supplier
     And I am on the new supplier page
     When I click the "Cancel" link
     Then the outlet page is shown
+
+  Scenario: Create supplier successfully
+    Given I am an administrator
+    And I am creating a supplier
+    When I fill in the form correctly
+    And I click the "Create Supplier" button
+    Then a success flash is shown

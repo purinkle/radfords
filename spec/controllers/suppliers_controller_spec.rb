@@ -98,6 +98,13 @@ describe SuppliersController do
 
         response.should redirect_to( outlets_path )
       end
+
+      it 'sets the success flash' do
+        supplier = stub save: true
+        Supplier.stub new: supplier
+        put :create, :supplier => {}
+        flash[:success].should == 'The supplier was created successfully.'
+      end
     end
   end
 

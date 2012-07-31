@@ -1,4 +1,5 @@
 class CreateSupplier < Spinach::FeatureSteps
+  include Actors
   include Paths
   include Suppliers
 
@@ -31,5 +32,12 @@ class CreateSupplier < Spinach::FeatureSteps
 
   Then 'the outlet page is shown' do
     should have_xpath '//title', text: 'Outlets'
+  end
+
+  Then 'a success flash is shown' do
+    should have_selector(
+      'div.alert-success',
+      text: 'The supplier was created successfully.'
+    )
   end
 end
