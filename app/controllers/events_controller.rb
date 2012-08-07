@@ -51,6 +51,8 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
+  def delete; end
+
   private
     def authenticate
       deny_access unless signed_in?

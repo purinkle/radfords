@@ -48,4 +48,8 @@ module Paths
   When 'I am creating a supplier' do
     visit new_supplier_path
   end
+
+  When 'I am deleting an event' do
+    visit delete_event_path 1
+  end
 end

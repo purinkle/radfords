@@ -1,6 +1,8 @@
 Radfords::Application.routes.draw do
   resources :baskets, only: [ :destroy, :show ]
-  resources :events
+  resources :events do
+    member { get :delete }
+  end
   resources :line_items, only: :create
   resources :orders, only: [:create, :index, :new, :show]
   resources :sessions, :only => [ :new, :create, :destroy ]
