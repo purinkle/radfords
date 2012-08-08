@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe EventsController do
-  render_views
-
   describe 'GET "show"' do
     before (:each) do
       @event = FactoryGirl.create(:event)
@@ -21,30 +19,6 @@ describe EventsController do
 
       assigns(:event).should == @event
     end
-
-    it 'should have the right title' do
-      get :show, :id => @event
-
-      response.should have_selector( 'title', :content => @event.name )
-    end
-
-    it 'should include the event\'s name' do
-      get :show, :id => @event
-
-      response.should have_selector( 'dd', :content => @event.name )
-    end
-
-    it 'should include the event\'s date' do
-      get :show, :id => @event
-
-      response.should have_selector( 'dd', :content => @event.takes_place_on )
-    end
-
-    it 'should include the event\'s location' do
-      get :show, :id => @event
-
-      response.should have_selector( 'dd', :content => @event.location )
-    end
   end
 
   describe 'GET "new"' do
@@ -56,30 +30,6 @@ describe EventsController do
       get 'new'
 
       response.should be_success
-    end
-
-    it 'should have the right title' do
-      get 'new'
-
-      response.should have_selector('title', :content => 'New Event')
-    end
-
-    it 'should have a name field' do
-      get :new
-
-      response.should have_selector("input[name='event[name]'][type='text']")
-    end
-
-    it 'should have a takes_place_on field' do
-      get :new
-
-      response.should have_selector("input[name='event[takes_place_on]'][type='text']")
-    end
-
-    it 'should have a location field' do
-      get :new
-
-      response.should have_selector('input[name="event[location]"][type="text"]')
     end
   end
 
@@ -99,12 +49,6 @@ describe EventsController do
         lambda do
           post :create, :event => @attr
         end.should_not change( Event, :count )
-      end
-
-      it 'should have the right title' do
-        post :create, :event => @attr
-
-        response.should have_selector( 'title', :content => 'New Event' )
       end
 
       it 'should render the new page' do
@@ -165,12 +109,6 @@ describe EventsController do
 
       response.should be_success
     end
-
-    it 'should have the right title' do
-      get 'index'
-
-      response.should have_selector( 'title', :content => 'Listing events' )
-    end
   end
 
   describe "GET 'edit'" do
@@ -184,12 +122,6 @@ describe EventsController do
       get :edit, :id => @event
 
       response.should be_success
-    end
-
-    it "should have the right title" do
-      get :edit, :id => @event
-
-      response.should have_selector( :title, :content => "Edit event" )
     end
   end
 
@@ -260,12 +192,6 @@ describe EventsController do
 
         response.should render_template("edit")
       end
-
-      it "should have the right title" do
-        put :update, :id => @event, :event => @attr
-
-        response.should have_selector( :title, :content => "Edit event" )
-      end
     end
 
     describe "success" do
@@ -295,6 +221,26 @@ describe EventsController do
 
         flash[:success].should =~ /updated/
       end
+    end
+  end
+
+  describe 'GET "delete"' do
+    let(:event) { stub }
+    let(:id) { '1' }
+
+    before(:each) do
+      controller.stub :authenticate
+      Event.stub find: event
+    end
+
+    it 'tries to find the event' do
+      Event.should_receive(:find).with id
+      get :delete, id: id
+    end
+
+    it 'stores the event' do
+      get :delete, id: id
+      assigns(:event).should == event
     end
   end
 end

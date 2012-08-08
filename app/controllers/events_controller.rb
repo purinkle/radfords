@@ -51,7 +51,9 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  def delete; end
+  def delete
+    @event = Event.find params[:id]
+  end
 
   private
     def authenticate

@@ -1,0 +1,14 @@
+<% content_for :title, 'Delete Event' %>
+
+<div class="page-header">
+  <h2>Delete Event</h2>
+</div>
+
+<%= form_for @event do |f| %>
+  <p>Are you sure you want to delete this event?</p>
+
+  <div class="form-actions">
+    <%= f.submit 'Delete Event', class: 'btn btn-primary' %>
+    <%= link_to 'Cancel', events_path, class: 'btn' %>
+  </div>
+<% end %>

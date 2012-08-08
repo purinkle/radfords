@@ -7,3 +7,11 @@ Feature: Delete event
     Given I am a customer
     When I am deleting an event
     Then the sign in page is shown
+
+  Scenario: Display the confirmation page
+    Given I am an administrator
+    And some events have been created
+    When I am deleting an event
+    Then the confirmation page is shown
+    And there is a "Delete Event" button
+    And there is a "Cancel" link
