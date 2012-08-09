@@ -18,4 +18,12 @@ class DeleteEvent < Spinach::FeatureSteps
   Then 'there is a "Cancel" link' do
     should have_selector '.btn', text: 'Cancel'
   end
+
+  Then 'the events index is shown' do
+    should have_selector 'title', text: 'Listing events'
+  end
+
+  Then 'there is an invalid event flash' do
+    should have_selector 'div', text: 'The event you selected doesn\'t exist.'
+  end
 end

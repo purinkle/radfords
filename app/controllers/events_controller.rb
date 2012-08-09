@@ -52,7 +52,13 @@ class EventsController < ApplicationController
   end
 
   def delete
-    @event = Event.find params[:id]
+    begin
+      @event = Event.find params[:id]
+    rescue ActiveRecord::RecordNotFound
+      redirect_to events_path, flash: {
+        error: 'The event you selected doesn\'t exist.'
+      }
+    end
   end
 
   private

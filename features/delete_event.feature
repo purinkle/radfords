@@ -15,3 +15,10 @@ Feature: Delete event
     Then the confirmation page is shown
     And there is a "Delete Event" button
     And there is a "Cancel" link
+
+  Scenario: Redirect to the events index
+    Given I am an administrator
+    And some events have been created
+    When I am deleting an invalid event
+    Then the events index is shown
+    And there is an invalid event flash

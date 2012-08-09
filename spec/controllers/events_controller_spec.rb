@@ -242,5 +242,21 @@ describe EventsController do
       get :delete, id: id
       assigns(:event).should == event
     end
+
+    context 'when an event can\'t be found' do
+      before(:each) do
+        Event.stub(:find).and_raise ActiveRecord::RecordNotFound
+      end
+
+      it 'redirects to the index' do
+        get :delete, id: id
+        should redirect_to events_path
+      end
+
+      it 'sets the error flash' do
+        get :delete, id: id
+        flash[:error].should == 'The event you selected doesn\'t exist.'
+      end
+    end
   end
 end
