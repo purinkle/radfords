@@ -22,3 +22,12 @@ Feature: Delete event
     When I am deleting an invalid event
     Then the events index is shown
     And there is an invalid event flash
+
+  Scenario: Succesfully delete event
+    Given I am an administrator
+    And some events have been created
+    And I am deleting an event
+    When I click the "Delete Event" button
+    Then the events index is shown
+    And there is a successful deletion flash
+    And the event is not listed

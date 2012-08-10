@@ -26,4 +26,12 @@ class DeleteEvent < Spinach::FeatureSteps
   Then 'there is an invalid event flash' do
     should have_selector 'div', text: 'The event you selected doesn\'t exist.'
   end
+
+  Then 'there is a successful deletion flash' do
+    should have_selector 'div', text: 'The event was deleted successfully.'
+  end
+
+  Then 'the event is not listed' do
+    should_not have_selector 'td'
+  end
 end

@@ -259,4 +259,17 @@ describe EventsController do
       end
     end
   end
+
+  describe 'DELETE "destroy"' do
+    let(:id) { '1' }
+
+    before(:each) do
+      Event.stub(:find).with(id).and_return stub destroy: nil
+    end
+
+    it 'sets the success flash' do
+      delete :destroy, id: id
+      flash[:success].should == 'The event was deleted successfully.'
+    end
+  end
 end
