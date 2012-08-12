@@ -31,3 +31,10 @@ Feature: Delete event
     Then the events index is shown
     And there is a successful deletion flash
     And the event is not listed
+
+  Scenario: Cancel event deletion
+    Given I am an administrator
+    And some events have been created
+    And I am deleting an event
+    When I click the "Cancel" link
+    Then the events index is shown

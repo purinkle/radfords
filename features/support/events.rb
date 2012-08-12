@@ -8,4 +8,8 @@ module Events
   When 'I click the "Delete Event" button' do
     click_button 'Delete Event'
   end
+
+  When 'I click the "Cancel" link' do
+    click_link 'Cancel'
+  end
 end
