@@ -1,4 +1,8 @@
 class IndexEvents < Spinach::FeatureSteps
+  include Actors
+  include Events
+  include Paths
+
   Given 'I am logged in' do
     email = 'user@example.com'
     password = 'password'
@@ -71,5 +75,13 @@ class IndexEvents < Spinach::FeatureSteps
         text: 'Next'
       }
     )
+  end
+
+  Then 'there is a successful deletion flash' do
+    should have_selector 'div', text: 'The event was deleted successfully.'
+  end
+
+  Then 'the event is not listed' do
+    should_not have_selector 'tbody tr'
   end
 end

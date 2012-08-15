@@ -56,4 +56,8 @@ module Paths
   When 'I am deleting an invalid event' do
     visit delete_event_path 'foo'
   end
+
+  When 'I am looking at all of the events' do
+    visit events_path
+  end
 end
