@@ -9,4 +9,8 @@ class DestroySupplier < Spinach::FeatureSteps
       text: 'The supplier was destroyed successfully.'
     )
   end
+
+  Then 'the sign in page is shown' do
+    should have_selector 'title', text: 'Sign In'
+  end
 end

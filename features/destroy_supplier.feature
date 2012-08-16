@@ -9,3 +9,8 @@ Feature: Destroy supplier
     And I am on the suppliers page
     When I click a supplier's destroy button
     Then a success flash is shown
+
+  Scenario: Redirect to the sign in screen
+    Given I am a customer
+    When I am deleting a supplier
+    Then the sign in page is shown

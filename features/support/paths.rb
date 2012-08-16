@@ -49,6 +49,10 @@ module Paths
     visit new_supplier_path
   end
 
+  Given 'I am deleting a supplier' do
+    visit delete_supplier_path 1
+  end
+
   When 'I am deleting an event' do
     visit delete_event_path 1
   end

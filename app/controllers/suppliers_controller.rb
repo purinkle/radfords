@@ -52,6 +52,8 @@ class SuppliersController < ApplicationController
     end
   end
 
+  def delete; end
+
   private
     def authenticate
       deny_access unless signed_in?
