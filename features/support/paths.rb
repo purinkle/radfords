@@ -5,6 +5,10 @@ module Paths
     visit new_product_path
   end
 
+  When 'I am looking at the products list' do
+    visit products_path
+  end
+
   When 'I visit the edit product page' do
     visit edit_product_path(1)
   end

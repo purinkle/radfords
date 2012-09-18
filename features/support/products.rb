@@ -58,4 +58,6 @@ module Products
     click_link('Products')
     add_to_basket(2)
   end
+
+  Given 'no products have been created' do; end
 end

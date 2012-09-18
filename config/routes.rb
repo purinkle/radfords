@@ -8,6 +8,7 @@ Radfords::Application.routes.draw do
   end
   resources :line_items, only: :create
   resources :orders, only: [:create, :index, :new, :show]
+  resources :products, only: :index
   resources :sessions, :only => [ :new, :create, :destroy ]
   match '/products/check_title' => 'products#check_title'
   resources :suppliers do
@@ -18,7 +19,7 @@ Radfords::Application.routes.draw do
 
   match '/outlets',  :to => 'pages#outlets'
   match '/contact',  :to => 'pages#contact'
-  match '/products', :to => 'pages#products'
+  match '/shop', :to => 'pages#products'
   match '/signin',   :to => 'sessions#new'
   match '/signout',  :to => 'sessions#destroy'
 

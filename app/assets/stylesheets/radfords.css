@@ -25,7 +25,7 @@ h1 {
     text-indent: -9999em;
 }
 
-.nav {
+.header .nav {
     background: #5A006D url(/assets/jar_bottom.png) no-repeat;
     text-align: right;
 }
@@ -243,29 +243,6 @@ div.suppliers img {
 
 #map_canvas img {
   max-width: none;
-}
-
-.products p {
-}
-
-.products img {
-  height: 214px;
-}
-
-.products h3 a {
-  color: #551A8B;
-}
-
-.products ul {
-  font-size: 0;
-}
-
-.products .image img {
-  border: 1px solid #BBB;
-  height: 250px;
-  margin-bottom: 18px;
-  padding: 9px;
-  width: 450px;
 }
 
 /* CONTACT */

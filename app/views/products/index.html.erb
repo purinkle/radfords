@@ -1,17 +1,13 @@
-<% content_for(:body_class, 'index-products') %>
+<% content_for(:title, 'Products') %>
 
-<div class="section suppliers products">
-  <% unless @products.blank? %>
-    <ul>
-      <%= render(@products) %>
-    </ul>
-  <% end %>
-
-  <% if signed_in? %>
-    <p class="form-actions"><%= link_to(
-      'New Product',
-      new_product_path,
-      class: 'btn btn-primary'
-    ) %></p>
-  <% end %>
+<div class="page-header">
+  <h2>Products</h2>
 </div>
+
+<div class="no-content">
+  <p>There are currently no products.</p>
+
+  <p>Click the "New Product" button below, to create a product.</p>
+</div>
+
+<%= link_to('New Product', nil, class: %w{btn btn-primary}) %>

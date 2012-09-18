@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authenticate, except: [:index, :show]
+  before_filter :authenticate, except: :show
 
   def create
     @product = Product.new(params[:product])
@@ -25,10 +25,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
   end
 
-  def index
-    @title = 'Products'
-    @products = ProductDecorator.decorate(Product.all)
-  end
+  def index; end
 
   def new
     @title = 'New Product'
