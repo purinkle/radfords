@@ -1,5 +1,6 @@
 class ListProducts < Spinach::FeatureSteps
   include Actors
+  include Links
   include Paths
   include Products
 
@@ -13,6 +14,11 @@ class ListProducts < Spinach::FeatureSteps
 
   Then 'I am redirected to the "Sign In" page' do
     should have_selector('title', text: 'Sign In')
+  end
+
+  Then 'the "New Product" page is shown' do
+    save_and_open_page
+    should have_selector('title', text: 'New Product')
   end
 
   Then 'the title is correct' do

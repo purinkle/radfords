@@ -15,3 +15,9 @@ Feature: List products
     Then the title is correct
     And a "no products" message is shown
     And a "New Product" link is shown
+
+  Scenario: Link to the "New Product" page
+    Given I am an administrator
+    When I am looking at the products list
+    And I click the "New Product" link
+    Then the "New Product" page is shown

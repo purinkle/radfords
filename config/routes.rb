@@ -8,7 +8,7 @@ Radfords::Application.routes.draw do
   end
   resources :line_items, only: :create
   resources :orders, only: [:create, :index, :new, :show]
-  resources :products, only: :index
+  resources :products, only: [:index, :new]
   resources :sessions, :only => [ :new, :create, :destroy ]
   match '/products/check_title' => 'products#check_title'
   resources :suppliers do
