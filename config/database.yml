@@ -25,4 +25,4 @@ production:
 postgres:
   adapter: postgresql
   database: radfords_test
-  username: postgres
+  username:

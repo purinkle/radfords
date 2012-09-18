@@ -14,24 +14,23 @@
 ActiveRecord::Schema.define(:version => 20120713205807) do
 
   create_table "baskets", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "purchased_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "events", :force => true do |t|
     t.string   "name"
     t.date     "takes_place_on"
     t.string   "location"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "line_items", :force => true do |t|
     t.integer  "product_id"
     t.integer  "basket_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "quantity",   :default => 1
     t.integer  "order_id"
   end
@@ -40,17 +39,8 @@ ActiveRecord::Schema.define(:version => 20120713205807) do
     t.string   "name"
     t.text     "address"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "payment_notifications", :force => true do |t|
-    t.text     "params"
-    t.string   "status"
-    t.string   "transaction_id"
-    t.integer  "basket_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "products", :force => true do |t|
@@ -58,8 +48,8 @@ ActiveRecord::Schema.define(:version => 20120713205807) do
     t.text     "description"
     t.string   "image_url"
     t.decimal  "price",       :precision => 8, :scale => 2
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.string   "slug"
   end
 
@@ -70,8 +60,8 @@ ActiveRecord::Schema.define(:version => 20120713205807) do
     t.string   "name"
     t.string   "telephone_number"
     t.string   "website"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
     t.decimal  "lat",              :precision => 15, :scale => 10
     t.decimal  "lng",              :precision => 15, :scale => 10
     t.float    "latitude"
@@ -81,8 +71,8 @@ ActiveRecord::Schema.define(:version => 20120713205807) do
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.string   "encrypted_password"
     t.string   "salt"
   end
