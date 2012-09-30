@@ -16,3 +16,11 @@ Feature: Create product
     And there is an "Image URL" field
     And there is a "Create Product" button
     And there is a "Cancel" link
+
+  Scenario: Show a "Title can't be blank" error
+    Given I am an administrator
+    And I visit the new product page
+    When I leave the "Title" field blank
+    And I submit the "New Product" form
+    Then I stay on the "New Product" page
+    And there is a "Title can't be blank" error
