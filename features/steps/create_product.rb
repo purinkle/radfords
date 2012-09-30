@@ -31,6 +31,10 @@ class CreateProduct < Spinach::FeatureSteps
     should have_selector('li', text: 'Title can\'t be blank')
   end
 
+  Then 'there is a "Title has already been taken" error' do
+    should have_selector('li', text: 'Title has already been taken')
+  end
+
   Then 'there is a "Title" field' do
     should have_selector(:product_title)
   end

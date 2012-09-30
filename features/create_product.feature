@@ -19,8 +19,16 @@ Feature: Create product
 
   Scenario: Show a "Title can't be blank" error
     Given I am an administrator
-    And I visit the new product page
-    When I leave the "Title" field blank
+    When I visit the new product page
+    And I leave the "Title" field blank
     And I submit the "New Product" form
     Then I stay on the "New Product" page
     And there is a "Title can't be blank" error
+
+  Scenario: Show a "Title has already been taken" error
+    Given I am an administrator
+    When I visit the new product page
+    And I use an existing title
+    And I submit the "New Product" form
+    Then I stay on the "New Product" page
+    And there is a "Title has already been taken" error

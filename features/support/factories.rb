@@ -6,9 +6,4 @@ FactoryGirl.define do
 
   factory :order do
   end
-
-  factory :product do
-    image_url 'image.jpg'
-    price 2.85
-  end
 end

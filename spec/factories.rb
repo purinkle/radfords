@@ -18,4 +18,8 @@ FactoryGirl.define do
     telephone_number '07735 522248'
     website 'http://soldierresources.com/'
   end
+
+  factory :product do
+    title 'foo'
+  end
 end
