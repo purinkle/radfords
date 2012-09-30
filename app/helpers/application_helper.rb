@@ -10,4 +10,23 @@ module ApplicationHelper
       "#{@title} | #{base_title}"
     end
   end
+
+  def navbar(&block)
+    return unless signed_in?
+
+    content_tag :div, class: 'navbar' do
+      content_tag :div, class: 'navbar-inner' do
+        link_to('Radfords', root_path, class: 'brand') +
+        capture(&block)
+      end
+    end
+  end
+
+  def nav_item(body, url, controller_name)
+    klass = 'active' if controller.controller_name == controller_name
+
+    content_tag :li, class: klass do
+      link_to(body, url)
+    end
+  end
 end

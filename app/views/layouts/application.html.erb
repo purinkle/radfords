@@ -10,19 +10,7 @@
 
 <%= content_tag(:body, class: [content_for(:body_class), controller.controller_name]) do %>
   <div class="container">
-    <% if signed_in? %>
-      <div class="navbar">
-        <div class="navbar-inner">
-          <%= link_to('Radfords', root_path, class: 'brand') %>
-
-          <ul class="nav">
-            <%= content_tag :li, class: ('active' if controller.controller_name == 'products') do %>
-              <%= link_to('Products', products_path) %>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    <% end %>
+    <%= render 'layouts/navbar' %>
 
     <%= render 'layouts/header' %>
     <div class="main">

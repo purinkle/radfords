@@ -30,7 +30,7 @@ module Links
   end
 
   When 'I click the "Sign Out" link' do
-    click_link 'Sign out'
+    click_link 'Sign Out'
   end
 
   When 'I click a product link' do

@@ -17,7 +17,6 @@ class ListProducts < Spinach::FeatureSteps
   end
 
   Then 'the "New Product" page is shown' do
-    save_and_open_page
     should have_selector('title', text: 'New Product')
   end
 

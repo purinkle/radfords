@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_filter :authenticate
+
   def home
     @title = "Home"
     @events = Event.find(:all, limit: 3 )
