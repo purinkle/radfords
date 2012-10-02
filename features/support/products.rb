@@ -3,8 +3,13 @@ module Products
 
   Given 'no products have been created' do; end
 
+  When 'I create a valid product' do
+    fill_in 'Title', with: valid_product.title
+    click_button 'Create Product'
+  end
+  
   When 'I leave the "Title" field blank' do
-    fill_in :product_title, with: %q{}
+    fill_in 'Title', with: %q{}
   end
 
   When 'I submit the "New Product" form' do
@@ -12,11 +17,11 @@ module Products
   end
 
   When 'I use an existing title' do
-    product = create_valid_product
-    fill_in :product_title, with: product.title
+    valid_product.save
+    fill_in 'Title', with: valid_product.title
   end
 
-  def create_valid_product
-    FactoryGirl.create(:product)
+  def valid_product
+    @product ||= FactoryGirl.build(:product)
   end
 end

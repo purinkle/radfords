@@ -7,6 +7,10 @@ class CreateProduct < Spinach::FeatureSteps
     should have_selector('title', text: 'Sign In')
   end
 
+  Then 'I am redirected to the product\'s page' do
+    should have_selector('title', text: valid_product.title)
+  end
+
   Then 'I stay on the "New Product" page' do
     should have_selector('title', text: 'New Product')
   end
@@ -25,6 +29,13 @@ class CreateProduct < Spinach::FeatureSteps
 
   Then 'there is a "Description" field' do
     should have_selector(:product_description)
+  end
+
+  And 'there is a "product was created successfully" message' do
+    should have_selector(
+      '.alert-success',
+      text: 'product was created successfully'
+    )
   end
 
   Then 'there is a "Title can\'t be blank" error' do

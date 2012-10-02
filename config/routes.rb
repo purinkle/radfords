@@ -1,16 +1,12 @@
 Radfords::Application.routes.draw do
-  resources :baskets, only: [ :destroy, :show ]
   resources :events do
     member do
       get :delete
       delete :delete, action: :destroy
     end
   end
-  resources :line_items, only: :create
-  resources :orders, only: [:create, :index, :new, :show]
-  resources :products, only: [:create, :index, :new]
+  resources :products, only: [:create, :index, :new, :show]
   resources :sessions, :only => [ :new, :create, :destroy ]
-  match '/products/check_title' => 'products#check_title'
   resources :suppliers do
     member { get :delete }
   end

@@ -32,3 +32,10 @@ Feature: Create product
     And I submit the "New Product" form
     Then I stay on the "New Product" page
     And there is a "Title has already been taken" error
+
+  Scenario: Show a "product was created successfully" message
+    Given I am an administrator
+    When I visit the new product page
+    And I create a valid product
+    Then I am redirected to the product's page
+    And there is a "product was created successfully" message
