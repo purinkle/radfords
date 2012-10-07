@@ -27,8 +27,8 @@ class CreateProduct < Spinach::FeatureSteps
     should have_button('Create Product')
   end
 
-  Then 'there is an "Image URL" field' do
-    should have_selector(:product_image_url)
+  Then 'there is an "Photo" field' do
+    should have_selector(:product_photo)
   end
 
   Then 'there is a "Description" field' do

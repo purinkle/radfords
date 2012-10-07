@@ -4,7 +4,10 @@
   <h2>New Product</h2>
 </div>
 
-<%= form_for @product, html: {class: 'form-horizontal'} do |f| %>
+<%= form_for @product, html: {
+  class: 'form-horizontal',
+  multipart: true
+} do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
   <div class="control-group">
@@ -24,10 +27,10 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :image_url, class: 'control-label' %>
+    <%= f.label :photo, class: 'control-label' %>
 
     <div class="controls">
-      <%= f.text_field :image_url, class: 'text_field' %>
+      <%= f.file_field :photo, class: 'file_field' %>
     </div>
   </div>
 
