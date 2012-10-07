@@ -3,6 +3,10 @@ module Products
 
   Given 'no products have been created' do; end
 
+  When 'I click the "Cancel" link' do
+    click_link('Cancel')
+  end
+
   When 'I create a valid product' do
     fill_in 'Title', with: valid_product.title
     click_button 'Create Product'

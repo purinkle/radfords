@@ -15,6 +15,10 @@ class CreateProduct < Spinach::FeatureSteps
     should have_selector('title', text: 'New Product')
   end
 
+  Then 'the "Products" page is shown' do
+    should have_selector('title', text: 'Products')
+  end
+
   Then 'there is a "Cancel" link' do
     should have_link('Cancel')
   end

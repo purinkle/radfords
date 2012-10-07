@@ -39,3 +39,9 @@ Feature: Create product
     And I create a valid product
     Then I am redirected to the product's page
     And there is a "product was created successfully" message
+
+  Scenario: Link to the "Products" page
+    Given I am an administrator
+    When I visit the new product page
+    And I click the "Cancel" link
+    Then the "Products" page is shown
