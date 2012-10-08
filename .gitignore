@@ -11,3 +11,4 @@ doc/
 .sass_cache/
 /public/images/products/
 config/heroku.yml
+/.env

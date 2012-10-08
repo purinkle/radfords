@@ -1,5 +1,6 @@
 source 'http://rubygems.org'
 
+gem 'aws-sdk', '1.6.9'
 gem 'paperclip', '3.3.0'
 gem 'rails', '3.2.8'
 gem 'pg', '0.14.1'

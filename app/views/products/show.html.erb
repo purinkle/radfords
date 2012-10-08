@@ -1,1 +1,6 @@
 <% content_for(:title, @product.title) %>
+<% content_for(:body_class, 'show-product') %>
+
+<div class="image">
+  <%= image_tag(@product.photo.url) %>
+</div>
