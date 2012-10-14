@@ -38,6 +38,10 @@ end
 
 ### GIVEN ###
 
+Given /^I am not signed in$/ do
+  visit signout_path
+end
+
 Given /^I am signed in$/ do
   create_user
   sign_in
@@ -50,6 +54,10 @@ When /^I create a product with valid data$/ do
   new_product
 end
 
+When /^I edit a product$/ do
+  visit edit_product_path('foo')
+end
+
 ### THEN ###
 
 Then /^I am redirected to the list of products$/ do
@@ -58,4 +66,12 @@ end
 
 Then /^I see a successful product creation message$/ do
   page.should have_content('The product was created successfully')
+end
+
+Then /^I see a sign in message$/ do
+  page.should have_content('Please sign in to access this page')
+end
+
+Then /^I see the sign in page$/ do
+  should have_xpath('//title', text: 'Sign In')
 end
