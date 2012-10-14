@@ -15,8 +15,7 @@ describe PagesController do
 
     it "should have the right title" do
       get 'home'
-      response.should have_selector("title",
-                                    :content => "Home | " + @base_title)
+      response.body.should have_selector('title', content: 'Home')
     end
 
     it "should display the next event" do
@@ -32,8 +31,7 @@ describe PagesController do
 
       get :home
 
-      response.should have_selector("span.title",
-                                    :content => event3.name)
+      response.body.should have_selector('span.title', content: event3.name)
     end
   end
 
@@ -57,8 +55,7 @@ describe PagesController do
 
     it "should have the right title" do
       get 'outlets'
-      response.should have_selector("title",
-                                    :content => "Outlets | " + @base_title)
+      response.body.should have_selector('title', content: 'Outlets')
     end
   end
 
@@ -70,8 +67,7 @@ describe PagesController do
 
     it "should have the right title" do
       get 'contact'
-      response.should have_selector("title",
-                                    :content => "Contact | " + @base_title)
+      response.body.should have_selector('title', content: 'Contact')
     end
   end
 

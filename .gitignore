@@ -12,3 +12,4 @@ doc/
 /public/images/products/
 config/heroku.yml
 /.env
+/coverage/

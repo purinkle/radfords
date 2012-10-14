@@ -6,7 +6,7 @@ development:
   username:
   password:
 
-test:
+test: &test
   adapter: postgresql
   encoding: utf8
   database: radfords_test
@@ -26,3 +26,5 @@ postgres:
   adapter: postgresql
   database: radfords_test
   username:
+cucumber:
+  <<: *test

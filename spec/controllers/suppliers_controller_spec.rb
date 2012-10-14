@@ -16,26 +16,22 @@ describe SuppliersController do
 
     it 'should have the right title' do
       get 'new'
-
-      response.should have_selector('title', :content => 'New Supplier')
+      response.body.should have_selector('title', content: 'New Supplier')
     end
 
     it 'should have a name field' do
       get :new
-
-      response.should have_selector("input[name='supplier[name]'][type='text']")
+      response.body.should have_selector(:supplier_name)
     end
 
     it 'should have a website field' do
       get :new
-
-      response.should have_selector('input[name="supplier[website]"][type="text"]')
+      response.body.should have_selector(:supplier_website)
     end
 
     it 'should have a telephone number field' do
       get :new
-
-      response.should have_selector('input[name="supplier[telephone_number]"][type="text"]')
+      response.body.should have_selector(:supplier_telephone_number)
     end
   end
 
@@ -64,8 +60,7 @@ describe SuppliersController do
 
       it 'should have the right title' do
         post :create, :supplier => @attr
-
-        response.should have_selector( 'title', :content => 'New Supplier' )
+        response.body.should have_selector('title', content: 'New Supplier')
       end
 
       it 'should render the new page' do
@@ -124,8 +119,7 @@ describe SuppliersController do
 
     it "should have the right title" do
       get :edit, :id => @supplier
-
-      response.should have_selector( :title, :content => "Edit Supplier" )
+      response.body.should have_selector('title', content: 'Edit Supplier')
     end
   end
 
@@ -195,8 +189,7 @@ describe SuppliersController do
 
       it "should have the right title" do
         put :update, :id => @supplier, :supplier => @attr
-
-        response.should have_selector( :title, :content => "Edit Supplier" )
+        response.body.should have_selector('title', content: 'Edit Supplier')
       end
     end
 

@@ -1,0 +1,47 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://local-radfords-assets.s3-eu-west-1.amazonaws.com/products/photos/000/000/035/original/photo.jpg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      content-type:
+      - !binary |-
+        aW1hZ2UvanBlZw==
+      content-length:
+      - '0'
+      x-amz-acl:
+      - public-read
+      user-agent:
+      - aws-sdk-ruby/1.6.9 ruby/1.9.3 x86_64-darwin11.4.2
+      date:
+      - Sun, 14 Oct 2012 09:41:31 +0100
+      authorization:
+      - AWS AKIAJRIK42OKPCD4JHOA:S5Kj8rRmlWAUSkxbab2WExk7gXo=
+      accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      x-amz-id-2:
+      - WZdk0Vs5qygoKr23XgwHunhOIzj7c9jjAj1SzrCzpiw16iZfvEB/Le+fdqGGTSDZ
+      x-amz-request-id:
+      - CD74431124248D2A
+      date:
+      - Sun, 14 Oct 2012 08:41:33 GMT
+      etag:
+      - ! '"d41d8cd98f00b204e9800998ecf8427e"'
+      content-length:
+      - '0'
+      server:
+      - AmazonS3
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: '1.1'
+  recorded_at: Sun, 14 Oct 2012 08:41:32 GMT
+recorded_with: VCR 2.2.5
