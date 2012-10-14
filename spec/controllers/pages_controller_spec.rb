@@ -71,4 +71,10 @@ describe PagesController do
     end
   end
 
+  describe 'GET "products"' do
+    it 'sets the title' do
+      get :products
+      expect(assigns(:title)).to eql('Products')
+    end
+  end
 end
