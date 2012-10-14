@@ -278,4 +278,35 @@ describe SuppliersController do
       end
     end
   end
+
+  describe 'GET "show"' do
+    let(:found_supplier) do
+      double(:found_supplier, {
+        address: double(:address),
+        name: name,
+        telephone_number: double(:telephone_number)
+      })
+    end
+
+    let(:id) { 'foo' }
+    let(:name) { double(:name) }
+    let(:params) { {id: id} }
+    let(:supplier) { double(:supplier) }
+
+    before do
+      controller.stub(:authenticate)
+      stub_const('Supplier', supplier)
+      supplier.stub(:find).with(id) { found_supplier }
+    end
+
+    it 'finds the supplier' do
+      get :show, params
+      expect(assigns(:supplier)).to eql(found_supplier)
+    end
+
+    it 'sets the title' do
+      get :show, params
+      expect(assigns(:title)).to eql(name)
+    end
+  end
 end
