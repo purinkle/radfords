@@ -47,7 +47,7 @@ Given /^I am signed in$/ do
   sign_in
 end
 
-Given /^no products have been created$/ do
+Given /^no products exist$/ do
   Product.destroy_all
 end
 
@@ -58,7 +58,7 @@ When /^I create a product with valid data$/ do
   new_product
 end
 
-When /^I edit a product$/ do
+When /^I go to the edit product page$/ do
   visit edit_product_path('foo')
 end
 
@@ -80,7 +80,7 @@ Then /^I see an invalid product message$/ do
   should have_content("We couldn't find that product")
 end
 
-Then /^I see the list of products$/ do
+Then /^I see the index products page$/ do
   should have_xpath('//title', text: 'Products')
 end
 
