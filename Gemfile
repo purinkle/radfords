@@ -11,6 +11,10 @@ group :development do
   gem 'foreman'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
@@ -18,7 +22,6 @@ group :test do
   gem 'dotenv'
   gem 'factory_girl_rails'
   gem 'fakeweb'
-  gem 'rspec-rails'
   gem 'shoulda'
   gem 'simplecov'
   gem 'vcr'
