@@ -47,6 +47,10 @@ Given /^I am signed in$/ do
   sign_in
 end
 
+Given /^no products have been created$/ do
+  Product.destroy_all
+end
+
 ### WHEN ###
 
 When /^I create a product with valid data$/ do
@@ -61,15 +65,23 @@ end
 ### THEN ###
 
 Then /^I am redirected to the list of products$/ do
-  page.should have_xpath('//title', text: @product.title)
+  should have_xpath('//title', text: @product.title)
 end
 
 Then /^I see a successful product creation message$/ do
-  page.should have_content('The product was created successfully')
+  should have_content('The product was created successfully')
 end
 
 Then /^I see a sign in message$/ do
-  page.should have_content('Please sign in to access this page')
+  should have_content('Please sign in to access this page')
+end
+
+Then /^I see an invalid product message$/ do
+  should have_content("We couldn't find that product")
+end
+
+Then /^I see the list of products$/ do
+  should have_xpath('//title', text: 'Products')
 end
 
 Then /^I see the sign in page$/ do

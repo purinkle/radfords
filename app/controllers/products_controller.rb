@@ -11,7 +11,10 @@ class ProductsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    flash[:alert] = "We couldn't find that product."
+    redirect_to products_path
+  end
 
   def index; end
 

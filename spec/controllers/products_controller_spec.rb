@@ -5,6 +5,30 @@ describe ProductsController do
     controller.stub(:authenticate)
   end
 
+  describe 'GET "edit"' do
+    context 'when no product is found' do
+      let(:found_product) { raise ActiveRecord::RecordNotFound }
+      let(:id) { 'foo' }
+      let(:params) { {id: id} }
+      let(:product) { double(:product) }
+
+      before do
+        stub_const('Product', product)
+        product.stub(:find).with(id) { found_product }
+      end
+
+      it 'redirects to the product index page' do
+        get :edit, params
+        response.should redirect_to(products_path)
+      end
+
+      it 'sets the alert flash' do
+        get :edit, params
+        expect(flash[:alert]).to eql("We couldn't find that product.")
+      end
+    end
+  end
+
   describe 'GET "new"' do
     let(:product) { stub }
 
