@@ -15,6 +15,7 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'dotenv'
   gem 'factory_girl_rails'
   gem 'fakeweb'
   gem 'rspec-rails'
