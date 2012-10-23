@@ -30,9 +30,7 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-
-    unless @product.update_attributes(params[:product])
-      render 'edit'
-    end
+    @product.update_attributes(params[:product])
+    render 'edit'
   end
 end
