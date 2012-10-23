@@ -4,6 +4,6 @@ rvm:
 script:
   - RAILS_ENV=test bundle exec rake --trace db:migrate
   - RAILS_ENV=test bundle exec rspec spec
-  - RAILS_ENV=test bundle exec spinach
+  - RAILS_ENV=test bundle exec cucumber
 before_script:
   - psql -c 'create database radfords_test;' -U postgres
