@@ -7,3 +7,9 @@ script:
   - RAILS_ENV=test bundle exec cucumber
 before_script:
   - psql -c 'create database radfords_test;' -U postgres
+env:
+  global:
+    - S3_BUCKET_NAME=local-radfords-assets
+    - S3_HOST_NAME=s3-eu-west-1.amazonaws.com
+    - secure: "nUXzfVC0V2NVgGnGPtv6ugjfHo4OYMFDs1KfQyxHVj2kMgjFjXhuaUBMJCoQ\nsS0abWY5FJEzXXfjNcL4ch/Zrzyq1azUppjK8d9MolV8n2YY0/VaoEVVBLBX\n2rqJKu3MUveZvWu6pffEarBLBltmpR9H4OaLQ6Go2on3VEKG6g0="
+    - secure: "fhANL6XAPPAxCrNoYIdpbZon+JRKwimiXj+fP0KkD2nswOiTgh7M20gdDy2g\nxInRymukOuNr+o3UZwUSS3NS1v/J3EUZ6TzE4iZLes+2oaWtEWCakFfzP7qM\nyKRbdFMIyusZIKEzDzcu+HRaFwfelPffYgiwZ+bxX0xyVWFoYzI="
