@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://local-radfords-assets.s3-eu-west-1.amazonaws.com/products/photos/000/000/035/original/photo.jpg
+    uri: https://local-radfords-assets.s3-eu-west-1.amazonaws.com/products/photos/000/000/208/original/photo.jpg
     body:
       encoding: US-ASCII
       string: ''
@@ -15,11 +15,11 @@ http_interactions:
       x-amz-acl:
       - public-read
       user-agent:
-      - aws-sdk-ruby/1.6.9 ruby/1.9.3 x86_64-darwin11.4.2
+      - aws-sdk-ruby/1.6.9 ruby/1.9.3 x86_64-darwin12.2.0
       date:
-      - Sun, 14 Oct 2012 09:41:31 +0100
+      - Tue, 23 Oct 2012 22:27:46 +0100
       authorization:
-      - AWS AKIAJRIK42OKPCD4JHOA:S5Kj8rRmlWAUSkxbab2WExk7gXo=
+      - AWS AKIAJRIK42OKPCD4JHOA:5Z7U8nBZn3BL6Ye17OYhd4Ai0HE=
       accept:
       - ! '*/*'
   response:
@@ -28,11 +28,11 @@ http_interactions:
       message: OK
     headers:
       x-amz-id-2:
-      - WZdk0Vs5qygoKr23XgwHunhOIzj7c9jjAj1SzrCzpiw16iZfvEB/Le+fdqGGTSDZ
+      - bkE4TlJk2GF0XnIG7e3gh3s97O4BtWLUP5RionI9fTIKKNuOu95mP5TfQ826njoE
       x-amz-request-id:
-      - CD74431124248D2A
+      - 1D954DCAE19644B2
       date:
-      - Sun, 14 Oct 2012 08:41:33 GMT
+      - Tue, 23 Oct 2012 21:27:49 GMT
       etag:
       - ! '"d41d8cd98f00b204e9800998ecf8427e"'
       content-length:
@@ -43,5 +43,5 @@ http_interactions:
       encoding: US-ASCII
       string: ''
     http_version: '1.1'
-  recorded_at: Sun, 14 Oct 2012 08:41:32 GMT
+  recorded_at: Tue, 23 Oct 2012 21:27:48 GMT
 recorded_with: VCR 2.2.5

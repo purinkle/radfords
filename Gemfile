@@ -22,6 +22,7 @@ group :test do
   gem 'dotenv'
   gem 'factory_girl_rails'
   gem 'fakeweb'
+  gem 'launchy'
   gem 'shoulda'
   gem 'simplecov'
   gem 'vcr'

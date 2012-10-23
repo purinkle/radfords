@@ -6,16 +6,26 @@ describe ProductsController do
   end
 
   describe 'GET "edit"' do
+    let(:id) { 'foo' }
+    let(:params) { {id: id} }
+    let(:product) { double(:product) }
+
+    before do
+      stub_const('Product', product)
+      product.stub(:find).with(id) { found_product }
+    end
+
+    context 'when a product is found' do
+      let(:found_product) { double(:found_product) }
+
+      it 'stores the found product' do
+        get :edit, params
+        expect(assigns(:product)).to eql(found_product)
+      end
+    end
+
     context 'when no product is found' do
       let(:found_product) { raise ActiveRecord::RecordNotFound }
-      let(:id) { 'foo' }
-      let(:params) { {id: id} }
-      let(:product) { double(:product) }
-
-      before do
-        stub_const('Product', product)
-        product.stub(:find).with(id) { found_product }
-      end
 
       it 'redirects to the product index page' do
         get :edit, params
@@ -85,6 +95,37 @@ describe ProductsController do
       it 'renders the "New Product" page' do
         post :create, product: params
         response.should render_template('new')
+      end
+    end
+  end
+
+  describe 'PUT "update"' do
+    let(:found_product) { double(:found_product) }
+    let(:id) { 'foo' }
+    let(:params) { {} }
+    let(:product) { double(:product) }
+    let(:update_attributes) { true }
+
+    before do
+      found_product.stub(:update_attributes).with(params) do
+        update_attributes
+      end
+
+      product.stub(:find).with(id) { found_product }
+      stub_const('Product', product)
+    end
+
+    it 'finds the product' do
+      put :update, id: id, product: params
+      expect(assigns(:product)).to eql(found_product)
+    end
+
+    context 'when the product is not valid' do
+      let(:update_attributes) { false }
+
+      it 'renders the edit product page' do
+        put :update, id: id, product: params
+        response.should render_template('edit')
       end
     end
   end
