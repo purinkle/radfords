@@ -10,6 +10,7 @@ gem 'rails'
 group :assets do
   gem 'coffee-rails'
   gem 'sass-rails'
+  gem 'uglifier'
 end
 
 group :development do
