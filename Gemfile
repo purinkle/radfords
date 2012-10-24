@@ -8,6 +8,7 @@ gem 'pg'
 gem 'rails'
 
 group :assets do
+  gem 'coffee-rails'
   gem 'sass-rails'
 end
 
