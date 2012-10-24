@@ -124,7 +124,7 @@ describe ProductsController do
 
     it 'updates the alert flash' do
       put :update, id: id, product: params
-      expect(flash[:alert]).to eql(%Q{Product, "#{title}", saved.})
+      expect(flash[:notice]).to eql('Product saved.')
     end
 
     it 'redirects to the show product page' do

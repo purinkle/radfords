@@ -118,7 +118,7 @@ Then /^I see a duplicate title message$/ do
 end
 
 Then /^I see a product saved message$/ do
-  should have_content(%Q{Product, "#{@product.title}", saved.})
+  should have_content('Product saved.')
 end
 
 Then /^I see a successful product creation message$/ do
