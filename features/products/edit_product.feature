@@ -40,3 +40,10 @@ Feature: Edit product
     When I save a product with a duplicate title
     Then I see the edit product page
     And I see a duplicate title message
+
+  Scenario: Save a valid product
+    Given I am signed in
+    And a product exists
+    When I save a product with valid data
+    Then I see the show product page
+    And I see a product saved message

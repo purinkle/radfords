@@ -30,7 +30,12 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
-    @product.update_attributes(params[:product])
-    render 'edit'
+
+    if @product.update_attributes(params[:product])
+      flash[:alert] = %Q{Product, "#{@product.title}", saved.}
+      redirect_to product_path(@product)
+    else
+      render 'edit'
+    end
   end
 end

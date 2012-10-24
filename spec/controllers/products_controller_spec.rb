@@ -104,6 +104,7 @@ describe ProductsController do
     let(:id) { 'foo' }
     let(:params) { {} }
     let(:product) { double(:product) }
+    let(:title) { double(:title) }
     let(:update_attributes) { true }
 
     before do
@@ -111,6 +112,7 @@ describe ProductsController do
         update_attributes
       end
 
+      found_product.stub(title: title)
       product.stub(:find).with(id) { found_product }
       stub_const('Product', product)
     end
@@ -118,6 +120,16 @@ describe ProductsController do
     it 'finds the product' do
       put :update, id: id, product: params
       expect(assigns(:product)).to eql(found_product)
+    end
+
+    it 'updates the alert flash' do
+      put :update, id: id, product: params
+      expect(flash[:alert]).to eql(%Q{Product, "#{title}", saved.})
+    end
+
+    it 'redirects to the show product page' do
+      put :update, id: id, product: params
+      response.should redirect_to(product_path(found_product))
     end
 
     context 'when the product is not valid' do

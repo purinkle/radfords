@@ -99,6 +99,10 @@ When /^I save a product with a duplicate title$/ do
   save_product(@product_2, title: @product_1.title)
 end
 
+When /^I save a product with valid data$/ do
+  save_product(@product, title: @product.title)
+end
+
 When /^I save a product without a title$/ do
   save_product(@product, title: %Q{})
 end
@@ -111,6 +115,10 @@ end
 
 Then /^I see a duplicate title message$/ do
   should have_content('Title has already been taken')
+end
+
+Then /^I see a product saved message$/ do
+  should have_content(%Q{Product, "#{@product.title}", saved.})
 end
 
 Then /^I see a successful product creation message$/ do
