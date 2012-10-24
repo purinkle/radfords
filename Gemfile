@@ -7,6 +7,10 @@ gem 'paperclip'
 gem 'pg'
 gem 'rails'
 
+group :assets do
+  gem 'sass-rails'
+end
+
 group :development do
   gem 'foreman'
   gem 'travis'
