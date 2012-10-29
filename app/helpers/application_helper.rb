@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def flash_message_class(type)
+    if type == :alert
+      'error'
+    elsif type == :notice
+      'success'
+    else
+      'info'
+    end
+  end
 
   def title
     base_title = "Radfords of Somerford"

@@ -15,8 +15,10 @@
     <%= render 'layouts/header' %>
     <div class="main">
       <% flash.each do | key, value | %>
-        <%= content_tag(:div, class: ['alert', "alert-#{key}"]) do %>
-          <strong><%= t("#{key}_text") %>!</strong> <%= value %>
+        <% alert_type = flash_message_class(key) %>
+
+        <%= content_tag(:div, class: ['alert', "alert-#{alert_type}"]) do %>
+          <strong><%= t("#{alert_type}_text") %>!</strong> <%= value %>
         <% end %>
       <% end %>
       <%= yield %>
