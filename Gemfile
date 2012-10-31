@@ -31,6 +31,7 @@ group :test do
   gem 'dotenv'
   gem 'factory_girl_rails'
   gem 'fakeweb'
+  gem 'fuubar'
   gem 'launchy'
   gem 'shoulda'
   gem 'simplecov'
