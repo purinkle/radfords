@@ -16,6 +16,7 @@ end
 group :development do
   gem 'bullet'
   gem 'foreman'
+  gem 'rails-footnotes'
   gem 'travis'
 end
 
