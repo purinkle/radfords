@@ -14,6 +14,7 @@ group :assets do
 end
 
 group :development do
+  gem 'bullet'
   gem 'foreman'
   gem 'travis'
 end
