@@ -5,6 +5,12 @@ Feature: Index products
     Then I see the sign in page
     And I see a sign in message
 
+  Scenario: No products exist
+    Given I am signed in
+    And no products exist
+    When I go to the index products page
+    Then I see a no products message
+
   Scenario: Products exist
     Given I am signed in
     And some products exist

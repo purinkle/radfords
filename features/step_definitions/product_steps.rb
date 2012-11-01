@@ -141,6 +141,10 @@ Then /^I see a duplicate title message$/ do
   should have_content('Title has already been taken')
 end
 
+Then /^I see a no products message$/ do
+  should have_content('There are currently no products')
+end
+
 Then /^I see a product saved message$/ do
   should have_content('Product saved.')
 end
