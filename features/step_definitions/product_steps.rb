@@ -91,6 +91,10 @@ When /^I go to the edit product page$/ do
   visit edit_product_path(product)
 end
 
+When /^I go to the index products page$/ do
+  visit products_path
+end
+
 When /^I press "Cancel"$/ do
   click_link 'Cancel'
 end
@@ -135,6 +139,21 @@ end
 
 Then /^I see an invalid product message$/ do
   should have_content("We couldn't find that product")
+end
+
+Then /^I see each product's description$/ do
+  should have_content(@product_1.description)
+  should have_content(@product_2.description)
+end
+
+Then /^I see each product's photo$/ do
+  should have_xpath("//img[contains(@src, \"#{@product_1.photo.url}\")]")
+  should have_xpath("//img[contains(@src, \"#{@product_2.photo.url}\")]")
+end
+
+Then /^I see each product's title$/ do
+  should have_content(@product_1.title)
+  should have_content(@product_2.title)
 end
 
 Then /^I see the edit product page$/ do

@@ -39,6 +39,20 @@ describe ProductsController do
     end
   end
 
+  describe 'GET "index"' do
+    let(:product_class) { double(:product_class, all: products) }
+    let(:products) { double(:products) }
+
+    before do
+      stub_const('Product', product_class)
+    end
+
+    it 'gets all of the prodcts' do
+      get :index
+      expect(assigns(:products)).to eql(products)
+    end
+  end
+
   describe 'GET "new"' do
     let(:product) { stub }
 

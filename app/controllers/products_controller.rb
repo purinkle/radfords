@@ -18,7 +18,9 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
-  def index; end
+  def index
+    @products = Product.all
+  end
 
   def new
     @product = Product.new

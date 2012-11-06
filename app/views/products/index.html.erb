@@ -4,10 +4,6 @@
   <h2>Products</h2>
 </div>
 
-<div class="no-content">
-  <p>There are currently no products.</p>
-
-  <p>Click the "New Product" button below, to create a product.</p>
-</div>
+<%= render product_list(@products) %>
 
 <%= link_to('New Product', new_product_path, class: %w{btn btn-primary}) %>
