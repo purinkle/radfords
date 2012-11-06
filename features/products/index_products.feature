@@ -13,6 +13,13 @@ Feature: Index products
     And I see each product's description
     And I see each product's photo
 
+  Scenario: Show product
+    Given I am signed in
+    And a product exists
+    And I am on the index products page
+    When I follow the product's link
+    Then I see the show product page
+
   Scenario: Edit product
     Given I am signed in
     And a product exists

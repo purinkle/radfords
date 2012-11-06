@@ -95,6 +95,10 @@ When /^I follow the "Edit" link$/ do
   click_link 'Edit'
 end
 
+When /^I follow the product's link$/ do
+  click_link @product.title
+end
+
 When /^I go to the edit product page$/ do
   visit edit_product_path(product)
 end
