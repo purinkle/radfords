@@ -6,3 +6,10 @@ Feature: Index products
     Then I see each product's title
     And I see each product's description
     And I see each product's photo
+
+  Scenario: Edit product
+    Given I am signed in
+    And a product exists
+    And I am on the index products page
+    When I follow the "Edit" link
+    Then I see the edit product page

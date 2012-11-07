@@ -4,4 +4,6 @@
   <td><%= product.description %></td>
 
   <td><%= image_tag product.photo.url %></td>
+
+  <td><%= link_to('Edit', edit_product_path(product), class: 'btn btn-mini') %>
 </tr>

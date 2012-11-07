@@ -66,6 +66,10 @@ Given /^I am on the edit product page$/ do
   visit edit_product_path(product)
 end
 
+Given /^I am on the index products page$/ do
+  visit products_path
+end
+
 Given /^I am signed in$/ do
   create_user
   sign_in
@@ -85,6 +89,10 @@ end
 When /^I create a product with valid data$/ do
   build_product
   new_product
+end
+
+When /^I follow the "Edit" link$/ do
+  click_link 'Edit'
 end
 
 When /^I go to the edit product page$/ do
