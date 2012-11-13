@@ -5,6 +5,13 @@ Feature: Show product
     Then I see the sign in page
     And I see a sign in message
 
+  Scenario: Product doesn't exist
+    Given I am signed in
+    And no products exist
+    When I go to the show product page
+    Then I see the index products page
+    And I see an invalid product message
+
   Scenario: Load existing product
     Given I am signed in
     And a product exists

@@ -68,15 +68,31 @@ describe ProductsController do
 
   describe 'GET "show"' do
     let(:id) { 'foo' }
-    let(:product) { stub }
+    let(:found_product) { double(:found_product) }
+    let(:product) { double(:product) }
 
     before do
-      Product.stub(:find).with(id) { product }
+      product.stub(:find).with(id) { found_product }
+      stub_const('Product', product)
     end
 
     it 'finds the relevant Product' do
       get :show, id: id
-      assigns(:product).should == product
+      expect(assigns(:product)).to eql(found_product)
+    end
+
+    context 'when no product is found' do
+      let(:found_product) { raise ActiveRecord::RecordNotFound }
+
+      it 'redirects to the product index page' do
+        get :show, id: id
+        response.should redirect_to(products_path)
+      end
+
+      it 'sets the alert flash' do
+        get :show, id: id
+        expect(flash[:alert]).to eql("We couldn't find that product.")
+      end
     end
   end
 

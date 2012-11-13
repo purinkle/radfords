@@ -14,10 +14,7 @@ class ProductsController < ApplicationController
   def delete; end
 
   def edit
-    @product = Product.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "We couldn't find that product."
-    redirect_to products_path
+    @product = product
   end
 
   def index
@@ -29,7 +26,7 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = product
   end
 
   def update
@@ -41,5 +38,14 @@ class ProductsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  private
+
+  def product
+    Product.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = "We couldn't find that product."
+    redirect_to products_path
   end
 end
