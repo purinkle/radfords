@@ -111,6 +111,10 @@ When /^I go to the index products page$/ do
   visit products_path
 end
 
+When /^I go to the show product page$/ do
+  visit product_path(product)
+end
+
 When /^I press "Cancel"$/ do
   click_link 'Cancel'
 end
