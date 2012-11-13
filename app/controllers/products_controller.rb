@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
     end
   end
 
+  def delete; end
+
   def edit
     @product = Product.find(params[:id])
   rescue ActiveRecord::RecordNotFound

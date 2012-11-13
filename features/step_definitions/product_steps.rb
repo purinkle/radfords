@@ -91,6 +91,10 @@ When /^I create a product with valid data$/ do
   new_product
 end
 
+When /^I follow the "Delete" link$/ do
+  click_link 'Delete'
+end
+
 When /^I follow the "Edit" link$/ do
   click_link 'Edit'
 end
@@ -166,6 +170,10 @@ end
 Then /^I see each product's title$/ do
   should have_content(@product_1.title)
   should have_content(@product_2.title)
+end
+
+Then /^I see the delete product page$/ do
+  should have_xpath('//title', text: 'Delete Product')
 end
 
 Then /^I see the edit product page$/ do
