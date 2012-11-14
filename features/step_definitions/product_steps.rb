@@ -70,6 +70,10 @@ Given /^I am on the index products page$/ do
   visit products_path
 end
 
+Given /^I am on the show product page$/ do
+  visit product_path(product)
+end
+
 Given /^I am signed in$/ do
   create_user
   sign_in
@@ -89,6 +93,10 @@ end
 When /^I create a product with valid data$/ do
   build_product
   new_product
+end
+
+When /^I follow the "Back" link$/ do
+  click_link 'Back'
 end
 
 When /^I follow the "Delete" link$/ do

@@ -19,3 +19,10 @@ Feature: Show product
     Then I see the product's title
     And I see the product's description
     And I see the product's photo
+
+  Scenario: List products
+    Given I am signed in
+    And a product exists
+    And I am on the show product page
+    When I follow the "Back" link
+    Then I see the index products page
