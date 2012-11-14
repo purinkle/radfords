@@ -192,8 +192,16 @@ Then /^I see the index products page$/ do
   should have_xpath('//title', text: 'Products')
 end
 
+Then /^I see the product's description$/ do
+  should have_content(product.description)
+end
+
 Then /^I see the product's photo$/ do
   should have_xpath("//img[contains(@src, \"#{@product.photo.url}\")]")
+end
+
+Then /^I see the product's title$/ do
+  should have_css('body', text: product.title)
 end
 
 Then /^I see the show product page$/ do
