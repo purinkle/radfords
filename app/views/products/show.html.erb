@@ -1,11 +1,11 @@
 <% content_for(:title, @product.title) %>
 
-<section>
+<section class="product">
   <header>
-    <h1><%= @product.title %></h1>
+    <h1 class="product-title"><%= @product.title %></h1>
   </header>
 
-  <%= image_tag(@product.photo.url) %>
+  <%= image_tag(@product.photo.url, class: 'product-photo') %>
 
-  <p><%= @product.description %></p>
+  <p class="product-description"><%= @product.description %></p>
 </section>
