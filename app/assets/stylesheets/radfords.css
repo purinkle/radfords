@@ -525,6 +525,22 @@ textarea {
   background-image: url("/img/glyphicons-halflings.png");
 }
 
+.product-actions {
+  width: 82px;
+}
+
+.product-thumbnail {
+  background-color: white;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  max-width: none;
+  padding: 4px;
+  width: 140px;
+}
+
 .product-title {
   background: none;
   border-bottom: 1px solid #ccc;
