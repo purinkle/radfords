@@ -562,3 +562,10 @@ img.product-photo {
   text-shadow: 0 1px 1px rgba(255, 255, 255, .3);
   width: 346px;
 }
+
+.product .form-actions {
+  float: left;
+  margin-left: 0;
+  min-height: 1px;
+  width: 910px;
+}
