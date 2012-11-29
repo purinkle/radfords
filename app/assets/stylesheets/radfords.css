@@ -531,12 +531,12 @@ textarea {
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   float: right;
   height: auto;
-  margin-bottom: .75em;
+  margin-bottom: .5em;
   margin-left: 20px;
   min-height: 1px;
-  padding-bottom: .25em;
+  padding-bottom: .5em;
   text-indent: 0;
-  width: 460px;
+  width: 346px;
 }
 
 img.product-photo {
@@ -549,13 +549,16 @@ img.product-photo {
   float: left;
   margin-left: 0;
   min-height: 1px;
-  padding: 4px;
-  width: 450px;
+  padding: 15px;
+  width: 552px;
 }
 
 .product-description {
   float: right;
+  font-size: 14px;
+  line-height: 1.7em;
   margin-left: 20px;
   min-height: 1px;
-  width: 460px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, .3);
+  width: 346px;
 }
