@@ -26,3 +26,10 @@ Feature: Show product
     And I am on the show product page
     When I follow the "Back" link
     Then I see the index products page
+
+  Scenario: Edit product
+    Given I am signed in
+    And a product exists
+    And I am on the show product page
+    When I follow the "Edit" link
+    Then I see the edit product page
