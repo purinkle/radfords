@@ -1,5 +1,5 @@
 class Product < ActiveRecord::Base
-  attr_accessible :description, :photo, :title
+  attr_accessible :description, :photo, :photo_file_name, :title
 
   has_attached_file :photo,
     storage: :s3,
