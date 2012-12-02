@@ -33,3 +33,10 @@ Feature: Show product
     And I am on the show product page
     When I follow the "Edit" link
     Then I see the edit product page
+
+  Scenario: Delete product
+    Given I am signed in
+    And a product exists
+    And I am on the show product page
+    When I follow the "Delete" link
+    Then I see the delete product page
