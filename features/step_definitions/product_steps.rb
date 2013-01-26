@@ -142,7 +142,7 @@ end
 ### THEN ###
 
 Then /^I am redirected to the list of products$/ do
-  should have_xpath('//title', text: @product.title)
+  source.should have_xpath('//title', text: @product.title)
 end
 
 Then /^I see a duplicate title message$/ do
@@ -189,15 +189,15 @@ Then /^I see each product's title$/ do
 end
 
 Then /^I see the delete product page$/ do
-  should have_xpath('//title', text: 'Delete Product')
+  source.should have_xpath('//title', text: 'Delete Product')
 end
 
 Then /^I see the edit product page$/ do
-  should have_xpath('//title', text: 'Edit Product')
+  source.should have_xpath('//title', text: 'Edit Product')
 end
 
 Then /^I see the index products page$/ do
-  should have_xpath('//title', text: 'Products')
+  source.should have_xpath('//title', text: 'Products')
 end
 
 Then /^I see the product's description$/ do
@@ -213,15 +213,15 @@ Then /^I see the product's title$/ do
 end
 
 Then /^I see the show product page$/ do
-  should have_xpath('//title', text: @product.title)
+  source.should have_xpath('//title', text: @product.title)
 end
 
 Then /^I see the sign in page$/ do
-  should have_xpath('//title', text: 'Sign In')
+  source.should have_xpath('//title', text: 'Sign In')
 end
 
 Then /^the "Description" field contains the product's description$/ do
-  expect(find_field('Description').value).to eql("\n#{@product.description}")
+  expect(find_field('Description').value).to eql(@product.description)
 end
 
 Then /^the "Title" field contains the product's title$/ do
