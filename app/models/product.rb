@@ -1,4 +1,6 @@
 class Product < ActiveRecord::Base
+  extend FriendlyId
+
   attr_accessible :description, :photo, :photo_file_name, :title
 
   has_attached_file :photo,
@@ -12,4 +14,6 @@ class Product < ActiveRecord::Base
 
   validates_presence_of :title
   validates_uniqueness_of :title
+
+  friendly_id :title, use: :slugged
 end
