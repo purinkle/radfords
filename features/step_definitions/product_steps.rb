@@ -111,6 +111,10 @@ When /^I follow the product's link$/ do
   click_link @product.title
 end
 
+When /^I go to the delete product page$/ do
+  visit delete_product_path(product)
+end
+
 When /^I go to the edit product page$/ do
   visit edit_product_path(product)
 end
