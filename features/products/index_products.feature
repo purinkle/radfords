@@ -39,3 +39,10 @@ Feature: Index products
     And I am on the index products page
     When I follow the "Delete" link
     Then I see the delete product page
+
+  Scenario: Visit the page from the delete product page
+    Given I am signed in
+    And a product exists
+    And I am on the delete product page
+    When I follow the "Cancel" link
+    Then I see the index products page

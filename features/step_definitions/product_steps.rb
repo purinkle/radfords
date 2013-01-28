@@ -62,6 +62,10 @@ Given /^I am not signed in$/ do
   visit signout_path
 end
 
+Given /^I am on the delete product page$/ do
+  visit delete_product_path(product)
+end
+
 Given /^I am on the edit product page$/ do
   visit edit_product_path(product)
 end
@@ -97,6 +101,10 @@ end
 
 When /^I follow the "Back" link$/ do
   click_link 'Back'
+end
+
+When /^I follow the "Cancel" link$/ do
+  click_link 'Cancel'
 end
 
 When /^I follow the "Delete" link$/ do
