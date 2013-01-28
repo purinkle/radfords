@@ -8,3 +8,10 @@ Feature: Delete product
     When I go to the delete product page
     Then I see the sign in page
     And I see a sign in message
+
+  Scenario: Try to delete a product that doesn't exist
+    Given I am signed in
+    And no products exist
+    When I go to the delete product page
+    Then I see the index products page
+    And I see an invalid product message

@@ -5,6 +5,24 @@ describe ProductsController do
     controller.stub(:authenticate)
   end
 
+  describe 'GET "delete"' do
+    let(:id) { 'foo' }
+    let(:params) { {id: id} }
+
+    before do
+      Product.stub(:find).with(id) { product }
+    end
+
+    context 'when no product is found' do
+      let(:product) { raise ActiveRecord::RecordNotFound }
+
+      it 'redirects to the index products page' do
+        get :delete, params
+        expect(response).to redirect_to(products_path)
+      end
+    end
+  end
+
   describe 'GET "edit"' do
     let(:id) { 'foo' }
     let(:params) { {id: id} }

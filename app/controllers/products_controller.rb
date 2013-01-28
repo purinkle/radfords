@@ -11,7 +11,9 @@ class ProductsController < ApplicationController
     end
   end
 
-  def delete; end
+  def delete
+    @product = product
+  end
 
   def edit
     @product = product
