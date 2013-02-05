@@ -15,3 +15,12 @@ Feature: Delete product
     When I go to the delete product page
     Then I see the index products page
     And I see an invalid product message
+
+  Scenario: Click the "Delete Product" button
+    Given I am signed in
+    And a product exists
+    And I am on the delete product page
+    When I click the "Delete Product" button
+    Then I see the index products page
+    And I see a "product was deleted" message
+    And I don't see the product

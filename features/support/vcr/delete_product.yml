@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://local-radfords-assets.s3-eu-west-1.amazonaws.com/products/photos/000/000/032/original/photo.jpg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby/1.8.0 ruby/1.9.3 x86_64-darwin12.2.0
+      Date:
+      - Tue, 05 Feb 2013 21:53:06 +0000
+      Authorization:
+      - AWS AKIAJRIK42OKPCD4JHOA:h0ibcjhuXza8BdGNvCV0nwx+piU=
+      Accept:
+      - ! '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 1260DE1F5D554A9F
+      X-Amz-Id-2:
+      - YLUX1GwNQMiv2QPrtWhk9RLwLXQtk8oFLlYmHSzzRvmFj9rilrdkrjvM02zU2nXG
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Tue, 05 Feb 2013 21:53:06 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: US-ASCII
+      string: ''
+    http_version: 
+  recorded_at: Tue, 05 Feb 2013 21:53:06 GMT
+recorded_with: VCR 2.4.0

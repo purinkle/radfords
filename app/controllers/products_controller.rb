@@ -15,6 +15,12 @@ class ProductsController < ApplicationController
     @product = product
   end
 
+  def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to products_url, notice: 'Product was deleted.'
+  end
+
   def edit
     @product = product
   end

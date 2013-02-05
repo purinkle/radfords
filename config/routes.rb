@@ -5,7 +5,7 @@ Radfords::Application.routes.draw do
       delete :delete, action: :destroy
     end
   end
-  resources :products, only: [:create, :edit, :index, :new, :show, :update] do
+  resources :products do
     member { get :delete }
   end
   resources :sessions, :only => [ :new, :create, :destroy ]

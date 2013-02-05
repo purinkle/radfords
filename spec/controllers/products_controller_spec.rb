@@ -23,6 +23,31 @@ describe ProductsController do
     end
   end
 
+  describe 'DELETE "destroy"' do
+    let(:id) { 'foo' }
+    let(:params) { {id: id} }
+    let(:product) { double(:product, destroy: nil) }
+
+    before do
+      Product.stub(:find).with(id) { product }
+    end
+
+    it 'destroys the product' do
+      product.should_receive(:destroy)
+      delete :destroy, params
+    end
+
+    it 'sets the notice flash' do
+      delete :destroy, params
+      expect(flash[:notice]).to eql('Product was deleted.')
+    end
+
+    it 'redirects to the index products page' do
+      delete :destroy, params
+      expect(response).to redirect_to(products_url)
+    end
+  end
+
   describe 'GET "edit"' do
     let(:id) { 'foo' }
     let(:params) { {id: id} }

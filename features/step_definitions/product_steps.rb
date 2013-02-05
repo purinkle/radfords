@@ -94,6 +94,12 @@ end
 
 ### WHEN ###
 
+When /^I click the "Delete Product" button$/ do
+  VCR.use_cassette('delete_product', match_requests_on: [:host]) do
+    click_button 'Delete Product'
+  end
+end
+
 When /^I create a product with valid data$/ do
   build_product
   new_product
@@ -153,8 +159,16 @@ end
 
 ### THEN ###
 
+Then /^I don't see the product$/ do
+  expect(page).to_not have_content('foo')
+end
+
 Then /^I am redirected to the list of products$/ do
   source.should have_xpath('//title', text: @product.title)
+end
+
+Then /^I see a "product was deleted" message$/ do
+  expect(page).to have_content('Product was deleted.')
 end
 
 Then /^I see a duplicate title message$/ do
