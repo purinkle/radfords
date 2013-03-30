@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  skip_before_filter :authenticate, only: :show
+
   def create
     @product = Product.new(params[:product])
 

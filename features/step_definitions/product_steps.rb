@@ -163,6 +163,11 @@ Then /^I don't see the product$/ do
   expect(page).to_not have_content('foo')
 end
 
+Then /^I don't see the product admin controls$/ do
+  save_and_open_page
+  expect(page).to_not have_selector('.form-actions')
+end
+
 Then /^I am redirected to the list of products$/ do
   source.should have_xpath('//title', text: @product.title)
 end
