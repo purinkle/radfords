@@ -164,7 +164,6 @@ Then /^I don't see the product$/ do
 end
 
 Then /^I don't see the product admin controls$/ do
-  save_and_open_page
   expect(page).to_not have_selector('.form-actions')
 end
 
