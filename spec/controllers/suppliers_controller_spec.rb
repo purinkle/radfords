@@ -16,7 +16,7 @@ describe SuppliersController do
 
     it 'should have the right title' do
       get 'new'
-      response.body.should have_selector('title', text: 'New Supplier')
+      expect(assigns(:title)).to eql("New Supplier")
     end
 
     it 'should have a name field' do
@@ -60,7 +60,7 @@ describe SuppliersController do
 
       it 'should have the right title' do
         post :create, :supplier => @attr
-        response.body.should have_selector('title', text: 'New Supplier')
+        expect(assigns(:title)).to eql("New Supplier")
       end
 
       it 'should render the new page' do
@@ -119,7 +119,7 @@ describe SuppliersController do
 
     it "should have the right title" do
       get :edit, :id => @supplier
-      response.body.should have_selector('title', text: 'Edit Supplier')
+      expect(assigns(:title)).to eql("Edit Supplier")
     end
   end
 
@@ -189,7 +189,7 @@ describe SuppliersController do
 
       it "should have the right title" do
         put :update, :id => @supplier, :supplier => @attr
-        response.body.should have_selector('title', text: 'Edit Supplier')
+        expect(assigns(:title)).to eql("Edit Supplier")
       end
     end
 

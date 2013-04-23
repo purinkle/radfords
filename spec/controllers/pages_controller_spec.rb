@@ -15,7 +15,7 @@ describe PagesController do
 
     it "should have the right title" do
       get 'home'
-      response.body.should have_selector('title', text: 'Home')
+      expect(assigns(:title)).to eql("Home")
     end
 
     it "should display the next event" do
@@ -55,7 +55,7 @@ describe PagesController do
 
     it "should have the right title" do
       get 'outlets'
-      response.body.should have_selector('title', text: 'Outlets')
+      expect(assigns(:title)).to eql("Outlets")
     end
   end
 
@@ -67,7 +67,7 @@ describe PagesController do
 
     it "should have the right title" do
       get 'contact'
-      response.body.should have_selector('title', text: 'Contact')
+      expect(assigns(:title)).to eql("Contact")
     end
   end
 

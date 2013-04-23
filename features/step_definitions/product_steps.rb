@@ -168,7 +168,7 @@ Then /^I don't see the product admin controls$/ do
 end
 
 Then /^I am redirected to the list of products$/ do
-  source.should have_xpath('//title', text: @product.title)
+  expect(title).to match(/#{@product.title}/)
 end
 
 Then /^I see a "product was deleted" message$/ do
@@ -219,15 +219,15 @@ Then /^I see each product's title$/ do
 end
 
 Then /^I see the delete product page$/ do
-  source.should have_xpath('//title', text: 'Delete Product')
+  expect(title).to match(/Delete Product/)
 end
 
 Then /^I see the edit product page$/ do
-  source.should have_xpath('//title', text: 'Edit Product')
+  expect(title).to match(/Edit Product/)
 end
 
 Then /^I see the index products page$/ do
-  source.should have_xpath('//title', text: 'Products')
+  expect(title).to match(/Products/)
 end
 
 Then /^I see the product's description$/ do
@@ -243,11 +243,11 @@ Then /^I see the product's title$/ do
 end
 
 Then /^I see the show product page$/ do
-  source.should have_xpath('//title', text: @product.title)
+  expect(title).to match(/#{@product.title}/)
 end
 
 Then /^I see the sign in page$/ do
-  source.should have_xpath('//title', text: 'Sign In')
+  expect(title).to match(/Sign In/)
 end
 
 Then /^the "Description" field contains the product's description$/ do

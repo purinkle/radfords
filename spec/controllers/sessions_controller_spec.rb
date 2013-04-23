@@ -12,7 +12,7 @@ describe SessionsController do
 
     it 'should have the right title' do
       get :new
-      response.body.should have_selector('title', text: 'Sign In')
+      expect(assigns(:title)).to eql("Sign In")
     end
   end
 
@@ -30,7 +30,7 @@ describe SessionsController do
 
       it 'should have the right title' do
         post :create, :session => @attr
-        response.body.should have_selector('title', text: 'Sign in')
+        expect(assigns(:title)).to eql("Sign in")
       end
 
       it 'should have a flash.now message' do
