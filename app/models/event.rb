@@ -11,6 +11,8 @@
 #
 
 class Event < ActiveRecord::Base
+  attr_accessible :location, :name, :takes_place_on
+
   validates :name, presence: true;
   validates :takes_place_on, presence: true;
   validates :location, presence: true;

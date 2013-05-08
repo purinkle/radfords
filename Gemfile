@@ -22,6 +22,7 @@ group :development do
 end
 
 group :development, :test do
+  gem "brakeman"
   gem 'dotenv-rails'
   gem 'rspec-rails'
 end
