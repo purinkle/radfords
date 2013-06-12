@@ -1,8 +1,6 @@
 require 'spec_helper'
 
 describe PagesController do
-  render_views
-
   before (:each) do
     @base_title = "Radfords of Somerford"
   end
@@ -18,20 +16,13 @@ describe PagesController do
       expect(assigns(:title)).to eql("Home")
     end
 
-    it "should display the next event" do
-      event1 = FactoryGirl.create( :event, name: "Melton Mowbray Farmers' Market",
-                                takes_place_on: 1.week.ago,
-                                location: "Cattle Market, Scarlford Road" )
-      event2 = FactoryGirl.create( :event, name: "Huntingdon Farmer's Market",
-                                takes_place_on: 1.week.from_now,
-                                location: "Market Square" )
-      event3 = FactoryGirl.create( :event, name: "Otley Farmer's Market",
-                                takes_place_on: 1.day.from_now,
-                                location: "Market Square")
+    it "gets the next three events" do
+      event = stub(:event)
+      Event.stub(:find).with(:all, limit: 3).and_return([event])
 
       get :home
 
-      response.body.should have_selector('span.title', text: event3.name)
+      expect(assigns(:events)).to eql [event]
     end
   end
 
@@ -72,9 +63,21 @@ describe PagesController do
   end
 
   describe 'GET "products"' do
-    it 'sets the title' do
+    it "sets the title" do
+      Product.stub(:all)
+
       get :products
-      expect(assigns(:title)).to eql('Products')
+
+      expect(assigns(:title)).to eql "Products"
+    end
+
+    it "gets all of the products" do
+      product = stub(:product)
+      Product.stub(:all).and_return([product])
+
+      get :products
+
+      expect(assigns(:products)).to eql [product]
     end
   end
 end

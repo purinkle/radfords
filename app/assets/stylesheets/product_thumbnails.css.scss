@@ -1,0 +1,35 @@
+.product-thumbnails {
+  margin: 0;
+
+  li {
+    display: block;
+    float: left;
+    list-style-type: none;
+    margin-left: 3.092784%;
+    width: 22.680412%;
+
+    &:nth-child(4n+1) {
+      clear: left;
+      margin-left: 0;
+    }
+  }
+
+  img {
+    height: 10.221331em;
+    width: 100%;
+  }
+
+  h3 {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.3em;
+    text-align: center;
+  }
+
+  a:link, a:visited {
+    color: inherit;
+  }
+
+  a:hover, a:active {
+    color: inherit;
+  }
+}

@@ -92,6 +92,11 @@ Given /^some products exist$/ do
   @product_2 = create_product(title: 'Bar')
 end
 
+Given(/^there are two products$/) do
+  create_product(title: "Foo")
+  create_product(title: "Bar")
+end
+
 ### WHEN ###
 
 When /^I click the "Delete Product" button$/ do
@@ -155,6 +160,10 @@ end
 
 When /^I save a product without a title$/ do
   save_product(@product, title: %Q{})
+end
+
+When(/^I visit the shop$/) do
+  visit shop_path
 end
 
 ### THEN ###
@@ -226,6 +235,10 @@ Then /^I see the edit product page$/ do
   expect(title).to match(/Edit Product/)
 end
 
+Then(/^I see the first product$/) do
+  expect(page).to have_content("Foo")
+end
+
 Then /^I see the index products page$/ do
   expect(title).to match(/Products/)
 end
@@ -240,6 +253,10 @@ end
 
 Then /^I see the product's title$/ do
   should have_css('body', text: product.title)
+end
+
+Then(/^I see the second product$/) do
+  expect(page).to have_content("Bar")
 end
 
 Then /^I see the show product page$/ do

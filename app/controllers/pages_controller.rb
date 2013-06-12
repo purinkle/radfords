@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   end
 
   def products
+    @products = Product.all
     @title = "Products"
   end
 
