@@ -63,14 +63,6 @@ describe PagesController do
   end
 
   describe 'GET "products"' do
-    it "sets the title" do
-      Product.stub(:all)
-
-      get :products
-
-      expect(assigns(:title)).to eql "Products"
-    end
-
     it "gets all of the products" do
       product = stub(:product)
       Product.stub(:all).and_return([product])

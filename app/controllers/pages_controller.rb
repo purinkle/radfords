@@ -8,7 +8,6 @@ class PagesController < ApplicationController
 
   def products
     @products = Product.all
-    @title = "Products"
   end
 
   def outlets

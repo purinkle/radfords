@@ -1,11 +1,9 @@
-<ul class="product-thumbnails">
-  <% @products.each do |product| %>
-    <li><div>
-      <%= link_to(image_tag(product.photo.url), product_path(product)) %>
+<% content_for(:title, "Shop") %>
 
-      <div>
-        <h3><%= link_to(product.title, product_path(product)) %></h3>
-      </div>
-    </div></li>
-  <% end %>
+<ul class="product-thumbnails">
+  <%= render(
+    partial: "product_thumbnails",
+    collection: @products,
+    as: :product
+  ) %>
 </ul>
