@@ -10,6 +10,7 @@ gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'pg'
 gem 'rails', '~> 3'
+gem 'unicorn'
 
 group :assets do
   gem 'coffee-rails'
@@ -24,7 +25,7 @@ group :development do
 end
 
 group :development, :test do
-  gem "brakeman"
+  gem 'brakeman'
   gem 'dotenv-rails'
   gem 'rspec-rails'
 end
