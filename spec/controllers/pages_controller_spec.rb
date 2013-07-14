@@ -17,7 +17,7 @@ describe PagesController do
     end
 
     it "gets the next three events" do
-      event = stub(:event)
+      event = double(:event)
       Event.stub(:find).with(:all, limit: 3).and_return([event])
 
       get :home
@@ -64,7 +64,7 @@ describe PagesController do
 
   describe 'GET "products"' do
     it "gets all of the products" do
-      product = stub(:product)
+      product = double(:product)
       Product.stub(:all).and_return([product])
 
       get :products

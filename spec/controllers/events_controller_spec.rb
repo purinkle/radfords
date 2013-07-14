@@ -225,7 +225,7 @@ describe EventsController do
   end
 
   describe 'GET "delete"' do
-    let(:event) { stub }
+    let(:event) { double }
     let(:id) { '1' }
 
     before(:each) do
@@ -264,7 +264,7 @@ describe EventsController do
     let(:id) { '1' }
 
     before(:each) do
-      Event.stub(:find).with(id).and_return stub destroy: nil
+      Event.stub(:find).with(id).and_return double destroy: nil
     end
 
     it 'sets the success flash' do

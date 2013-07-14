@@ -110,22 +110,6 @@ When /^I create a product with valid data$/ do
   new_product
 end
 
-When /^I follow the "Back" link$/ do
-  click_link 'Back'
-end
-
-When /^I follow the "Cancel" link$/ do
-  click_link 'Cancel'
-end
-
-When /^I follow the "Delete" link$/ do
-  click_link 'Delete'
-end
-
-When /^I follow the "Edit" link$/ do
-  click_link 'Edit'
-end
-
 When /^I follow the product's link$/ do
   click_link @product.title
 end

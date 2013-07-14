@@ -1,4 +1,6 @@
 source 'http://rubygems.org'
+ruby "2.0.0"
+
 gem 'aws-sdk'
 gem 'geocoder'
 gem 'draper'
@@ -7,7 +9,7 @@ gem 'jquery-rails'
 gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'pg'
-gem 'rails'
+gem 'rails', '~> 3'
 
 group :assets do
   gem 'coffee-rails'

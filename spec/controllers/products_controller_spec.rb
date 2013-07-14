@@ -97,7 +97,7 @@ describe ProductsController do
   end
 
   describe 'GET "new"' do
-    let(:product) { stub }
+    let(:product) { double }
 
     before do
       Product.stub(new: product)
@@ -142,7 +142,7 @@ describe ProductsController do
   describe 'POST "create"' do
     let(:id) { 'foo' }
     let(:params) { {} }
-    let(:product) { stub(id: id, save: save) }
+    let(:product) { double(id: id, save: save) }
 
     before do
       Product.stub(:new).with(params) { product }

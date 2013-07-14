@@ -95,7 +95,7 @@ describe SuppliersController do
       end
 
       it 'sets the success flash' do
-        supplier = stub save: true
+        supplier = double save: true
         Supplier.stub new: supplier
         put :create, :supplier => {}
         flash[:success].should == 'The supplier was created successfully.'
@@ -221,7 +221,7 @@ describe SuppliersController do
       end
 
       it 'sets the success flash' do
-        supplier = stub update_attributes: true
+        supplier = double update_attributes: true
         Supplier.stub find: supplier
         put :update, :id => '1'
         flash[:success].should == 'The supplier was updated successfully.'
@@ -233,7 +233,7 @@ describe SuppliersController do
     let(:id) { '1' }
 
     context 'when signed in' do
-      let(:supplier) { stub.as_null_object }
+      let(:supplier) { double.as_null_object }
 
       before(:each) do
         controller.stub(signed_in?: true)
