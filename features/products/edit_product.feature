@@ -23,8 +23,9 @@ Feature: Edit product
   Scenario: Cancel product update
     Given I am signed in
     And a product exists
-    And I am on the edit product page
-    When I press "Cancel"
+    And I am on the show product page
+    When I follow the "Edit" link
+    And I press "Cancel"
     Then I see the show product page
 
   Scenario: Blank title
