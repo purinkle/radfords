@@ -42,7 +42,7 @@ end
 def save_product(id, product)
   visit edit_product_path(id)
   fill_in('Title', with: product[:title])
-  click_button 'Save'
+  click_button "Update Product"
 end
 
 def sign_in

@@ -21,7 +21,9 @@ FactoryGirl.define do
 
   factory :product do
     description 'Packed full of bar, baz, and plenty of qux.'
-    photo { fixture_file_upload(Rails.root.join('features', 'support', 'photo.jpg'), 'image/jpg') }
+    photo_file_name { "photo.jpg" }
+    photo_content_type { "image/jpg" }
+    photo_file_size { 1024 }
     title 'foo'
   end
 end

@@ -18,7 +18,7 @@ Feature: Edit product
     When I go to the edit product page
     Then the "Title" field contains the product's title
     And the "Description" field contains the product's description
-    And I see the product's photo
+    And I see the product's preview photo
 
   Scenario: Cancel product update
     Given I am signed in
