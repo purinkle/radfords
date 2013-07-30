@@ -25,8 +25,7 @@ module SessionsHelper
 
   def deny_access
     store_location
-    flash[:error] = 'Please sign in to access this page.'
-    redirect_to signin_path
+    redirect_to(signin_path, alert: t("sessions.unauthenticated"))
   end
 
   def redirect_back_or(default)

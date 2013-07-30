@@ -1,70 +1,50 @@
 class EventsController < ApplicationController
-  before_filter :authenticate, except: :destroy
-
   def show
-    @event = Event.find( params[:id] )
-    @title = @event.name
+    @event = event
   end
 
   def new
-    @title = 'New Event'
-    @event  = Event.new
+    @event = Event.new
   end
 
   def create
-    @title = 'New Event'
     @event = Event.new( params[:event] )
-
-    if @event.save
-      redirect_to @event
-    else
-      render 'new'
-    end
+    @event.save!
+    redirect_to(@event, notice: "You successfully created an event.")
+  rescue ActiveRecord::RecordInvalid
+    render "new"
   end
 
   def index
-    @title = 'Listing events'
     @events = Event.all
   end
 
   def edit
-    @event = Event.find( params[:id] )
-    @title = "Edit event"
+    @event = event
   end
 
   def update
-    @event = Event.find( params[:id] )
-
-    if @event.update_attributes( params[:event] )
-      flash[:success] = "Event updated."
-
-      redirect_to @event
-    else
-      @title = "Edit event"
-      render "edit"
-    end
+    @event = event
+    @event.update_attributes!(params[:event])
+    redirect_to(@event, notice: "You successfully updated the event.")
+  rescue ActiveRecord::RecordInvalid
+    render "edit"
   end
 
   def destroy
-    @event = Event.find params[:id]
-    @event.destroy
-    redirect_to events_path, flash: {
-      success: 'The event was deleted successfully.'
-    }
+    event.destroy
+    redirect_to(events_path, notice: "You successfully deleted the event.")
   end
 
   def delete
-    begin
-      @event = Event.find params[:id]
-    rescue ActiveRecord::RecordNotFound
-      redirect_to events_path, flash: {
-        error: 'The event you selected doesn\'t exist.'
-      }
-    end
+    @event = event
   end
 
   private
-    def authenticate
-      deny_access unless signed_in?
-    end
+
+  def event
+    Event.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to(events_path, alert: t("events.not_found"))
+  end
 end

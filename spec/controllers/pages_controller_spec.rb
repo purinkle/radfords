@@ -50,18 +50,6 @@ describe PagesController do
     end
   end
 
-  describe "GET 'contact'" do
-    it "should be successful" do
-      get 'contact'
-      response.should be_success
-    end
-
-    it "should have the right title" do
-      get 'contact'
-      expect(assigns(:title)).to eql("Contact")
-    end
-  end
-
   describe 'GET "products"' do
     it "gets all of the products" do
       product = double(:product)

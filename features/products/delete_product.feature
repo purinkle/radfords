@@ -3,12 +3,6 @@ Feature: Delete product
   As an administrator
   I need to delete out-of-date products
 
-  Scenario: Visit the page without signing in
-    Given I am not signed in
-    When I go to the delete product page
-    Then I see the sign in page
-    And I see a sign in message
-
   Scenario: Try to delete a product that doesn't exist
     Given I am signed in
     And no products exist
@@ -22,5 +16,5 @@ Feature: Delete product
     And I am on the delete product page
     When I click the "Delete Product" button
     Then I see the index products page
-    And I see a "product was deleted" message
+    And I see a product was deleted message
     And I don't see the product

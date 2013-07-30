@@ -30,13 +30,15 @@ describe SessionsController do
 
       it 'should have the right title' do
         post :create, :session => @attr
-        expect(assigns(:title)).to eql("Sign in")
+        expect(assigns(:title)).to eql("Sign In")
       end
 
-      it 'should have a flash.now message' do
-        post :create, :session => @attr
+      it "sets the alert flash" do
+        User.stub(authenticate: nil)
 
-        flash.now[:error].should =~ /invalid/i
+        post :create, session: {}
+
+        expect(flash[:alert]).to eql "Invalid email or password."
       end
     end
 

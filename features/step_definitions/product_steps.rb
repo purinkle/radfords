@@ -78,11 +78,6 @@ Given /^I am on the show product page$/ do
   visit product_path(product)
 end
 
-Given /^I am signed in$/ do
-  create_user
-  sign_in
-end
-
 Given /^no products exist$/ do
   Product.destroy_all
 end
@@ -164,7 +159,7 @@ Then /^I am redirected to the list of products$/ do
   expect(title).to match(/#{@product.title}/)
 end
 
-Then /^I see a "product was deleted" message$/ do
+Then /^I see a product was deleted message$/ do
   expect(page).to have_content('Product was deleted.')
 end
 

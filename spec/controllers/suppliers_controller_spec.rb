@@ -1,312 +1,176 @@
 require 'spec_helper'
 
 describe SuppliersController do
-  render_views
+  describe "DELETE 'destroy'" do
+    it "destroys the supplier" do
+      supplier = Supplier.new
+      controller.stub(:authenticate)
+      Supplier.stub(find: supplier)
 
-  describe 'GET "new"' do
-    before (:each) do
-      test_sign_in( FactoryGirl.create(:user) )
+      supplier.should_receive(:destroy)
+
+      delete :destroy, id: "1"
     end
 
-    it 'should be successful' do
-      get 'new'
+    it "redirects to the outlets page" do
+      supplier = Supplier.new
+      controller.stub(:authenticate)
+      Supplier.stub(find: supplier)
 
-      response.should be_success
+      delete :destroy, id: "1"
+
+      expect(response).to redirect_to outlets_path
     end
 
-    it 'should have the right title' do
-      get 'new'
-      expect(assigns(:title)).to eql("New Supplier")
-    end
+    it "sets the notice flash" do
+      supplier = Supplier.new
+      controller.stub(:authenticate)
+      Supplier.stub(find: supplier)
 
-    it 'should have a name field' do
-      get :new
-      response.body.should have_field('Name')
-    end
+      delete :destroy, id: "1"
 
-    it 'should have a website field' do
-      get :new
-      response.body.should have_field('Website')
-    end
-
-    it 'should have a telephone number field' do
-      get :new
-      response.body.should have_field('Telephone number')
+      expect(flash[:notice]).to eql "You successfully deleted the supplier."
     end
   end
 
-  describe 'POST "create"' do
-    before(:each) do
-      Supplier.any_instance.stub :geocode
+  describe "GET 'new'" do
+    it "creates a new supplier" do
+      supplier = Supplier.new
+      controller.stub(:authenticate)
+      Supplier.stub(new: supplier)
+
+      get :new
+
+      expect(assigns(:supplier)).to be supplier
+    end
+  end
+
+  describe "POST 'create'" do
+    it "creates a new supplier" do
+      supplier = Supplier.new
+      supplier.stub(save!: true)
+      controller.stub(:authenticate)
+      Supplier.stub(new: supplier)
+
+      post :create, supplier: {}
+
+      expect(assigns(:supplier)).to be supplier
     end
 
-    describe 'failure' do
-      before (:each) do
-        test_sign_in( FactoryGirl.create(:user) )
+    it "saves the supplier" do
+      supplier = Supplier.new
+      controller.stub(:authenticate)
+      Supplier.stub(new: supplier)
 
-        @attr = {
-          :name => '',
-          :address => '',
-          :website => '',
-          :telephone_number => ''
-        }
-      end
+      supplier.should_receive(:save!)
 
-      it 'should not create a supplier' do
-        lambda do
-          post :create, :supplier => @attr
-        end.should_not change( Supplier, :count )
-      end
-
-      it 'should have the right title' do
-        post :create, :supplier => @attr
-        expect(assigns(:title)).to eql("New Supplier")
-      end
-
-      it 'should render the new page' do
-        post :create, :supplier => @attr
-
-        response.should render_template('new')
-      end
+      post :create, supplier: {}
     end
 
-    describe 'success' do
-      before (:each) do
-        test_sign_in( FactoryGirl.create(:user) )
+    it "redirects to the outlets page" do
+      supplier = Supplier.new
+      supplier.stub(save!: true)
+      controller.stub(:authenticate)
+      Supplier.stub(new: supplier)
 
-        @attr = {
-          :name => 'Ethan Perry',
-          :address => '75 Cambridge Road, Nolton SA62 1RZ',
-          :website => 'http://insuranceintern.com/',
-          :telephone_number => '07842 169160'
-        }
-      end
+      post :create, supplier: {}
 
-      it 'should create a supplier' do
-        lambda do
-          post :create, :supplier => @attr
-        end.should change( Supplier, :count ).by(1)
-      end
+      expect(response).to redirect_to outlets_path
+    end
 
-      it 'should redirect to the outlets page' do |variable|
-        post :create, :supplier => @attr
+    it "sets the notice flash" do
+      supplier = Supplier.new
+      supplier.stub(save!: true)
+      controller.stub(:authenticate)
+      Supplier.stub(new: supplier)
 
-        response.should redirect_to( outlets_path )
-      end
+      post :create, supplier: {}
 
-      it 'sets the success flash' do
-        supplier = double save: true
-        Supplier.stub new: supplier
-        put :create, :supplier => {}
-        flash[:success].should == 'The supplier was created successfully.'
+      expect(flash[:notice]).to eql "You successfully created a supplier."
+    end
+
+    context "when the supplier is not valid" do
+      it "renders the new supplier page" do
+        supplier = Supplier.new
+        exception = ActiveRecord::RecordInvalid.new(supplier)
+        supplier.stub(:save!).and_raise(exception)
+        controller.stub(:authenticate)
+        Supplier.stub(new: supplier)
+
+        post :create, supplier: {}
+
+        expect(response).to render_template "new"
       end
     end
   end
 
   describe "GET 'edit'" do
-    before (:each) do
-      Supplier.any_instance.stub :geocode
-      @supplier = FactoryGirl.create(:supplier)
+    it "finds the supplier" do
+      supplier = Supplier.new
+      controller.stub(:authenticate)
+      Supplier.stub(find: supplier)
 
-      test_sign_in( FactoryGirl.create(:user) )
-    end
+      get :edit, id: "1"
 
-    it "should be successful" do
-      get :edit, :id => @supplier
-
-      response.should be_success
-    end
-
-    it "should have the right title" do
-      get :edit, :id => @supplier
-      expect(assigns(:title)).to eql("Edit Supplier")
-    end
-  end
-
-  describe "authentication of all pages" do
-    before (:each) do
-      Supplier.any_instance.stub :geocode
-      @supplier = FactoryGirl.create(:supplier)
-
-      @attr = {
-        :name => 'Ethan Perry',
-        :address => '75 Cambridge Road, Nolton SA62 1RZ',
-        :website => 'http://insuranceintern.com/',
-        :telephone_number => '07842 169160'
-      }
-    end
-
-    describe "for non-signed-in users" do
-      it "should deny access to 'create'" do
-        post :create, :supplier => @attr
-
-        response.should redirect_to(signin_path)
-      end
-
-      it "should deny access to 'new'" do
-        get :new
-
-        response.should redirect_to(signin_path)
-      end
-
-      it "should deny access to 'edit'" do
-        get :edit, :id => @supplier
-
-        response.should redirect_to(signin_path)
-      end
-
-      it "should deny access to 'update'" do
-        put :update, :id => @supplier, :supplier => @attr
-
-        response.should redirect_to(signin_path)
-      end
+      expect(assigns(:supplier)).to be supplier
     end
   end
 
   describe "PUT 'update'" do
-    before (:each) do
-      Supplier.any_instance.stub :geocode
-      @supplier = FactoryGirl.create(:supplier)
-
-      test_sign_in( FactoryGirl.create(:user) )
-    end
-
-    describe "failure" do
-      before (:each) do
-        @attr = {
-          :name => '',
-          :address => '',
-          :website => '',
-          :telephone_number => ''
-        }
-      end
-
-      it "should render the 'edit' page" do
-        put :update, :id => @supplier, :supplier => @attr
-
-        response.should render_template("edit")
-      end
-
-      it "should have the right title" do
-        put :update, :id => @supplier, :supplier => @attr
-        expect(assigns(:title)).to eql("Edit Supplier")
-      end
-    end
-
-    describe "success" do
-      before (:each) do
-        @attr = {
-          :name => 'Ethan Perry',
-          :address => '75 Cambridge Road, Nolton SA62 1RZ',
-          :website => 'http://insuranceintern.com/',
-          :telephone_number => '07842 169160'
-        }
-      end
-
-      it "should change the supplier's attributes" do
-        put :update, :id => @supplier, :supplier => @attr
-
-        @supplier.reload
-
-        @supplier.name.should == @attr[:name]
-        @supplier.address.should == @attr[:address]
-        @supplier.website.should == @attr[:website]
-        @supplier.telephone_number.should == @attr[:telephone_number]
-      end
-
-      it "should redirect to the outlets page" do
-        put :update, :id => @supplier, :supplier => @attr
-
-        response.should redirect_to( outlets_path )
-      end
-
-      it 'sets the success flash' do
-        supplier = double update_attributes: true
-        Supplier.stub find: supplier
-        put :update, :id => '1'
-        flash[:success].should == 'The supplier was updated successfully.'
-      end
-    end
-  end
-
-  describe 'DELETE "destroy"' do
-    let(:id) { '1' }
-
-    context 'when signed in' do
-      let(:supplier) { double.as_null_object }
-
-      before(:each) do
-        controller.stub(signed_in?: true)
-        Supplier.stub(find: supplier)
-      end
-
-      it 'finds the supplier' do
-        Supplier.should_receive(:find).with(id)
-        delete :destroy, id: id
-      end
-
-      it 'stores the supplier' do
-        delete :destroy, id: id
-        assigns(:supplier).should == supplier
-      end
-
-      it 'destroys the supplier' do
-        supplier.should_receive(:destroy)
-        delete :destroy, id: id
-      end
-
-      it 'sets the success flash' do
-        delete :destroy, id: id
-        flash[:success].should == 'The supplier was destroyed successfully.'
-      end
-
-      it 'redirects to the outlets page' do
-        delete :destroy, id: id
-        response.should redirect_to(outlets_path)
-      end
-    end
-
-    context 'when not signed in' do
-      it 'sets the error flash' do
-        post :destroy, id: id
-        flash[:error].should == 'Please sign in to access this page.'
-      end
-
-      it 'redirects to the sign in page' do
-        post :destroy, id: id
-        response.should redirect_to(signin_path)
-      end
-    end
-  end
-
-  describe 'GET "show"' do
-    let(:found_supplier) do
-      double(:found_supplier, {
-        address: double(:address),
-        name: name,
-        telephone_number: double(:telephone_number)
-      })
-    end
-
-    let(:id) { 'foo' }
-    let(:name) { double(:name) }
-    let(:params) { {id: id} }
-    let(:supplier) { double(:supplier) }
-
-    before do
+    it "finds the supplier" do
+      supplier = Supplier.new
       controller.stub(:authenticate)
-      stub_const('Supplier', supplier)
-      supplier.stub(:find).with(id) { found_supplier }
+      Supplier.stub(find: supplier)
+
+      put :update, id: "1", supplier: {}
+
+      expect(assigns(:supplier)).to be supplier
     end
 
-    it 'finds the supplier' do
-      get :show, params
-      expect(assigns(:supplier)).to eql(found_supplier)
+    it "updates the supplier's attributes" do
+      supplier = Supplier.new
+      controller.stub(:authenticate)
+      Supplier.stub(find: supplier)
+
+      expect(supplier).to receive :update_attributes!
+
+      put :update, id: "1", supplier: {}
     end
 
-    it 'sets the title' do
-      get :show, params
-      expect(assigns(:title)).to eql(name)
+    it "redirects to the outlets page" do
+      supplier = Supplier.new
+      supplier.stub(update_attributes!: true)
+      controller.stub(:authenticate)
+      Supplier.stub(find: supplier)
+
+      put :update, id: "1", supplier: {}
+
+      expect(response).to redirect_to outlets_path
+    end
+
+    it "sets the notice flash" do
+      supplier = Supplier.new
+      supplier.stub(update_attributes!: true)
+      controller.stub(:authenticate)
+      Supplier.stub(find: supplier)
+
+      put :update, id: "1", supplier: {}
+
+      expect(flash[:notice]).to eql "You successfully updated the supplier."
+    end
+
+    context "when the updated supplier is invalid" do
+      it "renders the edit supplier page" do
+        supplier = Supplier.new
+        exception = ActiveRecord::RecordInvalid.new(supplier)
+        supplier.stub(:update_attributes).and_raise(exception)
+        controller.stub(:authenticate)
+        Supplier.stub(find: supplier)
+
+        put :update, id: "1", supplier: {}
+
+        expect(response).to render_template "edit"
+      end
     end
   end
 end

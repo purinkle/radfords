@@ -1,0 +1,15 @@
+<div class="navbar">
+  <div class="navbar-inner">
+    <%= link_to("Radfords", root_path, class: "brand") %>
+
+    <ul class="nav">
+      <li><%= link_to("Events", events_path, class: nav_class("events")) %></li>
+
+      <li><%= link_to("Products", products_path, class: nav_class("products")) %></li>
+    </ul>
+
+    <div class="btn-group pull-right">
+      <%= link_to("Sign Out", signout_path, class: "btn btn-primary btn-small") %>
+    </div>
+  </div>
+</div>

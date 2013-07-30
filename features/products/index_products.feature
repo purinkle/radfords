@@ -1,10 +1,4 @@
 Feature: Index products
-  Scenario: Not signed in
-    Given I am not signed in
-    When I go to the index products page
-    Then I see the sign in page
-    And I see a sign in message
-
   Scenario: No products exist
     Given I am signed in
     And no products exist

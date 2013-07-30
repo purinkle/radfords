@@ -1,4 +1,12 @@
 en:
   error_text: 'Oh snap'
+  events:
+    not_found: "We couldn't find the event you were looking for."
   info_text: 'Heads up'
+  products:
+    create: "You successfully created a product."
+  sessions:
+    unauthenticated: "You need to sign in or sign up before continuing."
   success_text: 'Well done'
+  suppliers:
+    update: "You successfully updated the supplier."

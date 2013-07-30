@@ -9,7 +9,7 @@ Radfords::Application.routes.draw do
     member { get :delete }
   end
   resources :sessions, :only => [ :new, :create, :destroy ]
-  resources :suppliers do
+  resources :suppliers, except: :show do
     member { get :delete }
   end
 

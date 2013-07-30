@@ -1,127 +1,168 @@
 require 'spec_helper'
 
 describe EventsController do
-  describe 'GET "show"' do
-    before (:each) do
-      @event = FactoryGirl.create(:event)
+  describe "GET 'show'" do
+    it "finds the event" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(find: event)
 
-      test_sign_in( FactoryGirl.create(:user) )
-    end
+      get :show, id: "1"
 
-    it 'should be successful' do
-      get :show, :id => @event
-
-      response.should be_success
-    end
-
-    it 'should find the right event' do
-      get :show, :id => @event
-
-      assigns(:event).should == @event
+      expect(assigns(:event)).to be event
     end
   end
 
-  describe 'GET "new"' do
-    before (:each) do
-      test_sign_in( FactoryGirl.create(:user) )
-    end
+  describe "GET 'new'" do
+    it "creates a new event" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(new: event)
 
-    it 'should be successful' do
-      get 'new'
+      get :new
 
-      response.should be_success
+      expect(assigns(:event)).to be event
     end
   end
 
   describe 'POST "create"' do
-    describe 'failure' do
-      before (:each) do
-        test_sign_in( FactoryGirl.create(:user) )
+    it "finds the event" do
+      event = Event.new
+      event.stub(save!: true)
+      controller.stub(:authenticate)
+      Event.stub(new: event)
 
-        @attr = {
-          :name           => '',
-          :takes_place_on => '',
-          :location       => ''
-        }
-      end
+      post :create, event: {}
 
-      it 'should not create an event' do
-        lambda do
-          post :create, :event => @attr
-        end.should_not change( Event, :count )
-      end
-
-      it 'should render the new page' do
-        post :create, :event => @attr
-
-        response.should render_template('new')
-      end
+      expect(assigns(:event)).to be event
     end
 
-    describe 'success' do
-      before (:each) do
-        test_sign_in( FactoryGirl.create(:user) )
+    it "saves the event" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(new: event)
 
-        @attr = {
-          :name           => 'Macclesfield Farmers Market',
-          :takes_place_on => 1.week.from_now,
-          :location       => 'Town Hall, Macclesfield'
-        }
-      end
+      event.should_receive(:save!)
 
-      it 'should create an event' do
-        lambda do
-          post :create, :event => @attr
-        end.should change( Event, :count ).by(1)
-      end
+      post :create, event: {}
+    end
 
-      it 'should redirect to the user show page' do |variable|
-        post :create, :event => @attr
+    it "redirects to the event's page" do
+      event = Event.new
+      event.stub(save!: true, url_for: "")
+      controller.stub(:authenticate)
+      Event.stub(new: event)
 
-        response.should redirect_to( event_path( assigns(:event) ) )
+      post :create, event: {}
+
+      expect(response).to redirect_to event
+    end
+
+    it "sets the notice flash" do
+      event = Event.new
+      event.stub(save!: true, url_for: "")
+      controller.stub(:authenticate)
+      Event.stub(new: event)
+
+      post :create, event: {}
+
+      expect(flash[:notice]).to eql "You successfully created an event."
+    end
+
+    context "when the event is not valid" do
+      it "renders the new event page" do
+        event = Event.new
+        event.stub(:save!).and_raise(ActiveRecord::RecordInvalid.new(event))
+        controller.stub(:authenticate)
+        Event.stub(new: event)
+
+        post :create, event: {}
+
+        expect(response).to render_template "new"
       end
     end
   end
 
-  describe 'GET "index"' do
-    before (:each) do
-      test_sign_in( FactoryGirl.create(:user) )
+  describe "GET 'index'" do
+    it "finds all of the events" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(all: [event])
 
-      @event = FactoryGirl.create(:event, takes_place_on: 1.hour.from_now )
+      get :index
 
-      second = FactoryGirl.create( :event, :name => "This Event",
-                                takes_place_on: 1.hour.from_now,
-                                :location => "London, UK" )
-
-      third = FactoryGirl.create( :event, :name => "That Event",
-                               takes_place_on: 1.hour.from_now,
-                               :location => "New York, NY" )
-
-      @events = [ @event, second, third ]
-
-      30.times do
-        @events << FactoryGirl.create(:event)
-      end
-    end
-
-    it 'should be successful' do
-      get 'index'
-
-      response.should be_success
+      expect(assigns(:events)).to eql [event]
     end
   end
 
   describe "GET 'edit'" do
-    before (:each) do
-      @event = FactoryGirl.create(:event)
+    it "finds the event" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(find: event)
 
-      test_sign_in( FactoryGirl.create(:user) )
+      get :edit, id: "1"
+
+      expect(assigns(:event)).to be event
+    end
+  end
+
+  describe "PUT 'update'" do
+    it "finds the event" do
+      event = Event.new
+      event.stub(update_attributes!: true)
+      controller.stub(:authenticate)
+      Event.stub(find: event)
+
+      put :update, id: "1", event: {}
+
+      expect(assigns(:event)).to be event
     end
 
-    it "should be successful" do
-      get :edit, :id => @event
+    it "updates the event" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(find: event)
 
-      response.should be_success
+      event.should_receive(:update_attributes!)
+
+      put :update, id: "1", event: {}
+    end
+
+    it "redirects to the event's page" do
+      event = Event.new
+      event.stub(update_attributes!: true, url_for: "")
+      controller.stub(:authenticate)
+      Event.stub(find: event)
+
+      put :update, id: "1", event: {}
+
+      expect(response).to redirect_to event
+    end
+
+    it "sets the notice flash" do
+      event = Event.new
+      event.stub(update_attributes!: true)
+      controller.stub(:authenticate)
+      Event.stub(find: event)
+
+      put :update, id: "1", event: {}
+
+      expect(flash[:notice]).to eql "You successfully updated the event."
+    end
+
+    context "when the event is not valid" do
+      it "renders the edit event page" do
+        event = Event.new
+        exception = ActiveRecord::RecordInvalid.new(event)
+        event.stub(:update_attributes!).and_raise(exception)
+        controller.stub(:authenticate)
+        Event.stub(find: event)
+
+        put :update, id: "1", event: {}
+
+        expect(response).to render_template "edit"
+      end
     end
   end
 
@@ -135,141 +176,91 @@ describe EventsController do
         :location       => 'Town Hall, Macclesfield'
       }
     end
+  end
 
-    describe "for non-signed-in users" do
-      it "should deny access to 'index'" do
-        get :index
+  describe "GET 'delete'" do
+    it "finds the event" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(find: event)
 
-        response.should redirect_to(signin_path)
+      get :delete, id: "1"
+
+      expect(assigns(:event)).to be event
+    end
+
+    context "when an event can't be found" do
+      it "sets the alert flash" do
+        controller.stub(:authenticate)
+        Event.stub(:find).and_raise(ActiveRecord::RecordNotFound)
+
+        get :delete, id: "1"
+
+        alert = "We couldn't find the event you were looking for."
+        expect(flash[:alert]).to eql alert
       end
 
-      it "should deny access to 'create'" do
-        post :create, :event => @attr
+      it "redirects to the events page" do
+        controller.stub(:authenticate)
+        Event.stub(:find).and_raise(ActiveRecord::RecordNotFound)
 
-        response.should redirect_to(signin_path)
-      end
+        get :delete, id: "1"
 
-      it "should deny access to 'new'" do
-        get :new
-
-        response.should redirect_to(signin_path)
-      end
-
-      it "should deny access to 'edit'" do
-        get :edit, :id => @event
-
-        response.should redirect_to(signin_path)
-      end
-
-      it "should deny access to 'show'" do
-        get :show, :id => @event
-
-        response.should redirect_to(signin_path)
-      end
-
-      it "should deny access to 'update'" do
-        put :update, :id => @event, :event => @attr
-
-        response.should redirect_to(signin_path)
+        expect(response).to redirect_to events_path
       end
     end
   end
 
-  describe "PUT 'update'" do
-    before (:each) do
-      @event = FactoryGirl.create(:event)
+  describe "DELETE 'destroy'" do
+    it "destroys the event" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(find: event)
 
-      test_sign_in( FactoryGirl.create(:user) )
+      event.should_receive(:destroy)
+
+      delete :destroy, id: "1"
     end
 
-    describe "failure" do
-      before (:each) do
-        @attr = { :name => "", :takes_place_on => "", :location => "" }
-      end
+    it "redirects to the events index" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(find: event)
 
-      it "should render the 'edit' page" do
-        put :update, :id => @event, :event => @attr
+      delete :destroy, id: "1"
 
-        response.should render_template("edit")
-      end
+      expect(response).to redirect_to events_path
     end
 
-    describe "success" do
-      before (:each) do
-        @attr = { :name => "New Name", :takes_place_on => "13 October 2011",
-                  :location => "New Location" }
-      end
+    it "sets the notice flash" do
+      event = Event.new
+      controller.stub(:authenticate)
+      Event.stub(find: event)
 
-      it "should change the event's attributes" do
-        put :update, :id => @event, :event => @attr
+      delete :destroy, id: "1"
 
-        @event.reload
-
-        @event.name.should == @attr[:name]
-        @event.takes_place_on.should == @attr[:takes_place_on]
-        @event.location.should == @attr[:location]
-      end
-
-      it "should redirect to the user show page" do
-        put :update, :id => @event, :event => @attr
-
-        response.should redirect_to( event_path(@event) )
-      end
-
-      it "should have a flash message" do
-        put :update, :id => @event, :event => @attr
-
-        flash[:success].should =~ /updated/
-      end
+      expect(flash[:notice]).to eql "You successfully deleted the event."
     end
   end
 
-  describe 'GET "delete"' do
-    let(:event) { double }
-    let(:id) { '1' }
+  describe "#deny_access" do
+    it "stores the return location" do
+      get :new
 
-    before(:each) do
-      controller.stub :authenticate
-      Event.stub find: event
+      expect(session[:return_to]).to eql "/events/new"
     end
 
-    it 'tries to find the event' do
-      Event.should_receive(:find).with id
-      get :delete, id: id
+    it "redirects to the sign in page" do
+      get :new
+
+      expect(response).to redirect_to signin_path
     end
 
-    it 'stores the event' do
-      get :delete, id: id
-      assigns(:event).should == event
-    end
+    it "sets the alert flash" do
+      get :new
 
-    context 'when an event can\'t be found' do
-      before(:each) do
-        Event.stub(:find).and_raise ActiveRecord::RecordNotFound
-      end
-
-      it 'redirects to the index' do
-        get :delete, id: id
-        should redirect_to events_path
-      end
-
-      it 'sets the error flash' do
-        get :delete, id: id
-        flash[:error].should == 'The event you selected doesn\'t exist.'
-      end
-    end
-  end
-
-  describe 'DELETE "destroy"' do
-    let(:id) { '1' }
-
-    before(:each) do
-      Event.stub(:find).with(id).and_return double destroy: nil
-    end
-
-    it 'sets the success flash' do
-      delete :destroy, id: id
-      flash[:success].should == 'The event was deleted successfully.'
+      alert = "You need to sign in or sign up before continuing."
+      expect(flash[:alert]).to eql alert
     end
   end
 end

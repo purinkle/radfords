@@ -10,7 +10,7 @@
 
 <%= content_tag(:body, class: [content_for(:body_class), controller.controller_name], id: "#{controller_name}_#{action_name}") do %>
   <div class="container">
-    <%= render 'layouts/navbar' %>
+    <%= navbar %>
 
     <%= render 'layouts/header' %>
     <div class="main">

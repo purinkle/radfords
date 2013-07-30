@@ -139,35 +139,51 @@ describe ProductsController do
     end
   end
 
-  describe 'POST "create"' do
-    let(:id) { 'foo' }
-    let(:params) { {} }
-    let(:product) { double(id: id, save: save) }
+  describe "POST 'create'" do
+    it "finds the product" do
+      product = Product.new
+      product.stub(save!: true, url_for: "")
+      controller.stub(:authenticate)
+      Product.stub(new: product)
 
-    before do
-      Product.stub(:new).with(params) { product }
+      post :create, product: {}
+
+      expect(assigns(:product)).to be product
     end
 
-    context 'when the Product is valid' do
-      let(:save) { true }
+    it "sets the notice flash" do
+      product = Product.new
+      product.stub(save!: true, url_for: "")
+      controller.stub(:authenticate)
+      Product.stub(new: product)
 
-      it 'redirects to the product\'s page' do
-        post :create, product: params
-        response.should redirect_to(product_path(id))
-      end
+      post :create, product: {}
 
-      it 'sets the success flash' do
-        post :create, product: params
-        flash[:success].should == 'The product was created successfully.'
-      end
+      expect(flash[:notice]).to eql "You successfully created a product."
     end
 
-    context 'when the Product is invalid' do
-      let(:save) { false }
+    it "redirects to the product's page" do
+      product = Product.new
+      product.stub(save!: true, url_for: "")
+      controller.stub(:authenticate)
+      Product.stub(new: product)
 
-      it 'renders the "New Product" page' do
-        post :create, product: params
-        response.should render_template('new')
+      post :create, product: {}
+
+      expect(response).to redirect_to product
+    end
+
+    context "when the product is invalid" do
+      it "renders the new product page" do
+        product = Product.new
+        exception = ActiveRecord::RecordInvalid.new(product)
+        product.stub(:save!).and_raise(exception)
+        controller.stub(:authenticate)
+        Product.stub(new: product)
+
+        post :create, product: {}
+
+        expect(response).to render_template "new"
       end
     end
   end
