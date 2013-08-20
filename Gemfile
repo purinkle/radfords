@@ -39,6 +39,7 @@ group :test do
   gem 'launchy'
   gem 'shoulda'
   gem 'simplecov'
+  gem 'timecop'
   gem 'vcr'
   gem 'webmock'
 end
