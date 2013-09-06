@@ -17,8 +17,9 @@ class Event < ActiveRecord::Base
   validates :takes_place_on, presence: true;
   validates :location, presence: true;
 
-  default_scope order: 'takes_place_on',
-                conditions: [ 'takes_place_on >= ?', Date.today ]
+  scope :future, -> { where("takes_place_on >= ?", Time.zone.now) }
+
+  default_scope { future.order("takes_place_on") }
 
   def takes_place_on
     if read_attribute(:takes_place_on)
