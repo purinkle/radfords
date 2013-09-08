@@ -18,9 +18,9 @@ end
 
 When(/^I create a valid event$/) do
   new_event_page = NewEventsPage.new(
-    "Macclesfield Farmers Market",
-    "Town Hall, Macclesfield",
-    "25/08/2013"
+    name: "Macclesfield Farmers Market",
+    location: "Town Hall, Macclesfield",
+    takes_place_on: "25/08/2013"
   )
 
   visit new_event_path
@@ -77,9 +77,9 @@ end
 When(/^I update the event with valid data$/) do
   event = Event.first
   edit_event_page = EditEventPage.new(
-    "Macclesfield Farmers Market",
-    "Town Hall, Macclesfield",
-    "25/08/2013"
+    name: "Macclesfield Farmers Market",
+    location: "Town Hall, Macclesfield",
+    takes_place_on: "25/08/2013"
   )
 
   visit edit_event_path(event)
