@@ -1,3 +1,15 @@
+<% content_for(:title, t('.title')) %>
+
+<ul class="product-thumbnails">
+  <%= render(
+    partial: 'product_thumbnails',
+    collection: @products,
+    as: :product
+  ) %>
+</ul>
+
+<%= paginate @products %>
+
 <div class="section">
   <div class="article">
     <h2>

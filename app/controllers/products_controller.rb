@@ -14,9 +14,18 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
-    redirect_to products_url, notice: 'Product was deleted.'
+    begin
+      @product = Product.find(params[:id])
+    rescue ActiveRecord::RecordNotFound
+      redirect_to products_url, alert: t('products.destroy.alert')
+      return
+    end
+
+    if @product.destroy
+      redirect_to products_url, notice: t('products.destroy.notice')
+    else
+      render :delete
+    end
   end
 
   def edit

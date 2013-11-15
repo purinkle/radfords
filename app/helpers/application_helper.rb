@@ -24,10 +24,4 @@ module ApplicationHelper
       render(partial: "shared/navbar")
     end
   end
-
-  def sign_in_link
-    unless signed_in?
-      render "layouts/sign_in_link"
-    end
-  end
 end

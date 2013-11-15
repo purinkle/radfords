@@ -13,3 +13,4 @@ doc/
 config/heroku.yml
 /.env
 /coverage/
+/.foreman

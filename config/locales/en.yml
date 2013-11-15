@@ -1,10 +1,32 @@
 en:
+  baskets:
+    destroy:
+      notice: Your basket is currently empty.
+    show:
+      alert: Invalid basket.
+      checkout: Checkout
+      confirm: Are you sure?
+      empty_basket: Empty basket
+      heading: Your Basket
+      title: Basket
   error_text: 'Oh snap'
   events:
     not_found: "We couldn't find the event you were looking for."
   info_text: 'Heads up'
+  orders:
+    new:
+      notice: Your basket is empty.
+      title: New order
+  pages:
+    home:
+      title: Home
+    product_thumbnails:
+      add_to_basket: Add to Basket
   products:
     create: "You successfully created a product."
+    destroy:
+      alert: "We couldn't find that product."
+      notice: Product was deleted.
   sessions:
     unauthenticated: "You need to sign in or sign up before continuing."
   success_text: 'Well done'

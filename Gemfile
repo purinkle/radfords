@@ -6,10 +6,12 @@ gem 'geocoder'
 gem 'draper'
 gem 'friendly_id'
 gem 'jquery-rails'
+gem 'kaminari'
 gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'pg'
 gem 'rails', '~> 3'
+gem 'recipient_interceptor'
 gem 'unicorn'
 
 group :assets do

@@ -11,11 +11,6 @@ describe PagesController do
       response.should be_success
     end
 
-    it "should have the right title" do
-      get 'home'
-      expect(assigns(:title)).to eql("Home")
-    end
-
     it "gets the next three events" do
       event = double(:event)
       Event.stub(:find).with(:all, limit: 3).and_return([event])

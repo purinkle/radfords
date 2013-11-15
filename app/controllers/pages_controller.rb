@@ -2,8 +2,8 @@ class PagesController < ApplicationController
   skip_before_filter :authenticate
 
   def home
-    @title = "Home"
-    @events = Event.find(:all, limit: 3 )
+    @events = Event.find(:all, limit: 3)
+    @products = Product.page(params[:page])
   end
 
   def products
