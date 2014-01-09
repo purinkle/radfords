@@ -1,0 +1,44 @@
+<%= form_for(@order, html: { class: 'form-horizontal' }) do |f| %>
+  <%= render('shared/error_messages', object: f.object) %>
+
+  <div class="control-group">
+    <%= f.label(:name, class: 'control-label') %>
+
+    <div class="controls">
+      <%= f.text_field(:name, class: 'text-field') %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:address, class: 'control-label') %>
+
+    <div class="controls">
+      <%= f.text_area(:address, class: 'text-area') %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:email, class: 'control-label') %>
+
+    <div class="controls">
+      <%= f.email_field(:email, class: 'email-field') %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:pay_type, class: 'control-label') %>
+
+    <div class="controls">
+      <%= f.select(
+        :pay_type,
+        Order::PAYMENT_TYPES,
+        'class' => 'select',
+        'prompt' => 'Select a payment method'
+      ) %>
+    </div>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit(nil, 'class' => 'btn btn-primary') %>
+  </div>
+<% end %>

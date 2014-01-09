@@ -24,27 +24,79 @@ describe ProductsController do
   end
 
   describe 'DELETE "destroy"' do
-    let(:id) { 'foo' }
-    let(:params) { {id: id} }
-    let(:product) { double(:product, destroy: nil) }
+    it 'sets the product' do
+      product = double(:product)
+      product.stub(:destroy).with(no_args).once.and_return(true)
+      Product.stub(:find).with('1').once.and_return(product)
 
-    before do
-      Product.stub(:find).with(id) { product }
+      delete :destroy, id: '1'
+
+      expect(assigns(:product)).to be product
     end
 
     it 'destroys the product' do
-      product.should_receive(:destroy)
-      delete :destroy, params
+      product = double(:product)
+      Product.stub(:find).with('1').once.and_return(product)
+
+      product.should_receive(:destroy).with(no_args).once.and_return(true)
+
+      delete :destroy, id: '1'
+    end
+
+    it 'redirects to the products index' do
+      product = double(:product)
+      product.stub(:destroy).with(no_args).once.and_return(true)
+      Product.stub(:find).with('1').once.and_return(product)
+
+      delete :destroy, id: '1'
+
+      expect(response).to redirect_to products_url
     end
 
     it 'sets the notice flash' do
-      delete :destroy, params
-      expect(flash[:notice]).to eql('Product was deleted.')
+      product = double(:product)
+      product.stub(:destroy).with(no_args).once.and_return(true)
+      Product.stub(:find).with('1').once.and_return(product)
+
+      delete :destroy, id: '1'
+
+      expect(flash[:notice]).to eql I18n.t('products.destroy.notice')
     end
 
-    it 'redirects to the index products page' do
-      delete :destroy, params
-      expect(response).to redirect_to(products_url)
+    context 'when the product can\'t be found' do
+      it 'redirects to the products index' do
+        Product.stub(:find).
+          with('1').
+          once.
+          and_raise(ActiveRecord::RecordNotFound)
+
+        delete :destroy, id: '1'
+
+        expect(response).to redirect_to products_url
+      end
+
+      it 'sets the alert flash' do
+        Product.stub(:find).
+          with('1').
+          once.
+          and_raise(ActiveRecord::RecordNotFound)
+
+        delete :destroy, id: '1'
+
+        expect(flash[:alert]).to eql I18n.t('products.destroy.alert')
+      end
+    end
+
+    context 'when the product can\'t be destroyed' do
+      it 'renders the delete view' do
+        product = double(:product)
+        product.stub(:destroy).with(no_args).once.and_return(false)
+        Product.stub(:find).with('1').once.and_return(product)
+
+        delete :destroy, id: '1'
+
+        expect(response).to render_template :delete
+      end
     end
   end
 

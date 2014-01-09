@@ -1,10 +1,17 @@
 require 'spec_helper'
 
 describe Product do
-  it { should allow_mass_assignment_of(:description) }
-  it { should allow_mass_assignment_of(:photo) }
-  it { should allow_mass_assignment_of(:title) }
+  describe '#ensure_not_referenced_by_any_line_item' do
+    it 'returns true' do
+      product = Product.new
+      product.stub(:line_items).once.with(no_args) { [] }
+      expect(product.send(:ensure_not_referenced_by_any_line_item)).to be_true
+    end
 
-  it { should validate_presence_of(:title) }
-  it { should validate_uniqueness_of(:title) }
+    it 'returns false' do
+      product = Product.new
+      product.stub(:line_items).once.with(no_args) { [stub] }
+      expect(product.send(:ensure_not_referenced_by_any_line_item)).to be_false
+    end
+  end
 end
