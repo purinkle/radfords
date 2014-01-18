@@ -5,14 +5,14 @@ Feature: Products
     Then I see the "New Product" page
     And I see a "Title can't be blank" message
 
-    #  Scenario:
-    #    Given I am signed in
-    #    And a product exists
-    #    And I have the product in my basket
-    #    And I am deleting the product
-    #    When I delete the product
-    #    Then I see the "Delete Product" page
-    #    And I see a "Line Items present" error
+  Scenario:
+    Given I am signed in
+    And a product exists
+    And I have the product in my basket
+    And I am deleting the product
+    When I delete the product
+    Then I see the "Delete Product" page
+    And I see a "Line Items present" error
 
   Scenario:
     Given I am signed in
