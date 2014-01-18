@@ -1,11 +1,5 @@
 Feature: Orders
 
-    #  Scenario:
-    #    Given a product exists
-    #    And I have the product in my basket
-    #    When I checkout my basket
-    #    Then I see the "New order" page
-
   Scenario:
     Given I have an empty basket
     When I visit the "New order" page
