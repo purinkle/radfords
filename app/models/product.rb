@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
     s3_host_name: ENV['S3_HOST_NAME'],
-    styles: {preview: "50x50#"}
+    styles: {preview: '50x50#', thumbnail: '215x133#'}
 
   validates_presence_of :title
   validates_uniqueness_of :title
