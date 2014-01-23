@@ -9,14 +9,14 @@
 
       <td><%= item.product.title %></td>
 
-      <td class="item-price"><%= number_to_currency(item.total_price) %></td>
+      <td class="item-price"><%= humanized_money_with_symbol(item.total_price, no_cents_if_whole: false) %></td>
     </tr>
   <% end %>
 
   <tr class="total-line">
     <td colspan="2">Total</td>
 
-    <td class="total-cell"><%= number_to_currency(@basket.total_price) %></td>
+    <td class="total-cell"><%= humanized_money_with_symbol(@basket.total_price, no_cents_if_whole: false) %></td>
   </tr>
 </table>
 
