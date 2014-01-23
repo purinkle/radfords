@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131115183444) do
+ActiveRecord::Schema.define(:version => 20140122173612) do
 
   create_table "baskets", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -50,14 +50,15 @@ ActiveRecord::Schema.define(:version => 20131115183444) do
     t.string   "title"
     t.text     "description"
     t.string   "image_url"
-    t.decimal  "price",              :precision => 8, :scale => 2
-    t.datetime "created_at",                                       :null => false
-    t.datetime "updated_at",                                       :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "slug"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.integer  "price_pennies",      :default => 0,     :null => false
+    t.string   "price_currency",     :default => "GBP", :null => false
   end
 
   add_index "products", ["slug"], :name => "index_products_on_slug"
