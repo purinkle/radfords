@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe EventsController do
+  let(:event_params) do
+    {
+      'location' => 'Market Square',
+      'name' => 'Farmers\' Market',
+      'takes_place_on' => '01/01/1970'
+    }
+  end
+
   describe "GET 'show'" do
     it "finds the event" do
       event = Event.new
@@ -32,7 +40,7 @@ describe EventsController do
       controller.stub(:authenticate)
       Event.stub(new: event)
 
-      post :create, event: {}
+      post :create, event: event_params
 
       expect(assigns(:event)).to be event
     end
@@ -44,7 +52,7 @@ describe EventsController do
 
       event.should_receive(:save!)
 
-      post :create, event: {}
+      post :create, event: event_params
     end
 
     it "redirects to the event's page" do
@@ -53,7 +61,7 @@ describe EventsController do
       controller.stub(:authenticate)
       Event.stub(new: event)
 
-      post :create, event: {}
+      post :create, event: event_params
 
       expect(response).to redirect_to event
     end
@@ -64,7 +72,7 @@ describe EventsController do
       controller.stub(:authenticate)
       Event.stub(new: event)
 
-      post :create, event: {}
+      post :create, event: event_params
 
       expect(flash[:notice]).to eql "You successfully created an event."
     end
@@ -76,7 +84,7 @@ describe EventsController do
         controller.stub(:authenticate)
         Event.stub(new: event)
 
-        post :create, event: {}
+        post :create, event: event_params
 
         expect(response).to render_template "new"
       end
@@ -114,7 +122,7 @@ describe EventsController do
       controller.stub(:authenticate)
       Event.stub(find: event)
 
-      put :update, id: "1", event: {}
+      put :update, id: "1", event: event_params
 
       expect(assigns(:event)).to be event
     end
@@ -126,7 +134,7 @@ describe EventsController do
 
       event.should_receive(:update_attributes!)
 
-      put :update, id: "1", event: {}
+      put :update, id: "1", event: event_params
     end
 
     it "redirects to the event's page" do
@@ -135,7 +143,7 @@ describe EventsController do
       controller.stub(:authenticate)
       Event.stub(find: event)
 
-      put :update, id: "1", event: {}
+      put :update, id: "1", event: event_params
 
       expect(response).to redirect_to event
     end
@@ -146,7 +154,7 @@ describe EventsController do
       controller.stub(:authenticate)
       Event.stub(find: event)
 
-      put :update, id: "1", event: {}
+      put :update, id: "1", event: event_params
 
       expect(flash[:notice]).to eql "You successfully updated the event."
     end
@@ -159,7 +167,7 @@ describe EventsController do
         controller.stub(:authenticate)
         Event.stub(find: event)
 
-        put :update, id: "1", event: {}
+        put :update, id: "1", event: event_params
 
         expect(response).to render_template "edit"
       end

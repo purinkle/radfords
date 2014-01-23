@@ -30,3 +30,4 @@ env:
     - AWS_S3_BUCKET="radfords-travis-bundles"
     - RAILS_ENV=test
     - secure: U64dbupIbo7tFSP8T0pYkrCmRZOg39ENOZ5IrqrNi0kRMLP3UmKPjwwBiNEasnKVk1zwsf9YzlFpR15OZROZc0ROd0Bmqgsb2hF+jehUD9d+cNqaqdb2eUxfqUwZ+nQR+n8AHSQuG+k8vMn4yS6kkBwNBaYd0IffJwnbQCG3UKg=
+    - SECRET_KEY_BASE=5bbe0e748795b1a41bc9ef9df724e43ec28d64efefe3ab2c7a0bc4d504

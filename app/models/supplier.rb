@@ -12,14 +12,6 @@
 #
 
 class Supplier < ActiveRecord::Base
-  attr_accessible(
-    :address,
-    :latitude,
-    :longitude,
-    :name,
-    :telephone_number,
-    :website
-  )
   validates :address, presence: true
   validates :name, presence: true
   validates :telephone_number, presence: true

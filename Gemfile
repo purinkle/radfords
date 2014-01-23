@@ -11,7 +11,7 @@ gem 'money-rails'
 gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'pg'
-gem 'rails', '~> 3'
+gem 'rails', '4.0.2'
 gem 'recipient_interceptor'
 gem 'unicorn'
 
@@ -22,13 +22,11 @@ group :assets do
 end
 
 group :development do
-  gem 'bullet'
   gem 'foreman'
   gem 'rails-footnotes'
 end
 
 group :development, :test do
-  gem 'brakeman'
   gem 'dotenv-rails'
   gem 'rspec-rails'
 end

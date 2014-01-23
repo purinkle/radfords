@@ -1,6 +1,14 @@
 require 'spec_helper'
 
 describe SuppliersController do
+  let(:supplier_params) do
+    {
+      'address' => '1 High Street',
+      'name' => 'Alphonso\'s Deli',
+      'telephone_number' => '01234 567890'
+    }
+  end
+
   describe "DELETE 'destroy'" do
     it "destroys the supplier" do
       supplier = Supplier.new
@@ -52,7 +60,7 @@ describe SuppliersController do
       controller.stub(:authenticate)
       Supplier.stub(new: supplier)
 
-      post :create, supplier: {}
+      post :create, supplier: supplier_params
 
       expect(assigns(:supplier)).to be supplier
     end
@@ -64,7 +72,7 @@ describe SuppliersController do
 
       supplier.should_receive(:save!)
 
-      post :create, supplier: {}
+      post :create, supplier: supplier_params
     end
 
     it "redirects to the outlets page" do
@@ -73,7 +81,7 @@ describe SuppliersController do
       controller.stub(:authenticate)
       Supplier.stub(new: supplier)
 
-      post :create, supplier: {}
+      post :create, supplier: supplier_params
 
       expect(response).to redirect_to outlets_path
     end
@@ -84,7 +92,7 @@ describe SuppliersController do
       controller.stub(:authenticate)
       Supplier.stub(new: supplier)
 
-      post :create, supplier: {}
+      post :create, supplier: supplier_params
 
       expect(flash[:notice]).to eql "You successfully created a supplier."
     end
@@ -97,7 +105,7 @@ describe SuppliersController do
         controller.stub(:authenticate)
         Supplier.stub(new: supplier)
 
-        post :create, supplier: {}
+        post :create, supplier: supplier_params
 
         expect(response).to render_template "new"
       end
@@ -117,57 +125,59 @@ describe SuppliersController do
   end
 
   describe "PUT 'update'" do
+    let(:supplier) { Supplier.new }
+
+    before do
+      supplier.stub(:update_attributes!).
+        with(supplier_params).
+        once.
+        and_return(true)
+    end
+
     it "finds the supplier" do
-      supplier = Supplier.new
       controller.stub(:authenticate)
       Supplier.stub(find: supplier)
 
-      put :update, id: "1", supplier: {}
+      put :update, id: "1", supplier: supplier_params
 
       expect(assigns(:supplier)).to be supplier
     end
 
     it "updates the supplier's attributes" do
-      supplier = Supplier.new
       controller.stub(:authenticate)
       Supplier.stub(find: supplier)
 
       expect(supplier).to receive :update_attributes!
 
-      put :update, id: "1", supplier: {}
+      put :update, id: "1", supplier: supplier_params
     end
 
     it "redirects to the outlets page" do
-      supplier = Supplier.new
-      supplier.stub(update_attributes!: true)
       controller.stub(:authenticate)
       Supplier.stub(find: supplier)
 
-      put :update, id: "1", supplier: {}
+      put :update, id: "1", supplier: supplier_params
 
       expect(response).to redirect_to outlets_path
     end
 
     it "sets the notice flash" do
-      supplier = Supplier.new
-      supplier.stub(update_attributes!: true)
       controller.stub(:authenticate)
       Supplier.stub(find: supplier)
 
-      put :update, id: "1", supplier: {}
+      put :update, id: "1", supplier: supplier_params
 
       expect(flash[:notice]).to eql "You successfully updated the supplier."
     end
 
     context "when the updated supplier is invalid" do
       it "renders the edit supplier page" do
-        supplier = Supplier.new
         exception = ActiveRecord::RecordInvalid.new(supplier)
-        supplier.stub(:update_attributes).and_raise(exception)
+        supplier.stub(:update_attributes!).and_raise(exception)
         controller.stub(:authenticate)
         Supplier.stub(find: supplier)
 
-        put :update, id: "1", supplier: {}
+        put :update, id: "1", supplier: supplier_params
 
         expect(response).to render_template "edit"
       end

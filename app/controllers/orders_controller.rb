@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(params[:order])
+    @order = Order.new(order_params)
     @order.add_line_items_from_basket(current_basket)
 
     if @order.save
@@ -23,5 +23,11 @@ class OrdersController < ApplicationController
     else
       render action: "new"
     end
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:name, :address, :email, :pay_type)
   end
 end

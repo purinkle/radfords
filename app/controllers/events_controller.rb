@@ -8,7 +8,7 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new( params[:event] )
+    @event = Event.new(event_params)
     @event.save!
     redirect_to(@event, notice: "You successfully created an event.")
   rescue ActiveRecord::RecordInvalid
@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 
   def update
     @event = event
-    @event.update_attributes!(params[:event])
+    @event.update_attributes!(event_params)
     redirect_to(@event, notice: "You successfully updated the event.")
   rescue ActiveRecord::RecordInvalid
     render "edit"
@@ -46,5 +46,9 @@ class EventsController < ApplicationController
     Event.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to(events_path, alert: t("events.not_found"))
+  end
+
+  def event_params
+    params.require(:event).permit(:location, :name, :takes_place_on)
   end
 end

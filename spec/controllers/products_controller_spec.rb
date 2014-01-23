@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe ProductsController do
+  let(:product_params) do
+    {
+      'description' => 'Description of the jam',
+      'photo' => 'photo.jpg',
+      'photo_file_name' => '/path/to/photo',
+      'title' => 'Jam'
+    }
+  end
+
   before do
     controller.stub(:authenticate)
   end
@@ -198,7 +207,7 @@ describe ProductsController do
       controller.stub(:authenticate)
       Product.stub(new: product)
 
-      post :create, product: {}
+      post :create, product: product_params
 
       expect(assigns(:product)).to be product
     end
@@ -209,7 +218,7 @@ describe ProductsController do
       controller.stub(:authenticate)
       Product.stub(new: product)
 
-      post :create, product: {}
+      post :create, product: product_params
 
       expect(flash[:notice]).to eql "You successfully created a product."
     end
@@ -220,7 +229,7 @@ describe ProductsController do
       controller.stub(:authenticate)
       Product.stub(new: product)
 
-      post :create, product: {}
+      post :create, product: product_params
 
       expect(response).to redirect_to product
     end
@@ -233,7 +242,7 @@ describe ProductsController do
         controller.stub(:authenticate)
         Product.stub(new: product)
 
-        post :create, product: {}
+        post :create, product: product_params
 
         expect(response).to render_template "new"
       end
@@ -243,13 +252,12 @@ describe ProductsController do
   describe 'PUT "update"' do
     let(:found_product) { double(:found_product) }
     let(:id) { 'foo' }
-    let(:params) { {} }
     let(:product) { double(:product) }
     let(:title) { double(:title) }
     let(:update_attributes) { true }
 
     before do
-      found_product.stub(:update_attributes).with(params) do
+      found_product.stub(:update_attributes).with(product_params) do
         update_attributes
       end
 
@@ -259,17 +267,17 @@ describe ProductsController do
     end
 
     it 'finds the product' do
-      put :update, id: id, product: params
+      put :update, id: id, product: product_params
       expect(assigns(:product)).to eql(found_product)
     end
 
     it 'updates the alert flash' do
-      put :update, id: id, product: params
+      put :update, id: id, product: product_params
       expect(flash[:notice]).to eql('Product saved.')
     end
 
     it 'redirects to the show product page' do
-      put :update, id: id, product: params
+      put :update, id: id, product: product_params
       response.should redirect_to(product_path(found_product))
     end
 
@@ -277,7 +285,7 @@ describe ProductsController do
       let(:update_attributes) { false }
 
       it 'renders the edit product page' do
-        put :update, id: id, product: params
+        put :update, id: id, product: product_params
         response.should render_template('edit')
       end
     end
