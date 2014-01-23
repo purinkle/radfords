@@ -13,7 +13,7 @@ describe PagesController do
 
     it "gets the next three events" do
       event = double(:event)
-      Event.stub(:find).with(:all, limit: 3).and_return([event])
+      Event.stub(:limit).with(3).once.and_return([event])
 
       get :home
 

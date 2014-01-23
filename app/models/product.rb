@@ -3,8 +3,6 @@ class Product < ActiveRecord::Base
 
   has_many :line_items
 
-  attr_accessible :description, :photo, :photo_file_name, :title
-
   has_attached_file :photo,
     default_url: "/photos/original/missing_:style.png",
     storage: :s3,
@@ -19,7 +17,7 @@ class Product < ActiveRecord::Base
   validates_presence_of :title
   validates_uniqueness_of :title
 
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [:slugged, :finders]
   monetize :price_pennies
 
   before_destroy :ensure_not_referenced_by_any_line_item

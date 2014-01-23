@@ -67,6 +67,15 @@ describe OrdersController do
   end
 
   describe 'POST "create"' do
+    let(:order_params) do
+      {
+        'address' => '1 Test Street',
+        'email' => 'alphonso.quigley@example.com',
+        'name' => 'Alphonso Quigley',
+        'pay_type' => 'Check'
+      }
+    end
+
     it 'redirects to the shop' do
       basket = double
       mailer = double
@@ -79,8 +88,8 @@ describe OrdersController do
       Basket.stub(:destroy).once.with(1)
       Basket.stub(:find).once.with(nil) { raise ActiveRecord::RecordNotFound }
       Mailer.stub(:order_received).once.with(order) { mailer }
-      Order.stub(:new).once.with({}) { order }
-      post :create, order: {}
+      Order.stub(:new).once.with(order_params) { order }
+      post :create, order: order_params
       expect(response).to redirect_to shop_url
     end
 
@@ -93,8 +102,8 @@ describe OrdersController do
         order.stub(:save).once.with(no_args) { false }
         Basket.stub(:create).once.with(no_args) { basket }
         Basket.stub(:find).once.with(nil) { raise ActiveRecord::RecordNotFound }
-        Order.stub(:new).once.with({}) { order }
-        post :create, order: {}
+        Order.stub(:new).once.with(order_params) { order }
+        post :create, order: order_params
         expect(response).to render_template :new
       end
     end

@@ -11,7 +11,7 @@ describe Order do
       order = Order.new
       order.add_line_items_from_basket(basket)
 
-      expect(order.line_items).to eql [item]
+      expect(order.line_items).to have(1).item
     end
   end
 end
