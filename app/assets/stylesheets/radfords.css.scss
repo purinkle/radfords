@@ -13,20 +13,20 @@
 }
 
 .hgroup {
-    background: #5A006D url(/assets/purple_logo.png) no-repeat right bottom;
+    background: #5A006D image-url('purple_logo.png') no-repeat right bottom;
     margin-bottom: 18px;
     vertical-align: bottom;
 }
 
 h1 {
-    background: url(/assets/jar.png) no-repeat 10px bottom;
+    background: image-url('jar.png') no-repeat 10px bottom;
     height: 162px;
     width: 145px;
     text-indent: -9999em;
 }
 
 .header .nav {
-    background: #5A006D url(/assets/jar_bottom.png) no-repeat;
+    background: #5A006D image-url('jar_bottom.png') no-repeat;
     text-align: right;
 }
 
@@ -150,7 +150,7 @@ div.suppliers li {
 }
 
 .suppliers .telephone {
-    background: url(/assets/phone_1.png) no-repeat;
+    background: image-url('phone_1.png') no-repeat;
     padding-left: 18px;
     background-position: 0 3px;
 }
@@ -283,15 +283,15 @@ div.suppliers img {
 }
 
 .social .email {
-    background-image: url(/assets/email_16.png);
+    background-image: image-url('email_16.png');
 }
 
 .social .facebook {
-    background-image: url(/assets/facebook_16.png);
+    background-image: image-url('facebook_16.png');
 }
 
 .social .twitter {
-    background-image: url(/assets/twitter_16.png);
+    background-image: image-url('twitter_16.png');
 }
 
 /* FOOTER */
@@ -393,7 +393,7 @@ form ol {
 }
 
 #events .event .img span {
-  background: url(/assets/overlay.png);
+  background: image-url('overlay.png');
   height: 80px;
   position: absolute;
   top: 0;
@@ -534,7 +534,7 @@ textarea {
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  background-image: url("/img/glyphicons-halflings.png");
+  background-image: image-url('glyphicons-halflings.png');
 }
 
 .product-actions {
