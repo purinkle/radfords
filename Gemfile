@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 ruby '2.1.0'
 
+gem 'airbrake'
 gem 'aws-sdk'
 gem 'geocoder'
 gem 'draper'
