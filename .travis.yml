@@ -1,5 +1,5 @@
 rvm:
-  - 2.0.0
+  - 2.1.0
 before_install:
   - 'echo ''gem: --no-document'' > ~/.gemrc'
   - echo '--colour' > ~/.rspec
