@@ -8,7 +8,6 @@ gem 'friendly_id'
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'money-rails'
-gem 'newrelic_rpm'
 gem 'paperclip'
 gem 'pg'
 gem 'rails', '4.0.2'
@@ -43,4 +42,9 @@ group :test do
   gem 'timecop'
   gem 'vcr'
   gem 'webmock'
+end
+
+group :staging, :production do
+  gem 'newrelic_rpm'
+  gem 'rails_12factor'
 end
