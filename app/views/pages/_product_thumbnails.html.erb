@@ -5,9 +5,5 @@
     <h3><%= link_to(product.title, product_path(product)) %></h3>
   </div>
 
-  <% if signed_in? %>
-    <div>
-      <%= button_to(t('.add_to_basket'), line_items_path(product_id: product)) %>
-    </div>
-  <% end %>
+  <%= product_button(product) %>
 </div></li>
