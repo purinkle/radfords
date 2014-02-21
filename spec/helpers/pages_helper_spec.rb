@@ -12,7 +12,7 @@ describe PagesHelper do
       helper.stub(:signed_in?).with(no_args).once.and_return(signed_in?)
       helper.stub(:render).with(
         partial: 'product_button',
-        locals: {product: product}
+        locals: { product: product }
       ).once.and_return(partial)
     end
 
