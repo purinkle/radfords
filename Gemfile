@@ -11,7 +11,7 @@ gem 'kaminari'
 gem 'money-rails'
 gem 'paperclip'
 gem 'pg'
-gem 'rails', '4.0.2'
+gem 'rails'
 gem 'recipient_interceptor'
 gem 'unicorn'
 
