@@ -126,7 +126,7 @@ GEM
     newrelic_rpm (3.7.2.195)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
-    paperclip (4.1.0)
+    paperclip (3.5.4)
       activemodel (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
@@ -250,7 +250,7 @@ DEPENDENCIES
   launchy
   money-rails
   newrelic_rpm
-  paperclip
+  paperclip (~> 3.5.3)
   pg
   rails
   rails-footnotes
