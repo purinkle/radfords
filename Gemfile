@@ -14,6 +14,7 @@ gem 'paperclip', '~> 3.5.3'
 gem 'pg'
 gem 'rails'
 gem 'recipient_interceptor'
+gem 'stripe'
 gem 'unicorn'
 
 group :assets do
