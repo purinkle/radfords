@@ -1,5 +1,9 @@
 ### GIVEN
 
+Given(/^an order exists$/) do
+  FactoryGirl.create(:order)
+end
+
 Given(/^I have an empty basket$/) do
   # noop
 end
@@ -37,6 +41,12 @@ When(/^I create the order incorrectly$/) do
   new_order_page.create
 end
 
+When(/^I view the order$/) do
+  order = Order.last
+  order_page = OrderPage.new(order)
+  order_page.visit_page
+end
+
 When(/^I visit the "New order" page$/) do
   new_order_page = NewOrderPage.new
   new_order_page.visit_page
@@ -47,4 +57,22 @@ end
 Then(/^I see some validation messages$/) do
   new_order_page = NewOrderPage.new
   expect(new_order_page).to have_validation_messages
+end
+
+Then(/^I see the order's address$/) do
+  order = Order.last
+  order_page = OrderPage.new(order)
+  expect(order_page).to have_address
+end
+
+Then(/^I see the order's email$/) do
+  order = Order.last
+  order_page = OrderPage.new(order)
+  expect(order_page).to have_email
+end
+
+Then(/^I see the order's name$/) do
+  order = Order.last
+  order_page = OrderPage.new(order)
+  expect(order_page).to have_name
 end

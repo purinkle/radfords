@@ -17,6 +17,13 @@ en:
     new:
       notice: Your basket is empty.
       title: New order
+    show:
+      customer_information: Customer Information
+      price: Price
+      product: Product
+      quantity: Quantity
+      title: Order
+      total: Total
   pages:
     home:
       title: Home

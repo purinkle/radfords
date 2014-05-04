@@ -9,6 +9,10 @@ module ApplicationHelper
     end
   end
 
+  def humanize_price(price)
+    humanized_money_with_symbol(price, no_cents_if_whole: false)
+  end
+
   def title
     "#{content_for(:title).presence || @title} | Radfords of Somerford"
   end

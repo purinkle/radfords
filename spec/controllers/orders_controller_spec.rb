@@ -108,4 +108,20 @@ describe OrdersController do
       end
     end
   end
+
+  describe 'GET "show"' do
+    let(:order) { double(Order) }
+
+    let(:id) { '1' }
+
+    before do
+      controller.stub(:authenticate)
+      Order.stub(:find).with(id).and_return(order)
+    end
+
+    it 'gets the order specified in the params' do
+      get :show, id: id
+      expect(assigns(:order)).to be(order)
+    end
+  end
 end
