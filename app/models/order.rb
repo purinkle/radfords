@@ -12,4 +12,8 @@ class Order < ActiveRecord::Base
       line_items << item
     end
   end
+
+  def total_price
+    line_items.inject(Money.new(0)) { |total, item| total + item.total_price }
+  end
 end

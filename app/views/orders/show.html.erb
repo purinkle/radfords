@@ -1,0 +1,37 @@
+<% content_for(:title, t('.title')) %>
+
+<h2><%= t('.title') %></h2>
+
+<div class="span8" style="margin-left: 0;">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th><%= t('.quantity') %></th>
+
+        <th><%= t('.product') %></th>
+
+        <th><%= t('.price') %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%= render @order.line_items %>
+
+      <tr>
+        <td colspan="2"><%= t('.total') %>:</td>
+
+        <td><%= humanize_price(@order.total_price) %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="span4">
+  <h3><%= t('.customer_information') %></h3>
+
+  <p><%= mail_to(@order.email) %></p>
+
+  <p><%= @order.name %></p>
+
+  <p><%= simple_format(@order.address) %></p>
+</div>

@@ -27,6 +27,22 @@ describe ApplicationHelper do
     end
   end
 
+  describe '#humanize_price' do
+    subject { helper.humanize_price(price) }
+
+    let(:formatted_price) { '£10.95' }
+    let(:price) { Money.new(1095) }
+
+    before do
+      helper.stub(:humanized_money_with_symbol).
+        with(price, no_cents_if_whole: false).and_return(formatted_price)
+    end
+
+    it 'returns the formatted price with symbol' do
+      expect(subject).to be(formatted_price)
+    end
+  end
+
   describe "#title" do
     it "returns the content for the title" do
       helper.stub(content_for: "Foo")
