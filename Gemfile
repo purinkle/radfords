@@ -37,7 +37,6 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'fuubar'
   gem 'launchy'
   gem 'shoulda'
   gem 'simplecov'
