@@ -1,3 +1,4 @@
+require Rails.root.join('config/initializers/smtp')
 Radfords::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -45,6 +46,9 @@ Radfords::Application.configure do
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = SMTP_SETTINGS
+
 
   # Enable threaded mode
   # config.threadsafe!
