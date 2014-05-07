@@ -14,9 +14,16 @@ en:
     not_found: "We couldn't find the event you were looking for."
   info_text: 'Heads up'
   orders:
+    index:
+      action: Action
+      customer: Customer
+      items: Items
+      title: Orders
     new:
       notice: Your basket is empty.
       title: New order
+    order:
+      view: View
     show:
       customer_information: Customer Information
       price: Price

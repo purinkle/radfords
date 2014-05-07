@@ -1,0 +1,23 @@
+<tr>
+  <td><%= link_to(t('.view'), order, class: %w{ btn btn-small btn-success }) %></td>
+
+  <td>
+    <p><%= order.name %></p>
+
+    <p><%= simple_format(order.address) %></p>
+  </td>
+
+  <td>
+    <table class="table">
+      <tbody>
+        <% order.line_items.each do |line_item| %>
+          <tr>
+            <td><%= line_item.quantity %> &times;</td>
+
+            <td><%= line_item.product.title %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </td>
+</tr>

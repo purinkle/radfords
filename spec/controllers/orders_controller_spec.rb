@@ -124,4 +124,18 @@ describe OrdersController do
       expect(assigns(:order)).to be(order)
     end
   end
+
+  describe 'GET "index"' do
+    let(:orders) { [double(Order)] }
+
+    before do
+      controller.stub(:authenticate)
+      Order.stub(all: orders)
+    end
+
+    it 'gets all of the orders' do
+      get :index
+      expect(assigns(:orders)).to be(orders)
+    end
+  end
 end

@@ -47,6 +47,11 @@ When(/^I view the order$/) do
   order_page.visit_page
 end
 
+When(/^I view the orders$/) do
+  orders_page = OrdersPage.new
+  orders_page.visit_page
+end
+
 When(/^I visit the "New order" page$/) do
   new_order_page = NewOrderPage.new
   new_order_page.visit_page
@@ -57,6 +62,11 @@ end
 Then(/^I see some validation messages$/) do
   new_order_page = NewOrderPage.new
   expect(new_order_page).to have_validation_messages
+end
+
+Then(/^I see the order$/) do
+  orders_page = OrdersPage.new
+  expect(orders_page).to have(1).order
 end
 
 Then(/^I see the order's address$/) do
