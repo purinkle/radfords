@@ -1,0 +1,21 @@
+<%= content_for(:title, t('.title')) %>
+
+<div class="page-header">
+  <h2><%= t('.title') %></h2>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('.action') %></th>
+
+      <th><%= t('.customer') %></th>
+
+      <th><%= t('.items') %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render @orders %>
+  </tbody>
+</table>

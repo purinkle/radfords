@@ -23,3 +23,9 @@ Feature: Orders
     When I create the order incorrectly
     Then I see the "New order" page
     And I see some validation messages
+
+  Scenario: Order exists
+    Given I am signed in
+    And an order exists
+    When I view the orders
+    Then I see the order
