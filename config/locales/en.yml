@@ -14,6 +14,10 @@ en:
     not_found: "We couldn't find the event you were looking for."
   info_text: 'Heads up'
   orders:
+    form:
+      card_number: Card number
+      cvc: CVC
+      expiration: Expiration (MM/YYYY)
     index:
       action: Action
       customer: Customer

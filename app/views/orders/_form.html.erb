@@ -1,4 +1,6 @@
-<%= form_for(@order, html: { class: 'form-horizontal' }) do |f| %>
+<%= form_for(@order, html: { class: 'form-horizontal', id: 'payment-form' }) do |f| %>
+  <span class="payment-errors"></span>
+
   <%= render('shared/error_messages', object: f.object) %>
 
   <div class="control-group">
@@ -38,7 +40,33 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= label_tag(nil, t('.card_number'), class: 'control-label') %>
+
+    <div class="controls">
+      <%= text_field_tag(nil, nil, class: 'text-field', data: { stripe: 'number' }, size: 20) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag(nil, t('.cvc'), class: 'control-label') %>
+
+    <div class="controls">
+      <%= text_field_tag(nil, nil, class: 'span1 text-field', data: { stripe: 'cvc' }, size: 4) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= label_tag(nil, t('.expiration'), class: 'control-label') %>
+
+    <div class="controls">
+      <%= text_field_tag(nil, nil, class: 'span1 text-field', data: { stripe: 'exp-month' }, size: 2) %>
+      /
+      <%= text_field_tag(nil, nil, class: 'span1 text-field', data: { stripe: 'exp-year' }, size: 4) %>
+    </div>
+  </div>
+
   <div class="form-actions">
-    <%= f.submit(nil, 'class' => 'btn btn-primary') %>
+    <%= f.button(nil, 'class' => 'btn btn-primary') %>
   </div>
 <% end %>

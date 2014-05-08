@@ -76,10 +76,19 @@ describe OrdersController do
       }
     end
 
+    let(:basket) { double(Basket, total_price: Money.new(100)) }
+    let(:customer) { double(Stripe::Customer, id: nil) }
+    let(:order) { double(Order, name: 'Alphonso Quigley') }
+
+    before do
+      controller.stub(current_basket: basket)
+      session[:basket_id] = 1
+      Stripe::Charge.stub(:create)
+      Stripe::Customer.stub(create: customer)
+    end
+
     it 'redirects to the shop' do
-      basket = double
       mailer = double
-      order = double
       basket.stub(:id).once.with(no_args) { 1 }
       mailer.stub(:deliver).once.with(no_args)
       order.stub(:add_line_items_from_basket).once.with(basket)
@@ -95,8 +104,6 @@ describe OrdersController do
 
     context 'when the order can\'t be saved' do
       it 'renders the new order view' do
-        basket = double
-        order = double
         basket.stub(:id).once.with(no_args) { 1 }
         order.stub(:add_line_items_from_basket).once.with(basket)
         order.stub(:save).once.with(no_args) { false }

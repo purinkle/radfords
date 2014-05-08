@@ -6,7 +6,10 @@ class NewOrderPage
     fill_in('Name', with: options.fetch(:name, ''))
     fill_in('Address', with: options.fetch(:address, ''))
     fill_in('Email', with: options.fetch(:email, ''))
-    click_button('Create Order')
+
+    VCR.use_cassette('create stripe charge') do
+      click_button('Create Order')
+    end
   end
 
   def has_validation_messages?

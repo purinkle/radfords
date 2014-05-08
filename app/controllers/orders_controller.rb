@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_filter :authenticate
+  skip_before_filter :authenticate, only: [:new, :create]
 
   def new
     if current_basket.line_items.empty?
@@ -12,6 +12,19 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+
+    customer = Stripe::Customer.create(
+      email: params[:email],
+      card: params[:stripe_token]
+    )
+
+    Stripe::Charge.create(
+      customer: customer.id,
+      amount: current_basket.total_price.cents,
+      description: "Order for #{@order.name}",
+      currency: 'gbp'
+    )
+
     @order.add_line_items_from_basket(current_basket)
 
     if @order.save
