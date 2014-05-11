@@ -11,7 +11,7 @@ describe ApplicationHelper do
     end
 
     context 'when the flash is an alert' do
-      let(:type) { :alert }
+      let(:type) { 'alert' }
 
       it 'returns "error"' do
         expect(subject).to eql('error')
@@ -19,7 +19,7 @@ describe ApplicationHelper do
     end
 
     context 'when the flash is a notice' do
-      let(:type) { :notice }
+      let(:type) { 'notice' }
 
       it 'returns "success"' do
         expect(subject).to eql('success')
