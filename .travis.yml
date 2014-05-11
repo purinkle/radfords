@@ -6,6 +6,7 @@ before_install:
 before_script:
   - cp .sample.env .env
   - psql -c 'create database "radfords_test";' -U postgres
+  - bundle exec rake db:migrate db:test:prepare
 branches:
   only:
     - master

@@ -9,6 +9,7 @@ SimpleCov.coverage_dir 'coverage/cucumber'
 # files.
 
 require 'cucumber/rails'
+require 'rspec/expectations'
 
 include ActionDispatch::TestProcess
 
