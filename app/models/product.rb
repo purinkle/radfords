@@ -14,6 +14,8 @@ class Product < ActiveRecord::Base
     s3_host_name: ENV['S3_HOST_NAME'],
     styles: {preview: '50x50#', thumbnail: '215x133#'}
 
+  validates_attachment_content_type :photo, content_type: /\Aimage/
+
   validates_presence_of :title
   validates_uniqueness_of :title
 
