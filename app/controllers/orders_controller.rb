@@ -13,24 +13,13 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
 
-    customer = Stripe::Customer.create(
-      email: params[:email],
-      card: params[:stripe_token]
-    )
-
-    Stripe::Charge.create(
-      customer: customer.id,
-      amount: current_basket.total_price.cents,
-      description: "Order for #{@order.name}",
-      currency: 'gbp'
-    )
+    ChargesCustomers.charge(email, stripe_token, amount)
 
     @order.add_line_items_from_basket(current_basket)
 
     if @order.save
       Basket.destroy(session[:basket_id])
       session[:basket_id] = nil
-      Rails.logger.error "#{'*' * 10} [order] #{@order.inspect}"
       Mailer.order_received(@order).deliver
       redirect_to shop_url, notice: 'Thank you for your order.'
     else
@@ -48,7 +37,23 @@ class OrdersController < ApplicationController
 
   private
 
+  def amount
+    total_price.cents
+  end
+
+  def email
+    params[:email]
+  end
+
   def order_params
     params.require(:order).permit(:name, :address, :email, :pay_type)
+  end
+
+  def stripe_token
+    params[:stripe_token]
+  end
+
+  def total_price
+    current_basket.total_price
   end
 end

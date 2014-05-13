@@ -77,14 +77,12 @@ describe OrdersController do
     end
 
     let(:basket) { double(Basket, total_price: Money.new(100)) }
-    let(:customer) { double(Stripe::Customer, id: nil) }
     let(:order) { double(Order, name: 'Alphonso Quigley') }
 
     before do
       controller.stub(current_basket: basket)
       session[:basket_id] = 1
-      Stripe::Charge.stub(:create)
-      Stripe::Customer.stub(create: customer)
+      ChargesCustomers.stub(:charge)
     end
 
     it 'redirects to the shop' do
