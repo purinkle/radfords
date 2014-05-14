@@ -1,5 +1,11 @@
 <tr>
-  <td><%= link_to(t('.view'), order, class: %w{ btn btn-small btn-success }) %></td>
+  <td>
+    <%= link_to(
+      t('.view'),
+      order,
+      class: ['btn', 'btn-small', show_order_button(order.viewed)]
+    ) %>
+  </td>
 
   <td>
     <p><%= order.name %></p>

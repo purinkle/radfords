@@ -121,12 +121,18 @@ describe OrdersController do
 
     before do
       controller.stub(:authenticate)
+      order.stub(:update_attribute).with(:viewed, true).and_return(order)
       Order.stub(:find).with(id).and_return(order)
     end
 
     it 'gets the order specified in the params' do
       get :show, id: id
       expect(assigns(:order)).to be(order)
+    end
+
+    it 'marks the order as viewed' do
+      get :show, id: id
+      expect(order).to have_received(:update_attribute).with(:viewed, true)
     end
   end
 
