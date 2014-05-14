@@ -29,6 +29,7 @@ en:
     order:
       view: View
     show:
+      back: Back
       customer_information: Customer Information
       price: Price
       product: Product
