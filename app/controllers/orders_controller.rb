@@ -29,6 +29,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @order.update_attribute(:viewed, true)
   end
 
   def index

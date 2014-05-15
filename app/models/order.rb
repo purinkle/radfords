@@ -5,6 +5,7 @@ class Order < ActiveRecord::Base
 
   validates :name, :address, :email, presence: true
   validates :pay_type, inclusion: PAYMENT_TYPES
+  validates :viewed, inclusion: [false, true]
 
   def add_line_items_from_basket(basket)
     basket.line_items.each do |item|
