@@ -19,10 +19,10 @@ en:
       cvc: CVC
       expiration: Expiration (MM/YYYY)
     index:
-      action: Action
       customer: Customer
       items: Items
       title: Orders
+      view: View
     new:
       notice: Your basket is empty.
       title: New order
