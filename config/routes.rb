@@ -7,6 +7,7 @@ Radfords::Application.routes.draw do
       delete :delete, action: :destroy
     end
   end
+  resources :fulfilments, only: :create
   resources :line_items
   resources :products do
     member { get :delete }

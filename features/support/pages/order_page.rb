@@ -5,6 +5,10 @@ class OrderPage
     @order = order
   end
 
+  def fulfil
+    click_button('Fulfil')
+  end
+
   def has_address?
     page.has_content?(order.address)
   end
