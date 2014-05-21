@@ -35,7 +35,7 @@ group :test do
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'launchy'
-  gem 'shoulda'
+  gem 'shoulda-matchers', require: false
   gem 'simplecov', require: false
   gem 'timecop'
   gem 'vcr'
