@@ -22,7 +22,6 @@ gem 'unicorn'
 
 group :development do
   gem 'foreman'
-  gem 'rails-footnotes'
 end
 
 group :development, :test do
