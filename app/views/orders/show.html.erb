@@ -38,4 +38,9 @@
 
 <div class="form-actions span12">
   <%= link_to(t('.back'), orders_path, class: 'btn') %>
+  <%= button_to(
+    t('.fulfil'),
+    fulfilments_path(order_id: @order.id, method: :post),
+    class: 'btn'
+  ) %>
 </div>

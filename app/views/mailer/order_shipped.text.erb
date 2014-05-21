@@ -1,0 +1,11 @@
+Dear <%= @order.name %>,
+
+All of the items from your order have now been shipped:
+
+<%= render(@order.line_items) %>
+
+They are being shipped to the following address:
+
+<%= @order.address %>
+
+Thank you for ordering from Radfords of Somerford!

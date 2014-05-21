@@ -41,6 +41,13 @@ When(/^I create the order incorrectly$/) do
   new_order_page.create
 end
 
+When(/^I fulfil the order$/) do
+  order = Order.last
+  order_page = OrderPage.new(order)
+  order_page.visit_page
+  order_page.fulfil
+end
+
 When(/^I view the order$/) do
   order = Order.last
   order_page = OrderPage.new(order)
@@ -58,6 +65,12 @@ When(/^I visit the "New order" page$/) do
 end
 
 ### THEN ###
+
+Then(/^an email is sent to me$/) do
+  order = Order.last
+  mail = ActionMailer::Base.deliveries.last
+  expect(mail.to).to eql([order.email])
+end
 
 Then(/^I see some validation messages$/) do
   new_order_page = NewOrderPage.new
@@ -85,4 +98,14 @@ Then(/^I see the order's name$/) do
   order = Order.last
   order_page = OrderPage.new(order)
   expect(order_page).to have_name
+end
+
+Then(/^the email is a shipping confirmation$/) do
+  mail = ActionMailer::Base.deliveries.last
+  expect(mail.subject).to eql('Shipping confirmation for your order')
+end
+
+Then(/^the email is from Denise$/) do
+  mail = ActionMailer::Base.deliveries.last
+  expect(mail.from).to eql(['denise@radfordsofsomerford.co.uk'])
 end
