@@ -52,6 +52,9 @@ en:
       notice: Product was deleted.
   sessions:
     unauthenticated: "You need to sign in or sign up before continuing."
+  shared:
+    navbar:
+      orders: Orders
   success_text: 'Well done'
   suppliers:
     update: "You successfully updated the supplier."

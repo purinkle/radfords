@@ -5,6 +5,12 @@
     <ul class="nav">
       <li><%= link_to("Events", events_path, class: nav_class("events")) %></li>
 
+      <li><%= link_to(
+        t('.orders'),
+        orders_path,
+        class: nav_class('orders')
+      ) %></li>
+
       <li><%= link_to("Products", products_path, class: nav_class("products")) %></li>
     </ul>
 
