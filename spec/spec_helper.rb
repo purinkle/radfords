@@ -21,3 +21,5 @@ RSpec.configure do |config|
     controller.sign_in(user)
   end
 end
+
+ActiveRecord::Migration.maintain_test_schema!
