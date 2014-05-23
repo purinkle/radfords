@@ -1,4 +1,3 @@
-Mail.register_interceptor RecipientInterceptor.new(ENV['EMAIL_RECIPIENTS'])
 require Rails.root.join('config/smtp')
 Radfords::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -85,3 +84,7 @@ Radfords::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'staging.radfordsofsomerford.co.uk' }
 end
+
+Mail.register_interceptor RecipientInterceptor.new(
+  ENV.fetch('EMAIL_RECIPIENTS')
+)
