@@ -141,7 +141,7 @@ describe OrdersController do
 
     before do
       controller.stub(:authenticate)
-      Order.stub(all: orders)
+      Order.stub(by_created_at: orders)
     end
 
     it 'gets all of the orders' do

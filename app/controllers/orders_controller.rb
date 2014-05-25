@@ -33,7 +33,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = Order.by_created_at
   end
 
   private

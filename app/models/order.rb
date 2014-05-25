@@ -7,6 +7,8 @@ class Order < ActiveRecord::Base
   validates :pay_type, inclusion: PAYMENT_TYPES
   validates :viewed, inclusion: [false, true]
 
+  scope :by_created_at, -> { order('created_at desc') }
+
   def add_line_items_from_basket(basket)
     basket.line_items.each do |item|
       item.basket_id = nil
