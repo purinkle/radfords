@@ -20,8 +20,9 @@ class OrdersController < ApplicationController
     if @order.save
       Basket.destroy(session[:basket_id])
       session[:basket_id] = nil
+      session[:order_id] = @order.id
       Mailer.order_received(@order).deliver
-      redirect_to shop_url, notice: 'Thank you for your order.'
+      redirect_to root_url, flash: { partial: 'thank_you' }
     else
       render action: "new"
     end

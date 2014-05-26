@@ -12,8 +12,8 @@ Feature: Orders
     And I have the product in my basket
     And I have checked out my basket
     When I create the order
-    Then I see the "Shop" page
-    And I see a "Thank you for your order" notice
+    Then I see the "Home" page
+    And I see a "Thank you" message
 
   Scenario:
     Given I am signed in

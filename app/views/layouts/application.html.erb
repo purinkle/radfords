@@ -14,13 +14,8 @@
 
     <%= render 'layouts/header' %>
     <div class="main">
-      <% flash.each do | key, value | %>
-        <% alert_type = flash_message_class(key) %>
+      <%= render 'flashes' %>
 
-        <%= content_tag(:div, class: ['alert', "alert-#{alert_type}"]) do %>
-          <strong><%= t("#{alert_type}_text") %>!</strong> <%= value %>
-        <% end %>
-      <% end %>
       <%= yield %>
     </div>
     <%= render 'layouts/footer' %>

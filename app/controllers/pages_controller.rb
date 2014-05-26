@@ -3,6 +3,12 @@ class PagesController < ApplicationController
 
   def home
     @events = Event.limit(3)
+
+    if session[:order_id]
+      @order = Order.find(session[:order_id])
+      session[:order_id] = nil
+    end
+
     @products = Product.page(params[:page])
   end
 

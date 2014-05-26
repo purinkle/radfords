@@ -1,0 +1,19 @@
+<div id="thank-you">
+  <h2>Thank you</h2>
+
+  <p>Your order was placed successfully</p>
+
+  <p>You've just purchased this</p>
+
+  <ul>
+    <% @order.line_items.each do |item| %>
+      <li><%= image_tag(item.product.photo.url(:thumbnail)) %><span><%= item.quantity %>&times; <%= item.product.title %></span></li>
+    <% end %>
+  </ul>
+
+  <p>Your Order ID is: <em><%= @order.id %></em></p>
+
+  <p>An email receipt containing information about your order will soon follow. Please keep it for your records.</p>
+
+  <p>Thank you for shopping at <%= link_to('Radfords of Somerford', root_path) %></p>
+</div>

@@ -77,7 +77,7 @@ describe OrdersController do
     end
 
     let(:basket) { double(Basket, total_price: Money.new(100)) }
-    let(:order) { double(Order, name: 'Alphonso Quigley') }
+    let(:order) { double(Order, id: 2, name: 'Alphonso Quigley') }
 
     before do
       controller.stub(current_basket: basket)
@@ -85,7 +85,7 @@ describe OrdersController do
       ChargesCustomers.stub(:charge)
     end
 
-    it 'redirects to the shop' do
+    it 'redirects to the homepage' do
       mailer = double
       basket.stub(:id).once.with(no_args) { 1 }
       mailer.stub(:deliver).once.with(no_args)
@@ -97,7 +97,7 @@ describe OrdersController do
       Mailer.stub(:order_received).once.with(order) { mailer }
       Order.stub(:new).once.with(order_params) { order }
       post :create, order: order_params
-      expect(response).to redirect_to shop_url
+      expect(response).to redirect_to(root_url)
     end
 
     context 'when the order can\'t be saved' do

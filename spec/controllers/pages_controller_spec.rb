@@ -19,6 +19,26 @@ describe PagesController do
 
       expect(assigns(:events)).to eql [event]
     end
+
+    context 'when there is an order ID in the session' do
+      let(:order) { double(Order) }
+      let(:order_id) { 1 }
+
+      before do
+        Order.stub(:find).with(order_id).and_return(order)
+        session[:order_id] = order_id
+      end
+
+      it 'gets that order' do
+        get :home
+        expect(assigns(:order)).to be(order)
+      end
+
+      it 'removes the order ID from the session' do
+        get :home
+        expect(session[:order_id]).to be_nil
+      end
+    end
   end
 
   describe 'GET "outlets"' do
