@@ -1,8 +1,11 @@
 class Mailer < ActionMailer::Base
   def order_received(order)
     @order = order
-
-    mail(from: 'noreply@example.com', to: order.email, subject: t('.subject'))
+    mail(
+      from: 'Radfords <denise@radfordsofsomerford.co.uk>',
+      subject: t('.subject'),
+      to: @order.email
+    )
   end
 
   def order_shipped(order)

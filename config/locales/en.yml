@@ -14,6 +14,8 @@ en:
     not_found: "We couldn't find the event you were looking for."
   info_text: 'Heads up'
   mailer:
+    order_received:
+      subject: Order confirmation for your order
     order_shipped:
       subject: Shipping confirmation for your order
   orders:
@@ -58,3 +60,6 @@ en:
   success_text: 'Well done'
   suppliers:
     update: "You successfully updated the supplier."
+  time:
+    formats:
+      default: '%a, %b %-d, %Y at %r'

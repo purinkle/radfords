@@ -1,9 +1,14 @@
 Dear <%= @order.name %>
 
-Thank you for your recent order from The Pragmatic Store.
+This email is to confirm your recent order.
 
-You ordered the following items:
+Date <%= l(@order.created_at) %>
 
-<%= render(@order.line_items) %>
+Shipping address
+<%= @order.address %>
 
-We'll send you a separate email when your order ships.
+<% @order.line_items.each do |item| %>
+<%= "#{item.quantity}x #{item.product.title} for #{humanized_money_with_symbol(item.total_price, no_cents_if_whole: false)}" %>
+<% end %>
+
+Total  : <%= humanized_money_with_symbol(@order.total_price, no_cents_if_whole: false) %>
