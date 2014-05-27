@@ -90,6 +90,10 @@ GEM
     foreman (0.63.0)
       dotenv (>= 0.7)
       thor (>= 0.13.6)
+    formulaic (0.0.6)
+      activesupport
+      capybara
+      i18n
     friendly_id (5.0.3)
       activerecord (>= 4.0.0)
     geocoder (1.2.1)
@@ -240,6 +244,7 @@ DEPENDENCIES
   draper
   factory_girl_rails
   foreman
+  formulaic
   friendly_id
   geocoder
   jquery-rails

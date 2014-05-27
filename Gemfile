@@ -34,6 +34,7 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'formulaic'
   gem 'launchy'
   gem 'shoulda-matchers', require: false
   gem 'simplecov', require: false
