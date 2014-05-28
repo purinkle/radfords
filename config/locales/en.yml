@@ -12,6 +12,9 @@ en:
   error_text: 'Oh snap'
   events:
     not_found: "We couldn't find the event you were looking for."
+  fulfilments:
+    create:
+      notice: Shipment notification email sent
   info_text: 'Heads up'
   mailer:
     order_received:
