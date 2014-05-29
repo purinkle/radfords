@@ -28,19 +28,6 @@
   </div>
 
   <div class="control-group">
-    <%= f.label(:pay_type, class: 'control-label') %>
-
-    <div class="controls">
-      <%= f.select(
-        :pay_type,
-        Order::PAYMENT_TYPES,
-        'class' => 'select',
-        'prompt' => 'Select a payment method'
-      ) %>
-    </div>
-  </div>
-
-  <div class="control-group">
     <%= label_tag(nil, t('.card_number'), class: 'control-label') %>
 
     <div class="controls">

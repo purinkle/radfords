@@ -3,6 +3,5 @@ FactoryGirl.define do
     name 'Alphonso Quigley'
     address "1 Test Street\nTesterton\nTE5 7TE"
     email 'alphonso.quigley@example.com'
-    pay_type 'Check'
   end
 end
