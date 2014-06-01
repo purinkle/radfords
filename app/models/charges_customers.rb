@@ -1,8 +1,9 @@
 class ChargesCustomers
-  def initialize(email, card, amount)
+  def initialize(email, card, amount, order_id)
     @email = email
     @card = card
     @amount = amount
+    @order_id = order_id
   end
 
   def charge
@@ -14,20 +15,20 @@ class ChargesCustomers
     )
   end
 
-  def self.charge(email, card, amount)
-    new(email, card, amount).charge
+  def self.charge(email, card, amount, order_id)
+    new(email, card, amount, order_id).charge
   end
 
   private
 
-  attr_reader :amount, :card, :email
+  attr_reader :amount, :card, :email, :order_id
 
   def customer
     Stripe::Customer.create(card: card, email: email)
   end
 
   def description
-    "Order for #{email}"
+    "Payment for ##{order_id}"
   end
 
   def customer_id

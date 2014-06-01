@@ -67,6 +67,15 @@ describe OrdersController do
   end
 
   describe 'POST "create"' do
+    let(:order) do
+      double(
+        Order,
+        id: 2,
+        name: 'Alphonso Quigley',
+        total_price: Money.new(100)
+      )
+    end
+
     let(:order_params) do
       {
         'address' => '1 Test Street',
@@ -76,8 +85,7 @@ describe OrdersController do
       }
     end
 
-    let(:basket) { double(Basket, total_price: Money.new(100)) }
-    let(:order) { double(Order, id: 2, name: 'Alphonso Quigley') }
+    let(:basket) { double(Basket) }
 
     before do
       controller.stub(current_basket: basket)

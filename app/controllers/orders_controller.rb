@@ -12,12 +12,15 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-
-    ChargesCustomers.charge(email, stripe_token, amount)
-
     @order.add_line_items_from_basket(current_basket)
 
     if @order.save
+      ChargesCustomers.charge(
+        email,
+        stripe_token,
+        @order.total_price.cents,
+        @order.id
+      )
       Basket.destroy(session[:basket_id])
       session[:basket_id] = nil
       session[:order_id] = @order.id
@@ -39,10 +42,6 @@ class OrdersController < ApplicationController
 
   private
 
-  def amount
-    total_price.cents
-  end
-
   def email
     params[:email]
   end
@@ -53,9 +52,5 @@ class OrdersController < ApplicationController
 
   def stripe_token
     params[:stripe_token]
-  end
-
-  def total_price
-    current_basket.total_price
   end
 end
