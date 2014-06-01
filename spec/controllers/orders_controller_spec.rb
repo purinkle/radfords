@@ -79,18 +79,20 @@ describe OrdersController do
     let(:order_params) do
       {
         'address' => '1 Test Street',
-        'email' => 'alphonso.quigley@example.com',
+        'email' => email,
         'name' => 'Alphonso Quigley',
         'pay_type' => 'Check'
       }
     end
 
     let(:basket) { double(Basket) }
+    let(:email) { 'alphonso.quigley@example.com' }
+    let(:stripe_token) { 'tok_103lhG2vVN1WVbyyA7ZfQcLz' }
 
     before do
       controller.stub(current_basket: basket)
       session[:basket_id] = 1
-      ChargesCustomers.stub(:charge)
+      ChargesCustomers.stub(:charge).with(email, stripe_token, 100, 2)
     end
 
     it 'redirects to the homepage' do
@@ -104,7 +106,7 @@ describe OrdersController do
       Basket.stub(:find).once.with(nil) { raise ActiveRecord::RecordNotFound }
       Mailer.stub(:order_received).once.with(order) { mailer }
       Order.stub(:new).once.with(order_params) { order }
-      post :create, order: order_params
+      post :create, order: order_params, stripe_token: stripe_token
       expect(response).to redirect_to(root_url)
     end
 

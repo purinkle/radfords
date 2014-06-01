@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
   private
 
   def email
-    params[:email]
+    order_params.fetch(:email)
   end
 
   def order_params

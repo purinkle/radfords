@@ -11,7 +11,7 @@ class ChargesCustomers
       amount: amount,
       currency: 'gbp',
       customer: customer_id,
-      description: description
+      description: "Payment for ##{order_id}"
     )
   end
 
@@ -24,11 +24,11 @@ class ChargesCustomers
   attr_reader :amount, :card, :email, :order_id
 
   def customer
-    Stripe::Customer.create(card: card, email: email)
-  end
-
-  def description
-    "Payment for ##{order_id}"
+    Stripe::Customer.create(
+      card: card,
+      description: "Customer for ##{order_id}",
+      email: email
+    )
   end
 
   def customer_id

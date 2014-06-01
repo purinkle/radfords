@@ -37,8 +37,11 @@ describe ChargesCustomers do
         description: "Payment for ##{order_id}",
         currency: 'gbp'
       ).and_return(charge)
-      Stripe::Customer.stub(:create).with(email: email, card: card).
-        and_return(customer)
+      Stripe::Customer.stub(:create).with(
+        card: card,
+        description: "Customer for ##{order_id}",
+        email: email
+      ).and_return(customer)
     end
 
     it 'returns the Stripe charge' do
