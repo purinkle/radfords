@@ -12,10 +12,42 @@
   </div>
 
   <div class="control-group">
-    <%= f.label(:address, class: 'control-label') %>
+    <%= f.label(:address_line_1, class: 'control-label') %>
 
     <div class="controls">
-      <%= f.text_area(:address, class: 'text-area') %>
+      <%= f.text_field(:address_line_1, class: 'text-field', data: { stripe: 'address-line1' }) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:address_line_2, class: 'control-label') %>
+
+    <div class="controls">
+      <%= f.text_field(:address_line_2, class: 'text-field', data: { stripe: 'address-line2' }) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:address_city, class: 'control-label') %>
+
+    <div class="controls">
+      <%= f.text_field(:address_city, class: 'text-field', data: { stripe: 'address-city' }) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:address_post_code, class: 'control-label') %>
+
+    <div class="controls">
+      <%= f.text_field(:address_post_code, class: 'text-field', data: { stripe: 'address-zip' }) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label(:address_county, class: 'control-label') %>
+
+    <div class="controls">
+      <%= f.text_field(:address_county, class: 'text-field', data: { stripe: 'address-state' }) %>
     </div>
   </div>
 

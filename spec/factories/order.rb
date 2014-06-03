@@ -1,7 +1,10 @@
 FactoryGirl.define do
   factory :order do
-    name 'Alphonso Quigley'
-    address "1 Test Street\nTesterton\nTE5 7TE"
+    address_line_1 '1 Test Street'
+    address_city 'Testerton'
+    address_county 'Testshire'
+    address_post_code 'TE5 7TE'
     email 'alphonso.quigley@example.com'
+    name 'Alphonso Quigley'
   end
 end

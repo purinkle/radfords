@@ -1,11 +1,19 @@
 class NewOrderPage
   include Capybara::DSL
+  include Formulaic::Dsl
   include RSpec::Matchers
 
   def create(options = {})
-    fill_in('Name', with: options.fetch(:name, ''))
-    fill_in('Address', with: options.fetch(:address, ''))
-    fill_in('Email', with: options.fetch(:email, ''))
+    fill_form(
+      :order,
+      address_line_1: '1 Test Street',
+      address_line_2: 'Testerton',
+      address_city: 'Testington',
+      address_post_code: 'TE5 7TE',
+      address_county: 'Testshire',
+      email: options.fetch(:email, ''),
+      name: options.fetch(:name, '')
+    )
 
     VCR.use_cassette('create stripe charge') do
       click_button('Create Order')

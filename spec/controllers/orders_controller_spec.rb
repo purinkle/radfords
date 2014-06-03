@@ -67,59 +67,70 @@ describe OrdersController do
   end
 
   describe 'POST "create"' do
-    let(:order) do
-      double(
-        Order,
-        id: 2,
-        name: 'Alphonso Quigley',
-        total_price: Money.new(100)
-      )
+    let(:address) do
+      [
+        address_line_1,
+        address_line_2,
+        address_city,
+        address_post_code,
+        address_county
+      ].join("\n")
     end
 
-    let(:order_params) do
+    let(:params) do
       {
-        'address' => '1 Test Street',
-        'email' => email,
-        'name' => 'Alphonso Quigley',
-        'pay_type' => 'Check'
+        order: {
+          address_line_1: address_line_1,
+          address_line_2: address_line_2,
+          address_city: address_city,
+          address_post_code: address_post_code,
+          address_county: address_county,
+          email: email,
+          name: name
+        },
+        stripe_token: stripe_token
       }
     end
 
-    let(:basket) { double(Basket) }
+    let(:address_line_1) { '1 Test Road' }
+    let(:address_line_2) { 'Testerton' }
+    let(:address_city) { 'Testington' }
+    let(:address_post_code) { 'TE5 7TE' }
+    let(:address_county) { 'Testshire' }
+    let(:basket_id) { 2 }
+    let(:cents) { 395 }
+    let(:current_basket) { double(Basket) }
     let(:email) { 'alphonso.quigley@example.com' }
+    let(:id) { 1 }
+    let(:mailer) { double(Mail::Message, deliver: nil) }
+    let(:name) { 'Alphonso Quigley' }
+    let(:order) { double(Order, id: id, save: save, total_price: total_price) }
+    let(:order_params) { { address: address, email: email, name: name } }
+    let(:save) { true }
     let(:stripe_token) { 'tok_103lhG2vVN1WVbyyA7ZfQcLz' }
+    let(:total_price) { Money.new(cents) }
 
     before do
-      controller.stub(current_basket: basket)
-      session[:basket_id] = 1
-      ChargesCustomers.stub(:charge).with(email, stripe_token, 100, 2)
+      controller.stub(current_basket: current_basket)
+      order.stub(:add_line_items_from_basket).with(current_basket)
+      session[:basket_id] = basket_id
+      Basket.stub(:destroy).with(basket_id)
+      ChargesCustomers.stub(:charge).with(email, stripe_token, cents, id)
+      Mailer.stub(:order_received).with(order).and_return(mailer)
+      Order.stub(:new).with(order_params).and_return(order)
     end
 
     it 'redirects to the homepage' do
-      mailer = double
-      basket.stub(:id).once.with(no_args) { 1 }
-      mailer.stub(:deliver).once.with(no_args)
-      order.stub(:add_line_items_from_basket).once.with(basket)
-      order.stub(:save).once.with(no_args) { true }
-      Basket.stub(:create).once.with(no_args) { basket }
-      Basket.stub(:destroy).once.with(1)
-      Basket.stub(:find).once.with(nil) { raise ActiveRecord::RecordNotFound }
-      Mailer.stub(:order_received).once.with(order) { mailer }
-      Order.stub(:new).once.with(order_params) { order }
-      post :create, order: order_params, stripe_token: stripe_token
+      post :create, params
       expect(response).to redirect_to(root_url)
     end
 
-    context 'when the order can\'t be saved' do
+    context 'when the order cannot be saved' do
+      let(:save) { false }
+
       it 'renders the new order view' do
-        basket.stub(:id).once.with(no_args) { 1 }
-        order.stub(:add_line_items_from_basket).once.with(basket)
-        order.stub(:save).once.with(no_args) { false }
-        Basket.stub(:create).once.with(no_args) { basket }
-        Basket.stub(:find).once.with(nil) { raise ActiveRecord::RecordNotFound }
-        Order.stub(:new).once.with(order_params) { order }
-        post :create, order: order_params
-        expect(response).to render_template :new
+        post :create, params
+        expect(response).to render_template(:new)
       end
     end
   end
