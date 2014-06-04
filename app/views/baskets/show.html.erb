@@ -2,7 +2,7 @@
 
 <h2><%= t('.heading') %></h2>
 
-<table>
+<table class="table table-striped">
   <% @basket.line_items.each do |item| %>
     <tr>
       <td><%= item.quantity %> &times;</td>
@@ -20,11 +20,14 @@
   </tr>
 </table>
 
-<%= button_to(t('.checkout'), new_order_path, method: :get) %>
+<div class="form-actions">
+  <%= button_to(t('.checkout'), new_order_path, class: 'btn', method: :get) %>
 
-<%= button_to(
-  t('.empty_basket'),
-  @basket,
-  method: :delete,
-  data: { confirm: t('.confirm') }
-) %>
+  <%= button_to(
+    t('.empty_basket'),
+    @basket,
+    class: 'btn',
+    method: :delete,
+    data: { confirm: t('.confirm') }
+  ) %>
+</div>
