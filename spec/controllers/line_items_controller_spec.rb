@@ -16,7 +16,7 @@ describe LineItemsController do
 
     it 'redirects to the saved basket' do
       post :create, product_id: product_id
-      expect(response).to redirect_to(basket_url)
+      expect(response).to redirect_to(root_url)
     end
   end
 end

@@ -4,7 +4,7 @@ class LineItemsController < ApplicationController
   def create
     @basket = current_basket
     @basket.add_product(product.id).save
-    redirect_to @basket
+    redirect_to root_url
   end
 
   private

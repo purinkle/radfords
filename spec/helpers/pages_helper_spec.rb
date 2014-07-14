@@ -28,4 +28,29 @@ describe PagesHelper do
       end
     end
   end
+
+  describe "#render_basket" do
+    subject { helper.render_basket(basket) }
+
+    let(:basket) { double("Basket", line_items: line_items) }
+    let(:line_item) { double("LineItem") }
+    let(:line_items) { [line_item] }
+    let(:partial) { double("partial") }
+
+    before do
+      helper.stub(:render).with(basket).and_return(partial)
+    end
+
+    it "renders the basket" do
+      expect(subject).to be(partial)
+    end
+
+    context "when the basket has no line items" do
+      let(:line_items) { [] }
+
+      it "returns nil" do
+        expect(subject).to be_nil
+      end
+    end
+  end
 end

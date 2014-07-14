@@ -2,32 +2,4 @@
 
 <h2><%= t('.heading') %></h2>
 
-<table class="table table-striped">
-  <% @basket.line_items.each do |item| %>
-    <tr>
-      <td><%= item.quantity %> &times;</td>
-
-      <td><%= item.product.title %></td>
-
-      <td class="item-price"><%= humanize_price(item.total_price) %></td>
-    </tr>
-  <% end %>
-
-  <tr class="total-line">
-    <td colspan="2">Total</td>
-
-    <td class="total-cell"><%= humanize_price(@basket.total_price) %></td>
-  </tr>
-</table>
-
-<div class="form-actions">
-  <%= button_to(t('.checkout'), new_order_path, class: 'btn', method: :get) %>
-
-  <%= button_to(
-    t('.empty_basket'),
-    @basket,
-    class: 'btn',
-    method: :delete,
-    data: { confirm: t('.confirm') }
-  ) %>
-</div>
+<%= render @basket %>

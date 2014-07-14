@@ -1,14 +1,15 @@
 en:
   baskets:
-    destroy:
-      notice: Your basket is currently empty.
-    show:
-      alert: Invalid basket.
+    basket:
       checkout: Checkout
       confirm: Are you sure?
       empty_basket: Empty basket
       heading: Your Basket
       title: Basket
+    destroy:
+      notice: Your basket is currently empty.
+    show:
+      alert: Invalid basket.
   error_text: 'Oh snap'
   events:
     not_found: "We couldn't find the event you were looking for."

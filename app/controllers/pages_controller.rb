@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_filter :authenticate
 
   def home
+    @basket = current_basket
     @events = Event.limit(3)
 
     if session[:order_id]

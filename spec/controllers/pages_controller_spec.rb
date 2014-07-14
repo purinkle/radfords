@@ -6,6 +6,12 @@ describe PagesController do
   end
 
   describe "GET 'home'" do
+    let(:basket) { double("Basket") }
+
+    before do
+      controller.stub(current_basket: basket)
+    end
+
     it "should be successful" do
       get 'home'
       response.should be_success
@@ -18,6 +24,11 @@ describe PagesController do
       get :home
 
       expect(assigns(:events)).to eql [event]
+    end
+
+    it "gets the current basket" do
+      get :home
+      expect(assigns :basket).to be(basket)
     end
 
     context 'when there is an order ID in the session' do

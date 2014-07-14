@@ -20,5 +20,5 @@ Feature: Baskets
     And I have the product in my basket
     And I am on the "Shop" page
     When I add the product to my basket
-    Then I see the "Basket" page
+    Then I see the "Home" page
     And I see the product in my basket twice
