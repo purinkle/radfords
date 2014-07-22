@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_filter :authenticate
 
   def home
-    @basket = current_basket
+    @basket = basket
     @events = Event.limit(3)
 
     if session[:order_id]
@@ -23,4 +23,12 @@ class PagesController < ApplicationController
   end
 
   def contact; end
+
+  private
+
+  def basket
+    Basket.find(session[:basket_id])
+  rescue ActiveRecord::RecordNotFound
+    NullBasket.new
+  end
 end

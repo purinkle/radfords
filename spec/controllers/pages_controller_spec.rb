@@ -7,9 +7,15 @@ describe PagesController do
 
   describe "GET 'home'" do
     let(:basket) { double("Basket") }
+    let(:basket_id) { 2 }
+    let(:null_basket) { double("NullBasket") }
+    let(:session_basket) { basket_id }
 
     before do
-      controller.stub(current_basket: basket)
+      Basket.stub(:find).with(basket_id).and_return(basket)
+      Basket.stub(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
+      NullBasket.stub(new: null_basket)
+      session[:basket_id] = session_basket
     end
 
     it "should be successful" do
@@ -48,6 +54,15 @@ describe PagesController do
       it 'removes the order ID from the session' do
         get :home
         expect(session[:order_id]).to be_nil
+      end
+    end
+
+    context "when there is no basket ID in the session" do
+      let(:session_basket) { nil }
+
+      it "assigns a null basket" do
+        get :home
+        expect(assigns(:basket)).to be(null_basket)
       end
     end
   end
