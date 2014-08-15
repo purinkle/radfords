@@ -12,20 +12,20 @@ describe PagesController do
     let(:session_basket) { basket_id }
 
     before do
-      Basket.stub(:find).with(basket_id).and_return(basket)
-      Basket.stub(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
-      NullBasket.stub(new: null_basket)
+      allow(Basket).to receive(:find).with(basket_id).and_return(basket)
+      allow(Basket).to receive(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
+      allow(NullBasket).to receive(:new).and_return(null_basket)
       session[:basket_id] = session_basket
     end
 
     it "should be successful" do
       get 'home'
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "gets the next three events" do
       event = double(:event)
-      Event.stub(:limit).with(3).once.and_return([event])
+      expect(Event).to receive(:limit).with(3).once.and_return([event])
 
       get :home
 
@@ -42,7 +42,7 @@ describe PagesController do
       let(:order_id) { 1 }
 
       before do
-        Order.stub(:find).with(order_id).and_return(order)
+        allow(Order).to receive(:find).with(order_id).and_return(order)
         session[:order_id] = order_id
       end
 
@@ -68,21 +68,9 @@ describe PagesController do
   end
 
   describe 'GET "outlets"' do
-    before(:each) do
-      Supplier.any_instance.stub :geocode
-      @supplier = FactoryGirl.create(:supplier)
-      second = FactoryGirl.create(:supplier, address: '75 Lairg Road, Newcastle upon Type NE1 0TF', name: 'Jasmine Haynes', telephone_number: '070 0060 9200', website: 'http://marketingtickets.com/')
-      third = FactoryGirl.create(:supplier, address: '27 Vicar Lane, Saron SA44 8HH', name: 'Jamie Hunter', telephone_number: '079 8825 0308', website: 'http://aromatherapyjobs.com/')
-      @suppliers = [@supplier, second, third]
-
-      30.times do
-        @suppliers << FactoryGirl.create(:supplier)
-      end
-    end
-
     it 'should be successful' do
       get :outlets
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "should have the right title" do
@@ -94,7 +82,7 @@ describe PagesController do
   describe 'GET "products"' do
     it "gets all of the products" do
       product = double(:product)
-      Product.stub(:all).and_return([product])
+      allow(Product).to receive(:all).and_return([product])
 
       get :products
 

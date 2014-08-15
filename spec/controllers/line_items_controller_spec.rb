@@ -8,10 +8,10 @@ describe LineItemsController do
     let(:product_id) { '1' }
 
     before do
-      basket.stub(:add_product).with(product_id).and_return(basket)
-      controller.stub(current_basket: basket)
-      controller.stub(:url_for).with(basket).and_return(basket_url)
-      Product.stub(:find).with(product_id).and_return(product)
+      allow(basket).to receive(:add_product).with(product_id).and_return(basket)
+      allow(controller).to receive(:current_basket).and_return(basket)
+      allow(controller).to receive(:url_for).with(basket).and_return(basket_url)
+      allow(Product).to receive(:find).with(product_id).and_return(product)
     end
 
     it 'redirects to the saved basket' do

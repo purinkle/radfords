@@ -13,7 +13,7 @@ Given(/^someone else deletes the product$/) do
     product.destroy
   end
 
-  expect(Product.all).to have(0).products
+  expect(Product.all.count).to be_zero
 end
 
 ### WHEN ###

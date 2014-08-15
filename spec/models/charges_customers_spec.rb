@@ -15,8 +15,8 @@ describe ChargesCustomers do
     let(:charger) { double(ChargesCustomers, charge: charge) }
 
     before do
-      ChargesCustomers.stub(:new).with(email, card, amount, order_id).
-        and_return(charger)
+      allow(ChargesCustomers).to receive(:new).
+        with(email, card, amount, order_id).and_return(charger)
     end
 
     it 'returns the Stripe charge' do
@@ -31,17 +31,17 @@ describe ChargesCustomers do
     let(:customer_id) { 'cus_41cbOVn85eL5tY' }
 
     before do
-      Stripe::Charge.stub(:create).with(
+      allow(Stripe::Charge).to receive(:create).with(
         customer: customer_id,
         amount: amount,
         description: "Payment for ##{order_id}",
         currency: 'gbp'
-      ).and_return(charge)
-      Stripe::Customer.stub(:create).with(
+      ) { charge }
+      allow(Stripe::Customer).to receive(:create).with(
         card: card,
         description: "Customer for ##{order_id}",
         email: email
-      ).and_return(customer)
+      ) { customer }
     end
 
     it 'returns the Stripe charge' do

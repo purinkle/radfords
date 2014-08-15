@@ -6,9 +6,9 @@ describe OrdersController do
       basket = double
       order = double
       session[:basket_id] = 1
-      basket.stub(:line_items).once.with(no_args) { [double] }
-      Basket.stub(:find).once.with(1) { basket }
-      Order.stub(:new).once.with(no_args) { order }
+      allow(basket).to receive(:line_items) { [double] }
+      allow(Basket).to receive(:find).with(1) { basket }
+      allow(Order).to receive(:new) { order }
 
       get :new
 
@@ -17,11 +17,9 @@ describe OrdersController do
 
     context 'when there\'s no current basket' do
       it 'redirects to the shop' do
-        basket = double
-        basket.stub(:id).once.with(no_args) { 1 }
-        basket.stub(:line_items).once.with(no_args) { [] }
-        Basket.stub(:create).once.with(no_args) { basket }
-        Basket.stub(:find).once.with(nil) { raise ActiveRecord::RecordNotFound }
+        basket = double("Basket", id: 1, line_items: [])
+        allow(Basket).to receive(:create) { basket }
+        allow(Basket).to receive(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
 
         get :new
 
@@ -29,11 +27,9 @@ describe OrdersController do
       end
 
       it 'sets a notice' do
-        basket = double
-        basket.stub(:id).once.with(no_args) { 1 }
-        basket.stub(:line_items).once.with(no_args) { [] }
-        Basket.stub(:create).once.with(no_args) { basket }
-        Basket.stub(:find).once.with(nil) { raise ActiveRecord::RecordNotFound }
+        basket = double("Basket", id: 1, line_items: [])
+        allow(Basket).to receive(:create) { basket }
+        allow(Basket).to receive(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
 
         get :new
 
@@ -43,10 +39,9 @@ describe OrdersController do
 
     context 'when there are no items in the basket' do
       it 'redirects to the shop' do
-        basket = double
+        basket = double("Basket", line_items: [])
         session[:basket_id] = 1
-        basket.stub(:line_items).once.with(no_args) { [] }
-        Basket.stub(:find).once.with(1) { basket }
+        allow(Basket).to receive(:find).with(1) { basket }
 
         get :new
 
@@ -54,10 +49,9 @@ describe OrdersController do
       end
 
       it 'sets a notice' do
-        basket = double
+        basket = double("Basket", line_items: [])
         session[:basket_id] = 1
-        basket.stub(:line_items).once.with(no_args) { [] }
-        Basket.stub(:find).once.with(1) { basket }
+        allow(Basket).to receive(:find).with(1) { basket }
 
         get :new
 
@@ -111,13 +105,14 @@ describe OrdersController do
     let(:total_price) { Money.new(cents) }
 
     before do
-      controller.stub(current_basket: current_basket)
-      order.stub(:add_line_items_from_basket).with(current_basket)
+      allow(controller).to receive(:current_basket).and_return(current_basket)
+      allow(order).to receive(:add_line_items_from_basket).with(current_basket)
       session[:basket_id] = basket_id
-      Basket.stub(:destroy).with(basket_id)
-      ChargesCustomers.stub(:charge).with(email, stripe_token, cents, id)
-      Mailer.stub(:order_received).with(order).and_return(mailer)
-      Order.stub(:new).with(order_params).and_return(order)
+      allow(Basket).to receive(:destroy).with(basket_id)
+      allow(ChargesCustomers).to receive(:charge).
+        with(email, stripe_token, cents, id)
+      allow(Mailer).to receive(:order_received).with(order) { mailer }
+      allow(Order).to receive(:new).with(order_params) { order }
     end
 
     it 'redirects to the homepage' do
@@ -141,9 +136,9 @@ describe OrdersController do
     let(:id) { '1' }
 
     before do
-      controller.stub(:authenticate)
-      order.stub(:update_attribute).with(:viewed, true).and_return(order)
-      Order.stub(:find).with(id).and_return(order)
+      allow(controller).to receive(:authenticate)
+      allow(order).to receive(:update_attribute).with(:viewed, true) { order }
+      allow(Order).to receive(:find).with(id) { order }
     end
 
     it 'gets the order specified in the params' do
@@ -161,8 +156,8 @@ describe OrdersController do
     let(:orders) { [double(Order)] }
 
     before do
-      controller.stub(:authenticate)
-      Order.stub(by_created_at: orders)
+      allow(controller).to receive(:authenticate)
+      allow(Order).to receive(:by_created_at) { orders }
     end
 
     it 'gets all of the orders' do

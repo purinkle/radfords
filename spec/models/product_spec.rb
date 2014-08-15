@@ -9,18 +9,19 @@ describe Product do
     let(:line_items) { [] }
 
     before do
-      product.stub(:line_items).once.with(no_args).and_return(line_items)
+      allow(product).to receive(:line_items).once.with(no_args).
+        and_return(line_items)
     end
 
     it 'returns true' do
-      expect(subject).to be_true
+      expect(subject).to be true
     end
 
     context 'when the product belongs to a line item' do
       let(:line_items) { [double('line item')] }
 
       it 'returns false' do
-        expect(subject).to be_false
+        expect(subject).to be false
       end
     end
   end

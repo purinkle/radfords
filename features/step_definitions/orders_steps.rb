@@ -79,7 +79,7 @@ end
 
 Then(/^I see the order$/) do
   orders_page = OrdersPage.new
-  expect(orders_page).to have(1).order
+  expect(orders_page.orders.count).to be 1
 end
 
 Then(/^I see the order's address$/) do

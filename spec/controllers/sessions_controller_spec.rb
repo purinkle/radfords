@@ -5,7 +5,7 @@ describe SessionsController do
     it 'should be successful' do
       get :new
 
-      response.should be_success
+      expect(response).to be_success
     end
 
     it 'should have the right title' do
@@ -23,7 +23,7 @@ describe SessionsController do
       it 'should re-render the new page' do
         post :create, :session => @attr
 
-        response.should render_template('new')
+        expect(response).to render_template("new")
       end
 
       it 'should have the right title' do
@@ -32,7 +32,7 @@ describe SessionsController do
       end
 
       it "sets the alert flash" do
-        User.stub(authenticate: nil)
+        allow(User).to receive(:authenticate)
 
         post :create, session: {}
 
@@ -49,14 +49,14 @@ describe SessionsController do
       it 'should sign the user in' do
         post :create, :session => @attr
 
-        controller.current_user.should == @user
-        controller.should be_signed_in
+        expect(controller.current_user).to eq(@user)
+        expect(controller).to be_signed_in
       end
 
       it 'should redirect to the new event page' do
         post :create, :session => @attr
 
-        response.should redirect_to events_path
+        expect(response).to redirect_to(events_path)
       end
     end
   end
@@ -67,14 +67,14 @@ describe SessionsController do
 
       delete :destroy
 
-      controller.should_not be_signed_in
+      expect(controller).to_not be_signed_in
 
-      response.should redirect_to(root_path)
+      expect(response).to redirect_to(root_path)
     end
 
     it 'sets the success flash' do
       delete :destroy
-      flash[:success].should == 'You successfully signed out.'
+      expect(flash[:success]).to eq("You successfully signed out.")
     end
   end
 end

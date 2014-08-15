@@ -9,8 +9,8 @@ describe PagesHelper do
     let(:signed_in?) { false }
 
     before do
-      helper.stub(:signed_in?).with(no_args).once.and_return(signed_in?)
-      helper.stub(:render).with(
+      allow(helper).to receive(:signed_in?).with(no_args).and_return(signed_in?)
+      allow(helper).to receive(:render).with(
         partial: 'product_button',
         locals: { product: product }
       ).once.and_return(partial)
@@ -38,7 +38,7 @@ describe PagesHelper do
     let(:partial) { double("partial") }
 
     before do
-      helper.stub(:render).with(basket).and_return(partial)
+      allow(helper).to receive(:render).with(basket).and_return(partial)
     end
 
     it "renders the basket" do

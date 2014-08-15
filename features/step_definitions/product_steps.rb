@@ -164,46 +164,46 @@ Then /^I see a product was deleted message$/ do
 end
 
 Then /^I see a duplicate title message$/ do
-  should have_content('Title has already been taken')
+  expect(page).to have_content("Title has already been taken")
 end
 
 Then /^I see a no products message$/ do
-  should have_content('There are currently no products')
+  expect(page).to have_content("There are currently no products")
 end
 
 Then /^I see a product saved message$/ do
-  should have_content('Product saved.')
+  expect(page).to have_content("Product saved.")
 end
 
 Then /^I see a successful product creation message$/ do
-  should have_content('The product was created successfully')
+  expect(page).to have_content("The product was created successfully")
 end
 
 Then /^I see a sign in message$/ do
-  should have_content('Please sign in to access this page')
+  expect(page).to have_content("Please sign in to access this page")
 end
 
 Then /^I see a title missing message$/ do
-  should have_content("Title can't be blank")
+  expect(page).to have_content("Title can't be blank")
 end
 
 Then /^I see an invalid product message$/ do
-  should have_content("We couldn't find that product")
+  expect(page).to have_content("We couldn't find that product")
 end
 
 Then /^I see each product's description$/ do
-  should have_content(@product_1.description)
-  should have_content(@product_2.description)
+  expect(page).to have_content(@product_1.description)
+  expect(page).to have_content(@product_2.description)
 end
 
 Then /^I see each product's photo$/ do
-  should have_xpath("//img[contains(@src, \"#{@product_1.photo.url}\")]")
-  should have_xpath("//img[contains(@src, \"#{@product_2.photo.url}\")]")
+  expect(page).to have_image @product_1.photo.url
+  expect(page).to have_image @product_2.photo.url
 end
 
 Then /^I see each product's title$/ do
-  should have_content(@product_1.title)
-  should have_content(@product_2.title)
+  expect(page).to have_content(@product_1.title)
+  expect(page).to have_content(@product_2.title)
 end
 
 Then /^I see the delete product page$/ do
@@ -223,15 +223,15 @@ Then /^I see the index products page$/ do
 end
 
 Then /^I see the product's description$/ do
-  should have_content(product.description)
+  expect(page).to have_content(product.description)
 end
 
 Then /^I see the product's photo$/ do
-  should have_xpath("//img[contains(@src, \"#{@product.photo.url}\")]")
+  expect(page).to have_xpath("//img[contains(@src, \"#{@product.photo.url}\")]")
 end
 
 Then /^I see the product's title$/ do
-  should have_css('body', text: product.title)
+  expect(page).to have_css("body", text: product.title)
 end
 
 Then(/^I see the second product$/) do

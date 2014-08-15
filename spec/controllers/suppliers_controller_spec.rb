@@ -12,18 +12,18 @@ describe SuppliersController do
   describe "DELETE 'destroy'" do
     it "destroys the supplier" do
       supplier = Supplier.new
-      controller.stub(:authenticate)
-      Supplier.stub(find: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:find) { supplier }
 
-      supplier.should_receive(:destroy)
+      expect(supplier).to receive(:destroy)
 
       delete :destroy, id: "1"
     end
 
     it "redirects to the outlets page" do
       supplier = Supplier.new
-      controller.stub(:authenticate)
-      Supplier.stub(find: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:find) { supplier }
 
       delete :destroy, id: "1"
 
@@ -32,8 +32,8 @@ describe SuppliersController do
 
     it "sets the notice flash" do
       supplier = Supplier.new
-      controller.stub(:authenticate)
-      Supplier.stub(find: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:find) { supplier }
 
       delete :destroy, id: "1"
 
@@ -44,8 +44,8 @@ describe SuppliersController do
   describe "GET 'new'" do
     it "creates a new supplier" do
       supplier = Supplier.new
-      controller.stub(:authenticate)
-      Supplier.stub(new: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:new) { supplier }
 
       get :new
 
@@ -56,9 +56,9 @@ describe SuppliersController do
   describe "POST 'create'" do
     it "creates a new supplier" do
       supplier = Supplier.new
-      supplier.stub(save!: true)
-      controller.stub(:authenticate)
-      Supplier.stub(new: supplier)
+      allow(supplier).to receive(:save!) { true }
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:new) { supplier }
 
       post :create, supplier: supplier_params
 
@@ -67,19 +67,19 @@ describe SuppliersController do
 
     it "saves the supplier" do
       supplier = Supplier.new
-      controller.stub(:authenticate)
-      Supplier.stub(new: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:new) { supplier }
 
-      supplier.should_receive(:save!)
+      expect(supplier).to receive(:save!)
 
       post :create, supplier: supplier_params
     end
 
     it "redirects to the outlets page" do
       supplier = Supplier.new
-      supplier.stub(save!: true)
-      controller.stub(:authenticate)
-      Supplier.stub(new: supplier)
+      allow(supplier).to receive(:save!) { true }
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:new) { supplier }
 
       post :create, supplier: supplier_params
 
@@ -88,9 +88,9 @@ describe SuppliersController do
 
     it "sets the notice flash" do
       supplier = Supplier.new
-      supplier.stub(save!: true)
-      controller.stub(:authenticate)
-      Supplier.stub(new: supplier)
+      allow(supplier).to receive(:save!) { true }
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:new) { supplier }
 
       post :create, supplier: supplier_params
 
@@ -101,9 +101,9 @@ describe SuppliersController do
       it "renders the new supplier page" do
         supplier = Supplier.new
         exception = ActiveRecord::RecordInvalid.new(supplier)
-        supplier.stub(:save!).and_raise(exception)
-        controller.stub(:authenticate)
-        Supplier.stub(new: supplier)
+        allow(supplier).to receive(:save!).and_raise(exception)
+        allow(controller).to receive(:authenticate)
+        allow(Supplier).to receive(:new) { supplier }
 
         post :create, supplier: supplier_params
 
@@ -115,8 +115,8 @@ describe SuppliersController do
   describe "GET 'edit'" do
     it "finds the supplier" do
       supplier = Supplier.new
-      controller.stub(:authenticate)
-      Supplier.stub(find: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:find) { supplier }
 
       get :edit, id: "1"
 
@@ -128,15 +128,15 @@ describe SuppliersController do
     let(:supplier) { Supplier.new }
 
     before do
-      supplier.stub(:update_attributes!).
+      allow(supplier).to receive(:update_attributes!).
         with(supplier_params).
         once.
         and_return(true)
     end
 
     it "finds the supplier" do
-      controller.stub(:authenticate)
-      Supplier.stub(find: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:find) { supplier }
 
       put :update, id: "1", supplier: supplier_params
 
@@ -144,8 +144,8 @@ describe SuppliersController do
     end
 
     it "updates the supplier's attributes" do
-      controller.stub(:authenticate)
-      Supplier.stub(find: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:find) { supplier }
 
       expect(supplier).to receive :update_attributes!
 
@@ -153,8 +153,8 @@ describe SuppliersController do
     end
 
     it "redirects to the outlets page" do
-      controller.stub(:authenticate)
-      Supplier.stub(find: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:find) { supplier }
 
       put :update, id: "1", supplier: supplier_params
 
@@ -162,8 +162,8 @@ describe SuppliersController do
     end
 
     it "sets the notice flash" do
-      controller.stub(:authenticate)
-      Supplier.stub(find: supplier)
+      allow(controller).to receive(:authenticate)
+      allow(Supplier).to receive(:find) { supplier }
 
       put :update, id: "1", supplier: supplier_params
 
@@ -173,9 +173,9 @@ describe SuppliersController do
     context "when the updated supplier is invalid" do
       it "renders the edit supplier page" do
         exception = ActiveRecord::RecordInvalid.new(supplier)
-        supplier.stub(:update_attributes!).and_raise(exception)
-        controller.stub(:authenticate)
-        Supplier.stub(find: supplier)
+        allow(supplier).to receive(:update_attributes!).and_raise(exception)
+        allow(controller).to receive(:authenticate)
+        allow(Supplier).to receive(:find) { supplier }
 
         put :update, id: "1", supplier: supplier_params
 

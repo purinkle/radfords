@@ -8,10 +8,10 @@ describe FulfilmentsController do
     let(:mailer) { double(Mailer, deliver: nil) }
 
     before do
-      controller.stub(:authenticate)
-      controller.stub(:url_for).with(order).and_return(order_url)
-      Order.stub(:find).with(order_id).and_return(order)
-      Mailer.stub(:order_shipped).with(order).and_return(mailer)
+      allow(controller).to receive(:authenticate)
+      allow(controller).to receive(:url_for).with(order).and_return(order_url)
+      allow(Order).to receive(:find).with(order_id).and_return(order)
+      allow(Mailer).to receive(:order_shipped).with(order).and_return(mailer)
     end
 
     it 'delivers the order fulfilled mail' do

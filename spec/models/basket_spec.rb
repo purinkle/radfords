@@ -11,9 +11,10 @@ describe Basket do
     let(:product_id) { '1' }
 
     before do
-      basket.stub(line_items: LineItem)
-      LineItem.stub(:build).with(product_id: product_id).and_return(new_item)
-      LineItem.stub(:find_by_product_id).with(product_id).
+      allow(basket).to receive(:line_items) { LineItem }
+      allow(LineItem).to receive(:build).with(product_id: product_id).
+        and_return(new_item)
+      allow(LineItem).to receive(:find_by_product_id).with(product_id).
         and_return(found_item)
     end
 
@@ -33,11 +34,9 @@ describe Basket do
   describe '#total_price' do
     it 'returns the sum of the line items\' prices' do
       basket = Basket.new
-      item_1 = double
-      item_2 = double
-      item_1.stub(:total_price).once.with(no_args) { 300 }
-      item_2.stub(:total_price).once.with(no_args) { 600 }
-      basket.stub(:line_items).once.with(no_args) { [item_1, item_2] }
+      item_1 = double("LineItem", total_price: 300)
+      item_2 = double("LineItem", total_price: 600)
+      allow(basket).to receive(:line_items) { [item_1, item_2] }
       expect(basket.total_price).to eql 900
     end
   end

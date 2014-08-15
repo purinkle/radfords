@@ -4,16 +4,16 @@ describe Order do
   let(:order) { Order.new }
 
   describe '#add_line_items_from_basket' do
-    it 'adds the basket\'s items to line items' do
-      item = LineItem.new
-      basket = double(:basket)
-      basket.stub(:line_items).once.with(no_args) { [item] }
-      item.stub(:basket_id=).once.with(nil)
+    let(:basket) { double("Basket", line_items: [item]) }
+    let(:item) { double("LineItem") }
 
-      order = Order.new
+    before do
+      allow(order).to receive(:line_items).and_return([])
+    end
+
+    it "clears the item's basket ID" do
+      expect(item).to receive(:basket_id=).with(nil)
       order.add_line_items_from_basket(basket)
-
-      expect(order.line_items).to have(1).item
     end
   end
 
@@ -24,7 +24,7 @@ describe Order do
     let(:item_2) { double(LineItem, total_price: Money.new(1485)) }
 
     before do
-      order.stub(line_items: [item_1, item_2])
+      allow(order).to receive(:line_items).and_return([item_1, item_2])
     end
 
     it "returns the sum of each line item's total price" do

@@ -12,8 +12,8 @@ describe EventsController do
   describe "GET 'show'" do
     it "finds the event" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(find: event)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:find).and_return(event)
 
       get :show, id: "1"
 
@@ -24,8 +24,8 @@ describe EventsController do
   describe "GET 'new'" do
     it "creates a new event" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(new: event)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:new).and_return(event)
 
       get :new
 
@@ -36,9 +36,9 @@ describe EventsController do
   describe 'POST "create"' do
     it "finds the event" do
       event = Event.new
-      event.stub(save!: true)
-      controller.stub(:authenticate)
-      Event.stub(new: event)
+      allow(event).to receive(:save!).and_return(true)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:new).and_return(event)
 
       post :create, event: event_params
 
@@ -47,19 +47,20 @@ describe EventsController do
 
     it "saves the event" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(new: event)
-
-      event.should_receive(:save!)
+      allow(controller).to receive(:authenticate)
+      allow(event).to receive(:save!)
+      allow(Event).to receive(:new).and_return(event)
 
       post :create, event: event_params
+      expect(event).to have_received(:save!)
     end
 
     it "redirects to the event's page" do
       event = Event.new
-      event.stub(save!: true, url_for: "")
-      controller.stub(:authenticate)
-      Event.stub(new: event)
+      allow(event).to receive(:save!).and_return(true)
+      allow(event).to receive(:url_for).and_return("")
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:new).and_return(event)
 
       post :create, event: event_params
 
@@ -68,9 +69,10 @@ describe EventsController do
 
     it "sets the notice flash" do
       event = Event.new
-      event.stub(save!: true, url_for: "")
-      controller.stub(:authenticate)
-      Event.stub(new: event)
+      allow(event).to receive(:save!).and_return(true)
+      allow(event).to receive(:url_for).and_return("")
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:new).and_return(event)
 
       post :create, event: event_params
 
@@ -80,9 +82,9 @@ describe EventsController do
     context "when the event is not valid" do
       it "renders the new event page" do
         event = Event.new
-        event.stub(:save!).and_raise(ActiveRecord::RecordInvalid.new(event))
-        controller.stub(:authenticate)
-        Event.stub(new: event)
+        allow(event).to receive(:save!).and_raise(ActiveRecord::RecordInvalid.new(event))
+        allow(controller).to receive(:authenticate)
+        allow(Event).to receive(:new).and_return(event)
 
         post :create, event: event_params
 
@@ -94,8 +96,8 @@ describe EventsController do
   describe "GET 'index'" do
     it "finds all of the events" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(all: [event])
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:all).and_return([event])
 
       get :index
 
@@ -106,8 +108,8 @@ describe EventsController do
   describe "GET 'edit'" do
     it "finds the event" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(find: event)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:find).and_return(event)
 
       get :edit, id: "1"
 
@@ -118,9 +120,9 @@ describe EventsController do
   describe "PUT 'update'" do
     it "finds the event" do
       event = Event.new
-      event.stub(update_attributes!: true)
-      controller.stub(:authenticate)
-      Event.stub(find: event)
+      allow(event).to receive(:update_attributes!).and_return(true)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:find).and_return(event)
 
       put :update, id: "1", event: event_params
 
@@ -129,19 +131,20 @@ describe EventsController do
 
     it "updates the event" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(find: event)
-
-      event.should_receive(:update_attributes!)
+      allow(controller).to receive(:authenticate)
+      allow(event).to receive(:update_attributes!)
+      allow(Event).to receive(:find).and_return(event)
 
       put :update, id: "1", event: event_params
+      expect(event).to have_received(:update_attributes!)
     end
 
     it "redirects to the event's page" do
       event = Event.new
-      event.stub(update_attributes!: true, url_for: "")
-      controller.stub(:authenticate)
-      Event.stub(find: event)
+      allow(event).to receive(:update_attributes!).and_return(true)
+      allow(event).to receive(:url_for).and_return("")
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:find).and_return(event)
 
       put :update, id: "1", event: event_params
 
@@ -150,9 +153,9 @@ describe EventsController do
 
     it "sets the notice flash" do
       event = Event.new
-      event.stub(update_attributes!: true)
-      controller.stub(:authenticate)
-      Event.stub(find: event)
+      allow(event).to receive(:update_attributes!).and_return(true)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:find).and_return(event)
 
       put :update, id: "1", event: event_params
 
@@ -163,9 +166,9 @@ describe EventsController do
       it "renders the edit event page" do
         event = Event.new
         exception = ActiveRecord::RecordInvalid.new(event)
-        event.stub(:update_attributes!).and_raise(exception)
-        controller.stub(:authenticate)
-        Event.stub(find: event)
+        allow(event).to receive(:update_attributes!).and_raise(exception)
+        allow(controller).to receive(:authenticate)
+        allow(Event).to receive(:find).and_return(event)
 
         put :update, id: "1", event: event_params
 
@@ -189,8 +192,8 @@ describe EventsController do
   describe "GET 'delete'" do
     it "finds the event" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(find: event)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:find).and_return(event)
 
       get :delete, id: "1"
 
@@ -199,8 +202,8 @@ describe EventsController do
 
     context "when an event can't be found" do
       it "sets the alert flash" do
-        controller.stub(:authenticate)
-        Event.stub(:find).and_raise(ActiveRecord::RecordNotFound)
+        allow(controller).to receive(:authenticate)
+        allow(Event).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
 
         get :delete, id: "1"
 
@@ -209,8 +212,8 @@ describe EventsController do
       end
 
       it "redirects to the events page" do
-        controller.stub(:authenticate)
-        Event.stub(:find).and_raise(ActiveRecord::RecordNotFound)
+        allow(controller).to receive(:authenticate)
+        allow(Event).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
 
         get :delete, id: "1"
 
@@ -222,18 +225,18 @@ describe EventsController do
   describe "DELETE 'destroy'" do
     it "destroys the event" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(find: event)
-
-      event.should_receive(:destroy)
+      allow(controller).to receive(:authenticate)
+      allow(event).to receive(:destroy)
+      allow(Event).to receive(:find).and_return(event)
 
       delete :destroy, id: "1"
+      expect(event).to have_received(:destroy)
     end
 
     it "redirects to the events index" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(find: event)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:find).and_return(event)
 
       delete :destroy, id: "1"
 
@@ -242,8 +245,8 @@ describe EventsController do
 
     it "sets the notice flash" do
       event = Event.new
-      controller.stub(:authenticate)
-      Event.stub(find: event)
+      allow(controller).to receive(:authenticate)
+      allow(Event).to receive(:find).and_return(event)
 
       delete :destroy, id: "1"
 

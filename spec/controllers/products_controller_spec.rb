@@ -11,7 +11,7 @@ describe ProductsController do
   end
 
   before do
-    controller.stub(:authenticate)
+    allow(controller).to receive(:authenticate)
   end
 
   describe 'GET "delete"' do
@@ -19,12 +19,10 @@ describe ProductsController do
     let(:params) { {id: id} }
 
     before do
-      Product.stub(:find).with(id) { product }
+      allow(Product).to receive(:find).with(id).and_raise(ActiveRecord::RecordNotFound)
     end
 
     context 'when no product is found' do
-      let(:product) { raise ActiveRecord::RecordNotFound }
-
       it 'redirects to the index products page' do
         get :delete, params
         expect(response).to redirect_to(products_path)
@@ -35,8 +33,8 @@ describe ProductsController do
   describe 'DELETE "destroy"' do
     it 'sets the product' do
       product = double(:product)
-      product.stub(:destroy).with(no_args).once.and_return(true)
-      Product.stub(:find).with('1').once.and_return(product)
+      allow(product).to receive(:destroy).and_return(true)
+      allow(Product).to receive(:find).with("1").and_return(product)
 
       delete :destroy, id: '1'
 
@@ -45,17 +43,17 @@ describe ProductsController do
 
     it 'destroys the product' do
       product = double(:product)
-      Product.stub(:find).with('1').once.and_return(product)
+      allow(Product).to receive(:find).with("1").and_return(product)
 
-      product.should_receive(:destroy).with(no_args).once.and_return(true)
+      expect(product).to receive(:destroy).and_return(true)
 
       delete :destroy, id: '1'
     end
 
     it 'redirects to the products index' do
       product = double(:product)
-      product.stub(:destroy).with(no_args).once.and_return(true)
-      Product.stub(:find).with('1').once.and_return(product)
+      allow(product).to receive(:destroy).and_return(true)
+      allow(Product).to receive(:find).with("1").and_return(product)
 
       delete :destroy, id: '1'
 
@@ -64,8 +62,8 @@ describe ProductsController do
 
     it 'sets the notice flash' do
       product = double(:product)
-      product.stub(:destroy).with(no_args).once.and_return(true)
-      Product.stub(:find).with('1').once.and_return(product)
+      allow(product).to receive(:destroy).with(no_args).once.and_return(true)
+      allow(Product).to receive(:find).with("1").and_return(product)
 
       delete :destroy, id: '1'
 
@@ -74,10 +72,7 @@ describe ProductsController do
 
     context 'when the product can\'t be found' do
       it 'redirects to the products index' do
-        Product.stub(:find).
-          with('1').
-          once.
-          and_raise(ActiveRecord::RecordNotFound)
+        allow(Product).to receive(:find).with("1").and_raise(ActiveRecord::RecordNotFound)
 
         delete :destroy, id: '1'
 
@@ -85,10 +80,7 @@ describe ProductsController do
       end
 
       it 'sets the alert flash' do
-        Product.stub(:find).
-          with('1').
-          once.
-          and_raise(ActiveRecord::RecordNotFound)
+        allow(Product).to receive(:find).with("1").and_raise(ActiveRecord::RecordNotFound)
 
         delete :destroy, id: '1'
 
@@ -98,9 +90,8 @@ describe ProductsController do
 
     context 'when the product can\'t be destroyed' do
       it 'renders the delete view' do
-        product = double(:product)
-        product.stub(:destroy).with(no_args).once.and_return(false)
-        Product.stub(:find).with('1').once.and_return(product)
+        product = double(:product, destroy: false)
+        allow(Product).to receive(:find).with("1").and_return(product)
 
         delete :destroy, id: '1'
 
@@ -110,18 +101,19 @@ describe ProductsController do
   end
 
   describe 'GET "edit"' do
+    let(:found_product) { double(:found_product) }
     let(:id) { 'foo' }
+    let(:invalid_id) { "2" }
     let(:params) { {id: id} }
     let(:product) { double(:product) }
 
     before do
       stub_const('Product', product)
-      product.stub(:find).with(id) { found_product }
+      allow(product).to receive(:find).with(id).and_return(found_product)
+      allow(product).to receive(:find).with(invalid_id).and_raise(ActiveRecord::RecordNotFound)
     end
 
     context 'when a product is found' do
-      let(:found_product) { double(:found_product) }
-
       it 'stores the found product' do
         get :edit, params
         expect(assigns(:product)).to eql(found_product)
@@ -129,11 +121,11 @@ describe ProductsController do
     end
 
     context 'when no product is found' do
-      let(:found_product) { raise ActiveRecord::RecordNotFound }
+      let(:id) { invalid_id }
 
       it 'redirects to the product index page' do
         get :edit, params
-        response.should redirect_to(products_path)
+        expect(response).to redirect_to(products_path)
       end
 
       it 'sets the alert flash' do
@@ -161,22 +153,25 @@ describe ProductsController do
     let(:product) { double }
 
     before do
-      Product.stub(new: product)
+      allow(Product).to receive(:new).and_return(product)
       get :new
     end
 
     it 'creates a new Product instance' do
-      assigns(:product).should == product
+      expect(assigns(:product)).to be(product)
     end
   end
 
   describe 'GET "show"' do
+    let(:exception) { ActiveRecord::RecordNotFound }
     let(:id) { 'foo' }
+    let(:invalid_id) { "2" }
     let(:found_product) { double(:found_product) }
     let(:product) { double(:product) }
 
     before do
-      product.stub(:find).with(id) { found_product }
+      allow(product).to receive(:find).with(id).and_return(found_product)
+      allow(product).to receive(:find).with(invalid_id).and_raise(exception)
       stub_const('Product', product)
     end
 
@@ -186,11 +181,11 @@ describe ProductsController do
     end
 
     context 'when no product is found' do
-      let(:found_product) { raise ActiveRecord::RecordNotFound }
+      let(:id) { invalid_id }
 
       it 'redirects to the product index page' do
         get :show, id: id
-        response.should redirect_to(products_path)
+        expect(response).to redirect_to(products_path)
       end
 
       it 'sets the alert flash' do
@@ -203,9 +198,10 @@ describe ProductsController do
   describe "POST 'create'" do
     it "finds the product" do
       product = Product.new
-      product.stub(save!: true, url_for: "")
-      controller.stub(:authenticate)
-      Product.stub(new: product)
+      allow(product).to receive(:save!).and_return(true)
+      allow(product).to receive(:url_for).and_return("")
+      allow(controller).to receive(:authenticate)
+      allow(Product).to receive(:new).and_return(product)
 
       post :create, product: product_params
 
@@ -214,9 +210,10 @@ describe ProductsController do
 
     it "sets the notice flash" do
       product = Product.new
-      product.stub(save!: true, url_for: "")
-      controller.stub(:authenticate)
-      Product.stub(new: product)
+      allow(product).to receive(:save!).and_return(true)
+      allow(product).to receive(:url_for).and_return("")
+      allow(controller).to receive(:authenticate)
+      allow(Product).to receive(:new).and_return(product)
 
       post :create, product: product_params
 
@@ -225,9 +222,10 @@ describe ProductsController do
 
     it "redirects to the product's page" do
       product = Product.new
-      product.stub(save!: true, url_for: "")
-      controller.stub(:authenticate)
-      Product.stub(new: product)
+      allow(product).to receive(:save!).and_return(true)
+      allow(product).to receive(:url_for).and_return("")
+      allow(controller).to receive(:authenticate)
+      allow(Product).to receive(:new).and_return(product)
 
       post :create, product: product_params
 
@@ -238,9 +236,9 @@ describe ProductsController do
       it "renders the new product page" do
         product = Product.new
         exception = ActiveRecord::RecordInvalid.new(product)
-        product.stub(:save!).and_raise(exception)
-        controller.stub(:authenticate)
-        Product.stub(new: product)
+        allow(product).to receive(:save!).and_raise(exception)
+        allow(controller).to receive(:authenticate)
+        allow(Product).to receive(:new).and_return(product)
 
         post :create, product: product_params
 
@@ -257,12 +255,11 @@ describe ProductsController do
     let(:update_attributes) { true }
 
     before do
-      found_product.stub(:update_attributes).with(product_params) do
-        update_attributes
-      end
+      allow(found_product).to receive(:update_attributes).with(product_params).
+        and_return(update_attributes)
 
-      found_product.stub(title: title)
-      product.stub(:find).with(id) { found_product }
+      allow(found_product).to receive(:title).and_return(title)
+      allow(product).to receive(:find).with(id).and_return(found_product)
       stub_const('Product', product)
     end
 
@@ -278,7 +275,7 @@ describe ProductsController do
 
     it 'redirects to the show product page' do
       put :update, id: id, product: product_params
-      response.should redirect_to(product_path(found_product))
+      expect(response).to redirect_to(product_path(found_product))
     end
 
     context 'when the product is not valid' do
@@ -286,7 +283,7 @@ describe ProductsController do
 
       it 'renders the edit product page' do
         put :update, id: id, product: product_params
-        response.should render_template('edit')
+        expect(response).to render_template("edit")
       end
     end
   end

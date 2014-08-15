@@ -34,7 +34,7 @@ describe ApplicationHelper do
     let(:price) { Money.new(1095) }
 
     before do
-      helper.stub(:humanized_money_with_symbol).
+      allow(helper).to receive(:humanized_money_with_symbol).
         with(price, no_cents_if_whole: false).and_return(formatted_price)
     end
 
@@ -45,7 +45,7 @@ describe ApplicationHelper do
 
   describe "#title" do
     it "returns the content for the title" do
-      helper.stub(content_for: "Foo")
+      allow(helper).to receive(:content_for).and_return("Foo")
 
       title = helper.title
 
@@ -65,7 +65,7 @@ describe ApplicationHelper do
 
   describe "#navbar" do
     it "renders the navbar partial" do
-      helper.stub(signed_in?: true)
+      allow(helper).to receive(:signed_in?).and_return(true)
 
       expect(helper).to receive :render
 
@@ -74,7 +74,7 @@ describe ApplicationHelper do
 
     context "when the user is not signed in" do
       it "returns nil" do
-        helper.stub(signed_in?: false)
+        allow(helper).to receive(:signed_in?).and_return(false)
 
         navbar = helper.navbar
 
@@ -85,7 +85,7 @@ describe ApplicationHelper do
 
   describe "#nav_class" do
     it "returns 'active'" do
-      controller.stub(controller_name: "foo")
+      allow(controller).to receive(:controller_name).and_return("foo")
 
       nav_class = helper.nav_class("foo")
 
@@ -94,7 +94,7 @@ describe ApplicationHelper do
 
     context "when the name doesn't match the current controller" do
       it "returns nil" do
-        controller.stub(controller_name: "foo")
+        allow(controller).to receive(:controller_name).and_return("foo")
 
         nav_class = helper.nav_class("bar")
 

@@ -27,12 +27,12 @@ describe Event do
 
   it 'should require a name' do
     no_name_event = Event.create( @attr.merge( :name => '' ) )
-    no_name_event.should_not be_valid
+    expect(no_name_event).to_not be_valid
   end
 
   it 'should require a date' do
     no_date_event = Event.create( @attr.merge( :takes_place_on => '' ) )
-    no_date_event.should_not be_valid
+    expect(no_date_event).to_not be_valid
   end
 
   it 'should accept valid dates' do
@@ -40,7 +40,7 @@ describe Event do
 
     dates.each do |date|
       valid_date_event = Event.create( @attr.merge( :takes_place_on => date ) )
-      valid_date_event.should be_valid
+      expect(valid_date_event).to be_valid
     end
   end
 
@@ -49,12 +49,12 @@ describe Event do
 
     dates.each do |date|
       invalid_date_event = Event.create( @attr.merge( :takes_place_on => date ) )
-      invalid_date_event.should_not be_valid
+      expect(invalid_date_event).to_not be_valid
     end
   end
 
   it 'should require a location' do
     no_location_event = Event.create( @attr.merge( :location => '' ) )
-    no_location_event.should_not be_valid
+    expect(no_location_event).to_not be_valid
   end
 end

@@ -6,7 +6,7 @@ Given(/^I am on the "Shop" page$/) do
 end
 
 Given(/^I don't have a basket$/) do
-  expect(Basket.all).to have(0).baskets
+  expect(Basket.all.count).to be_zero
 end
 
 ### WHEN
