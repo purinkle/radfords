@@ -229,7 +229,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    vcr (2.9.1)
+    vcr (2.9.2)
     webmock (1.18.0)
       addressable (>= 2.3.6)
       crack (>= 0.3.2)
