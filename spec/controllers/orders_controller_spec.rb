@@ -71,17 +71,21 @@ describe OrdersController do
       ].join("\n")
     end
 
+    let(:order_params) do
+      {
+        address_line_1: address_line_1,
+        address_line_2: address_line_2,
+        address_city: address_city,
+        address_post_code: address_post_code,
+        address_county: address_county,
+        email: email,
+        name: name
+      }
+    end
+
     let(:params) do
       {
-        order: {
-          address_line_1: address_line_1,
-          address_line_2: address_line_2,
-          address_city: address_city,
-          address_post_code: address_post_code,
-          address_county: address_county,
-          email: email,
-          name: name
-        },
+        order: order_params,
         stripe_token: stripe_token
       }
     end
@@ -99,7 +103,6 @@ describe OrdersController do
     let(:mailer) { double(Mail::Message, deliver: nil) }
     let(:name) { 'Alphonso Quigley' }
     let(:order) { double(Order, id: id, save: save, total_price: total_price) }
-    let(:order_params) { { address: address, email: email, name: name } }
     let(:save) { true }
     let(:stripe_token) { 'tok_103lhG2vVN1WVbyyA7ZfQcLz' }
     let(:total_price) { Money.new(cents) }

@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(address: address, email: email, name: name)
+    @order = Order.new(order_params)
     @order.add_line_items_from_basket(current_basket)
 
     if @order.save
@@ -42,36 +42,6 @@ class OrdersController < ApplicationController
 
   private
 
-  def address
-    [
-      address_line_1,
-      address_line_2,
-      address_city,
-      address_post_code,
-      address_county
-    ].compact.join("\n")
-  end
-
-  def address_line_1
-    order_params.fetch(:address_line_1)
-  end
-
-  def address_line_2
-    order_params.fetch(:address_line_2)
-  end
-
-  def address_city
-    order_params.fetch(:address_city)
-  end
-
-  def address_post_code
-    order_params.fetch(:address_post_code)
-  end
-
-  def address_county
-    order_params.fetch(:address_county)
-  end
-
   def email
     order_params.fetch(:email)
   end
@@ -86,10 +56,6 @@ class OrdersController < ApplicationController
       :email,
       :name
     )
-  end
-
-  def name
-    order_params.fetch(:name)
   end
 
   def stripe_token
