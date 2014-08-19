@@ -2,33 +2,16 @@ class OrdersController < ApplicationController
   skip_before_filter :authenticate, only: [:new, :create]
 
   def new
-    if current_basket.line_items.empty?
-      redirect_to(shop_url, notice: t('orders.new.notice'))
-      return
-    end
-
-    @order = Order.new(order_params)
+    @order = Order.new
+    render_new
   end
 
   def create
-    @order = Order.new(order_params)
-    @order.add_line_items_from_basket(current_basket)
-
-    if @order.save
-      ChargesCustomers.charge(
-        email,
-        stripe_token,
-        @order.total_price.cents,
-        @order.id
-      )
-      Basket.destroy(session[:basket_id])
-      session[:basket_id] = nil
-      session[:order_id] = @order.id
-      Mailer.order_received(@order).deliver
-      redirect_to root_url, flash: { partial: 'thank_you' }
-    else
-      render action: "new"
-    end
+    @order = Order.new(order_options)
+    build_order
+    redirect_to root_url, flash: { partial: "thank_you" }
+  rescue ActiveRecord::RecordInvalid
+    render_new
   end
 
   def show
@@ -42,8 +25,23 @@ class OrdersController < ApplicationController
 
   private
 
-  def email
-    order_params.fetch(:email)
+  def build_order
+    order.save!
+    OrderBuilder.build(order, stripe_token)
+    clear_session
+  end
+
+  def clear_session
+    session[:basket_id] = nil
+    session[:order_id] = order.id
+  end
+
+  def order
+    @order
+  end
+
+  def order_options
+    order_params.merge(basket: current_basket)
   end
 
   def order_params
@@ -56,8 +54,15 @@ class OrdersController < ApplicationController
       :email,
       :name
     )
-  rescue ActionController::ParameterMissing
-    {}
+  end
+
+  def render_new
+    if current_basket.line_items.empty?
+      redirect_to(shop_url, notice: t("orders.new.notice"))
+      return
+    end
+
+    render action: :new
   end
 
   def stripe_token

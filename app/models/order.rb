@@ -1,5 +1,5 @@
 class Order < ActiveRecord::Base
-  has_many :line_items, dependent: :destroy
+  has_one :basket, dependent: :destroy
 
   validates(
     :address_city,
@@ -23,13 +23,6 @@ class Order < ActiveRecord::Base
 
   scope :by_created_at, -> { order('created_at desc') }
 
-  def add_line_items_from_basket(basket)
-    basket.line_items.each do |item|
-      item.basket_id = nil
-      line_items << item
-    end
-  end
-
   def address_line_1
     split_address.fetch(0, @address_line_1)
   end
@@ -48,6 +41,10 @@ class Order < ActiveRecord::Base
 
   def address_county
     split_address.fetch(4, @address_county)
+  end
+
+  def line_items
+    basket.line_items
   end
 
   def make_address

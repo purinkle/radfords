@@ -4,6 +4,7 @@ FactoryGirl.define do
     address_city 'Testerton'
     address_county 'Testshire'
     address_post_code 'TE5 7TE'
+    basket
     email 'alphonso.quigley@example.com'
     name 'Alphonso Quigley'
   end

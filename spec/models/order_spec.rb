@@ -33,20 +33,6 @@ describe Order do
   let(:email) { "alphonso.quiqley@example.com" }
   let(:name) { "Alphonso Quigley" }
 
-  describe '#add_line_items_from_basket' do
-    let(:basket) { double("Basket", line_items: [item]) }
-    let(:item) { double("LineItem") }
-
-    before do
-      allow(order).to receive(:line_items).and_return([])
-    end
-
-    it "clears the item's basket ID" do
-      expect(item).to receive(:basket_id=).with(nil)
-      order.add_line_items_from_basket(basket)
-    end
-  end
-
   describe "#address_line_1" do
     subject { order.address_line_1 }
 

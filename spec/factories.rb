@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :basket do
+  end
+
   factory :user do
     name 'Robert Whittaker'
     email 'purinkle@example.com'
