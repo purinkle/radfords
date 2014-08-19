@@ -2,20 +2,24 @@ require 'spec_helper'
 
 describe OrdersController do
   describe 'GET "new"' do
-    it 'creates a new order' do
-      basket = double
-      order = double
-      session[:basket_id] = 1
-      allow(basket).to receive(:line_items) { [double] }
-      allow(Basket).to receive(:find).with(1) { basket }
-      allow(Order).to receive(:new) { order }
+    let(:basket) { double("Basket", line_items: [double("LineItem")]) }
+    let(:basket_id) { 1 }
+    let(:order) { double "Order" }
 
+    before do
+      allow(Basket).to receive(:find).with(basket_id).and_return basket
+      allow(Order).to receive(:new).with({}).and_return order
+      session[:basket_id] = basket_id
+    end
+
+    it "creates a new order" do
       get :new
-
-      expect(assigns(:order)).to be order
+      expect(assigns :order).to be order
     end
 
     context 'when there\'s no current basket' do
+      let(:basket_id) { nil }
+
       it 'redirects to the shop' do
         basket = double("Basket", id: 1, line_items: [])
         allow(Basket).to receive(:create) { basket }

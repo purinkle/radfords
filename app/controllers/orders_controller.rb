@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
       return
     end
 
-    @order = Order.new
+    @order = Order.new(order_params)
   end
 
   def create
@@ -56,6 +56,8 @@ class OrdersController < ApplicationController
       :email,
       :name
     )
+  rescue ActionController::ParameterMissing
+    {}
   end
 
   def stripe_token
