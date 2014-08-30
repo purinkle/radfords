@@ -1,3 +1,4 @@
+require_relative "production"
 require Rails.root.join('config/smtp')
 Radfords::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
