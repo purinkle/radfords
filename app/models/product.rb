@@ -12,6 +12,7 @@ class Product < ActiveRecord::Base
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
     s3_host_name: ENV['S3_HOST_NAME'],
+    s3_protocol: "",
     styles: {preview: '50x50#', thumbnail: '215x133#'}
 
   validates_attachment_content_type :photo, content_type: /\Aimage/
