@@ -10,6 +10,8 @@ Radfords::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.static_cache_control = "public, max-age=#{1.year.to_i}"
+
   # Compress JavaScripts and CSS
   config.assets.compress = true
 
@@ -28,6 +30,8 @@ Radfords::Application.configure do
   # If you have no front-end server that supports something like X-Sendfile,
   # just comment this out and Rails will serve the files
 
+  config.assets.version = ENV.fetch("ASSETS_VERSION")
+
   config.force_ssl = true
 
   # See everything in the log (default is :info)
@@ -41,10 +45,9 @@ Radfords::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
-  # config.action_controller.asset_host = "http://assets.example.com"
+  config.action_controller.asset_host = ENV.fetch("ASSET_HOST")
 
   # Disable delivery errors, bad email addresses will be ignored
   # config.action_mailer.raise_delivery_errors = false
