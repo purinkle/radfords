@@ -7,7 +7,20 @@ class LineItemsController < ApplicationController
     redirect_to root_url
   end
 
+  def destroy
+    item.destroy
+    redirect_to root_url
+  end
+
   private
+
+  def id
+    params.fetch :id
+  end
+
+  def item
+    LineItem.find id
+  end
 
   def product
     Product.find(product_id)

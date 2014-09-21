@@ -19,4 +19,22 @@ describe LineItemsController do
       expect(response).to redirect_to(root_url)
     end
   end
+
+  describe "DELETE 'destroy'" do
+    let(:id) { "1" }
+    let(:item) { double("LineItem", destroy: nil) }
+    let(:params) { { id: id } }
+
+    before { allow(LineItem).to receive(:find).with(id).and_return item }
+
+    it "destroys the line item" do
+      delete :destroy, params
+      expect(item).to have_received :destroy
+    end
+
+    it "redirects to the home page" do
+      delete :destroy, params
+      expect(response).to redirect_to root_url
+    end
+  end
 end
