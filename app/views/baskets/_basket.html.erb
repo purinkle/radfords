@@ -1,9 +1,27 @@
 <table class="table table-striped">
   <% @basket.line_items.each do |item| %>
     <tr>
-      <td><%= button_to("+", line_item_path(item, params: { line_item: { quantity: item.quantity + 1 } }), class: "btn btn-mini", method: :patch) %></td>
+      <td><%= button_to(
+        "-",
+        line_item_path(
+          item,
+          params: { line_item: { quantity: item.quantity - 1 } }
+        ),
+        class: "btn btn-mini",
+        method: :patch
+      ) %></td>
 
       <td><%= item.quantity %> &times;</td>
+
+      <td><%= button_to(
+        "+",
+        line_item_path(
+          item,
+          params: { line_item: { quantity: item.quantity + 1 } }
+        ),
+        class: "btn btn-mini",
+        method: :patch
+      ) %></td>
 
       <td><%= item.product.title %></td>
 
