@@ -37,4 +37,26 @@ describe LineItemsController do
       expect(response).to redirect_to root_url
     end
   end
+
+  describe "PUT 'update'" do
+    let(:id) { "1" }
+    let(:item) { double "LineItem" }
+    let(:item_params) { { quantity: "2" } }
+    let(:params) { { id: id, line_item: item_params } }
+
+    before do
+      allow(item).to receive(:update_attributes).with item_params
+      allow(LineItem).to receive(:find).with(id).and_return item
+    end
+
+    it "updates the line item" do
+      put :update, params
+      expect(item).to have_received(:update_attributes).with item_params
+    end
+
+    it "redirects to the home page" do
+      put :update, params
+      expect(response).to redirect_to root_url
+    end
+  end
 end

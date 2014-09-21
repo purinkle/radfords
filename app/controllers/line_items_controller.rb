@@ -12,6 +12,11 @@ class LineItemsController < ApplicationController
     redirect_to root_url
   end
 
+  def update
+    item.update_attributes item_params
+    redirect_to root_url
+  end
+
   private
 
   def id
@@ -20,6 +25,10 @@ class LineItemsController < ApplicationController
 
   def item
     LineItem.find id
+  end
+
+  def item_params
+    params.require(:line_item).permit :quantity
   end
 
   def product

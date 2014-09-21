@@ -1,6 +1,8 @@
 <table class="table table-striped">
   <% @basket.line_items.each do |item| %>
     <tr>
+      <td><%= button_to("+", line_item_path(item, params: { line_item: { quantity: item.quantity + 1 } }), class: "btn btn-mini", method: :patch) %></td>
+
       <td><%= item.quantity %> &times;</td>
 
       <td><%= item.product.title %></td>
@@ -17,9 +19,13 @@
 <% end %>
 
   <tr class="total-line">
+    <td></td>
+
     <td colspan="2">Total</td>
 
     <td class="total-cell"><%= humanize_price(@basket.total_price) %></td>
+
+    <td></td>
   </tr>
 </table>
 
