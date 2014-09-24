@@ -19,9 +19,9 @@ en:
   info_text: 'Heads up'
   mailer:
     order_received:
-      subject: Order confirmation for your order
+      subject: Order confirmation for order %{id}
     order_shipped:
-      subject: Shipping confirmation for your order
+      subject: Shipping confirmation for order %{id}
   orders:
     form:
       card_number: Card number

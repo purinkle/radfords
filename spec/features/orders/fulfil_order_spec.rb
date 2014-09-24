@@ -19,7 +19,7 @@ module Features
 
       expect(mail.to).to eql([order.email])
       expect(mail.from).to eql(['denise@radfordsofsomerford.co.uk'])
-      expect(mail.subject).to eql('Shipping confirmation for your order')
+      expect(mail.subject).to eql("Shipping confirmation for order #{order.id}")
       expect(page).to have_content('email sent')
     end
   end

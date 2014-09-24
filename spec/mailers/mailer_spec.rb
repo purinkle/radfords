@@ -10,6 +10,7 @@ describe Mailer do
         address: '',
         created_at: Time.now,
         email: email,
+        id: id,
         line_items: [],
         name: '',
         total_price: Money.new(0)
@@ -17,7 +18,8 @@ describe Mailer do
     end
 
     let(:email) { 'alphonso.quigley@example.com' }
-    let(:title) { 'Order confirmation for your order' }
+    let(:id) { 5 }
+    let(:title) { "Order confirmation for order #{id}" }
 
     it 'sends a mail from Denise' do
       expect(subject.from).to eql(['denise@radfordsofsomerford.co.uk'])
@@ -36,11 +38,19 @@ describe Mailer do
     subject { Mailer.order_shipped(order) }
 
     let(:order) do
-      double(Order, address: nil, email: email, line_items: [], name: nil)
+      double(
+        Order,
+        address: nil,
+        email: email,
+        id: id,
+        line_items: [],
+        name: nil
+      )
     end
 
     let(:email) { 'alphonso.quigley@example.com' }
-    let(:title) { 'Shipping confirmation for your order' }
+    let(:id) { 5 }
+    let(:title) { "Shipping confirmation for order #{id}" }
 
     it 'sends a mail from "noreply@example.com"' do
       expect(subject.from).to eql(['denise@radfordsofsomerford.co.uk'])

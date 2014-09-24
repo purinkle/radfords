@@ -102,7 +102,8 @@ end
 
 Then(/^the email is a shipping confirmation$/) do
   mail = ActionMailer::Base.deliveries.last
-  expect(mail.subject).to eql('Shipping confirmation for your order')
+  order = Order.last
+  expect(mail.subject).to eql("Shipping confirmation for order #{order.id}")
 end
 
 Then(/^the email is from Denise$/) do
