@@ -7,7 +7,7 @@
     <%= f.label(:name, class: 'control-label') %>
 
     <div class="controls">
-      <%= f.text_field(:name, class: 'text-field', data: { stripe: 'name' }) %>
+      <%= f.text_field(:name, class: 'text-field', data: { required: true, stripe: 'name' }) %>
     </div>
   </div>
 
@@ -15,7 +15,7 @@
     <%= f.label(:address_line_1, class: 'control-label') %>
 
     <div class="controls">
-      <%= f.text_field(:address_line_1, class: 'text-field', data: { stripe: 'address-line1' }) %>
+      <%= f.text_field(:address_line_1, class: 'text-field', data: { required: true, stripe: 'address-line1' }) %>
     </div>
   </div>
 
@@ -31,7 +31,7 @@
     <%= f.label(:address_city, class: 'control-label') %>
 
     <div class="controls">
-      <%= f.text_field(:address_city, class: 'text-field', data: { stripe: 'address-city' }) %>
+      <%= f.text_field(:address_city, class: 'text-field', data: { required: true, stripe: 'address-city' }) %>
     </div>
   </div>
 
@@ -39,7 +39,7 @@
     <%= f.label(:address_post_code, class: 'control-label') %>
 
     <div class="controls">
-      <%= f.text_field(:address_post_code, class: 'text-field', data: { stripe: 'address-zip' }) %>
+      <%= f.text_field(:address_post_code, class: 'text-field', data: { required: true, stripe: 'address-zip' }) %>
     </div>
   </div>
 
@@ -55,7 +55,7 @@
     <%= f.label(:email, class: 'control-label') %>
 
     <div class="controls">
-      <%= f.email_field(:email, class: 'email-field') %>
+      <%= f.email_field(:email, class: 'email-field', data: { required: true }) %>
     </div>
   </div>
 
