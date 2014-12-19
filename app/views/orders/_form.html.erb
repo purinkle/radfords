@@ -63,7 +63,13 @@
     <%= label_tag(nil, t('.card_number'), class: 'control-label') %>
 
     <div class="controls">
-      <%= text_field_tag(nil, nil, class: 'text-field', data: { stripe: 'number' }, size: 20) %>
+      <%= text_field_tag(
+        nil,
+        nil,
+        class: 'card-number text-field',
+        data: { stripe: 'number' },
+        size: 20
+      ) %>
     </div>
   </div>
 
@@ -71,7 +77,13 @@
     <%= label_tag(nil, t('.cvc'), class: 'control-label') %>
 
     <div class="controls">
-      <%= text_field_tag(nil, nil, class: 'span1 text-field', data: { stripe: 'cvc' }, size: 4) %>
+      <%= text_field_tag(
+        nil,
+        nil,
+        class: 'card-cvc span1 text-field',
+        data: { stripe: 'cvc' },
+        size: 4
+      ) %>
     </div>
   </div>
 
@@ -79,9 +91,21 @@
     <%= label_tag(nil, t('.expiration'), class: 'control-label') %>
 
     <div class="controls">
-      <%= text_field_tag(nil, nil, class: 'span1 text-field', data: { stripe: 'exp-month' }, size: 2) %>
+      <%= text_field_tag(
+        nil,
+        nil,
+        class: 'card-expiry-month span1 text-field',
+        data: { stripe: 'exp-month' },
+        size: 2
+      ) %>
       /
-      <%= text_field_tag(nil, nil, class: 'span1 text-field', data: { stripe: 'exp-year' }, size: 4) %>
+      <%= text_field_tag(
+        nil,
+        nil,
+        class: 'card-expiry-year span1 text-field',
+        data: { stripe: 'exp-year' },
+        size: 4
+      ) %>
     </div>
   </div>
 

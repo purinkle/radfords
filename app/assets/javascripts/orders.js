@@ -27,7 +27,19 @@ jQuery(function ($) {
         }
       });
 
-      if (response.error) {
+      if (!Stripe.validateCardNumber($(".card-number").val())) {
+        errors.push("This card number looks invalid");
+      }
+
+      if (!Stripe.validateExpiry($(".card-expiry-month").val(), $(".card-expiry-year").val())) {
+        errors.push("Your card's expiration date is invalid");
+      }
+
+      if (!Stripe.validateCVC($(".card-cvc").val())) {
+        errors.push("Your card's security code is invalid");
+      }
+
+      if (errors.length < 1 && response.error) {
         errors.push(response.error.message);
       }
 
