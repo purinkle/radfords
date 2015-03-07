@@ -5,7 +5,7 @@
     <h1 class="product-title"><%= @product.title %></h1>
   </header>
 
-  <%= image_tag(@product.photo.url, class: 'product-photo') %>
+  <%= image_tag(@product.photo.url(:show), class: 'product-photo') %>
 
   <p class="product-description"><%= @product.description %></p>
 

@@ -227,7 +227,8 @@ Then /^I see the product's description$/ do
 end
 
 Then /^I see the product's photo$/ do
-  expect(page).to have_xpath("//img[contains(@src, \"#{@product.photo.url}\")]")
+  product_page = ProductPage.new
+  expect(product_page).to have_image
 end
 
 Then /^I see the product's title$/ do
