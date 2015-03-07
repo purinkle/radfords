@@ -1,7 +1,3 @@
-require 'simplecov'
-SimpleCov.start 'rails'
-SimpleCov.coverage_dir 'coverage/rspec'
-
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
