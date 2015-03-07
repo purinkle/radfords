@@ -43,13 +43,13 @@ describe OrdersController do
     let(:basket) { double("Basket", line_items: [double("LineItem")]) }
     let(:exception) { ActiveRecord::RecordInvalid.new(invalid_order) }
     let(:id) { 1 }
-    let(:invalid_options) { invalid_params.merge(basket: basket) }
+    let(:invalid_options) { invalid_params.merge("basket" => basket) }
     let(:invalid_order) { Order.new }
-    let(:invalid_params) { { name: "" } }
+    let(:invalid_params) { { "name" => "" } }
     let(:order) { double("Order", id: id, save!: nil) }
-    let(:order_options) { order_params.merge(basket: basket) }
-    let(:order_params) { { name: "Alphonso Quigley" } }
-    let(:params) { { order: order_params, stripe_token: stripe_token } }
+    let(:order_options) { order_params.merge("basket" => basket) }
+    let(:order_params) { { "name" => "Alphonso Quigley" } }
+    let(:params) { { "order" => order_params, "stripe_token" => stripe_token } }
     let(:stripe_token) { "test_stripe_token" }
 
     before do
