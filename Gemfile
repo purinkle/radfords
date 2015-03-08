@@ -4,6 +4,7 @@ ruby '2.1.5'
 
 gem 'airbrake'
 gem 'aws-sdk'
+gem 'bourbon', '~> 3.2.1'
 gem 'coffee-rails'
 gem 'geocoder'
 gem 'draper'
