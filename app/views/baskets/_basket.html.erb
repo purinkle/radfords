@@ -1,60 +1,60 @@
-<table class="table table-striped">
-  <% @basket.line_items.each do |item| %>
-    <tr>
-      <td><%= button_to(
-        "-",
-        line_item_path(
-          item,
-          params: { line_item: { quantity: item.quantity - 1 } }
-        ),
-        class: "btn btn-mini",
-        method: :patch
-      ) %></td>
+<div class="basket">
+  <table class="table table-striped">
+    <% @basket.line_items.each do |item| %>
+      <tr>
+        <td class="quantity"><%= button_to(
+          "-",
+          line_item_path(
+            item,
+            params: { line_item: { quantity: item.quantity - 1 } }
+          ),
+          class: "btn btn-mini",
+          method: :patch
+        ) %></td>
 
-      <td><%= item.quantity %> &times;</td>
+        <td class="quantity"><%= item.quantity %> &times;</td>
 
-      <td><%= button_to(
-        "+",
-        line_item_path(
-          item,
-          params: { line_item: { quantity: item.quantity + 1 } }
-        ),
-        class: "btn btn-mini",
-        method: :patch
-      ) %></td>
+        <td class="quantity"><%= button_to(
+          "+",
+          line_item_path(
+            item,
+            params: { line_item: { quantity: item.quantity + 1 } }
+          ),
+          class: "btn btn-mini",
+          method: :patch
+        ) %></td>
 
-      <td><%= item.product.title %></td>
+        <td class="description"><%= item.product.title %></td>
 
-      <td class="item-price"><%= humanize_price(item.total_price) %></td>
+        <td class="item-price"><%= humanize_price(item.total_price) %></td>
 
-      <td><%= link_to(
-        t('.destroy'),
-        line_item_path(item),
-        method: :delete,
-        class: 'btn btn-mini btn-danger'
-      ) %></td>
+        <td class="destroy"><%= link_to(
+          t('.destroy'),
+          line_item_path(item),
+          method: :delete,
+          class: 'btn btn-mini btn-danger'
+        ) %></td>
+      </tr>
+    <% end %>
+
+    <tr class="total-line">
+      <td class="total-cell" colspan="4">Total</td>
+
+      <td class="total-cell"><%= humanize_price(@basket.total_price) %></td>
+
+      <td></td>
     </tr>
-<% end %>
+  </table>
 
-  <tr class="total-line">
-    <td></td>
+  <div class="form-actions">
+    <%= button_to(t('.checkout'), new_order_path, class: 'btn', method: :get) %>
 
-    <td colspan="2">Total</td>
-
-    <td class="total-cell"><%= humanize_price(@basket.total_price) %></td>
-
-    <td></td>
-  </tr>
-</table>
-
-<div class="form-actions">
-  <%= button_to(t('.checkout'), new_order_path, class: 'btn', method: :get) %>
-
-  <%= button_to(
-    t('.empty_basket'),
-    @basket,
-    class: 'btn',
-    method: :delete,
-    data: { confirm: t('.confirm') }
-  ) %>
+    <%= button_to(
+      t('.empty_basket'),
+      @basket,
+      class: 'btn',
+      method: :delete,
+      data: { confirm: t('.confirm') }
+    ) %>
+  </div>
 </div>
