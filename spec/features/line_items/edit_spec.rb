@@ -40,5 +40,22 @@ module Features
 
       expect(page).to have_content("1 ×")
     end
+
+    it "only allows positive quantities" do
+      visit signin_path
+
+      fill_in("Email", with: user.email)
+      fill_in("Password", with: user.password)
+
+      click_button "Sign in"
+
+      visit root_path
+
+      find("input[type=submit]").click
+
+      click_button "-"
+
+      expect(page).to have_content("1 ×")
+    end
   end
 end
