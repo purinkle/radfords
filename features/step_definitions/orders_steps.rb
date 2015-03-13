@@ -30,7 +30,12 @@ end
 When(/^I create the order$/) do
   new_order_page = NewOrderPage.new
   new_order_page.create(
-    name: 'Alphonso Quigley',
+    name: "rf;kqbewrfkl;bejqrgfkljqberfgkljqebrglfkjqberglfkjqbergfkjbqerlgkfjnb
+    qelfkjnqelkrbfjnqlekrjbqlerk glqkejrfglqkejrfg;qkebjrgf;kqbejrg;kqbejrfg;kjq
+    brqlejwrbfkjwhdbfkjlahbdsfghobehovbqaerljbawhvqklejfbvqlejfvlqjehrfgljqhwebf
+    kljqehbfrljqkwbefljkqwhberjklqhbewrfjlhqebrgfjophbeqrgfkljqhebrgljkqhbewrgfj
+    kqhbewrlfgjkhbqe;fpkgjhbqelrkgbqlekfbnq,mwebdfn,qkbf lqkejhbrfl;kqebhjfr;kpq
+    bej",
     address: '1 Test Street, Testerton TE5 7TE',
     email: 'alphonso.quigley@example.com'
   )
