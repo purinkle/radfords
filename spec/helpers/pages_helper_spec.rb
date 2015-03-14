@@ -11,7 +11,7 @@ describe PagesHelper do
     before do
       allow(helper).to receive(:signed_in?).with(no_args).and_return(signed_in?)
       allow(helper).to receive(:render).with(
-        partial: 'product_button',
+        partial: "shared/product_button",
         locals: { product: product }
       ).once.and_return(partial)
     end

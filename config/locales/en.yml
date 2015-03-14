@@ -49,8 +49,6 @@ en:
   pages:
     home:
       title: Home
-    product_button:
-      add_to_basket: Add to Basket
   products:
     create: "You successfully created a product."
     destroy:
@@ -61,6 +59,8 @@ en:
   shared:
     navbar:
       orders: Orders
+    product_button:
+      add_to_basket: Add to Basket
   success_text: 'Well done'
   suppliers:
     update: "You successfully updated the supplier."

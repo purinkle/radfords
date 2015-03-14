@@ -9,6 +9,8 @@
 
   <p class="product-description"><%= @product.description %></p>
 
+  <%= product_button(@product) %>
+
   <% if signed_in? %>
     <div class="form-actions">
       <%= link_to('Back', products_path, class: 'btn') %>
