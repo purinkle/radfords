@@ -1,6 +1,7 @@
 Radfords::Application.routes.draw do
+  resource :basket
+
   resources :orders
-  resources :baskets
   resources :events do
     member do
       get :delete

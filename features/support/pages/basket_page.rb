@@ -14,6 +14,6 @@ class BasketPage
   end
 
   def visit_page
-    visit "/baskets/foo"
+    visit "/basket"
   end
 end

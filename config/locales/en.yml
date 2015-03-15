@@ -10,6 +10,8 @@ en:
       notice: Your basket is currently empty.
     show:
       alert: Invalid basket.
+      heading: "Your Basket"
+      title: "Your Basket"
   error_text: 'Oh snap'
   events:
     not_found: "We couldn't find the event you were looking for."
