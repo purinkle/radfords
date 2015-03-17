@@ -3,8 +3,8 @@ Feature: Baskets
   Scenario:
     Given I don't have a basket
     When I view the basket
-    Then I see the "Shop" page
-    And I see an "Invalid basket" alert
+    Then I see the "Your Basket" page
+    And I see a "Your basket is empty" message
 
   Scenario:
     Given I am signed in

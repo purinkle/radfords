@@ -8,6 +8,8 @@ en:
       title: Basket
     destroy:
       notice: Your basket is currently empty.
+    empty_basket:
+      empty: "Your basket is empty."
     show:
       alert: Invalid basket.
       heading: "Your Basket"

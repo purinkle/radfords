@@ -2,9 +2,7 @@ class BasketsController < ApplicationController
   skip_before_filter :authenticate
 
   def show
-    @basket = Basket.find(session["basket_id"])
-  rescue ActiveRecord::RecordNotFound
-    redirect_to shop_url, alert: t('baskets.show.alert')
+    @basket = FindBasket.call(id: session["basket_id"])
   end
 
   def destroy
