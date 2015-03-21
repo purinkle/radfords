@@ -9,7 +9,7 @@ class LineItemsController < ApplicationController
 
   def destroy
     item.destroy
-    redirect_to root_url
+    redirect_to basket_url
   end
 
   def update

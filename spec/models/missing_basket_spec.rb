@@ -1,9 +1,9 @@
 require "spec_helper"
 
 describe MissingBasket do
-  describe "#to_partial_path" do
-    it "returns 'empty_basket'" do
-      expect(subject.to_partial_path).to eql("empty_basket")
+  describe "#line_items" do
+    it "returns an empty array" do
+      expect(MissingBasket.new.line_items).to eql([])
     end
   end
 end

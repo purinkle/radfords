@@ -34,7 +34,7 @@ describe LineItemsController do
 
     it "redirects to the home page" do
       delete :destroy, params
-      expect(response).to redirect_to root_url
+      expect(response).to redirect_to basket_url
     end
   end
 

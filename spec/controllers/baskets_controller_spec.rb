@@ -4,15 +4,18 @@ describe BasketsController do
   describe 'GET "show"' do
     let(:basket) { double("Basket") }
     let(:basket_id) { "1" }
+    let(:decorator) { double("BasketDecorator") }
 
     before do
+      allow(BasketDecorator).to receive(:new).with(basket).
+        and_return(decorator)
       allow(FindBasket).to receive(:call).with(id: basket_id).
         and_return(basket)
     end
 
-    it 'finds the basket' do
+    it "is successful" do
       get :show, nil, basket_id: basket_id
-      expect(assigns(:basket)).to be(basket)
+      expect(response).to be_success
     end
   end
 

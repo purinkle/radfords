@@ -1,5 +1,5 @@
 class MissingBasket
-  def to_partial_path
-    "empty_basket"
+  def line_items
+    []
   end
 end

@@ -2,7 +2,7 @@ class BasketsController < ApplicationController
   skip_before_filter :authenticate
 
   def show
-    @basket = FindBasket.call(id: session["basket_id"])
+    @basket = BasketDecorator.new(FindBasket.call(id: session["basket_id"]))
   end
 
   def destroy
