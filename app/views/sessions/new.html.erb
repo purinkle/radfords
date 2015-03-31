@@ -5,7 +5,7 @@
 </div>
 
 
-<%= form_for :session, url: sessions_path do |f| %>
+<%= form_for :session, html: { id: "new_session" }, url: sessions_path do |f| %>
   <div class="control-group">
     <%= f.label :email, class: 'control-label' %>
 

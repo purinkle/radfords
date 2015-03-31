@@ -18,6 +18,10 @@
       <li>
         <%= link_to "Contact us", contact_path %>
       </li>
+
+      <% if signed_in? %>
+        <li><%= link_to(t(".basket"), basket_path) %></li>
+      <% end %>
     </ul>
   </div>
 </div>

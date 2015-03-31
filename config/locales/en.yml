@@ -21,6 +21,9 @@ en:
     create:
       notice: Shipment notification email sent
   info_text: 'Heads up'
+  layouts:
+    header:
+      basket: "Basket"
   mailer:
     order_received:
       subject: Order confirmation for order %{id}

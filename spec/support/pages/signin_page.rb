@@ -15,6 +15,10 @@ class SigninPage
     click_button 'Sign in'
   end
 
+  def visit
+    super("/signin")
+  end
+
   private
 
   attr_reader :email, :password
