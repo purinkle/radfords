@@ -13,6 +13,17 @@ describe BasketDecorator do
     end
   end
 
+  describe "#item_count" do
+    let(:basket) { double("Basket", line_items: line_items) }
+    let(:item_1) { double("LineItem", quantity: 2) }
+    let(:item_2) { double("LineItem", quantity: 1) }
+    let(:line_items) { [item_1, item_2] }
+
+    it "returns the total quantity of line items" do
+      expect(decorator.item_count).to eql 3
+    end
+  end
+
   describe "#line_items" do
     let(:basket) { double("Basket", line_items: line_items) }
     let(:line_items) { [] }

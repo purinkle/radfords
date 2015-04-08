@@ -20,7 +20,7 @@
       </li>
 
       <% if signed_in? %>
-        <li><%= link_to(t(".basket"), basket_path) %></li>
+        <li><%= link_to(t(".basket", item_count: @basket.item_count), basket_path) %></li>
       <% end %>
     </ul>
   </div>

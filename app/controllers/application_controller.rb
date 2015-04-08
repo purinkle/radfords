@@ -1,10 +1,14 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
   protect_from_forgery
-  before_filter :authenticate
+  before_filter :authenticate, :find_basket
 
   def authenticate
     deny_access unless signed_in?
+  end
+
+  def find_basket
+    @basket = BasketDecorator.new(FindBasket.call(id: session["basket_id"]))
   end
 
   private

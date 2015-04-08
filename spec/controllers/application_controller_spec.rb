@@ -14,4 +14,21 @@ describe ApplicationController do
       end
     end
   end
+
+  describe "#find_basket" do
+    let(:basket) { double("Basket") }
+    let(:decorated_basket) { double("BasketDecorator") }
+    let(:id) { "1" }
+
+    before do
+      session["basket_id"] = id
+      allow(BasketDecorator).to receive(:new).with(basket).
+        and_return(decorated_basket)
+      allow(FindBasket).to receive(:call).with(id: id).and_return(basket)
+    end
+
+    it "returns the current user's basket" do
+      expect(controller.find_basket).to be decorated_basket
+    end
+  end
 end

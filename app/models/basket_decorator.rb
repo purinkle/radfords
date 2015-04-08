@@ -7,6 +7,10 @@ class BasketDecorator
     Basket.model_name
   end
 
+  def item_count
+    item_quantities.inject(0) { |quantity, acc| acc + quantity }
+  end
+
   def line_items
     @basket.line_items
   end
@@ -31,6 +35,10 @@ class BasketDecorator
 
   def default_partial
     "empty_basket"
+  end
+
+  def item_quantities
+    line_items.map(&:quantity)
   end
 
   def partial_path
