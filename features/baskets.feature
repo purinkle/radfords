@@ -11,7 +11,7 @@ Feature: Baskets
     And a product exists
     And I have the product in my basket
     When I empty my basket
-    Then I see the "Shop" page
+    Then I see the "Your Basket" page
     And I see a "Your basket is currently empty" notice
 
   Scenario:

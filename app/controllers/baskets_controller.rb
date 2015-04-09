@@ -9,6 +9,6 @@ class BasketsController < ApplicationController
     @basket = current_basket
     @basket.destroy
     session[:basket_id] = nil
-    redirect_to shop_url, notice: t('baskets.destroy.notice')
+    redirect_to basket_url, notice: t("baskets.destroy.notice")
   end
 end
