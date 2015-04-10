@@ -31,3 +31,11 @@ Feature: Baskets
     When I remove the product from my basket
     Then I see the "Your Basket" page
     And I see a "Your basket is empty" message
+
+  Scenario: Link to product page
+    Given I am signed in
+    And a product exists
+    And I have the product in my basket
+    And I am viewing my basket
+    When I click on the product
+    Then I see the product's page

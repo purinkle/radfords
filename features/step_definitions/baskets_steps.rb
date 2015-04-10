@@ -21,6 +21,11 @@ When(/^I add the product to my basket$/) do
   shop_page.add_to_basket(product)
 end
 
+When(/^I click on the product$/) do
+  basket_page = BasketPage.new
+  basket_page.view_product
+end
+
 When(/^I empty my basket$/) do
   basket_page = BasketPage.new
   basket_page.empty
@@ -40,4 +45,9 @@ end
 Then(/^I see the product in my basket twice$/) do
   basket_page = BasketPage.new
   expect(basket_page).to have_product_twice
+end
+
+Then(/^I see the product's page$/) do
+  product = Product.last
+  expect(page).to have_title product.title
 end

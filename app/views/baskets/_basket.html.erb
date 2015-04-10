@@ -24,7 +24,7 @@
           method: :patch
         ) %></td>
 
-        <td class="description"><%= item.product.title %></td>
+        <td class="description"><%= link_to(item.product.title, product_path(item.product)) %></td>
 
         <td class="item-price"><%= humanize_price(item.total_price) %></td>
 

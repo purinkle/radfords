@@ -16,4 +16,14 @@ class BasketPage
   def visit_page
     visit "/basket"
   end
+
+  def view_product
+    click_link product.title
+  end
+
+  private
+
+  def product
+    Product.last
+  end
 end
