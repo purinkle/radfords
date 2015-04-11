@@ -3,113 +3,125 @@
 
   <%= render('shared/error_messages', object: f.object) %>
 
-  <div class="control-group">
-    <%= f.label(:name, class: 'control-label') %>
+  <div class="contact-information">
+    <h3><%= t(".customer_information") %></h3>
 
-    <div class="controls">
-      <%= f.text_field(:name, class: 'text-field', data: { required: true, stripe: 'name' }) %>
+    <div class="fieldset">
+      <div class="field">
+        <%= f.label(:email) %>
+        <%= f.email_field(
+          :email,
+          data: { required: true },
+          placeholder: t(".email")
+        ) %>
+      </div>
+    </div>
+
+    <h5><%= t(".delivery_address") %></h5>
+
+    <div class="fieldset">
+      <div class="field">
+        <%= f.label(:name) %>
+        <%= f.text_field(
+          :name,
+          data: { required: true, stripe: 'name' },
+          placeholder: t(".name")
+        ) %>
+      </div>
+
+      <div class="field">
+        <%= f.label(:address_line_1) %>
+        <%= f.text_field(
+          :address_line_1,
+          data: { required: true, stripe: 'address-line1' },
+          placeholder: t(".address_line_1")
+        ) %>
+      </div>
+
+      <div class="field">
+        <%= f.label(:address_line_2) %>
+        <%= f.text_field(
+          :address_line_2,
+          data: { stripe: 'address-line2' },
+          placeholder: t(".address_line_2")
+        ) %>
+      </div>
+
+      <div class="field">
+        <%= f.label(:address_city) %>
+        <%= f.text_field(
+          :address_city,
+          data: { required: true, stripe: 'address-city' },
+          placeholder: t(".address_city")
+        ) %>
+      </div>
+
+      <div class="field">
+        <%= f.label(:address_post_code) %>
+        <%= f.text_field(
+          :address_post_code,
+          data: { required: true, stripe: 'address-zip' },
+          placeholder: t(".address_post_code")
+        ) %>
+      </div>
+
+      <div class="field">
+        <%= f.label(:address_county) %>
+        <%= f.text_field(
+          :address_county,
+          data: { stripe: 'address-state' },
+          placeholder: t(".address_county")
+        ) %>
+      </div>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label(:address_line_1, class: 'control-label') %>
+  <h3><%= t(".payment") %></h3>
 
-    <div class="controls">
-      <%= f.text_field(:address_line_1, class: 'text-field', data: { required: true, stripe: 'address-line1' }) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label(:address_line_2, class: 'control-label') %>
-
-    <div class="controls">
-      <%= f.text_field(:address_line_2, class: 'text-field', data: { stripe: 'address-line2' }) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label(:address_city, class: 'control-label') %>
-
-    <div class="controls">
-      <%= f.text_field(:address_city, class: 'text-field', data: { required: true, stripe: 'address-city' }) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label(:address_post_code, class: 'control-label') %>
-
-    <div class="controls">
-      <%= f.text_field(:address_post_code, class: 'text-field', data: { required: true, stripe: 'address-zip' }) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label(:address_county, class: 'control-label') %>
-
-    <div class="controls">
-      <%= f.text_field(:address_county, class: 'text-field', data: { stripe: 'address-state' }) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label(:email, class: 'control-label') %>
-
-    <div class="controls">
-      <%= f.email_field(:email, class: 'email-field', data: { required: true }) %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= label_tag(nil, t('.card_number'), class: 'control-label') %>
-
-    <div class="controls">
+  <div class="fieldset">
+    <div class="field">
+      <%= label_tag(nil, t(".card_number")) %>
       <%= text_field_tag(
         nil,
         nil,
-        class: 'card-number text-field',
-        data: { stripe: 'number' },
-        size: 20
+        class: "card-number",
+        data: { stripe: "number" },
+        placeholder: t(".card_number")
       ) %>
     </div>
-  </div>
 
-  <div class="control-group">
-    <%= label_tag(nil, t('.cvc'), class: 'control-label') %>
-
-    <div class="controls">
+    <div class="field">
+      <%= label_tag(nil, t(".cvc")) %>
       <%= text_field_tag(
         nil,
         nil,
-        class: 'card-cvc span1 text-field',
-        data: { stripe: 'cvc' },
-        size: 4
+        class: "card-cvc",
+        data: { stripe: "cvc" },
+        placeholder: t(".cvc")
       ) %>
+    </div>
+
+    <div class="field">
+      <%= label_tag(nil, t(".expiration")) %>
+
+      <div class="select-group">
+        <%= text_field_tag(
+          nil,
+          nil,
+          class: "card-expiry-month",
+          data: { stripe: "exp-month" },
+          placeholder: t(".exp_month")
+        ) %>
+        <%= text_field_tag(
+          nil,
+          nil,
+          class: "card-expiry-year",
+          data: { stripe: "exp-year" },
+          placeholder: t(".exp_year")
+        ) %>
+      </div>
     </div>
   </div>
 
-  <div class="control-group">
-    <%= label_tag(nil, t('.expiration'), class: 'control-label') %>
-
-    <div class="controls">
-      <%= text_field_tag(
-        nil,
-        nil,
-        class: 'card-expiry-month span1 text-field',
-        data: { stripe: 'exp-month' },
-        size: 2
-      ) %>
-      /
-      <%= text_field_tag(
-        nil,
-        nil,
-        class: 'card-expiry-year span1 text-field',
-        data: { stripe: 'exp-year' },
-        size: 4
-      ) %>
-    </div>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button(nil, 'class' => 'btn btn-primary') %>
-  </div>
+  <%= f.button(t(".create")) %>
 <% end %>

@@ -22,14 +22,252 @@
   }
 }
 
-.payment-form {
-  width: 30%;
+.order-summary {
+  @include border-bottom-radius($base-border-radius);
+  @include border-top-radius($base-border-radius);
+  @include span-columns(6);
 
-  .alert {
-    width: 950px;
+  border: $base-border;
+
+  &:after,
+  &:before {
+    content: "";
+    display: table;
   }
 
-  fieldset {
-    background: none;
+  .section {
+    @include fill-parent;
+
+    border-top: $base-border;
+    margin-top: 0;
+    padding: 1.5em;
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  img {
+    border-radius: $base-border-radius;
+    float: left;
+    margin: 0 0 0 -6em;
+    width: 5em;
+  }
+
+  li {
+    border-top: $base-border;
+    padding: 1.5em 5.5em 1.5em 6em;
+
+    &:after {
+      clear: both;
+    }
+
+    &:after,
+    &:before {
+      content: "";
+      display: table;
+    }
+
+    &:first-child {
+      border-top: none;
+      margin-top: -1.5em;
+    }
+
+    &:last-child {
+      margin-bottom: -1.5em;
+    }
+  }
+
+  ul {
+    margin: 0;
+  }
+
+  .info {
+    float: left;
+    margin-top: 0.4em;
+  }
+
+  .description,
+  .name {
+    display: block;
+  }
+
+  .name {
+    margin-bottom: 0.4em;
+  }
+
+  .price {
+    float: right;
+    margin-right: -5.5em;
+    margin-top: 0.4em;
+  }
+
+  .total {
+    border-top: $base-border;
+    margin-top: 1em;
+    padding-top: 1em;
+  }
+}
+
+.overview-line {
+  margin-top: 1em;
+
+  &:after {
+    clear: both;
+  }
+
+  &:after,
+  &:before {
+    content: "";
+    display: table;
+  }
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  span {
+    float: left;
+  }
+
+  strong {
+    float: right;
+  }
+}
+
+.payment-due-container {
+  &:after {
+    clear: both;
+  }
+
+  &:after,
+  &:before {
+    content: "";
+    display: table;
+  }
+}
+
+.payment-due-label {
+  float: left;
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+.payment-due {
+  line-height: 1em;
+
+  &:after {
+    clear: both;
+  }
+
+  &:after,
+  &:before {
+    content: "";
+    display: table;
+  }
+}
+
+.payment-due-price {
+  color: $green;
+  float: right;
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: 1em;
+  margin-top: 0.125em;
+}
+
+.checkout {
+  @include span-columns(6);
+
+  #{$all-text-inputs} {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    height: auto;
+    line-height: $base-line-height;
+    margin: 0;
+    padding: 1.25em 0;
+    width: 65%;
+  }
+
+  button {
+    float: right;
+  }
+
+  h5 {
+    text-transform: uppercase;
+  }
+
+  label {
+    cursor: pointer;
+    float: left;
+    font-weight: 500;
+    line-height: $base-line-height;
+    margin-bottom: 0;
+    padding-bottom: 1.25em;
+    padding-top: 1.25em;
+    width: 35%;
+  }
+}
+
+.fieldset {
+  @include border-top-radius($base-border-radius);
+  @include border-bottom-radius($base-border-radius);
+
+  border: $base-border;
+  margin-bottom: 1.5em;
+}
+
+.field {
+  @include padding(null 1.25em null 1.25em);
+
+  border-top: $base-border;
+  display: block;
+  position: relative;
+
+  &:after {
+    clear: both;
+  }
+
+  &:after,
+  &:before {
+    content: "";
+    display: table;
+  }
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.select-group {
+  float: left;
+  position: relative;
+  width: 65%;
+
+  #{$all-text-inputs} {
+    float: right;
+    width: 44%;
+
+    &:first-child {
+      float: left;
+    }
+  }
+
+  &:after {
+    background: $base-border-color;
+    content: "";
+    display: block;
+    height: 24px;
+    left: 50%;
+    margin-left: -0.5px;
+    margin-top: -12px;
+    position: absolute;
+    top: 50%;
+    width: 1px;
   }
 }

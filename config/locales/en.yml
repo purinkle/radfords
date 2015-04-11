@@ -20,6 +20,15 @@ en:
   fulfilments:
     create:
       notice: Shipment notification email sent
+  helpers:
+    label:
+      order:
+        address_city: "City"
+        address_county: "County"
+        address_line_1: "Address"
+        address_line_2: "Apt, suite, etc."
+        address_post_code: "Postal code"
+        email: "Email"
   info_text: 'Heads up'
   layouts:
     header:
@@ -31,9 +40,22 @@ en:
       subject: Shipping confirmation for order %{id}
   orders:
     form:
+      address_city: "City"
+      address_county: "County"
+      address_line_1: "Address"
+      address_line_2: "Apt, suite, etc. (optional)"
+      address_post_code: "Postal code"
       card_number: Card number
-      cvc: CVC
-      expiration: Expiration (MM/YYYY)
+      create: "Place my order"
+      customer_information: "Customer Information"
+      cvc: "CVV"
+      delivery_address: "Delivery Address"
+      email: "Email"
+      exp_month: "MM"
+      exp_year: "YYYY"
+      expiration: "Expiry"
+      name: "Name"
+      payment: "Payment"
     index:
       customer: Customer
       items: Items
@@ -41,7 +63,12 @@ en:
       view: View
     new:
       notice: Your basket is empty.
+      order_summary: "Order Summary"
+      payment_due: "Payment Due"
+      shipping: "Shipping"
+      subtotal: "Subtotal"
       title: New order
+      total: "Total"
     order:
       view: View
     show:

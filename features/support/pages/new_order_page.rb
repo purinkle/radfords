@@ -6,17 +6,17 @@ class NewOrderPage
   def create(options = {})
     fill_form(
       :order,
-      address_line_1: '1 Test Street',
-      address_line_2: 'Testerton',
-      address_city: 'Testington',
-      address_post_code: 'TE5 7TE',
-      address_county: 'Testshire',
-      email: options.fetch(:email, ''),
-      name: options.fetch(:name, '')
+      "Address" => "1 Test Street",
+      "Apt, suite, etc." => "Testerton",
+      "City" => "Testington",
+      "Postal code" => "TE5 7TE",
+      "County" => "Testshire",
+      "Email" => options.fetch(:email, ""),
+      "Name" => options.fetch(:name, "")
     )
 
     VCR.use_cassette('create stripe charge') do
-      click_button('Create Order')
+      click_button("Place my order")
     end
   end
 

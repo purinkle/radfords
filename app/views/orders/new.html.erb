@@ -1,11 +1,63 @@
 <% content_for(:title, t('.title')) %>
 
-<div>
-  <fieldset>
-    <legend>Please enter your details</legend>
+<div class="checkout">
+  <%= render 'form' %>
+</div>
 
-    <%= render 'form' %>
-  </fieldset>
+<div class="order-summary">
+  <div class="section">
+    <h3><%= t(".order-summary") %></h3>
+  </div>
+
+  <div class="section">
+    <ul>
+      <% @basket.line_items.each do |item| %>
+        <li>
+          <%= image_tag(item.product.photo.url(:order_summary)) %>
+
+          <div class="info">
+            <span class="name">
+              <strong><%= item.product.title %></strong>
+              &times; <%= item.quantity %>
+            </span>
+
+            <span class="description"><%= item.product.description %></span>
+          </div>
+
+          <strong class="price"><%= humanize_price(item.total_price) %></strong>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="overview-line">
+      <span><%= t(".subtotal") %></span>
+      <strong><%= humanize_price(@basket.total_price) %></strong>
+    </div>
+
+    <div class="overview-line">
+      <span><%= t(".shipping") %></span>
+      <strong>&mdash;</strong>
+    </div>
+
+    <div class="overview-line total">
+      <span><%= t(".total") %></span>
+      <strong><%= humanize_price(@basket.total_price) %></strong>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="payment-due-container">
+      <span class="payment-due-label"><%= t(".payment_due") %></span>
+
+      <div class="payment-due">
+        <div class="payment-due-price">
+          <%= humanize_price(@basket.total_price) %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <%= content_for(:javascript) do %>
