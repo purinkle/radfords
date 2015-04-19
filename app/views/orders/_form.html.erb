@@ -91,17 +91,6 @@
     </div>
 
     <div class="field">
-      <%= label_tag(nil, t(".cvc")) %>
-      <%= text_field_tag(
-        nil,
-        nil,
-        class: "card-cvc",
-        data: { stripe: "cvc" },
-        placeholder: t(".cvc")
-      ) %>
-    </div>
-
-    <div class="field">
       <%= label_tag(nil, t(".expiration")) %>
 
       <div class="select-group">
@@ -120,6 +109,17 @@
           placeholder: t(".exp_year")
         ) %>
       </div>
+    </div>
+
+    <div class="field">
+      <%= label_tag(nil, t(".cvc")) %>
+      <%= text_field_tag(
+        nil,
+        nil,
+        class: "card-cvc",
+        data: { stripe: "cvc" },
+        placeholder: t(".cvc")
+      ) %>
     </div>
   </div>
 
