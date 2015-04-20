@@ -48,7 +48,7 @@ en:
       card_number: Card number
       create: "Place my order"
       customer_information: "Customer Information"
-      cvc: "CVV"
+      cvc: "CVV (Security code)"
       delivery_address: "Delivery Address"
       email: "Email"
       exp_month: "MM"
