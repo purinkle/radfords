@@ -12,7 +12,7 @@ class BasketDecorator
   end
 
   def line_items
-    @basket.line_items
+    @basket.line_items.by_created_at
   end
 
   def to_partial_path

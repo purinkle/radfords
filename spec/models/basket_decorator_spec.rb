@@ -14,10 +14,14 @@ describe BasketDecorator do
   end
 
   describe "#item_count" do
-    let(:basket) { double("Basket", line_items: line_items) }
+    let(:basket) { double("Basket") }
     let(:item_1) { double("LineItem", quantity: 2) }
     let(:item_2) { double("LineItem", quantity: 1) }
     let(:line_items) { [item_1, item_2] }
+
+    before do
+      allow(decorator).to receive(:line_items).and_return(line_items)
+    end
 
     it "returns the total quantity of line items" do
       expect(decorator.item_count).to eql 3
@@ -25,10 +29,14 @@ describe BasketDecorator do
   end
 
   describe "#line_items" do
-    let(:basket) { double("Basket", line_items: line_items) }
+    let(:relation) do
+      double("ActiveRecord::Relation", by_created_at: line_items)
+    end
+
+    let(:basket) { double("Basket", line_items: relation) }
     let(:line_items) { [] }
 
-    it "returns the basket's line items" do
+    it "returns the basket's line items ordered by creation time" do
       expect(decorator.line_items).to be(line_items)
     end
   end
@@ -40,7 +48,11 @@ describe BasketDecorator do
     let(:partial_path) { "baskets/basket" }
 
     let(:basket) do
-      double("Basket", line_items: line_items, to_partial_path: partial_path)
+      double("Basket", to_partial_path: partial_path)
+    end
+
+    before do
+      allow(decorator).to receive(:line_items).and_return(line_items)
     end
 
     it "returns 'empty_basket'" do
