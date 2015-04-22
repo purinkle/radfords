@@ -7,7 +7,6 @@ class NewOrderPage
     fill_form(
       :order,
       "Address" => "1 Test Street",
-      "Apt, suite, etc." => "Testerton",
       "City" => "Testington",
       "Postal code" => "TE5 7TE",
       "County" => "Testshire",
