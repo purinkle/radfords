@@ -14,13 +14,13 @@ Feature: Baskets
     Then I see the "Your Basket" page
     And I see a "Your basket is currently empty" notice
 
-  Scenario:
+  Scenario: Add a product to my basket
     Given I am signed in
     And a product exists
     And I have the product in my basket
     And I am on the "Shop" page
     When I add the product to my basket
-    Then I see the "Home" page
+    Then I see the "Your Basket" page
     And I see the product in my basket twice
 
   Scenario: Remove all items from the basket
