@@ -54,7 +54,7 @@ describe LineItemsController do
 
     it "redirects to the home page" do
       put :update, params
-      expect(response).to redirect_to root_url
+      expect(response).to redirect_to basket_url
     end
   end
 end

@@ -14,7 +14,7 @@ class LineItemsController < ApplicationController
 
   def update
     item.update_attributes item_params
-    redirect_to root_url
+    redirect_to basket_url
   end
 
   private
