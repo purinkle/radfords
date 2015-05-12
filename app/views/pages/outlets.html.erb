@@ -78,7 +78,7 @@
         </p>
 
         <% if supplier.website %>
-          <p><%= supplier.website %></p>
+          <p><%= link_to(supplier.website, supplier.website) %></p>
         <% end %>
 
         <p class="telephone">
