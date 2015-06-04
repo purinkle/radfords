@@ -17,16 +17,17 @@ describe Mailer do
       )
     end
 
+    let(:denise) { "denise@radfordsofsomerford.co.uk" }
     let(:email) { 'alphonso.quigley@example.com' }
     let(:id) { 5 }
     let(:title) { "Order confirmation for order #{id}" }
 
     it 'sends a mail from Denise' do
-      expect(subject.from).to eql(['denise@radfordsofsomerford.co.uk'])
+      expect(subject.from).to eql([denise])
     end
 
-    it 'sends a mail to the order email' do
-      expect(subject.to).to eql([email])
+    it "sends a mail to the order email and Denise" do
+      expect(subject.to).to eql([email, denise])
     end
 
     it 'sends a mail with the correct subject' do

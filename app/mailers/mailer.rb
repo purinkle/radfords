@@ -2,9 +2,9 @@ class Mailer < ActionMailer::Base
   def order_received(order)
     @order = order
     mail(
-      from: 'Radfords <denise@radfordsofsomerford.co.uk>',
+      from: "Radfords <#{denise}>",
       subject: t(".subject", id: @order.id),
-      to: @order.email
+      to: [@order.email, denise]
     )
   end
 
@@ -15,5 +15,11 @@ class Mailer < ActionMailer::Base
       subject: t(".subject", id: @order.id),
       to: @order.email
     )
+  end
+
+  private
+
+  def denise
+    "denise@radfordsofsomerford.co.uk"
   end
 end
