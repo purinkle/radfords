@@ -6,26 +6,16 @@ describe PagesHelper do
 
     let(:partial) { double('partial') }
     let(:product) { double('product') }
-    let(:signed_in?) { false }
 
     before do
-      allow(helper).to receive(:signed_in?).with(no_args).and_return(signed_in?)
       allow(helper).to receive(:render).with(
         partial: "shared/product_button",
         locals: { product: product }
       ).once.and_return(partial)
     end
 
-    it 'returns nil' do
-      expect(subject).to be_nil
-    end
-
-    context 'when the user is signed in' do
-      let(:signed_in?) { true }
-
-      it 'renders the partial' do
-        expect(subject).to be(partial)
-      end
+    it "renders the partial" do
+      expect(subject).to be(partial)
     end
   end
 

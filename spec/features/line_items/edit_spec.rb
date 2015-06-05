@@ -4,7 +4,6 @@ module Features
   describe "edit line item" do
     it "increases the item's quantity" do
       create :product
-      sign_in
       add_products_to_basket
 
       basket_page.visit
@@ -15,7 +14,6 @@ module Features
 
     it "decreases the item's quantity" do
       create :product
-      sign_in
       add_products_to_basket
 
       basket_page.visit
@@ -27,7 +25,6 @@ module Features
 
     it "only allows positive quantities" do
       create :product
-      sign_in
       add_products_to_basket
 
       basket_page.visit
@@ -38,7 +35,6 @@ module Features
 
     it "keeps the items in the correct order" do
       create_products
-      sign_in
       add_products_to_basket
 
       basket_page.visit
@@ -62,12 +58,6 @@ module Features
     def create_products
       create(:product, title: "Plum Jam")
       create(:product, title: "Rhubarb and Ginger Jam")
-    end
-
-    def sign_in
-      page = NewSessionPage.new
-      page.visit
-      page.sign_in
     end
   end
 end

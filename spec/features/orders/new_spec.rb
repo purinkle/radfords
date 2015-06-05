@@ -3,7 +3,6 @@ require "spec_helper"
 module Features
   describe "create order" do
     it "show order summary" do
-      sign_in
       create_product
       create_basket
 
@@ -21,12 +20,6 @@ module Features
 
     def create_product
       FactoryGirl.create(:product)
-    end
-
-    def sign_in
-      page = NewSessionPage.new
-      page.visit
-      page.sign_in
     end
   end
 end

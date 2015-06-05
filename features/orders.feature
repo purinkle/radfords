@@ -7,8 +7,7 @@ Feature: Orders
     And I see a "Your basket is empty" notice
 
   Scenario:
-    Given I am signed in
-    And a product exists
+    Given a product exists
     And I have the product in my basket
     And I have checked out my basket
     When I create the order
@@ -16,8 +15,7 @@ Feature: Orders
     And I see a "Thank you" message
 
   Scenario:
-    Given I am signed in
-    And a product exists
+    Given a product exists
     And I have the product in my basket
     And I have checked out my basket
     When I create the order incorrectly

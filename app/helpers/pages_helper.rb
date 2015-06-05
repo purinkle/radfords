@@ -1,8 +1,6 @@
 module PagesHelper
   def product_button(product)
-    if signed_in?
-      render(partial: "shared/product_button", locals: { product: product })
-    end
+    render(partial: "shared/product_button", locals: { product: product })
   end
 
   def render_basket(basket)

@@ -19,9 +19,7 @@
         <%= link_to "Contact us", contact_path %>
       </li>
 
-      <% if signed_in? %>
-        <li><%= link_to(t(".basket", item_count: @basket.item_count), basket_path) %></li>
-      <% end %>
+      <li><%= link_to(t(".basket", item_count: @basket.item_count), basket_path) %></li>
     </ul>
   </div>
 </div>
