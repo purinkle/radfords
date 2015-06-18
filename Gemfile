@@ -30,7 +30,7 @@ group :development, :test do
   gem "byebug"
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 2.14.0'
+  gem 'rspec-rails', '~> 3.0.0'
 end
 
 group :test do
