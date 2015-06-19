@@ -22,10 +22,6 @@ gem 'stripe'
 gem 'uglifier'
 gem 'unicorn'
 
-group :development do
-  gem 'foreman'
-end
-
 group :development, :test do
   gem "byebug"
   gem 'dotenv-rails'

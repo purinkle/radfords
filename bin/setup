@@ -26,9 +26,10 @@ if ! grep --quiet --no-messages --fixed-strings 'port' .foreman; then
   printf 'port: 9000\n' >> .foreman
 fi
 
-if ! command -v foreman > /dev/null; then
-  printf 'Foreman is not installed.\n'
-  printf 'See https://github.com/ddollar/foreman for install instructions.\n'
+# Print warning if Foreman is not installed
+if ! command -v foreman &>/dev/null; then
+  echo "foreman is not installed."
+  echo "See https://github.com/ddollar/foreman for install instructions."
 fi
 
 # Only if this isn't CI
