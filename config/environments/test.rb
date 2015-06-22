@@ -34,6 +34,9 @@ Radfords::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 
+  # Raises error for missing translations
+  config.action_view.raise_on_missing_translations = true
+
   # Allow pass debug_assets=true as a query parameter to load pages with unpackaged assets
   config.assets.allow_debugging = true
   config.eager_load = false
