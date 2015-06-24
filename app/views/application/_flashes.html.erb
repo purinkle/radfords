@@ -1,11 +1,13 @@
-<% flash.each do |key, value| %>
-  <% if flash[:partial] %>
-    <%= render(partial: "/shared/flashes/#{flash[:partial]}") %>
-  <% else %>
-    <% alert_type = flash_message_class(key) %>
+<% if flash.any? %>
+  <% flash.each do |key, value| %>
+    <% if flash[:partial] %>
+      <%= render(partial: "/shared/flashes/#{flash[:partial]}") %>
+    <% else %>
+      <% alert_type = flash_message_class(key) %>
 
-    <%= content_tag(:div, class: ['alert', "alert-#{alert_type}"]) do %>
-      <strong><%= t("#{alert_type}_text") %>!</strong> <%= value %>
+      <%= content_tag(:div, class: ['alert', "alert-#{alert_type}"]) do %>
+        <strong><%= t("#{alert_type}_text") %>!</strong> <%= value %>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>
