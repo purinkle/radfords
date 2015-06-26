@@ -3,7 +3,7 @@ class Mailer < ActionMailer::Base
     @order = order
     mail(
       from: "Radfords <#{denise}>",
-      subject: t(".subject", id: @order.id),
+      subject: "Order confirmation for order #{order.id}",
       to: [@order.email, denise]
     )
   end
@@ -12,7 +12,7 @@ class Mailer < ActionMailer::Base
     @order = order
     mail(
       from: 'denise@radfordsofsomerford.co.uk',
-      subject: t(".subject", id: @order.id),
+      subject: "Shipping confirmation for order #{order.id}",
       to: @order.email
     )
   end

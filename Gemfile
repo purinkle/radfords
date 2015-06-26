@@ -9,6 +9,7 @@ gem 'coffee-rails'
 gem 'geocoder'
 gem 'draper'
 gem 'friendly_id'
+gem "i18n-tasks"
 gem 'jquery-rails'
 gem 'kaminari'
 gem 'money-rails'

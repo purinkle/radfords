@@ -3,47 +3,28 @@ en:
     basket:
       checkout: Checkout
       confirm: Are you sure?
+      destroy: "Delete"
       empty_basket: Empty basket
-      heading: Your Basket
-      title: Basket
     destroy:
       notice: Your basket is currently empty.
     empty_basket:
       empty: "Your basket is empty."
     show:
-      alert: Invalid basket.
       heading: "Your Basket"
       title: "Your Basket"
-  error_text: 'Oh snap'
   events:
     not_found: "We couldn't find the event you were looking for."
   fulfilments:
     create:
       notice: Shipment notification email sent
-  helpers:
-    label:
-      order:
-        address_city: "City"
-        address_county: "County"
-        address_line_1: "Address"
-        address_line_2: "Apt, suite, etc."
-        address_post_code: "Postal code"
-        email: "Email"
-  info_text: 'Heads up'
   layouts:
     header:
       basket: "Basket (%{item_count})"
-  mailer:
-    order_received:
-      subject: Order confirmation for order %{id}
-    order_shipped:
-      subject: Shipping confirmation for order %{id}
   orders:
     form:
       address_city: "City"
       address_county: "County"
       address_line_1: "Address"
-      address_line_2: "Apt, suite, etc. (optional)"
       address_post_code: "Postal code"
       card_number: Card number
       create: "Place my order"
@@ -95,7 +76,6 @@ en:
       orders: Orders
     product_button:
       add_to_basket: Add to Basket
-  success_text: 'Well done'
   suppliers:
     update: "You successfully updated the supplier."
   time:

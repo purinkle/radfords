@@ -7,7 +7,7 @@ end
 ### THEN ###
 
 Then(/^I see an? "(.*?)" alert$/) do |message|
-  expect(page).to have_content("Oh snap! #{message}.")
+  expect(page).to have_content(message)
 end
 
 Then(/^I see a "(.*?)" message$/) do |message|
@@ -15,7 +15,7 @@ Then(/^I see a "(.*?)" message$/) do |message|
 end
 
 Then(/^I see a "(.*?)" notice$/) do |message|
-  expect(page).to have_content("Well done! #{message}.")
+  expect(page).to have_content(message)
 end
 
 Then(/^I see the "(.*?)" page$/) do |title|
