@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'money-rails'
 gem 'neat', '~> 1.5.1'
+gem "normalize-rails", "~> 3.0.0"
 gem 'paperclip'
 gem 'pg'
 gem 'rails', '4.1.4'
