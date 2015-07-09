@@ -3,7 +3,7 @@ en:
     basket:
       checkout: Checkout
       confirm: Are you sure?
-      destroy: "Delete"
+      destroy: "Remove"
       empty_basket: Empty basket
     destroy:
       notice: Your basket is currently empty.
