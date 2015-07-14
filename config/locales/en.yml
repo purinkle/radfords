@@ -81,3 +81,6 @@ en:
   time:
     formats:
       default: '%a, %b %-d, %Y at %r'
+
+  titles:
+    application: "Radfords"
