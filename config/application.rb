@@ -57,5 +57,6 @@ module Radfords
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
+    config.action_controller.action_on_unpermitted_parameters = :raise
   end
 end
