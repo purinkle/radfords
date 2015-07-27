@@ -1,26 +1,16 @@
-ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../config/environment", __FILE__)
-require 'rspec/rails'
-require 'shoulda/matchers'
+require "webmock/rspec"
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
-module Features
-  # Extend this module in spec/support/features/*.rb
-  include Formulaic::Dsl
-end
-
+# http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
-  config.mock_with :rspec
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-  config.use_transactional_fixtures = true
-  config.infer_base_class_for_anonymous_controllers = false
-  config.infer_spec_type_from_file_location!
-  config.order = "random"
-
-  def test_sign_in(user)
-    controller.sign_in(user)
+  config.expect_with :rspec do |expectations|
+    expectations.syntax = :expect
   end
+
+  config.mock_with :rspec do |mocks|
+    mocks.syntax = :expect
+  end
+
+  config.order = :random
 end
 
-ActiveRecord::Migration.maintain_test_schema!
+WebMock.disable_net_connect!(allow_localhost: true)

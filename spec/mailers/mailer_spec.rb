@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "rails_helper"
 
 describe Mailer do
   describe '.order_received' do

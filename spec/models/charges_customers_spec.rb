@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "rails_helper"
 
 describe ChargesCustomers do
   let(:charger) { ChargesCustomers.new(email, card, amount, order_id) }

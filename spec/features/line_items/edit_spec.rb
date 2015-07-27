@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 module Features
   describe "edit line item" do

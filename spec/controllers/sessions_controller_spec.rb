@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "rails_helper"
 
 describe SessionsController do
   describe 'GET "new"' do
@@ -62,13 +62,13 @@ describe SessionsController do
   end
 
   describe "DELETE 'destroy'" do
-    it "should sign a user out" do
-      test_sign_in( FactoryGirl.create(:user) )
+    before do
+      allow(controller).to receive(:find_basket)
+      allow(controller).to receive(:sign_out)
+    end
 
+    it "redirects to the home page" do
       delete :destroy
-
-      expect(controller).to_not be_signed_in
-
       expect(response).to redirect_to(root_path)
     end
 

@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "rails_helper"
 
 describe OrdersHelper do
   describe '#show_order_button' do

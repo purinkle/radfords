@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "rails_helper"
 
 describe Product do
   let(:product) { described_class.new }

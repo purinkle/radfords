@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "rails_helper"
 
 describe ApplicationHelper do
   describe '#flash_message_class' do

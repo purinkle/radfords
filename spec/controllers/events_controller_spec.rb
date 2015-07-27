@@ -1,4 +1,4 @@
-require 'spec_helper'
+require "rails_helper"
 
 describe EventsController do
   let(:event_params) do

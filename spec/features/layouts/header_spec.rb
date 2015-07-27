@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 describe "application header" do
   let(:home_page) { HomePage.new }
