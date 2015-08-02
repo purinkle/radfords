@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'kaminari'
 gem 'money-rails'
 gem 'neat', '~> 1.5.1'
+gem 'newrelic_rpm', '>= 3.7.3'
 gem "normalize-rails", "~> 3.0.0"
 gem 'paperclip'
 gem 'pg'
@@ -44,6 +45,5 @@ group :test do
 end
 
 group :staging, :production do
-  gem 'newrelic_rpm', '>= 3.7.3'
   gem 'rails_12factor'
 end
