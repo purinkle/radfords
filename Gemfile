@@ -18,6 +18,7 @@ gem 'newrelic_rpm'
 gem "normalize-rails", "~> 3.0.0"
 gem 'paperclip'
 gem 'pg'
+gem 'rack-timeout'
 gem 'rails', '4.1.7'
 gem 'recipient_interceptor'
 gem 'sass-rails', '~> 4.0.3'
