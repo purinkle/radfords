@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 ruby '2.1.4'
 
@@ -19,12 +19,16 @@ gem "normalize-rails", "~> 3.0.0"
 gem 'paperclip'
 gem 'pg'
 gem 'rack-timeout'
-gem 'rails', '4.1.8'
+gem 'rails', '4.1.11'
 gem 'recipient_interceptor'
 gem 'sass-rails', '~> 4.0.3'
 gem 'stripe'
 gem 'uglifier'
 gem 'unicorn'
+
+group :development do
+  gem "bundler-audit"
+end
 
 group :development, :test do
   gem "byebug"
