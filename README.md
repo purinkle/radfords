@@ -33,3 +33,12 @@ programming in style.
 * [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
 * [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
 * [Style](http://github.com/thoughtbot/guides/blob/master/style)
+
+Deploying
+---------
+
+If you have previously run the `.bin/setup` script, you can deploy to staging
+and production with:
+
+    $ ./bin/deploy staging
+    $ ./bin/deploy production
