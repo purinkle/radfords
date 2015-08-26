@@ -58,5 +58,8 @@ module Radfords
 
     config.assets.initialize_on_precompile = false
     config.action_controller.action_on_unpermitted_parameters = :raise
+
+    # Do not swallow errors in after_commit/after_rollback callbacks.
+    config.active_record.raise_in_transactional_callbacks = true
   end
 end

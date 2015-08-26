@@ -1,7 +1,7 @@
 require "rails_helper"
 
 describe BasketDecorator do
-  let(:decorator) { BasketDecorator.new(basket) }
+  subject(:decorator) { BasketDecorator.new(basket) }
 
   describe ".model_name" do
     let(:model_name) { double("ActiveModel::Name") }
@@ -38,6 +38,20 @@ describe BasketDecorator do
 
     it "returns the basket's line items ordered by creation time" do
       expect(decorator.line_items).to be(line_items)
+    end
+  end
+
+  describe "#persisted?" do
+    let(:basket) { double("Basket", persisted?: true) }
+
+    it { is_expected.to be_persisted }
+  end
+
+  describe "#to_model" do
+    let(:basket) { double("Basket") }
+
+    it "returns the basket" do
+      expect(decorator.to_model).to be(basket)
     end
   end
 

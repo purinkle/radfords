@@ -15,6 +15,14 @@ class BasketDecorator
     @basket.line_items.by_created_at
   end
 
+  def persisted?
+    @basket.persisted?
+  end
+
+  def to_model
+    @basket
+  end
+
   def to_partial_path
     all_partials.first
   end

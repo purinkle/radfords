@@ -1,6 +1,8 @@
 require "rails_helper"
 
 describe MissingBasket do
+  subject(:basket) { MissingBasket.new }
+
   describe "#line_items" do
     let(:none) { double("ActiveRecord::Relation") }
 
@@ -9,7 +11,13 @@ describe MissingBasket do
     end
 
     it "returns an 'None' relation" do
-      expect(MissingBasket.new.line_items).to be none
+      expect(basket.line_items).to be none
+    end
+  end
+
+  describe "#to_partial_path" do
+    it "returns 'empty_basket'" do
+      expect(basket.to_partial_path).to eql("empty_basket")
     end
   end
 end

@@ -5,7 +5,7 @@ describe FulfilmentsController do
     let(:order) { double(Order) }
     let(:order_id) { '1' }
     let(:order_url) { "/orders/#{order_id}" }
-    let(:mailer) { double(Mailer, deliver: nil) }
+    let(:mailer) { double(Mailer, deliver_now: nil) }
 
     before do
       allow(controller).to receive(:authenticate)
@@ -16,7 +16,7 @@ describe FulfilmentsController do
 
     it 'delivers the order fulfilled mail' do
       post :create, order_id: order_id
-      expect(mailer).to have_received(:deliver)
+      expect(mailer).to have_received(:deliver_now)
     end
 
     it 'redirects to the order page' do
