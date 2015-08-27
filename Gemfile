@@ -22,8 +22,9 @@ gem 'rack-timeout'
 gem 'rails', '4.2.2'
 gem 'recipient_interceptor'
 gem 'sass-rails', '~> 5.0'
+gem 'simple_form'
 gem 'stripe'
-gem 'uglifier'
+gem 'uglifier', '2.7.2'
 gem 'unicorn'
 
 group :development do

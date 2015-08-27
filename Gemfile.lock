@@ -107,7 +107,7 @@ GEM
       thread
       thread_safe
     erubis (2.7.0)
-    execjs (2.2.2)
+    execjs (2.6.0)
     factory_girl (4.5.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.5.0)
@@ -247,6 +247,9 @@ GEM
       tilt (~> 1.1)
     shoulda-matchers (2.7.0)
       activesupport (>= 3.0.0)
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
     sprockets (3.3.3)
       rack (~> 1.0)
     sprockets-rails (2.3.2)
@@ -268,7 +271,7 @@ GEM
     tins (1.5.4)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (2.5.3)
+    uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     unf (0.1.4)
@@ -326,9 +329,10 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   shoulda-matchers
+  simple_form
   stripe
   timecop
-  uglifier
+  uglifier (= 2.7.2)
   unicorn
   vcr
   web-console
