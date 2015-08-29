@@ -28,11 +28,11 @@ gem 'uglifier', '2.7.2'
 gem 'unicorn'
 
 group :development do
-  gem "bundler-audit"
   gem 'web-console'
 end
 
 group :development, :test do
+  gem "bundler-audit", require: false
   gem "byebug"
   gem 'dotenv-rails'
   gem 'factory_girl_rails'
