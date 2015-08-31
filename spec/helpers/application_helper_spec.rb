@@ -43,26 +43,6 @@ describe ApplicationHelper do
     end
   end
 
-  describe "#title" do
-    it "returns the content for the title" do
-      allow(helper).to receive(:content_for).and_return("Foo")
-
-      title = helper.title
-
-      expect(title).to eql "Foo | Radfords of Somerford"
-    end
-
-    context "when there is no content for the title" do
-      it "returns the stored title" do
-        helper.instance_variable_set(:@title, "Bar")
-
-        title = helper.title
-
-        expect(title).to eql "Bar | Radfords of Somerford"
-      end
-    end
-  end
-
   describe "#navbar" do
     it "renders the navbar partial" do
       allow(helper).to receive(:signed_in?).and_return(true)

@@ -7,10 +7,6 @@ module ApplicationHelper
     humanized_money_with_symbol(price, no_cents_if_whole: false)
   end
 
-  def title
-    "#{content_for(:title).presence || @title} | Radfords of Somerford"
-  end
-
   def nav_class(controller_name)
     if controller_name == controller.controller_name
       "active"
