@@ -232,6 +232,7 @@ GEM
     rake (10.4.2)
     recipient_interceptor (0.1.2)
       mail
+    refills (0.1.0)
     request_store (1.1.0)
     rest-client (1.8.0)
       http-cookie (>= 1.0.2, < 2.0)
@@ -355,6 +356,7 @@ DEPENDENCIES
   rails (= 4.2.2)
   rails_stdout_logging
   recipient_interceptor
+  refills
   rspec-rails (~> 3.0.0)
   sass-rails (~> 5.0)
   shoulda-matchers
