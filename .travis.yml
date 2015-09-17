@@ -13,8 +13,7 @@ cache:
 language:
   - ruby
 notifications:
-  email:
-    - false
+  email: false
   slack:
     secure: GQ3iBioeING+mB1H2NiWURymJmeXk+1Y6A0k2ZcCBsAYnBx15OPuu6svXtSHMo0cHX2dN9PbaVUtD0WiAf/JXGZ1rsiaNecsio/ZBWWQ+KEIlEPe485stHv5JoUfGyBvsUWGYBnCqEhW0KFahL8Ny3WUIIkqrg+X8HKozYrpITU=
 rvm:
