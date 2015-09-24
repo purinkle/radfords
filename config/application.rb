@@ -18,7 +18,6 @@ Bundler.require(*Rails.groups)
 module Radfords
   class Application < Rails::Application
     config.i18n.enforce_available_locales = true
-    config.active_record.default_timezone = :utc
 
     config.generators do |generate|
       generate.helper false
