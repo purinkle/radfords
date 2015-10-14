@@ -199,7 +199,6 @@ describe ProductsController do
     it "finds the product" do
       product = Product.new
       allow(product).to receive(:save!).and_return(true)
-      allow(product).to receive(:url_for).and_return("")
       allow(controller).to receive(:authenticate)
       allow(Product).to receive(:new).and_return(product)
 
@@ -211,7 +210,6 @@ describe ProductsController do
     it "sets the notice flash" do
       product = Product.new
       allow(product).to receive(:save!).and_return(true)
-      allow(product).to receive(:url_for).and_return("")
       allow(controller).to receive(:authenticate)
       allow(Product).to receive(:new).and_return(product)
 
@@ -223,7 +221,6 @@ describe ProductsController do
     it "redirects to the product's page" do
       product = Product.new
       allow(product).to receive(:save!).and_return(true)
-      allow(product).to receive(:url_for).and_return("")
       allow(controller).to receive(:authenticate)
       allow(Product).to receive(:new).and_return(product)
 

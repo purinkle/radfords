@@ -6,16 +6,20 @@ describe Basket do
   describe '#add_product' do
     subject { basket.add_product(product_id) }
 
+    let(:items) do
+      double(
+        "ActiveRecord::Relation",
+        build: new_item,
+        find_by_product_id: found_item,
+      )
+    end
+
     let(:found_item) { double(LineItem, :quantity => 1, :quantity= => nil) }
     let(:new_item) { double(LineItem) }
     let(:product_id) { '1' }
 
     before do
-      allow(basket).to receive(:line_items) { LineItem }
-      allow(LineItem).to receive(:build).with(product_id: product_id).
-        and_return(new_item)
-      allow(LineItem).to receive(:find_by_product_id).with(product_id).
-        and_return(found_item)
+      allow(basket).to receive(:line_items).and_return(items)
     end
 
     it 'returns the found item' do

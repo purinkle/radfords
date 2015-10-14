@@ -15,7 +15,7 @@ module Features
     let(:location) { "Sandbach" }
     let(:password) { user.password }
     let(:signin_page) { SigninPage.new(email, password) }
-    let(:takes_place_on) { "12 October 2015" }
+    let(:takes_place_on) { Date.tomorrow.strftime("%e %B %Y") }
     let(:user) { FactoryGirl.create(:user) }
 
     it "successfully creates an event" do

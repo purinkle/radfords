@@ -58,7 +58,6 @@ describe EventsController do
     it "redirects to the event's page" do
       event = Event.new
       allow(event).to receive(:save!).and_return(true)
-      allow(event).to receive(:url_for).and_return("")
       allow(controller).to receive(:authenticate)
       allow(Event).to receive(:new).and_return(event)
 
@@ -70,7 +69,6 @@ describe EventsController do
     it "sets the notice flash" do
       event = Event.new
       allow(event).to receive(:save!).and_return(true)
-      allow(event).to receive(:url_for).and_return("")
       allow(controller).to receive(:authenticate)
       allow(Event).to receive(:new).and_return(event)
 
@@ -142,7 +140,6 @@ describe EventsController do
     it "redirects to the event's page" do
       event = Event.new
       allow(event).to receive(:update_attributes!).and_return(true)
-      allow(event).to receive(:url_for).and_return("")
       allow(controller).to receive(:authenticate)
       allow(Event).to receive(:find).and_return(event)
 
