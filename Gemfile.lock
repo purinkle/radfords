@@ -37,7 +37,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    airbrake (4.2.1)
+    airbrake (4.3.2)
       builder
       multi_json
     arel (6.0.3)
@@ -94,7 +94,7 @@ GEM
       mime-types (>= 1.16, < 3)
       nokogiri (~> 1.5)
       rails (>= 3, < 5)
-    database_cleaner (1.5.0)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     delayed_job (4.1.1)
       activesupport (>= 3.0, < 5.0)
@@ -350,7 +350,7 @@ DEPENDENCIES
   launchy
   money-rails
   neat (~> 1.7.0)
-  newrelic_rpm
+  newrelic_rpm (>= 3.9.8)
   normalize-rails (~> 3.0.0)
   paperclip
   pg
