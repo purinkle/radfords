@@ -22,7 +22,6 @@ gem "newrelic_rpm", ">= 3.9.8"
 gem "normalize-rails", "~> 3.0.0"
 gem "paperclip"
 gem "pg"
-gem "rack-timeout"
 gem "rails", "4.2.2"
 gem "recipient_interceptor"
 gem "refills"
@@ -64,4 +63,5 @@ end
 
 group :staging, :production do
   gem "rails_stdout_logging"
+  gem "rack-timeout"
 end
