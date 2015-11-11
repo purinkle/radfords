@@ -3,6 +3,7 @@ source "https://rubygems.org"
 ruby "2.2.1"
 
 gem "airbrake"
+gem "autoprefixer-rails"
 gem "aws-sdk"
 gem "bourbon", "~> 4.2.0"
 gem "coffee-rails", "~> 4.1.0"
