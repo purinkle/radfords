@@ -1,11 +1,11 @@
-ENV["RAILS_ENV"] ||= "test"
+ENV["RAILS_ENV"] = "test"
 
 require File.expand_path("../../config/environment", __FILE__)
 
 require "rspec/rails"
 require "shoulda/matchers"
 
-Dir[Rails.root.join("spec/support/**/*.rb")].each { |file| require file }
+Dir[Rails.root.join("spec/support/**/*.rb")].sort.each { |file| require file }
 
 module Features
   # Extend this module in spec/support/features/*.rb
@@ -21,20 +21,3 @@ end
 
 ActiveRecord::Migration.maintain_test_schema!
 Capybara.javascript_driver = :webkit
-
-require "webmock/rspec"
-
-# http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-RSpec.configure do |config|
-  config.expect_with :rspec do |expectations|
-    expectations.syntax = :expect
-  end
-
-  config.mock_with :rspec do |mocks|
-    mocks.syntax = :expect
-  end
-
-  config.order = :random
-end
-
-WebMock.disable_net_connect!(allow_localhost: true)
