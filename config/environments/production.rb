@@ -30,7 +30,7 @@ Rails.application.configure do
   config.middleware.use Rack::Deflater
 
   # Ensure requests are only served from one, canonical host name
-  config.middleware.use Rack::CanonicalHost, ENV.fetch("HOST")
+  config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -70,7 +70,7 @@ Rails.application.configure do
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   config.action_controller.asset_host = ENV.fetch(
     "ASSET_HOST",
-    ENV.fetch("HOST")
+    ENV.fetch("APPLICATION_HOST")
   )
 
   # Ignore bad email addresses and do not raise email delivery errors.
@@ -94,6 +94,8 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: ENV.fetch("HOST") }
+  config.action_mailer.default_url_options = {
+    host: ENV.fetch("APPLICATION_HOST")
+  }
 end
 Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
