@@ -189,7 +189,7 @@ GEM
       sass (>= 3.3)
     netrc (0.10.3)
     newrelic_rpm (3.14.1.311)
-    nokogiri (1.6.7)
+    nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
     normalize-rails (3.0.3)
     paperclip (4.2.2)
@@ -389,4 +389,4 @@ DEPENDENCIES
   webmock
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
