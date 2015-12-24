@@ -39,7 +39,7 @@ GEM
     addressable (2.4.0)
     airbrake (5.0.1)
       airbrake-ruby (~> 1.0)
-    airbrake-ruby (1.0.0)
+    airbrake-ruby (1.0.1)
     arel (6.0.3)
     ast (2.2.0)
     autoprefixer-rails (6.2.1)
