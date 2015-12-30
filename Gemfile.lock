@@ -42,7 +42,7 @@ GEM
     airbrake-ruby (1.0.1)
     arel (6.0.3)
     ast (2.2.0)
-    autoprefixer-rails (6.2.1)
+    autoprefixer-rails (6.2.2)
       execjs
       json
     awesome_print (1.6.1)
