@@ -11,6 +11,7 @@ Bundler.require(*Rails.groups)
 module Radfords
   class Application < Rails::Application
     config.i18n.enforce_available_locales = true
+    config.quiet_assets = true
     config.generators do |generate|
       generate.helper false
       generate.javascript_engine false
