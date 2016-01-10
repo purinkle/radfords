@@ -118,8 +118,6 @@ GEM
       json
       thread
       thread_safe
-    email_validator (1.6.0)
-      activemodel
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.5.0)
@@ -286,7 +284,7 @@ GEM
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
     slop (3.6.0)
-    spring (1.6.1)
+    spring (1.6.2)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
     sprockets (3.5.2)
@@ -306,7 +304,7 @@ GEM
     thor (0.19.1)
     thread (0.2.2)
     thread_safe (0.3.5)
-    tilt (2.0.1)
+    tilt (2.0.2)
     timecop (0.7.1)
     tins (1.8.1)
     title (0.0.5)
@@ -350,7 +348,6 @@ DEPENDENCIES
   delayed_job_active_record
   dotenv-rails
   draper
-  email_validator
   factory_girl_rails
   flutie
   formulaic
