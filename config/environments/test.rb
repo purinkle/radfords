@@ -1,4 +1,5 @@
 Rails.application.configure do
+  config.assets.raise_runtime_errors = true
   config.cache_classes = true
   config.eager_load = false
   config.serve_static_files   = true
