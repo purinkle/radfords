@@ -29,3 +29,4 @@ mkdir -p .git/safe
 git remote add staging git@heroku.com:radfords-qa.git || true
 git remote add production git@heroku.com:radfords-production.git || true
 
+git config heroku.remote staging
