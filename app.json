@@ -5,7 +5,13 @@
     "AIRBRAKE_API_KEY":{
       "required":true
     },
+    "AIRBRAKE_PROJECT_ID":{
+      "required":true
+    },
     "EMAIL_RECIPIENTS":{
+      "required":true
+    },
+    "HEROKU_APP_NAME":{
       "required":true
     },
     "RACK_ENV":{
@@ -30,7 +36,8 @@
       "required":true
     },
     "WEB_CONCURRENCY":{
-      "required":true
+      "required":true,
+      "value":"1"
     }
   },
   "addons":[
