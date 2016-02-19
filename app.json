@@ -2,12 +2,6 @@
   "name":"radfords",
   "scripts":{},
   "env":{
-    "AIRBRAKE_API_KEY":{
-      "required":true
-    },
-    "AIRBRAKE_PROJECT_ID":{
-      "required":true
-    },
     "EMAIL_RECIPIENTS":{
       "required":true
     },
@@ -36,8 +30,7 @@
       "required":true
     },
     "WEB_CONCURRENCY":{
-      "required":true,
-      "value":"1"
+      "required":true
     }
   },
   "addons":[
