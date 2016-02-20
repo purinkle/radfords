@@ -12,8 +12,8 @@ fi
 heroku pg:backups restore \
   `heroku pg:backups public-url -a radfords-qa` \
   DATABASE_URL \
-  --confirm radfords-staging-pr-$1 \
-  --app radfords-staging-pr-$1
-heroku run rake db:migrate --app radfords-staging-pr-$1
-heroku ps:scale worker=1 --app radfords-staging-pr-$1
-heroku restart --app radfords-staging-pr-$1
+  --confirm radfords-qa-pr-$1 \
+  --app radfords-qa-pr-$1
+heroku run rake db:migrate --app radfords-qa-pr-$1
+heroku ps:scale worker=1 --app radfords-qa-pr-$1
+heroku restart --app radfords-qa-pr-$1

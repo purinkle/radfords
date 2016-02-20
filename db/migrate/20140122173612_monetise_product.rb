@@ -1,7 +1,7 @@
 class MonetiseProduct < ActiveRecord::Migration
   def up
     remove_column :products, :price
-    add_money :products, :price
+    add_monetize :products, :price
   end
 
   def down
