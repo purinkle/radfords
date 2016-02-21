@@ -50,6 +50,10 @@ group :development, :test do
   gem "rspec-rails", "~> 3.4.0"
 end
 
+group :development, :staging do
+  gem "rack-mini-profiler", require: false
+end
+
 group :test do
   gem "capybara-webkit"
   gem "cucumber-rails", require: false
