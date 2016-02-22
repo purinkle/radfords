@@ -8,6 +8,9 @@
     "HEROKU_APP_NAME":{
       "required":true
     },
+    "HONEYBADGER_API_KEY":{
+      "required":true
+    },
     "RACK_ENV":{
       "required":true
     },
