@@ -128,6 +128,17 @@ describe Order do
     end
   end
 
+  describe "#line_items" do
+    let(:basket) { double("Basket", line_items: items) }
+    let(:items) { [] }
+
+    before { allow(order).to receive(:basket).and_return(basket) }
+
+    it "returns the basket's line items" do
+      expect(order.line_items).to be(items)
+    end
+  end
+
   describe "#make_address" do
     let(:address_line_1) { "1 Bro Deg" }
     let(:made_address) { [address_line_1].join("\n") }
