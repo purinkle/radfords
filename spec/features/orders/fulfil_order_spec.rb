@@ -2,17 +2,12 @@ require "rails_helper"
 
 module Features
   describe 'fulfil order' do
-    let(:email) { user.email }
     let(:order) { FactoryGirl.create(:order) }
     let(:order_page) { OrderPage.new(order) }
     let(:mail) { ActionMailer::Base.deliveries.last }
-    let(:password) { user.password }
-    let(:signin_page) { SigninPage.new(email, password) }
-    let(:user) { FactoryGirl.create(:user) }
 
     it 'sends an email to the customer' do
-      visit signin_path
-      signin_page.sign_in
+      sign_in
 
       order_page.visit_page
       order_page.fulfil

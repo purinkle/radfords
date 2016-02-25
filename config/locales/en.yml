@@ -86,3 +86,5 @@ en:
     application: "Radfords of Somerford"
     baskets:
       show: "Your Basket"
+    pages:
+      outlets: "Outlets"
