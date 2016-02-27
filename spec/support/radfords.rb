@@ -1,4 +1,10 @@
 module RadfordsTestHelpers
+  def create_product(options = {})
+    VCR.use_cassette("aws", match_requests_on: [:host]) do
+      create(:product, options)
+    end
+  end
+
   def sign_in
     user = FactoryGirl.create(:user)
     page = SigninPage.new(user.email, user.password)

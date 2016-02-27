@@ -17,9 +17,5 @@ module Features
       page.visit
       page.add_to_basket
     end
-
-    def create_product
-      FactoryGirl.create(:product)
-    end
   end
 end

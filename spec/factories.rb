@@ -1,3 +1,5 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
   factory :basket do
   end
@@ -18,10 +20,7 @@ FactoryGirl.define do
 
   factory :product do
     description 'Packed full of bar, baz, and plenty of qux.'
-    photo_file_name { "photo.jpg" }
-    photo_content_type { "image/jpg" }
-    photo_file_size { 1024 }
-    price { Money.new(599) }
+    photo { File.open("spec/support/files/photo.jpg") }
     title 'foo'
   end
 end

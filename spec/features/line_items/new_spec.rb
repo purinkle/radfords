@@ -5,7 +5,7 @@ module Features
     let(:product) { Product.last }
     let(:user) { FactoryGirl.create(:user) }
 
-    before { FactoryGirl.create(:product) }
+    before { create_product }
 
     it "shows the line item in the basket" do
       visit signin_path

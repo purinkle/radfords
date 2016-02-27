@@ -3,7 +3,7 @@ require "rails_helper"
 module Features
   describe "edit line item" do
     it "increases the item's quantity" do
-      create :product
+      create_product
       add_products_to_basket
 
       basket_page.visit
@@ -13,7 +13,7 @@ module Features
     end
 
     it "decreases the item's quantity" do
-      create :product
+      create_product
       add_products_to_basket
 
       basket_page.visit
@@ -24,7 +24,7 @@ module Features
     end
 
     it "only allows positive quantities" do
-      create :product
+      create_product
       add_products_to_basket
 
       basket_page.visit
@@ -56,8 +56,8 @@ module Features
     end
 
     def create_products
-      create(:product, title: "Plum Jam")
-      create(:product, title: "Rhubarb and Ginger Jam")
+      create_product(title: "Plum Jam")
+      create_product(title: "Rhubarb and Ginger Jam")
     end
   end
 end

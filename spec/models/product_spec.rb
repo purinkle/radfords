@@ -1,7 +1,13 @@
 require "rails_helper"
 
 describe Product do
-  let(:product) { described_class.new }
+  let(:product) { build(:product) }
+
+  describe "#to_s" do
+    it "returns the title" do
+      expect(product.to_s).to eql(product.title)
+    end
+  end
 
   describe '#ensure_not_referenced_by_any_line_item' do
     subject { product.send(:ensure_not_referenced_by_any_line_item) }

@@ -4,7 +4,7 @@ module Features
   describe "destroy line item" do
     let(:user) { FactoryGirl.create :user }
 
-    before { FactoryGirl.create :product }
+    before { create_product }
 
     it "removes the line item from the basket" do
       visit signin_path
