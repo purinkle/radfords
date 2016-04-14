@@ -324,7 +324,7 @@ DEPENDENCIES
   aws-sdk
   bourbon (~> 4.2.0)
   bullet
-  bundler-audit
+  bundler-audit (>= 0.5.0)
   capybara-webkit
   coffee-rails (~> 4.1.0)
   cucumber-rails
