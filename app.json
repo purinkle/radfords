@@ -20,9 +20,6 @@
     "RACK_ENV":{
       "required":true
     },
-    "RAILS_ENV":{
-      "required":true
-    },
     "S3_BUCKET_NAME":{
       "required":true
     },
