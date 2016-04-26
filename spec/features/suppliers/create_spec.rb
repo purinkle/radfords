@@ -11,6 +11,8 @@ module Features
         click_button("Create Supplier")
       end
 
+      expect(page).to have_text("You successfully created a supplier.")
+      expect(page).to have_text("Delicatessens / Farm Shops")
       expect(page).to have_text(name)
     end
 
