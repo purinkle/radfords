@@ -21,6 +21,8 @@ en:
     submit:
       product:
         create: "Create Product"
+      supplier:
+        update: "Update Supplier"
   layouts:
     header:
       basket: "Basket (%{item_count})"
