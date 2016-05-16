@@ -290,7 +290,7 @@ GEM
       rest-client (~> 1.4)
     thor (0.19.1)
     thread_safe (0.3.5)
-    tilt (2.0.2)
+    tilt (2.0.3)
     timecop (0.8.1)
     title (0.0.5)
       i18n
@@ -375,5 +375,8 @@ DEPENDENCIES
   web-console
   webmock
 
+RUBY VERSION
+   ruby 2.3.1p112
+
 BUNDLED WITH
-   1.11.2
+   1.12.3
