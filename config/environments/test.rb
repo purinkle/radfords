@@ -1,5 +1,4 @@
 Rails.application.configure do
-  config.assets.raise_runtime_errors = true
   config.cache_classes = true
   config.eager_load = false
   config.serve_static_files   = true
@@ -12,6 +11,7 @@ Rails.application.configure do
   config.active_support.test_order = :random
   config.active_support.deprecation = :stderr
   config.action_view.raise_on_missing_translations = true
+  config.assets.raise_runtime_errors = true
   config.action_mailer.default_url_options = { host: "www.example.com" }
   config.active_job.queue_adapter = :inline
 end
