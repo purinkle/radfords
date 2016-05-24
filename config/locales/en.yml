@@ -95,4 +95,5 @@ en:
     pages:
       outlets: "Outlets"
     products:
+      create: "New Product"
       show: "%{product}"

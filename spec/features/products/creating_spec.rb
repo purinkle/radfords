@@ -2,21 +2,31 @@ require "rails_helper"
 
 module Features
   describe "creating products" do
+    let(:options) { {} }
+    let(:page) { NewProductPage.new(options) }
+
     it "creates products" do
       sign_in
-      visit new_product_url
+      page.visit
 
-      VCR.use_cassette("aws", match_requests_on: [:host]) do
-        fill_form(:product, attributes_for(:product, title: product_name))
-        click_on(submit(:product))
-      end
+      page.create_product
 
-      expect(page).to have_title(product_name)
-      expect(page).to have_text("You successfully created a product")
+      expect(page).to be_product_page
+      expect(page).to have_flash("You successfully created a product")
     end
 
-    def product_name
-      "Raspberry Jam"
+    context "when there is no title" do
+      let(:options) { { title: "" } }
+
+      it "does not create a product" do
+        sign_in
+        page.visit
+
+        page.create_product
+
+        expect(page).to be_new_product_page
+        expect(page).to have_error("Title can't be blank")
+      end
     end
   end
 end
