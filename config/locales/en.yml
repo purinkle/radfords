@@ -96,4 +96,5 @@ en:
       outlets: "Outlets"
     products:
       create: "New Product"
+      delete: "Delete Product"
       show: "%{product}"
