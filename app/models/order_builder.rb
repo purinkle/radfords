@@ -6,7 +6,7 @@ class OrderBuilder
 
   def build
     ChargesCustomers.charge(email, stripe_token, price, id)
-    mailer.deliver
+    mailer.deliver_now
   end
 
   def self.build(order, stripe_token)

@@ -1,7 +1,11 @@
 <% if flash.any? %>
-  <div class="flashes">
-    <% user_facing_flashes.each do |key, value| -%>
-      <div class="flash-<%= key %>"><%= value %></div>
-    <% end -%>
-  </div>
+  <% if flash[:partial] %>
+    <%= render(partial: "/shared/flashes/#{flash[:partial]}") %>
+  <% else %>
+    <div class="flashes">
+      <% user_facing_flashes.each do |key, value| -%>
+        <div class="flash-<%= key %>"><%= value %></div>
+      <% end -%>
+    </div>
+  <% end %>
 <% end %>

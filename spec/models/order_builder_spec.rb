@@ -8,7 +8,7 @@ describe OrderBuilder do
 
     let(:email) { "alphonso@example.com" }
     let(:id) { 1 }
-    let(:message) { double("Mail::Message", deliver: nil) }
+    let(:message) { double("Mail::Message", deliver_now: nil) }
     let(:price) { 395_00 }
     let(:stripe_token) { "test_stripe_token" }
     let(:total_price) { double("Money", cents: price) }
@@ -27,7 +27,7 @@ describe OrderBuilder do
     end
 
     it "delivers the message" do
-      expect(message).to have_received :deliver
+      expect(message).to have_received :deliver_now
     end
   end
 end
