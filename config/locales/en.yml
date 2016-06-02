@@ -97,4 +97,5 @@ en:
     products:
       create: "New Product"
       delete: "Delete Product"
+      index: "Products"
       show: "%{product}"
