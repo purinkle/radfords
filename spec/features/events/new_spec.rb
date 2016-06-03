@@ -24,5 +24,19 @@ module Features
       expect(page).to have_content(takes_place_on)
       expect(page).to have_content(location)
     end
+
+    context "when there is no name" do
+      let(:name) { "" }
+
+      it "does not create events" do
+        sign_in
+        new_event_page.visit
+
+        new_event_page.create
+
+        expect(page).to have_title("New Event")
+        expect(page).to have_content("Name can't be blank")
+      end
+    end
   end
 end
