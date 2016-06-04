@@ -21,6 +21,10 @@ en:
     submit:
       product:
         create: "Create Product"
+
+      session:
+        create: "Sign in"
+
       supplier:
         update: "Update Supplier"
   layouts:
@@ -105,3 +109,6 @@ en:
       delete: "Delete Product"
       index: "Products"
       show: "%{product}"
+
+    sessions:
+      create: "Sign in"
