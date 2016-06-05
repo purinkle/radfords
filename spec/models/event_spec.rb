@@ -13,6 +13,10 @@
 require "rails_helper"
 
 describe Event do
+  subject(:event) { Event.new(attributes) }
+
+  let(:attributes) { attributes_for(:event) }
+
   before (:each) do
     @attr = {
       :name           => 'Rob\'s Birthday',
@@ -56,5 +60,13 @@ describe Event do
   it 'should require a location' do
     no_location_event = Event.create( @attr.merge( :location => '' ) )
     expect(no_location_event).to_not be_valid
+  end
+
+  describe "#to_s" do
+    let(:name) { attributes.fetch(:name) }
+
+    it "returns the event's name" do
+      expect(event.to_s).to eql(name)
+    end
   end
 end

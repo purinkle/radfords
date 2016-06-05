@@ -4,6 +4,12 @@ FactoryGirl.define do
   factory :basket do
   end
 
+  factory :event do
+    name "Macclesfield Farmers Market"
+    takes_place_on { Time.current + 1.day }
+    location "Town Hall, Macclesfield"
+  end
+
   factory :user do
     name 'Robert Whittaker'
     email 'purinkle@example.com'

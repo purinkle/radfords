@@ -12,6 +12,11 @@ en:
     show:
       heading: "Your Basket"
       title: "Your Basket"
+
+  date:
+    formats:
+      event: "%e %B %Y"
+
   events:
     not_found: "We couldn't find the event you were looking for."
   fulfilments:
@@ -19,6 +24,9 @@ en:
       notice: Shipment notification email sent
   helpers:
     submit:
+      event:
+        update: "Update Event"
+
       product:
         create: "Create Product"
 
@@ -100,6 +108,7 @@ en:
 
     events:
       create: "New Event"
+      show: "%{event}"
 
     pages:
       outlets: "Outlets"

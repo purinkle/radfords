@@ -21,9 +21,13 @@ class Event < ActiveRecord::Base
 
   def takes_place_on
     if read_attribute(:takes_place_on)
-      read_attribute(:takes_place_on).strftime('%e %B %Y')
+      I18n.l(read_attribute(:takes_place_on), format: :event)
     else
       nil
     end
+  end
+
+  def to_s
+    name
   end
 end

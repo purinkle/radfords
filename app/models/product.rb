@@ -13,7 +13,7 @@ class Product < ActiveRecord::Base
     },
     s3_host_name: ENV['S3_HOST_NAME'],
     s3_protocol: "",
-    styles: {
+    style: {
       order_summary: "70x70#",
       preview: "50x50#",
       show: "584x399#",
