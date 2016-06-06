@@ -17,4 +17,17 @@ describe "deleting products" do
     expect(page).to have_content("Product was deleted.")
     expect(Product.count).to be_zero
   end
+
+  context "when the product can't be found" do
+    it "shows the 'Products' page" do
+      expect(Product.count).to be_zero
+
+      sign_in
+
+      visit delete_product_url(1)
+
+      expect(page).to have_title("Products")
+      expect(page).to have_content("We couldn't find that product.")
+    end
+  end
 end
