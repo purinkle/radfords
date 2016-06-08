@@ -30,4 +30,24 @@ describe "deleting products" do
       expect(page).to have_content("We couldn't find that product.")
     end
   end
+
+  context "when the product is already destroyed" do
+    it "shows the 'Products' page" do
+      product = create_product
+      sign_in
+
+      visit delete_product_url(product)
+
+      VCR.use_cassette("aws", match_requests_on: [:host]) do
+        product.destroy
+      end
+
+      VCR.use_cassette("aws", match_requests_on: [:host]) do
+        click_button("Delete Product")
+      end
+
+      expect(page).to have_title("Products")
+      expect(page).to have_content("We couldn't find that product.")
+    end
+  end
 end
