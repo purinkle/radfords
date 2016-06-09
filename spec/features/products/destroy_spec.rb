@@ -50,4 +50,24 @@ describe "deleting products" do
       expect(page).to have_content("We couldn't find that product.")
     end
   end
+
+  context "when the product is in someone's basket" do
+    it "shows the 'Products' page" do
+      product = create_product
+      expect(Product.count).to eql(1)
+      visit product_url(product)
+      find("input[type=submit]").click
+
+      sign_in
+
+      visit delete_product_url(product)
+
+      VCR.use_cassette("aws", match_requests_on: [:host]) do
+        click_button("Delete Product")
+      end
+
+      expect(page).to have_title("Delete Product")
+      expect(page).to have_content("Line Items present")
+    end
+  end
 end

@@ -117,6 +117,7 @@ en:
     products:
       create: "New Product"
       delete: "Delete Product"
+      destroy: "Delete Product"
       index: "Products"
       show: "%{product}"
 
