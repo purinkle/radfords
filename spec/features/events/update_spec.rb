@@ -17,4 +17,18 @@ describe "updating events" do
     expect(page).to have_content(event.location)
     expect(page).to have_content(takes_place_on)
   end
+
+  context "when the attributes are invalid" do
+    it "unsuccessfully updates" do
+      event = create(:event)
+
+      sign_in
+      visit edit_event_url(event)
+
+      fill_form_and_submit(:event, :edit, {})
+
+      expect(page).to have_title("Edit Event")
+      expect(page).to have_content("Takes place on can't be blank")
+    end
+  end
 end

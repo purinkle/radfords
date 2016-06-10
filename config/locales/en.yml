@@ -110,6 +110,7 @@ en:
     events:
       create: "New Event"
       show: "%{event}"
+      update: "Edit Event"
 
     pages:
       outlets: "Outlets"
