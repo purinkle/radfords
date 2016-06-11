@@ -29,6 +29,7 @@ en:
 
       product:
         create: "Create Product"
+        update: "Update Product"
 
       session:
         create: "Sign in"
