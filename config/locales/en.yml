@@ -110,6 +110,7 @@ en:
 
     events:
       create: "New Event"
+      index: "Events"
       show: "%{event}"
       update: "Edit Event"
 
