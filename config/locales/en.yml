@@ -114,6 +114,9 @@ en:
       show: "%{event}"
       update: "Edit Event"
 
+    orders:
+      create: "New order"
+
     pages:
       outlets: "Outlets"
 

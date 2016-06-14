@@ -42,6 +42,29 @@ module Features
       )
     end
 
+    context "when the order is invalid" do
+      it "does not create an order" do
+        expect(Order.count).to be_zero
+
+        create_product
+        create_basket
+
+        page = NewOrderPage.new
+        page.visit
+
+        click_button("Place my order")
+
+        expect(Order.count).to be_zero
+        expect(page).to have_title("New order")
+        expect(page).to have_content("errors prohibited this from being saved")
+        expect(page).to have_content("Address city can't be blank")
+        expect(page).to have_content("Address line 1 can't be blank")
+        expect(page).to have_content("Address post code can't be blank")
+        expect(page).to have_content("Name can't be blank")
+        expect(page).to have_content("Email can't be blank")
+      end
+    end
+
     def create_basket
       page = ProductPage.new
       page.visit
