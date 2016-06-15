@@ -17,4 +17,19 @@ describe "creating suppliers" do
     expect(page).to have_content(supplier.fetch(:telephone_number))
     expect(page).to have_content(supplier.fetch(:website))
   end
+
+  context "when the supplier is invalid" do
+    it "redirects back to the new supplier page" do
+      sign_in
+      visit new_supplier_url
+
+      click_on submit(:supplier, :create)
+
+      expect(page).to have_title("New Supplier")
+      expect(page).to have_content("errors prohibited this from being saved")
+      expect(page).to have_content("Address can't be blank")
+      expect(page).to have_content("Name can't be blank")
+      expect(page).to have_content("Telephone number can't be blank")
+    end
+  end
 end
