@@ -4,7 +4,7 @@ ruby "2.3.1"
 
 gem "autoprefixer-rails"
 gem "aws-sdk"
-gem "bourbon", "5.0.0.beta.5"
+gem "bourbon", "5.0.0.beta.6"
 gem "delayed_job_active_record"
 gem "draper"
 gem "flutie"
