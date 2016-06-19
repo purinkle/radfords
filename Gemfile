@@ -4,7 +4,6 @@ ruby "2.3.1"
 
 gem "autoprefixer-rails"
 gem "aws-sdk"
-gem "bourbon", "5.0.0.beta.6"
 gem "delayed_job_active_record"
 gem "draper"
 gem "flutie"
@@ -14,7 +13,6 @@ gem "honeybadger"
 gem "jquery-rails"
 gem "kaminari"
 gem "money-rails"
-gem "neat", "~> 1.7.0"
 gem "normalize-rails", "~> 3.0.0"
 gem "paperclip"
 gem "pg"
@@ -47,7 +45,6 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "refills"
   gem "rspec-rails", "~> 3.4.0"
 end
 
@@ -72,3 +69,7 @@ group :staging, :production do
   gem "rack-timeout"
   gem "rails_stdout_logging"
 end
+
+gem "bourbon", "5.0.0.beta.6"
+gem "neat", "~> 1.7.0"
+gem "refills", group: [:development, :test]
