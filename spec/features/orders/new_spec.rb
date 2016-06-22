@@ -65,6 +65,19 @@ module Features
       end
     end
 
+    context "when the basket is empty" do
+      it "shows the 'Shop' page" do
+        expect(Order.count).to be_zero
+
+        page = NewOrderPage.new
+        page.visit
+
+        expect(page).to have_title("Shop")
+        expect(page).to have_content("Your basket is empty")
+        expect(Order.count).to be_zero
+      end
+    end
+
     def create_basket
       page = ProductPage.new
       page.visit
