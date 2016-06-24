@@ -133,3 +133,4 @@ en:
 
     suppliers:
       create: "New Supplier"
+      update: "Edit Supplier"
