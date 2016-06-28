@@ -127,6 +127,7 @@ en:
       destroy: "Delete Product"
       index: "Products"
       show: "%{product}"
+      update: "Edit Product"
 
     sessions:
       create: "Sign in"
