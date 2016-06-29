@@ -3,16 +3,6 @@ require "rails_helper"
 describe BasketDecorator do
   subject(:decorator) { BasketDecorator.new(basket) }
 
-  describe ".model_name" do
-    let(:model_name) { double("ActiveModel::Name") }
-
-    before { allow(Basket).to receive(:model_name).and_return(model_name) }
-
-    it "returns the model name of the basket" do
-      expect(BasketDecorator.model_name).to be(model_name)
-    end
-  end
-
   describe "#item_count" do
     let(:basket) { double("Basket") }
     let(:item_1) { double("LineItem", quantity: 2) }
@@ -41,44 +31,11 @@ describe BasketDecorator do
     end
   end
 
-  describe "#persisted?" do
-    let(:basket) { double("Basket", persisted?: true) }
-
-    it { is_expected.to be_persisted }
-  end
-
   describe "#to_model" do
     let(:basket) { double("Basket") }
 
     it "returns the basket" do
       expect(decorator.to_model).to be(basket)
-    end
-  end
-
-  describe "#to_partial_path" do
-    subject { decorator.to_partial_path }
-
-    let(:line_items) { [] }
-    let(:partial_path) { "baskets/basket" }
-
-    let(:basket) do
-      double("Basket", to_partial_path: partial_path)
-    end
-
-    before do
-      allow(decorator).to receive(:line_items).and_return(line_items)
-    end
-
-    it "returns 'empty_basket'" do
-      expect(subject).to eql("empty_basket")
-    end
-
-    context "when the basket has items" do
-      let(:line_items) { [double("LineItem")] }
-
-      it "returns the basket's partial path" do
-        expect(subject).to eql(partial_path)
-      end
     end
   end
 

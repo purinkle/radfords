@@ -13,4 +13,13 @@ describe "show event" do
       expect(page).to have_content(I18n.t("events.not_found"))
     end
   end
+
+  context "when the person is not signed in" do
+    it "shows the 'Sign in' page" do
+      visit event_url(1)
+
+      expect(page).to have_title(t("titles.sessions.new"))
+      expect(page).to have_content(t("sessions.unauthenticated"))
+    end
+  end
 end

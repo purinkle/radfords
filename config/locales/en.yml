@@ -131,6 +131,7 @@ en:
 
     sessions:
       create: "Sign in"
+      new: "Sign in"
 
     suppliers:
       create: "New Supplier"
