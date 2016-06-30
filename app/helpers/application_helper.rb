@@ -1,8 +1,4 @@
 module ApplicationHelper
-  def flash_message_class(type)
-    { 'alert' => 'error', 'notice' => 'success' }.fetch(type, 'info')
-  end
-
   def humanize_price(price)
     humanized_money_with_symbol(price, no_cents_if_whole: false)
   end
