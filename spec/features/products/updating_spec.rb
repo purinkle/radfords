@@ -38,7 +38,7 @@ describe "updating products" do
         fill_form_and_submit(:product, :edit, updated_product)
       end
 
-      expect(page).to have_title(t("titles.products.update"))
+      expect(page).to have_title(t("titles.products.edit"))
       expect(page).to have_content("1 error prohibited this from being saved")
       expect(page).to have_content("Title has already been taken")
     end

@@ -109,30 +109,29 @@ en:
       show: "Your Basket"
 
     events:
-      create: "New Event"
+      edit: "Edit Event"
       index: "Events"
+      new: "New Event"
       show: "%{event}"
-      update: "Edit Event"
 
     orders:
-      create: "New order"
+      new: "New order"
 
     pages:
       outlets: "Outlets"
       products: "Shop"
 
     products:
-      create: "New Product"
       delete: "Delete Product"
       destroy: "Delete Product"
+      edit: "Edit Product"
       index: "Products"
+      new: "New Product"
       show: "%{product}"
-      update: "Edit Product"
 
     sessions:
-      create: "Sign in"
       new: "Sign in"
 
     suppliers:
-      create: "New Supplier"
-      update: "Edit Supplier"
+      edit: "Edit Supplier"
+      new: "New Supplier"

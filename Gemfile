@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "2.3.1"
 
 gem "autoprefixer-rails"
-gem "aws-sdk"
+gem "aws-sdk-v1"
 gem "delayed_job_active_record"
 gem "draper"
 gem "flutie"
