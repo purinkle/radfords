@@ -3,7 +3,7 @@ source "https://rubygems.org"
 ruby "2.3.1"
 
 gem "autoprefixer-rails"
-gem "aws-sdk-v1"
+gem "aws-sdk"
 gem "delayed_job_active_record"
 gem "draper"
 gem "flutie"
@@ -65,6 +65,7 @@ group :test do
 end
 
 group :staging, :production do
+  gem "heroku-deflater"
   gem "rack-timeout"
   gem "rails_stdout_logging"
 end
