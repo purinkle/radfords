@@ -14,7 +14,7 @@ FactoryGirl.define do
     name 'Robert Whittaker'
     email 'purinkle@example.com'
     password 'foobar'
-    password_confirmation 'foobar'
+    password_confirmation { password }
   end
 
   factory :supplier do
