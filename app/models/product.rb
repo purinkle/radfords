@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   extend FriendlyId
 
-  has_many :line_items
+  has_many :line_items, dependent: :restrict_with_error
 
   has_attached_file :photo,
     default_url: "/photos/original/missing_:style.png",

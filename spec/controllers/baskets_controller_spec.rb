@@ -14,7 +14,8 @@ describe BasketsController do
     end
 
     it "is successful" do
-      get :show, nil, basket_id: basket_id
+      get :show, session: { basket_id: basket_id }
+
       expect(response).to be_success
     end
   end
@@ -22,7 +23,9 @@ describe BasketsController do
   describe 'DELETE "destroy"' do
     it 'redirects to the shop' do
       allow(Basket).to receive(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
-      delete :destroy, id: '1'
+
+      delete :destroy, params: { id: "1" }
+
       expect(response).to redirect_to basket_url
     end
   end

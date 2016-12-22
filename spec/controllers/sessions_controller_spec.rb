@@ -7,11 +7,6 @@ describe SessionsController do
 
       expect(response).to be_success
     end
-
-    it 'should have the right title' do
-      get :new
-      expect(assigns(:title)).to eql("Sign In")
-    end
   end
 
   describe 'POST "create"' do
@@ -20,21 +15,10 @@ describe SessionsController do
         @attr = { :email => 'email@example.com', :password => 'invalid' }
       end
 
-      it 'should re-render the new page' do
-        post :create, :session => @attr
-
-        expect(response).to render_template("new")
-      end
-
-      it 'should have the right title' do
-        post :create, :session => @attr
-        expect(assigns(:title)).to eql("Sign In")
-      end
-
       it "sets the alert flash" do
         allow(User).to receive(:authenticate)
 
-        post :create, session: {}
+        post :create, params: { session: @attr }
 
         expect(flash[:alert]).to eql "Invalid email or password."
       end
@@ -47,14 +31,14 @@ describe SessionsController do
       end
 
       it 'should sign the user in' do
-        post :create, :session => @attr
+        post :create, params: { session: @attr }
 
         expect(controller.current_user).to eq(@user)
         expect(controller).to be_signed_in
       end
 
       it 'should redirect to the new event page' do
-        post :create, :session => @attr
+        post :create, params: { session: @attr }
 
         expect(response).to redirect_to(events_path)
       end

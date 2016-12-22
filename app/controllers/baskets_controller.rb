@@ -1,5 +1,5 @@
 class BasketsController < ApplicationController
-  skip_before_filter :authenticate
+  skip_before_action :authenticate
 
   def show
     @basket = BasketDecorator.new(FindBasket.call(id: session["basket_id"]))

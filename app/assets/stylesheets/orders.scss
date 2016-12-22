@@ -27,7 +27,7 @@ $green: #8fc243;
 .order-summary {
   @include border-bottom-radius($base-border-radius);
   @include border-top-radius($base-border-radius);
-  @include span-columns(6);
+  @include grid-column(6);
 
   border: $base-border;
 
@@ -38,7 +38,7 @@ $green: #8fc243;
   }
 
   .section {
-    @include fill-parent;
+    @include grid-column(6);
 
     border-top: $base-border;
     margin-top: 0;
@@ -183,7 +183,7 @@ $green: #8fc243;
 }
 
 .checkout {
-  @include span-columns(6);
+  @include grid-column(6);
 
   #{$all-text-inputs} {
     background: transparent;

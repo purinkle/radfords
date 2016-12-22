@@ -9,7 +9,10 @@ describe "deleting products" do
 
     visit delete_product_url(product)
 
-    VCR.use_cassette("aws", match_requests_on: [:host]) do
+    VCR.use_cassette(
+      "aws/delete",
+      match_requests_on: [:method, :uri_without_partition_id],
+    ) do
       click_button("Delete Product")
     end
 
@@ -38,7 +41,10 @@ describe "deleting products" do
 
       visit delete_product_url(product)
 
-      VCR.use_cassette("aws", match_requests_on: [:host]) do
+      VCR.use_cassette(
+        "aws/delete",
+        match_requests_on: [:method, :uri_without_partition_id],
+      ) do
         product.destroy
       end
 
@@ -62,7 +68,10 @@ describe "deleting products" do
 
       visit delete_product_url(product)
 
-      VCR.use_cassette("aws", match_requests_on: [:host]) do
+      VCR.use_cassette(
+        "aws/delete",
+        match_requests_on: [:method, :uri_without_partition_id],
+      ) do
         click_button("Delete Product")
       end
 

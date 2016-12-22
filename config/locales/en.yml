@@ -1,4 +1,11 @@
 en:
+  activerecord:
+    errors:
+      models:
+        product:
+          restrict_dependent_destroy:
+            has_many: "Line Items present"
+
   baskets:
     basket:
       checkout: Checkout
@@ -16,6 +23,10 @@ en:
   date:
     formats:
       event: "%e %B %Y"
+      default:
+        "%m/%d/%Y"
+      with_weekday:
+        "%a %m/%d/%y"
 
   events:
     not_found: "We couldn't find the event you were looking for."
@@ -100,7 +111,12 @@ en:
     update: "You successfully updated the supplier."
   time:
     formats:
-      default: '%a, %b %-d, %Y at %r'
+      default:
+        "%a, %b %-d, %Y at %r"
+      date:
+        "%b %-d, %Y"
+      short:
+        "%B %d"
 
   titles:
     application: "Radfords of Somerford"

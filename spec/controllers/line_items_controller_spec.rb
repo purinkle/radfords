@@ -13,7 +13,12 @@ describe LineItemsController do
     end
 
     it 'redirects to the saved basket' do
-      post :create, product_id: product_id
+      products = class_double("Product")
+      allow(Product).to receive(:friendly).and_return(products)
+      allow(products).to receive(:find).and_return(product)
+
+      post :create, params: { product_id: product_id }
+
       expect(response).to redirect_to(basket_url)
     end
   end
@@ -26,12 +31,14 @@ describe LineItemsController do
     before { allow(LineItem).to receive(:find).with(id).and_return item }
 
     it "destroys the line item" do
-      delete :destroy, params
+      delete :destroy, params: params
+
       expect(item).to have_received :destroy
     end
 
     it "redirects to the home page" do
-      delete :destroy, params
+      delete :destroy, params: params
+
       expect(response).to redirect_to basket_url
     end
   end
@@ -48,12 +55,18 @@ describe LineItemsController do
     end
 
     it "updates the line item" do
-      put :update, params
-      expect(item).to have_received(:update_attributes).with item_params
+      allow(item).to receive(:update_attributes)
+
+      put :update, params: params
+
+      expect(item).to have_received(:update_attributes)
     end
 
     it "redirects to the home page" do
-      put :update, params
+      allow(item).to receive(:update_attributes)
+
+      put :update, params: params
+
       expect(response).to redirect_to basket_url
     end
   end

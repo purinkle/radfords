@@ -1,0 +1,463 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/501/original/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T145025Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=60c73c3f3ba390659f5282ac7fe517dea14faf3f1470fc8513b7eaf50ab15202
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Request-Id:
+      - D6EC6DDDC725298B
+      X-Amz-Id-2:
+      - jncArA7NzwMbPeJsbGZT0J4ybBm6II0oFM3vpbUJKwsSNeQ7i8ubwCqX3CBqQRMdM6GtPUBW6kU=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Thu, 22 Dec 2016 14:50:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 14:50:25 GMT
+- request:
+    method: head
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/501/order_summary/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T145025Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=1b8a4b07e7e6f18b45f96f0dfdb647459f6e0bf31c9e03b9bc6e354f5c972eb8
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Request-Id:
+      - 4A1276917C923558
+      X-Amz-Id-2:
+      - dR5cX75zbDVQR6Gdyuj+86+BUA9bzg+XryjFqOwcr4uVVbxk0Y4psZ1qCzzRQt4UGe6KD9nrEs8=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Thu, 22 Dec 2016 14:50:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 14:50:25 GMT
+- request:
+    method: head
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/501/preview/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T145025Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=89ff9f0c497672c5bdd19faf8d280d4c85f06abeef34e639f674d2d829cf12a0
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Request-Id:
+      - F096B7A7A3122DB7
+      X-Amz-Id-2:
+      - nYsASoYikoT6bfwIbIZnfrZMlOU7xSQ1V2b2klIDLPkrl8DUsZpbnKYeDVJrxqcR5+rEyrgsSo4=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Thu, 22 Dec 2016 14:50:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 14:50:25 GMT
+- request:
+    method: head
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/501/show/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T145025Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=6e33d51b15b6c66be0961fcdef01474317769b8475982844f5d0c325a455922d
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Request-Id:
+      - CAF33F110D36CCB3
+      X-Amz-Id-2:
+      - fgmar0VTtk8ADwb0PyLZfeqOOBiJ+SW9B4sDm+Bom2SjY1owYfZabehvkFuahgNs9t8JnBg5Drk=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Thu, 22 Dec 2016 14:50:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 14:50:25 GMT
+- request:
+    method: head
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/501/thumbnail/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T145025Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=f3ed6ba5475b7b19d772d6f970dc3268bd592d1c4bbd50203080070b1ac5226a
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Request-Id:
+      - CE421DEFE92B174D
+      X-Amz-Id-2:
+      - eQbXzCj5gV70jT+wM2F/gGYg7jXmIFhkGMPhsNMMNO0wvWAmC2bZMEj6fFVdn0L9BoipYtOKYts=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Thu, 22 Dec 2016 14:50:25 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 14:50:25 GMT
+- request:
+    method: delete
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/original/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T120442Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=cfcb6640036eb54095995a09df506c9cdc446c0b551a653d3089b06ac1c1678b
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Amz-Id-2:
+      - ErHo76wwWwxZ4h0njZ+q84xI/b2+1ar+wUhn21vcArjPBGcvT/cmNsmy5sFLim3MU3+XZPDQGGg=
+      X-Amz-Request-Id:
+      - D3A40613C1B90C6F
+      Date:
+      - Thu, 22 Dec 2016 12:04:43 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
+- request:
+    method: delete
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/order_summary/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T120442Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=60ab13a8f10bc7f299db019414bb80a8f00f45f1c1c73015dd47bfbf1c8211b1
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Amz-Id-2:
+      - JHtGXXilcFYd88dIfNqDAv8HLA8iQP5D9YnsRFQawzf3XozMuNrtykdPhWO6oQwvsGS6Sfdt+zg=
+      X-Amz-Request-Id:
+      - 5AD808F00F6CB801
+      Date:
+      - Thu, 22 Dec 2016 12:04:43 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
+- request:
+    method: delete
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/preview/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T120442Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=07da2b53dfe3f2cb72e16c0f5e37c6cd6f63c6837f7a671e388753c5d8fc75f7
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Amz-Id-2:
+      - LkGASRZv74er/h36DD3x8jdaOxMn3dF+AsqpM5D7zswQ5V7Kt9AUPDrkTcEwrJPOi9o8iIa/xoc=
+      X-Amz-Request-Id:
+      - 63F8264FBA92B4F1
+      Date:
+      - Thu, 22 Dec 2016 12:04:43 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
+- request:
+    method: delete
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/show/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T120442Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=321a6c9559b2a044ca6e2ddd45a17200adc5b3f86092bc5c1de29a4522fadb21
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Amz-Id-2:
+      - Pr3uxHIzs6aTFxwvwc6S7f6SFk0vlwvKUy9COpNKPHbkIJKBv0FUV96zr6dE5077uTV8LX+Bybw=
+      X-Amz-Request-Id:
+      - 7A988C22B277C43F
+      Date:
+      - Thu, 22 Dec 2016 12:04:43 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
+- request:
+    method: delete
+    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/thumbnail/photo.jpg
+    body:
+      encoding: ASCII-8BIT
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby2/2.3.19 ruby/2.3.1 x86_64-darwin16 resources
+      X-Amz-Date:
+      - 20161222T120442Z
+      Host:
+      - local-radfords-assets.s3.development-s3-region.amazonaws.com
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAJRIK42OKPCD4JHOA/20161222/eu-west-1/s3/aws4_request,
+        SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=f6eb9ee857145fffe904a3b94beb97fd18a77b8a6ad64734e944067dfbb0643e
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Amz-Id-2:
+      - lrcqV5tJafDUzxGIMCXQhNSbN9vTMhY/AyTLbkfcBGe8QMdN5pzK+IaF/MS+cAJj1+mx+IAhfLg=
+      X-Amz-Request-Id:
+      - 9ACFDC9886C0A54C
+      Date:
+      - Thu, 22 Dec 2016 12:04:43 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
+recorded_with: VCR 3.0.3

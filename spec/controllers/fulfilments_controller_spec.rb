@@ -15,12 +15,14 @@ describe FulfilmentsController do
     end
 
     it 'delivers the order fulfilled mail' do
-      post :create, order_id: order_id
+      post :create, params: { order_id: order_id }
+
       expect(mailer).to have_received(:deliver_now)
     end
 
     it 'redirects to the order page' do
-      post :create, order_id: order_id
+      post :create, params: { order_id: order_id }
+
       expect(response).to redirect_to(order_url)
     end
   end

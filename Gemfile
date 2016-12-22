@@ -5,7 +5,6 @@ ruby "2.3.1"
 gem "autoprefixer-rails"
 gem "aws-sdk"
 gem "delayed_job_active_record"
-gem "draper"
 gem "flutie"
 gem "friendly_id"
 gem "geocoder"
@@ -18,7 +17,7 @@ gem "paperclip"
 gem "pg"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 4.2.0"
+gem "rails", "~> 5.0.0"
 gem "recipient_interceptor"
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
@@ -31,7 +30,7 @@ gem "title"
 gem "uglifier"
 
 group :development do
-  gem "quiet_assets"
+  gem "listen"
   gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"
@@ -45,7 +44,8 @@ group :development, :test do
   gem "factory_girl_rails"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", "~> 3.4.0"
+  gem "refills"
+  gem "rspec-rails", "~> 3.5.0.beta4"
 end
 
 group :development, :staging do
@@ -70,7 +70,7 @@ group :staging, :production do
   gem "rails_stdout_logging"
 end
 
-gem "high_voltage"
-gem "bourbon", "5.0.0.beta.6"
-gem "neat", "~> 1.8.0"
-gem "refills", group: [:development, :test]
+gem 'high_voltage'
+gem 'bourbon', '~> 5.0.0.beta.7'
+gem 'neat', '~> 2.0.0.beta.1'
+gem 'refills', group: [:development, :test]

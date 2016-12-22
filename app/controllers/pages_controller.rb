@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_filter :authenticate
+  skip_before_action :authenticate
 
   def home
     @events = Event.limit(3)

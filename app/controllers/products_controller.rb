@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  skip_before_filter :authenticate, only: :show
+  skip_before_action :authenticate, only: :show
 
   def create
     @product = Product.new(product_params)
@@ -15,7 +15,7 @@ class ProductsController < ApplicationController
 
   def destroy
     begin
-      @product = Product.find(params[:id])
+      @product = Product.friendly.find(params[:id])
     rescue ActiveRecord::RecordNotFound
       redirect_to products_url, alert: t('products.destroy.alert')
       return
@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = Product.friendly.find(params[:id])
 
     if @product.update_attributes(product_params)
       flash[:notice] = 'Product saved.'
@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
   private
 
   def product
-    Product.find(params[:id])
+    Product.friendly.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "We couldn't find that product."
     redirect_to products_path

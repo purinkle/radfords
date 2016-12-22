@@ -1,5 +1,5 @@
 class LineItemsController < ApplicationController
-  skip_before_filter :authenticate
+  skip_before_action :authenticate
 
   def create
     @basket = current_basket
@@ -32,7 +32,7 @@ class LineItemsController < ApplicationController
   end
 
   def product
-    Product.find(product_id)
+    Product.friendly.find(product_id)
   end
 
   def product_id
