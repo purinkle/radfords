@@ -16,7 +16,12 @@ describe "updating products" do
     visit edit_product_url(product)
 
     VCR.use_cassette("aws", match_requests_on: [:host]) do
-      fill_form_and_submit(:product, :edit, updated_product)
+      VCR.use_cassette(
+        "aws/update",
+        match_requests_on: [:method, :uri_without_partition_id],
+      ) do
+        fill_form_and_submit(:product, :edit, updated_product)
+      end
     end
 
     expect(page).to have_title(updated_product.fetch(:title))

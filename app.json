@@ -5,6 +5,8 @@
     "APPLICATION_HOST":{
       "required":true
     },
+    "AWS_ACCESS_KEY_ID": { "required": true },
+    "AWS_SECRET_ACCESS_KEY": { "required": true },
     "EMAIL_RECIPIENTS":{
       "required":true
     },
@@ -23,6 +25,7 @@
     "S3_BUCKET_NAME":{
       "required":true
     },
+    "S3_REGION": { "required": true },
     "SECRET_KEY_BASE":{
       "generator":"secret"
     },

@@ -11,10 +11,10 @@ class Product < ActiveRecord::Base
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
-    s3_host_name: ENV['S3_HOST_NAME'],
-    s3_protocol: "",
     s3_region: ENV["S3_REGION"],
-    style: {
+    path: "product/:attachment/:id_partition/:style/:filename",
+    url: ":s3_domain_url",
+    styles: {
       order_summary: "70x70#",
       preview: "50x50#",
       show: "584x399#",
