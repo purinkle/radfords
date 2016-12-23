@@ -20,7 +20,6 @@ mkdir -p .git/safe
 # if [ -z "$CI" ]; then
 # fi
 
-# Set up the staging and production apps.
 git remote add staging git@heroku.com:radfords-qa.git || true
 git remote add production git@heroku.com:radfords-production.git || true
 
