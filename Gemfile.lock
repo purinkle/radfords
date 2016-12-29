@@ -355,7 +355,7 @@ DEPENDENCIES
   rails_stdout_logging
   recipient_interceptor
   refills
-  rspec-rails (~> 3.5.0.beta4)
+  rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   shoulda-matchers
   simple_form
