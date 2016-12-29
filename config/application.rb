@@ -1,4 +1,5 @@
-require_relative 'boot'
+# frozen_string_literal: true
+require_relative "boot"
 require "rails"
 require "active_model/railtie"
 require "active_job/railtie"
