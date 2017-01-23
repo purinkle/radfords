@@ -22,9 +22,7 @@
     "RACK_ENV":{
       "required":true
     },
-    "S3_BUCKET_NAME":{
-      "required":true
-    },
+    "S3_BUCKET_NAME":{ "required": true, "value": "radfords-review" },
     "S3_REGION": { "required": true },
     "SECRET_KEY_BASE":{
       "generator":"secret"

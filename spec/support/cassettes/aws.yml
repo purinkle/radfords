@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/products/photos/000/000/001/original/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/products/photos/000/000/001/original/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -4031,7 +4031,7 @@ http_interactions:
   recorded_at: Sat, 27 Feb 2016 20:19:50 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/products/photos/000/000/110/order_summary/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/products/photos/000/000/110/order_summary/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -4366,7 +4366,7 @@ http_interactions:
   recorded_at: Sat, 27 Feb 2016 20:19:51 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/products/photos/000/000/110/preview/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/products/photos/000/000/110/preview/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -4645,7 +4645,7 @@ http_interactions:
   recorded_at: Sat, 27 Feb 2016 20:19:51 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/products/photos/000/000/110/show/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/products/photos/000/000/110/show/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -8517,7 +8517,7 @@ http_interactions:
   recorded_at: Sat, 27 Feb 2016 20:19:52 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/products/photos/000/000/110/thumbnail/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/products/photos/000/000/110/thumbnail/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-

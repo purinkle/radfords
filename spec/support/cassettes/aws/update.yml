@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: delete
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/original/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/original/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -16,7 +16,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120442Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
@@ -46,7 +46,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
 - request:
     method: delete
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/order_summary/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/order_summary/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -60,7 +60,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120442Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
@@ -90,7 +90,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
 - request:
     method: delete
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/preview/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/preview/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -104,7 +104,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120442Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
@@ -134,7 +134,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
 - request:
     method: delete
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/show/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/show/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -148,7 +148,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120442Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
@@ -178,7 +178,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
 - request:
     method: delete
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/thumbnail/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/thumbnail/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: ''
@@ -192,7 +192,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120442Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
@@ -222,7 +222,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/original/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/original/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -511,7 +511,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120442Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - aa5387c21967b635336be121f0bd80606c045cefcff325267759d75af49c0d6e
       Authorization:
@@ -546,7 +546,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/order_summary/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/order_summary/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -736,7 +736,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120442Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - 8daeebc716b1917c602d6ffac07313ec903f025d40686b3df389f5d6f9e6d919
       Authorization:
@@ -771,7 +771,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:42 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/preview/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/preview/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -945,7 +945,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120442Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - bf7c32050feb0541a570487b60816a0e81086a70a25725ea80e6c88e247e0080
       Authorization:
@@ -980,7 +980,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:43 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/show/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/show/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1762,7 +1762,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120443Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - fc383d961741f50962f15d94ad60837b448a913bfb5899c3aec8a0ee2c037dce
       Authorization:
@@ -1797,7 +1797,7 @@ http_interactions:
   recorded_at: Thu, 22 Dec 2016 12:04:43 GMT
 - request:
     method: put
-    uri: https://local-radfords-assets.s3.development-s3-region.amazonaws.com/product/photos/000/000/251/thumbnail/photo.jpg
+    uri: https://radfords-development.s3-eu-west-1.amazonaws.com/product/photos/000/000/251/thumbnail/photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -2097,7 +2097,7 @@ http_interactions:
       X-Amz-Date:
       - 20161222T120443Z
       Host:
-      - local-radfords-assets.s3-eu-west-1.amazonaws.com
+      - radfords-development.s3-eu-west-1.amazonaws.com
       X-Amz-Content-Sha256:
       - 1aed03efac16ae5ade9246887b0bf1d65971b7cbe8a2ab10b6c7833490de7a8b
       Authorization:
