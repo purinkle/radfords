@@ -1,0 +1,24 @@
+// Breakpoints
+$small: (media: "screen and (max-width: 462px)");
+$medium: (media: "screen and (max-width: 659px)");
+$large: (media: 660px);
+$one-column: (media: "screen and (max-width: 506px)");
+$two-column: (media: "screen and (max-width: 776px)");
+
+
+// Typography
+$base-font-family: 'Poly', $base-font-family;
+$heading-font-family: 'Pacifico', $base-font-family;
+
+// Font Sizes
+$base-font-size: 1.25em;
+$small-font-size: 0.7em;
+
+// Colours
+$cream: #fbf3e5;
+$purple: #4c318e;
+$white: #fff;
+
+// Font colours
+$base-font-color: $purple;
+$action-color: $purple;

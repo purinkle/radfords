@@ -1,4 +1,4 @@
-<% content_for(:title, t('.title')) %>
+<%= render("layouts/header") %>
 
 <div class="checkout">
   <%= render 'form' %>
@@ -59,6 +59,8 @@
     </div>
   </div>
 </div>
+
+<%= render("layouts/footer") %>
 
 <%= content_for(:javascript) do %>
   <%= javascript_include_tag('https://js.stripe.com/v2/') %>

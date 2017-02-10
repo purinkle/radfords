@@ -14,7 +14,7 @@ module Features
 
       click_button "Sign in"
 
-      visit root_path
+      visit shop_path
 
       find("input[type=submit]").click
 

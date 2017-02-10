@@ -1,0 +1,14 @@
+.home-section {
+  @include grid-container;
+
+  background: $cream;
+  padding: $base-spacing;
+  text-align: center;
+}
+
+.home-blurb {
+  @include grid-media($large) {
+    @include grid-column(8);
+    @include grid-shift(2);
+  }
+}

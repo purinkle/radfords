@@ -4,7 +4,7 @@ describe "deleting baskets" do
   before { create_product }
 
   it "deletes existing basket" do
-    visit root_path
+    visit shop_path
     find("input[type=submit]").click
 
     click_button "Empty basket"

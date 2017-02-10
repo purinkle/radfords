@@ -1,0 +1,9 @@
+footer {
+  @include grid-container;
+  @include margin(null auto);
+
+  background: $purple;
+  max-width: $max-width;
+  padding: $base-spacing;
+  text-align: center;
+}

@@ -1,81 +1,20 @@
-<% content_for(:title, t('.title')) %>
+<%= content_for(:nav_class, "hero-nav") %>
 
-<ul class="product-thumbnails">
-  <%= render(
-    partial: 'product_thumbnails',
-    collection: @products,
-    as: :product
-  ) %>
-</ul>
+<%= render("layouts/header") %>
 
-<%= paginate @products %>
+<section class="home-section">
+  <article class="home-blurb">
+    <h2>The Company</h2>
 
-<div class="section">
-  <div class="article">
-    <h2>
-      The Company
-    </h2>
+    <p>Radfords of Somerford produces homemade foods. We do not
+    use any artificial colours, preservatives, or additives, which enables our
+    customers to experience the true taste of our products.</p>
 
-    <p>
-      Radfords of Somerford produces homemade foods. We do not use any
-      artificial colours, preservatives, or additives, which enables our
-      customers to experience the true taste of our products.
-    </p>
-  </div>
+    <h2>The Name</h2>
 
-  <div class="article last">
-    <h2>
-      The Name
-    </h2>
+    <p>Radford is a family name which has passed on recipes
+    through the generations.</p>
+  </article>
+</section>
 
-    <p>
-      Radford is a family name which has passed on recipes through the
-      generations.
-    </p>
-  </div>
-</div>
-
-<div class="section">
-  <div class="article made-in-cheshire">
-    <h2>
-      Made in Cheshire
-    </h2>
-
-    <%= image_tag('made_in_cheshire.png', alt: 'Made in Cheshire') %>
-
-    <p>
-      A member of 'Made in Cheshire', all products are homemade and the majority
-      of ingredients are sourced locally wherever possible.
-    </p>
-  </div>
-
-  <div class="article last">
-    <h2>
-      Events/News
-    </h2>
-
-    <% if @events.any? %>
-      <p>We will be running a stall at the following events:</p>
-
-      <ul id="events">
-        <% @events.each_with_index do |event, index| %>
-          <li class="event"><div class="img">
-            <%= image_tag("event_#{index}.jpg") %> <span>.</span>
-          </div>
-
-          <span class="title"><%= event.name %></span>
-          <span><%= event.takes_place_on %></span>
-
-          <h3><%= event.location %></h3></li>
-        <% end %>
-      </ul>
-      <% else %>
-        <div class="contact-us">
-          <p>We haven't got any events lined up at the moment.</p>
-
-          <p><a href="mailto:radfords@hotmail.co.uk">Contact us</a> about
-          appearing at your next event.</p>
-        </div>
-      <% end %>
-  </div>
-</div>
+<%= render "layouts/footer" %>

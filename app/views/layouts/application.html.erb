@@ -10,19 +10,13 @@
     https://github.com/calebthompson/title#usage
   %>
   <title><%= title %></title>
+  <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Poly|Pacifico" %>
   <%= stylesheet_link_tag :application, media: "all" %>
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= body_class %>">
-  <div class="container">
-    <%= navbar %>
-    <%= render "layouts/header" %>
-    <div class="main">
-      <%= render "flashes" -%>
-      <%= yield %>
-    </div>
-    <%= render "layouts/footer" %>
-  </div>
+  <%= render "flashes" -%>
+  <%= yield %>
   <%= render "javascript" %>
   <%= render "css_overrides" %>
 </body>

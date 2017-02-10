@@ -1,28 +1,36 @@
 <% content_for :body_class, controller.controller_name %>
 <% content_for(:title, "Events") %>
 
-<div class="page-header">
-  <h2>Events</h2>
+<div class="container">
+  <%= navbar %>
+  <%= render "layouts/header" %>
+  <div class="main">
+    <%= render "flashes" -%>
+    <div class="page-header">
+      <h2>Events</h2>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+
+          <th>Takes place on</th>
+
+          <th>Location</th>
+
+          <th>Created at</th>
+
+          <th>Actions</th>
+        </tr>
+
+        <tbody>
+          <%= render @events %>
+        </tbody>
+      </thead>
+    </table>
+
+    <%= link_to 'New', new_event_path, class: 'btn btn-primary' %>
+  </div>
+  <%= render "layouts/footer" %>
 </div>
-
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Name</th>
-
-      <th>Takes place on</th>
-
-      <th>Location</th>
-
-      <th>Created at</th>
-
-      <th>Actions</th>
-    </tr>
-
-    <tbody>
-      <%= render @events %>
-    </tbody>
-  </thead>
-</table>
-
-<%= link_to 'New', new_event_path, class: 'btn btn-primary' %>

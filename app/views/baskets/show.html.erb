@@ -1,5 +1,7 @@
-<%= content_for(:title, t('.title')) %>
+<%= render("layouts/header") %>
 
 <h2><%= t('.heading') %></h2>
 
 <%= render @basket %>
+
+<%= render("layouts/footer") %>

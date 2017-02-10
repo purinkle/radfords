@@ -1,0 +1,41 @@
+.product-thumbnail {
+  @include grid-column(4);
+
+  display: inline-block;
+  margin-bottom: $large-spacing;
+  text-align: center;
+
+  @include grid-media($two-column) {
+    @include grid-column(6);
+
+    &:nth-child(3n) {
+      @include grid-column(6);
+    }
+
+    &:nth-child(3n + 1) {
+      clear: none;
+    }
+  }
+
+  @include grid-media($one-column) {
+    width: 100%;
+
+    &:nth-child(3n) {
+      width: 100%;
+    }
+  }
+
+  h3 {
+    font-family: $base-font-family;
+    font-size: 0.9em;
+    min-height: $base-spacing * 1.6;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+}

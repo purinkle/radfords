@@ -51,6 +51,11 @@ en:
   layouts:
     header:
       basket: "Basket (%{item_count})"
+      contact_us: "Contact us"
+      logo: "Radfords of Somerford Logo"
+      outlets: "Outlets"
+      shop: "Shop"
+
   orders:
     form:
       address_city: "City"

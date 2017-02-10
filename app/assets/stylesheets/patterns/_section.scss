@@ -1,0 +1,6 @@
+section {
+  @include grid-container;
+  @include margin(null auto);
+
+  max-width: 1024px;
+}

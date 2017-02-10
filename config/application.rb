@@ -24,5 +24,8 @@ module Radfords
     end
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.active_job.queue_adapter = :delayed_job
+    config.i18n.load_path += Dir[
+      Rails.root.join("config", "locales", "**", "*.{rb,yml}")
+    ]
   end
 end

@@ -1,0 +1,80 @@
+header {
+  @include grid-container;
+  @include margin(null auto);
+
+  background: $white top center;
+  max-width: 1024px;
+  padding: 1em;
+  text-align: center;
+
+  img {
+    float: left;
+
+    @include grid-media($medium) {
+      float: none;
+      width: 50%;
+    }
+  }
+}
+
+nav {
+  ul {
+    float: right;
+    text-align: right;
+
+    @include grid-media($medium) {
+      @include grid-collapse;
+
+      text-align: center;
+    }
+  }
+
+  a {
+    @include padding(1em 1em 1em 1em);
+
+    color: $action-color;
+
+    @include grid-media($small) {
+      font-size: $small-font-size;
+      padding: $small-spacing;
+    }
+  }
+
+  a:active,
+  a:focus,
+  a:hover {
+    color: tint($action-color, 25%);
+  }
+}
+
+.nav-item {
+  display: inline-block;
+
+  &:last-child a {
+    border: 0;
+  }
+}
+
+.pages-home {
+  header {
+    background-image: image-url("hero.png");
+    height: 620px;
+
+    @include grid-media($medium) {
+      background-image: none;
+      height: auto;
+    }
+  }
+}
+
+.hero-nav a {
+  @include grid-media($large) {
+    color: $cream;
+
+    &:active,
+    &:focus,
+    &:hover {
+      color: shade($cream, 25%);
+    }
+  }
+}

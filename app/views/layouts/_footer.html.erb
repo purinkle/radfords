@@ -1,13 +1,5 @@
-<div class="footer">
-  <ul>
-    <li>
-      <a href="mailto:radfords@hotmail.co.uk">Contact us</a>
-    </li>
-  </ul>
-
-  <p><%= link_to(
-    image_tag("purinkle.png"),
-    "http://robertwhittaker.com",
-    {target: "_blank"}
-  ) %></p>
-</div>
+<footer role="contentinfo">
+  <div class="footer-logo">
+    <%= image_tag("footer_logo.svg", alt: t(".logo")) %>
+  </div>
+</footer>

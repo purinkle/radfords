@@ -1,9 +1,17 @@
-<% content_for(:title, "Shop") %>
+<%= render("layouts/header") %>
 
-<ul class="product-thumbnails">
-  <%= render(
-    partial: "product_thumbnails",
-    collection: @products,
-    as: :product
-  ) %>
+<section>
+  <h1><%= t('.title') %></h1>
+
+  <hr />
+
+  <ul class="product-thumbnails">
+    <%= render(
+      partial: "product_thumbnails",
+      collection: @products,
+      as: :product
+    ) %>
 </ul>
+</section>
+
+<%= render("layouts/footer") %>

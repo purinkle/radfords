@@ -1,25 +1,21 @@
-<div class="header">
-  <div class="hgroup">
-    <h1>Radfords of Somerford</h1>
-  </div>
+<header role="banner">
+  <%= link_to(root_path) do %>
+    <%= image_tag("logo.svg", alt: t(".logo")) %>
+  <% end %>
 
-  <div class="nav">
+  <%= content_tag(:nav, class: [content_for(:nav_class)], role: :navigation) do %>
     <ul>
-      <li>
-        <%= link_to "Home", root_path %>
-      </li>
+      <li class="nav-item"><%= link_to(t(".shop"), shop_path) %></li>
 
-      <li><%= link_to 'Shop', shop_path %></li>
+      <li class="nav-item"><%= link_to(t(".outlets"), outlets_path) %></li>
 
-      <li>
-        <%= link_to "Outlets", outlets_path %>
-      </li>
+      <li class="nav-item"><%= link_to(t(".contact_us"), contact_path) %></li>
 
-      <li>
-        <%= link_to "Contact us", contact_path %>
-      </li>
-
-      <li><%= link_to(t(".basket", item_count: @basket.item_count), basket_path) %></li>
+      <li class="nav-item"><%= link_to(
+        t(".basket", item_count: @basket.item_count),
+        basket_path,
+      ) %></li>
     </ul>
-  </div>
-</div>
+  <% end %>
+</header>
+
