@@ -108,7 +108,7 @@ GEM
       railties (>= 3.0.0)
     ffi (1.9.17)
     flutie (2.0.0)
-    formulaic (0.3.0)
+    formulaic (0.4.0)
       activesupport
       capybara
       i18n
