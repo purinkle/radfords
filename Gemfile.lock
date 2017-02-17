@@ -121,7 +121,7 @@ GEM
     heroku-deflater (0.6.3)
       rack (>= 1.4.5)
     high_voltage (3.0.0)
-    honeybadger (3.0.0)
+    honeybadger (3.0.2)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.7.0)
