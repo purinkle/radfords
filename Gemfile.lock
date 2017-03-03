@@ -41,7 +41,7 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (7.1.4)
-    autoprefixer-rails (6.7.3)
+    autoprefixer-rails (6.7.6)
       execjs
     awesome_print (1.7.0)
     aws-sdk (2.7.11)
