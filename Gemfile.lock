@@ -284,7 +284,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stripe (2.0.0)
+    stripe (2.0.1)
       faraday (~> 0)
     suspenders (1.44.0)
       bitters (~> 1.5)
