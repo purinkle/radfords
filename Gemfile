@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.4.0"
+ruby "2.5.9"
 
 gem "autoprefixer-rails"
 gem "aws-sdk"
@@ -51,7 +51,8 @@ group :development, :staging do
 end
 
 group :test do
-  gem "capybara-webkit"
+  gem "capybara-selenium"
+  gem "chromedriver-helper"
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
