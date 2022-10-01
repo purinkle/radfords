@@ -2,20 +2,14 @@ require "rails_helper"
 
 describe SessionsHelper do
   describe "#sign_out" do
-    let(:cookies) { double("ActionDispatch::Cookies::CookieJar", delete: nil) }
-
-    before do
-      allow(helper).to receive_messages(
-        :cookies => cookies,
-        :current_user= => nil,
-      )
-    end
-
     it "deletes the current user from the session" do
+      helper.current_user = build_stubbed(:user)
+      helper.cookies[:remember_token] = "TEST_REMEMBER_TOKEN"
+
       helper.sign_out
 
-      expect(cookies).to have_received(:delete).with(:remember_token)
-      expect(helper).to have_received(:current_user=).with(nil)
+      expect(helper.cookies[:remember_token]).to be_nil
+      expect(helper.current_user).to be_nil
     end
   end
 end
