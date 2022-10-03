@@ -244,7 +244,7 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
-    recipient_interceptor (0.1.2)
+    recipient_interceptor (0.3.1)
       mail
     refills (0.2.0)
     rexml (3.2.5)
