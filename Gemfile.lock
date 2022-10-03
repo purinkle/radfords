@@ -195,7 +195,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (~> 0.3.0)
-    pg (0.19.0)
+    pg (1.4.3)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
