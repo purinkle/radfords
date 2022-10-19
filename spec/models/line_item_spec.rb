@@ -3,6 +3,14 @@ require "rails_helper"
 describe LineItem do
   let(:item) { LineItem.new }
 
+  describe "validations" do
+    subject { build(:line_item) }
+
+    it { is_expected.to be_valid }
+    it { is_expected.to validate_presence_of(:basket) }
+    it { is_expected.to validate_presence_of(:product) }
+  end
+
   describe '#total_price' do
     subject { item.total_price }
 

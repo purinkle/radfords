@@ -13,9 +13,11 @@ module Features
 
       fill_form(:order, :new, attributes_for(:order))
 
-      VCR.use_cassette("stripe/customers") do
-        VCR.use_cassette("stripe/charges") do
-          click_button("Place my order")
+      VCR.use_cassette("stripe/tokens") do
+        VCR.use_cassette("stripe/customers") do
+          VCR.use_cassette("stripe/charges") do
+            click_button("Place my order")
+          end
         end
       end
 

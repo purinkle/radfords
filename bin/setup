@@ -10,15 +10,17 @@ set -e
 gem install bundler --conservative
 bundle check || bundle install
 
-# Set up database and add any development seed data
-bin/rake dev:prime
+# Set up database
+bin/rails db:setup
 
 # Add binstubs to PATH via export PATH=".git/safe/../../bin:$PATH" in ~/.zshenv
 mkdir -p .git/safe
 
 # Only if this isn't CI
-# if [ -z "$CI" ]; then
-# fi
+if [ -z "$CI" ]; then
+  # Add any development seed data
+  bin/rake dev:prime
+fi
 
 git remote add staging git@heroku.com:radfords-qa.git || true
 git remote add production git@heroku.com:radfords-production.git || true

@@ -7,6 +7,7 @@ if Rails.env.development? || Rails.env.test?
       include FactoryGirl::Syntax::Methods
 
       create(:user, email: "admin@example.com", password: "password")
+      create(:product, price: Money.new(5_00))
     end
   end
 end

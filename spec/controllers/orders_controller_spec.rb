@@ -36,7 +36,7 @@ describe OrdersController do
     let(:invalid_options) { invalid_params.merge("basket" => basket) }
     let(:invalid_order) { Order.new }
     let(:invalid_params) { { "name" => "" } }
-    let(:order) { double("Order", id: id, save!: nil) }
+    let(:order) { double("Order", id: id, save: true) }
     let(:order_options) { order_params.merge("basket" => basket) }
     let(:order_params) { { "name" => "Alphonso Quigley" } }
     let(:params) { { "order" => order_params, "stripe_token" => stripe_token } }
@@ -51,16 +51,8 @@ describe OrdersController do
       allow(OrderBuilder).to receive(:build).with(order, stripe_token)
     end
 
-    it "builds the order" do
-      allow(Order).to receive(:new).and_return(order)
-
-      post :create, params: params
-
-      expect(OrderBuilder).to have_received(:build).with(order, stripe_token)
-    end
-
     it "deletes the basket ID from the session" do
-      allow(Order).to receive(:new).and_return(order)
+      allow(OrderForm).to receive(:new).and_return(order)
 
       post :create, params: params
 
@@ -68,7 +60,7 @@ describe OrdersController do
     end
 
     it "adds the order ID to the session" do
-      allow(Order).to receive(:new).and_return(order)
+      allow(OrderForm).to receive(:new).and_return(order)
 
       post :create, params: params
 
@@ -76,7 +68,7 @@ describe OrdersController do
     end
 
     it "sets the flash" do
-      allow(Order).to receive(:new).and_return(order)
+      allow(OrderForm).to receive(:new).and_return(order)
 
       post :create, params: params
 
@@ -84,7 +76,7 @@ describe OrdersController do
     end
 
     it "redirects the the homepage" do
-      allow(Order).to receive(:new).and_return(order)
+      allow(OrderForm).to receive(:new).and_return(order)
 
       post :create, params: params
 

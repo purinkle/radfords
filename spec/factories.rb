@@ -10,6 +10,15 @@ FactoryGirl.define do
     location "Town Hall, Macclesfield"
   end
 
+  factory :line_item do
+    basket
+    product { build(:product, price: price) }
+
+    transient do
+      price { Money.new(5_00) }
+    end
+  end
+
   factory :user do
     name 'Robert Whittaker'
     email 'purinkle@example.com'

@@ -71,10 +71,9 @@
 
   <div class="fieldset">
     <div class="field">
-      <%= label_tag(nil, t(".card_number")) %>
-      <%= text_field_tag(
-        nil,
-        nil,
+      <%= f.label(:card_number) %>
+      <%= f.text_field(
+        :card_number,
         class: "card-number",
         data: { stripe: "number" },
         placeholder: t(".card_number")
@@ -85,16 +84,14 @@
       <%= label_tag(nil, t(".expiration")) %>
 
       <div class="select-group">
-        <%= text_field_tag(
-          nil,
-          nil,
+        <%= f.text_field(
+          :card_exp_month,
           class: "card-expiry-month",
           data: { stripe: "exp-month" },
           placeholder: t(".exp_month")
         ) %>
-        <%= text_field_tag(
-          nil,
-          nil,
+        <%= f.text_field(
+          :card_exp_year,
           class: "card-expiry-year",
           data: { stripe: "exp-year" },
           placeholder: t(".exp_year")
@@ -103,10 +100,9 @@
     </div>
 
     <div class="field">
-      <%= label_tag(nil, t(".cvc")) %>
-      <%= text_field_tag(
-        nil,
-        nil,
+      <%= f.label(:card_cvc) %>
+      <%= f.text_field(
+        :card_cvc,
         class: "card-cvc",
         data: { stripe: "cvc" },
         placeholder: t(".cvc")
