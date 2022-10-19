@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+set -e
+
+echo "Running the auto migration"
+
+if [ -n "$AUTO_MIGRATE_DB" ]; then
+  bundle exec rake db:migrate
+fi
