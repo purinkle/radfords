@@ -113,7 +113,7 @@ GEM
       railties (>= 3.0.0)
     faraday (0.11.0)
       multipart-post (>= 1.2, < 3)
-    ffi (1.9.25)
+    ffi (1.15.5)
     flutie (2.0.0)
     formulaic (0.4.0)
       activesupport
