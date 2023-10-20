@@ -17,7 +17,7 @@ describe Mailer do
       )
     end
 
-    let(:denise) { "denise@radfordsofsomerford.co.uk" }
+    let(:denise) { "rob@purinkle.co.uk" }
     let(:email) { 'alphonso.quigley@example.com' }
     let(:id) { 5 }
     let(:title) { "Order confirmation for order #{id}" }
@@ -54,7 +54,7 @@ describe Mailer do
     let(:title) { "Shipping confirmation for order #{id}" }
 
     it 'sends a mail from "noreply@example.com"' do
-      expect(subject.from).to eql(['denise@radfordsofsomerford.co.uk'])
+      expect(subject.from).to eql(['rob@purinkle.co.uk'])
     end
 
     it 'sends a mail to the order email' do

@@ -11,7 +11,7 @@ class Mailer < ActionMailer::Base
   def order_shipped(order)
     @order = order
     mail(
-      from: 'denise@radfordsofsomerford.co.uk',
+      from: 'rob@purinkle.co.uk',
       subject: "Shipping confirmation for order #{order.id}",
       to: @order.email
     )
@@ -20,6 +20,6 @@ class Mailer < ActionMailer::Base
   private
 
   def denise
-    "denise@radfordsofsomerford.co.uk"
+    "rob@purinkle.co.uk"
   end
 end
