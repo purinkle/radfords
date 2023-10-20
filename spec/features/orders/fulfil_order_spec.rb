@@ -13,7 +13,7 @@ module Features
       order_page.fulfil
 
       expect(mail.to).to eql([order.email])
-      expect(mail.from).to eql(['rob@purinkle.co.uk'])
+      expect(mail.from).to eql(["rob@purinkle.co.uk"])
       expect(mail.subject).to eql("Shipping confirmation for order #{order.id}")
       expect(page).to have_content('email sent')
     end

@@ -54,7 +54,7 @@ describe Mailer do
     let(:title) { "Shipping confirmation for order #{id}" }
 
     it 'sends a mail from "noreply@example.com"' do
-      expect(subject.from).to eql(['rob@purinkle.co.uk'])
+      expect(subject.from).to eql(["rob@purinkle.co.uk"])
     end
 
     it 'sends a mail to the order email' do
