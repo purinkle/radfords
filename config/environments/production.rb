@@ -37,4 +37,3 @@ Rails.application.configure do
     host: ENV.fetch("APPLICATION_HOST")
   }
 end
-Rack::Timeout.timeout = (ENV["RACK_TIMEOUT"] || 10).to_i
