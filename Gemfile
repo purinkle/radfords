@@ -70,5 +70,5 @@ end
 
 gem "bourbon", "~> 5.0.0.beta.7"
 gem "high_voltage"
-gem "neat", "~> 2.0.0.beta.1"
+gem "neat", "~> 4.0.0"
 gem "refills", group: %i[development test]
