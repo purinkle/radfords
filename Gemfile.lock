@@ -125,7 +125,7 @@ GEM
       activesupport
       capybara
       i18n
-    friendly_id (5.4.2)
+    friendly_id (5.5.0)
       activerecord (>= 4.0.0)
     geocoder (1.8.2)
     globalid (1.1.0)
