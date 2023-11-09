@@ -203,7 +203,7 @@ GEM
     nokogiri (1.12.5)
       mini_portile2 (~> 2.6.1)
       racc (~> 1.4)
-    normalize-rails (3.0.3)
+    normalize-rails (8.0.1)
     paperclip (5.1.0)
       activemodel (>= 4.2.0)
       activesupport (>= 4.2.0)
@@ -387,7 +387,7 @@ DEPENDENCIES
   listen
   money-rails
   neat (~> 4.0.0)
-  normalize-rails (~> 3.0.0)
+  normalize-rails (~> 8.0.1)
   paperclip
   pg
   pry-byebug
