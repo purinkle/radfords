@@ -127,7 +127,7 @@ GEM
       i18n
     friendly_id (5.4.2)
       activerecord (>= 4.0.0)
-    geocoder (1.4.3)
+    geocoder (1.8.2)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
