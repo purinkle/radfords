@@ -31,12 +31,10 @@ module Features
       end
 
       expect(page).to have_content("Your Order ID is: #{order.id}")
-      expect(page).to have_content(
-        <<-TEXT
+      expect(page).to have_content <<-TEXT.squish
         An email receipt containing information about your order will soon
         follow. Please keep it for your records.
-        TEXT
-      )
+      TEXT
       expect(page).to have_content(
         "Thank you for shopping at Radfords of Somerford"
       )
