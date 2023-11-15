@@ -30,7 +30,7 @@ gem "uglifier"
 
 group :development do
   gem "listen"
-  gem "spring"
+  gem "spring", "~> 2.1"
   gem "spring-commands-rspec"
   gem "web-console"
 end
