@@ -23,6 +23,6 @@ class NewSessionPage
   end
 
   def user
-    @user ||= FactoryGirl.create(:user)
+    @user ||= FactoryBot.create(:user)
   end
 end

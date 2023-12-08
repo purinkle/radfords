@@ -26,7 +26,7 @@ describe SessionsController do
 
     describe 'with valid email and password' do
       before (:each) do
-        @user = FactoryGirl.create(:user)
+        @user = FactoryBot.create(:user)
         @attr = { :email => @user.email, :password => @user.password }
       end
 

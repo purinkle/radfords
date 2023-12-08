@@ -6,7 +6,7 @@ module RadfordsTestHelpers
   end
 
   def sign_in
-    user = FactoryGirl.create(:user)
+    user = FactoryBot.create(:user)
     page = SigninPage.new(user.email, user.password)
 
     page.visit

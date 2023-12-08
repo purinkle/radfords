@@ -3,7 +3,7 @@ require "rails_helper"
 describe "updating suppliers" do
   it "successfully updates" do
     supplier = VCR.use_cassette("google maps") do
-      FactoryGirl.create(:supplier)
+      FactoryBot.create(:supplier)
     end
 
     sign_in
@@ -23,7 +23,7 @@ describe "updating suppliers" do
   context "when the attributes are invalid" do
     it "shows the 'Edit Supplier' page" do
       supplier = VCR.use_cassette("google maps") do
-        FactoryGirl.create(:supplier)
+        FactoryBot.create(:supplier)
       end
 
       sign_in

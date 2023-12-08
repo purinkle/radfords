@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe "application header" do
   let(:home_page) { HomePage.new }
-  let(:user) { FactoryGirl.create(:user) }
+  let(:user) { FactoryBot.create(:user) }
 
   it "navigates to 'Your Basket'" do
     home_page.visit

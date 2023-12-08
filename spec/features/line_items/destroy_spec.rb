@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Features
   describe "destroy line item" do
-    let(:user) { FactoryGirl.create :user }
+    let(:user) { FactoryBot.create :user }
 
     before { create_product }
 

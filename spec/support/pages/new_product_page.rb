@@ -1,5 +1,5 @@
 class NewProductPage
-  include FactoryGirl::Syntax::Methods
+  include FactoryBot::Syntax::Methods
   include Capybara::DSL
   include Rails.application.routes.url_helpers
   include Formulaic::Dsl

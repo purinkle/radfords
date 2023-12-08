@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :order do
     address_line_1 '1 Test Street'
     address_city 'Testerton'

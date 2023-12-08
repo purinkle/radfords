@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Features
   describe 'fulfil order' do
-    let(:order) { FactoryGirl.create(:order) }
+    let(:order) { FactoryBot.create(:order) }
     let(:order_page) { OrderPage.new(order) }
     let(:mail) { ActionMailer::Base.deliveries.last }
 

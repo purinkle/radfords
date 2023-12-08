@@ -4,7 +4,7 @@ module Features
   describe "deleting orders" do
     it "deletes existing order" do
       VCR.use_cassette("google maps") do
-        FactoryGirl.create(:supplier)
+        FactoryBot.create(:supplier)
       end
 
       sign_in
