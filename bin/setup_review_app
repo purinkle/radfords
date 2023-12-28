@@ -9,7 +9,7 @@ if [ -z "$1" ]; then
   exit 64
 fi
 
-PARENT_APP_NAME=radfords-qa
+PARENT_APP_NAME=radfords-staging
 APP_NAME=radfords-qa-pr-$1
 URL=`heroku pg:backups public-url --app $PARENT_APP_NAME`
 
