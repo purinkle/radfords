@@ -52,7 +52,6 @@ end
 
 group :test do
   gem "capybara-selenium"
-  gem "chromedriver-helper"
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
@@ -60,6 +59,7 @@ group :test do
   gem "simplecov", require: false
   gem "timecop"
   gem "vcr"
+  gem "webdrivers"
   gem "webmock"
 end
 
