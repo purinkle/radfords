@@ -12,16 +12,31 @@
 # Starting with a low number of workers and threads provides adequate
 # performance for most applications, even under load, while maintaining a low
 # risk of overusing memory.
-workers Integer(ENV.fetch("WEB_CONCURRENCY", 2))
+
+rails_env = ENV.fetch("RAILS_ENV", "development")
+
 threads_count = Integer(ENV.fetch("MAX_THREADS", 2))
 threads(threads_count, threads_count)
 
-preload_app!
+if rails_env == "production"
+  # If you are running more than 1 thread per process, the workers count
+  # should be equal to the number of processors (CPU cores) in production.
+  #
+  # It defaults to 1 because it's impossible to reliably detect how many
+  # CPU cores are available. Make sure to set the `WEB_CONCURRENCY` environment
+  # variable to match the number of processors.
+  processors_count = Integer(ENV.fetch("WEB_CONCURRENCY", 2))
+  if processors_count > 1
+    workers processors_count
+  else
+    preload_app!
+  end
+
+  on_worker_boot do
+    # Worker specific setup for Rails 4.1+
+    # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
+    ActiveRecord::Base.establish_connection
+  end
+end
 
 environment ENV.fetch("RACK_ENV", "development")
-
-on_worker_boot do
-  # Worker specific setup for Rails 4.1+
-  # See: https://devcenter.heroku.com/articles/deploying-rails-applications-with-the-puma-web-server#on-worker-boot
-  ActiveRecord::Base.establish_connection
-end
