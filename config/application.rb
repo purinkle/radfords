@@ -12,6 +12,8 @@ require "sprockets/railtie"
 Bundler.require(*Rails.groups)
 module Radfords
   class Application < Rails::Application
+    config.load_defaults 5.1
+
     config.assets.quiet = true
     config.generators do |generate|
       generate.helper false
