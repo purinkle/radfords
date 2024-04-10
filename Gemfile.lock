@@ -1,6 +1,5 @@
 GEM
   remote: https://rubygems.org/
-  remote: https://rails-assets.org/
   specs:
     actioncable (5.1.7)
       actionpack (= 5.1.7)
@@ -238,7 +237,6 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.1.7)
       sprockets-rails (>= 2.0.0)
-    rails-assets-normalize-css (8.0.1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -400,7 +398,6 @@ DEPENDENCIES
   rack-mini-profiler
   rack-timeout
   rails (~> 5.1.7)
-  rails-assets-normalize-css!
   recipient_interceptor
   refills
   rspec-rails (~> 4.1)
