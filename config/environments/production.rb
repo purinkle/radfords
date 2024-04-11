@@ -37,4 +37,7 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {
     host: ENV.fetch("APPLICATION_HOST")
   }
+  config.action_mailer.asset_host = {
+    host: ENV.fetch("ASSET_HOST", ENV.fetch("APPLICATION_HOST"))
+  }
 end
