@@ -29,6 +29,7 @@ gem "uglifier"
 
 group :development do
   gem "listen"
+  gem "rack-mini-profiler", require: false
   gem "spring", "~> 2.1"
   gem "spring-commands-rspec"
   gem "web-console"
@@ -45,10 +46,6 @@ group :development, :test do
   gem "rspec-rails", "~> 4.1"
 end
 
-group :development, :staging do
-  gem "rack-mini-profiler", require: false
-end
-
 group :test do
   gem "capybara-selenium"
   gem "database_cleaner"
@@ -62,7 +59,7 @@ group :test do
   gem "webmock"
 end
 
-group :staging, :production do
+group :production do
   gem "heroku-deflater"
   gem "rack-timeout"
 end
