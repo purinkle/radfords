@@ -320,7 +320,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    stripe (10.6.0)
+    stripe (11.2.0)
     strscan (3.1.0)
     suspenders (0.2.4)
       bundler (>= 1.0.7)
