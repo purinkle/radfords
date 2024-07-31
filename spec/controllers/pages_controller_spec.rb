@@ -8,7 +8,7 @@ describe PagesController do
   describe "GET 'home'" do
     it "should be successful" do
       get 'home'
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     context 'when there is an order ID in the session' do
@@ -30,7 +30,7 @@ describe PagesController do
   describe 'GET "outlets"' do
     it 'should be successful' do
       get :outlets
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 end

@@ -13,7 +13,7 @@ class LineItemsController < ApplicationController
   end
 
   def update
-    item.update_attributes item_params
+    item.update item_params
     redirect_to basket_url
   end
 

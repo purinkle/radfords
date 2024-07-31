@@ -1,7 +1,5 @@
-<%= javascript_include_tag(
-  'application',
-  '//maps.googleapis.com/maps/api/js?sensor=false'
-) %>
+<%= javascript_pack_tag("application") %>
+<%= javascript_include_tag("//maps.googleapis.com/maps/api/js?sensor=false") %>
 
 <%= yield(:javascript) %>
 

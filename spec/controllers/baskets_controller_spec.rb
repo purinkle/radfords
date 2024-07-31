@@ -16,7 +16,7 @@ describe BasketsController do
     it "is successful" do
       get :show, session: { basket_id: basket_id }
 
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

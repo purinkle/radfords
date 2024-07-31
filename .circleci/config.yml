@@ -15,6 +15,10 @@ references:
     run:
       name: Set up the environment
       command: bin/setup
+  precompile_assets: &precompile_assets
+    run:
+      name: Precompile the assets
+      command: bin/rails assets:precompile
   run_tests: &run_tests
     run:
       name: Run the test suite
@@ -40,4 +44,5 @@ jobs:
       - <<: *install_bundler
       - <<: *wait_for_postgres
       - <<: *setup
+      - <<: *precompile_assets
       - <<: *run_tests

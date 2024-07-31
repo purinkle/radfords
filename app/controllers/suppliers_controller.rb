@@ -22,7 +22,7 @@ class SuppliersController < ApplicationController
 
   def update
     @supplier = supplier
-    @supplier.update_attributes!(supplier_params)
+    @supplier.update!(supplier_params)
     redirect_to(outlets_path, notice: t("suppliers.update"))
   rescue ActiveRecord::RecordInvalid
     render 'edit'

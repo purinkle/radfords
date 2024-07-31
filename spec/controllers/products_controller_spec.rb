@@ -192,11 +192,11 @@ describe ProductsController do
     let(:id) { 'foo' }
     let(:product) { double(:product) }
     let(:title) { double(:title) }
-    let(:update_attributes) { true }
+    let(:update) { true }
 
     before do
-      allow(found_product).to receive(:update_attributes).
-        and_return(update_attributes)
+      allow(found_product).to receive(:update)
+        .and_return(update)
 
       allow(found_product).to receive(:title).and_return(title)
       allow(product).to receive(:find).with(id).and_return(found_product)

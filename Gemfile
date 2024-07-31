@@ -1,9 +1,11 @@
 source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "2.5.9"
 
 gem "autoprefixer-rails"
 gem "aws-sdk", "< 3"
+gem "bootsnap", require: false
 gem "delayed_job_active_record"
 gem "flutie"
 gem "friendly_id"
@@ -16,16 +18,16 @@ gem "paperclip"
 gem "pg"
 gem "puma", "< 6.0"
 gem "rack-canonical-host"
-gem "rails", "~> 5.1.7"
+gem "rails", "~> 6.0.6"
 gem "recipient_interceptor"
-gem "sass-rails", "~> 6.0"
+gem "sass-rails"
 gem "simple_form"
 gem "skylight"
 gem "sprockets", ">= 3.0.0"
 gem "stripe"
 gem "suspenders"
 gem "title"
-gem "uglifier"
+gem "webpacker"
 
 group :development do
   gem "listen"

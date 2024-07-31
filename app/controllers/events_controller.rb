@@ -25,7 +25,7 @@ class EventsController < ApplicationController
 
   def update
     @event = event
-    @event.update_attributes!(event_params)
+    @event.update!(event_params)
     redirect_to(@event, notice: "You successfully updated the event.")
   rescue ActiveRecord::RecordInvalid
     render "edit"

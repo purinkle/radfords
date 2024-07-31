@@ -48,17 +48,17 @@ describe EventsController do
     it "updates the event" do
       event = Event.new
       allow(controller).to receive(:authenticate)
-      allow(event).to receive(:update_attributes!)
+      allow(event).to receive(:update!)
       allow(Event).to receive(:find).and_return(event)
 
       put :update, params: { id: "1", event: event_params }
 
-      expect(event).to have_received(:update_attributes!)
+      expect(event).to have_received(:update!)
     end
 
     it "redirects to the event's page" do
       event = Event.new
-      allow(event).to receive(:update_attributes!).and_return(true)
+      allow(event).to receive(:update!).and_return(true)
       allow(controller).to receive(:authenticate)
       allow(Event).to receive(:find).and_return(event)
 
@@ -69,7 +69,7 @@ describe EventsController do
 
     it "sets the notice flash" do
       event = Event.new
-      allow(event).to receive(:update_attributes!).and_return(true)
+      allow(event).to receive(:update!).and_return(true)
       allow(controller).to receive(:authenticate)
       allow(Event).to receive(:find).and_return(event)
 

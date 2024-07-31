@@ -50,20 +50,20 @@ describe LineItemsController do
     let(:params) { { id: id, line_item: item_params } }
 
     before do
-      allow(item).to receive(:update_attributes).with item_params
+      allow(item).to receive(:update).with item_params
       allow(LineItem).to receive(:find).with(id).and_return item
     end
 
     it "updates the line item" do
-      allow(item).to receive(:update_attributes)
+      allow(item).to receive(:update)
 
       put :update, params: params
 
-      expect(item).to have_received(:update_attributes)
+      expect(item).to have_received(:update)
     end
 
     it "redirects to the home page" do
-      allow(item).to receive(:update_attributes)
+      allow(item).to receive(:update)
 
       put :update, params: params
 

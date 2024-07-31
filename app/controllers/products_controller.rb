@@ -47,8 +47,8 @@ class ProductsController < ApplicationController
   def update
     @product = Product.friendly.find(params[:id])
 
-    if @product.update_attributes(product_params)
       flash[:notice] = 'Product saved.'
+    if @product.update(product_params)
       redirect_to product_path(@product)
     else
       render 'edit'
