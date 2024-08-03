@@ -33,7 +33,7 @@ gem "webpacker"
 group :development do
   gem "listen"
   gem "rack-mini-profiler", require: false
-  gem "spring", "~> 2.1"
+  gem "spring"
   gem "spring-commands-rspec"
   gem "web-console"
 end
