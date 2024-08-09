@@ -1,7 +1,7 @@
 require "rails_helper"
 
-describe MissingBasket do
-  subject(:basket) { MissingBasket.new }
+describe EmptyBasket do
+  subject(:basket) { EmptyBasket.new }
 
   describe "#line_items" do
     let(:none) { double("ActiveRecord::Relation") }

@@ -1,4 +1,4 @@
-class MissingBasket
+class EmptyBasket
   def line_items
     LineItem.none
   end
