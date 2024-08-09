@@ -31,10 +31,9 @@ gem "title"
 gem "webpacker"
 
 group :development do
-  gem "listen"
   gem "rack-mini-profiler", require: false
-  gem "spring"
   gem "spring-commands-rspec"
+  gem "spring-watcher-listen"
   gem "web-console"
 end
 
