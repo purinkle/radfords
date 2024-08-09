@@ -1,23 +1,23 @@
 require "rails_helper"
 
 describe EmptyBasket do
-  subject(:basket) { EmptyBasket.new }
-
   describe "#line_items" do
-    let(:none) { double("ActiveRecord::Relation") }
+    it "is empty" do
+      empty_basket = EmptyBasket.new
 
-    before do
-      allow(LineItem).to receive(:none).and_return(none)
-    end
+      line_items = empty_basket.line_items
 
-    it "returns an 'None' relation" do
-      expect(basket.line_items).to be none
+      expect(line_items).to be_empty
     end
   end
 
   describe "#to_partial_path" do
-    it "returns 'empty_basket'" do
-      expect(basket.to_partial_path).to eql("empty_basket")
+    it "is the partial to render the empty basket" do
+      empty_basket = EmptyBasket.new
+
+      partial_path = empty_basket.to_partial_path
+
+      expect(partial_path).to eq "empty_basket"
     end
   end
 end

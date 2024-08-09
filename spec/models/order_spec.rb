@@ -128,6 +128,23 @@ describe Order do
     end
   end
 
+  describe "#basket" do
+    it "is the basket associated with the order" do
+      basket = build :basket
+      order = create :order, basket: basket
+
+      expect(order.basket).to be basket
+    end
+
+    context "when the order is missing a basket" do
+      it "is an empty basket" do
+        order = create :order, basket: nil
+
+        expect(order.basket).to have_attributes(line_items: [])
+      end
+    end
+  end
+
   describe "#line_items" do
     let(:basket) { double("Basket", line_items: items) }
     let(:items) { [] }

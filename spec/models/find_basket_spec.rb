@@ -5,8 +5,8 @@ describe FindBasket do
     subject { FindBasket.call(options) }
 
     let(:basket) { double("Basket") }
+    let(:missing_basket) { double("MissingBasket") }
     let(:options) { { id: "1" } }
-    let(:missing_basket) { double("EmptyBasket") }
 
     before do
       allow(Basket).to receive(:where).with(options).and_return([basket])
