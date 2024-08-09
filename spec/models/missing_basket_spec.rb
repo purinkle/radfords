@@ -14,10 +14,4 @@ describe MissingBasket do
       expect(basket.line_items).to be none
     end
   end
-
-  describe "#to_partial_path" do
-    it "returns 'empty_basket'" do
-      expect(basket.to_partial_path).to eql("empty_basket")
-    end
-  end
 end

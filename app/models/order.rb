@@ -43,6 +43,10 @@ class Order < ActiveRecord::Base
     split_address.fetch(4, @address_county)
   end
 
+  def basket
+    super || MissingBasket.new
+  end
+
   def line_items
     basket.line_items
   end

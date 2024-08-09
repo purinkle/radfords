@@ -5,12 +5,12 @@ describe FindBasket do
     subject { FindBasket.call(options) }
 
     let(:basket) { double("Basket") }
-    let(:missing_basket) { double("MissingBasket") }
+    let(:empty_basket) { double("EmptyBasket") }
     let(:options) { { id: "1" } }
 
     before do
       allow(Basket).to receive(:where).with(options).and_return([basket])
-      allow(MissingBasket).to receive(:new).and_return(missing_basket)
+      allow(EmptyBasket).to receive(:new).and_return(empty_basket)
     end
 
     it "returns the found basket" do
@@ -21,7 +21,7 @@ describe FindBasket do
       let(:basket) { nil }
 
       it "returns a missing basket" do
-        expect(subject).to be(missing_basket)
+        expect(subject).to be(empty_basket)
       end
     end
   end
