@@ -27,8 +27,10 @@ $green: #8fc243;
 .order-summary {
   @include border-bottom-radius($base-border-radius);
   @include border-top-radius($base-border-radius);
-  @include grid-column(6);
 
+  width: calc(50% - 30px);
+  float: left;
+  margin-left: 20px;
   border: $base-border;
 
   &:after,
@@ -38,8 +40,9 @@ $green: #8fc243;
   }
 
   .section {
-    @include grid-column(6);
-
+    width: calc(50% - 30px);
+    float: left;
+    margin-left: 20px;
     border-top: $base-border;
     margin-top: 0;
     padding: 1.5em;
@@ -183,7 +186,9 @@ $green: #8fc243;
 }
 
 .checkout {
-  @include grid-column(6);
+  width: calc(50% - 30px);
+  float: left;
+  margin-left: 20px;
 
   #{$all-text-inputs} {
     background: transparent;

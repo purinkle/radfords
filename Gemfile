@@ -68,5 +68,4 @@ end
 
 gem "bourbon", "~> 5.1.0"
 gem "high_voltage"
-gem "neat", "~> 4.0.0"
 gem "refills", group: %i[development test]
