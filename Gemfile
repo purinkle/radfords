@@ -66,6 +66,6 @@ group :production do
   gem "rack-timeout"
 end
 
-gem "bourbon", "~> 5.1.0"
+gem "bourbon", "~> 6.0.0"
 gem "high_voltage"
 gem "refills", group: %i[development test]
