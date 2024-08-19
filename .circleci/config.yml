@@ -24,7 +24,7 @@ jobs:
   build:
     working_directory: ~/radfords
     docker:
-      - image: "cimg/ruby:2.5-browsers"
+      - image: "cimg/ruby:2.6-browsers"
         environment:
           PGHOST: localhost
           PGUSER: radfords
