@@ -1,4 +1,4 @@
-class MonetiseProduct < ActiveRecord::Migration
+class MonetiseProduct < ActiveRecord::Migration[4.2]
   def up
     remove_column :products, :price
     add_monetize :products, :price

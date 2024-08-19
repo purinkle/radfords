@@ -1,4 +1,4 @@
-class AddSlugToProducts < ActiveRecord::Migration
+class AddSlugToProducts < ActiveRecord::Migration[4.2]
   def self.up
     add_column :products, :slug, :string
     add_index :products, :slug

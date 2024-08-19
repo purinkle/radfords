@@ -1,4 +1,4 @@
-class AddOrderIdToLineItem < ActiveRecord::Migration
+class AddOrderIdToLineItem < ActiveRecord::Migration[4.2]
   def self.up
     add_column :line_items, :order_id, :integer
   end

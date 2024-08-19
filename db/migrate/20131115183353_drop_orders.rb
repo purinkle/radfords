@@ -1,4 +1,4 @@
-class DropOrders < ActiveRecord::Migration
+class DropOrders < ActiveRecord::Migration[4.2]
   def self.up
     drop_table :orders
   end

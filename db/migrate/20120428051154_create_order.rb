@@ -1,4 +1,4 @@
-class CreateOrder < ActiveRecord::Migration
+class CreateOrder < ActiveRecord::Migration[4.2]
   def self.up
     create_table :orders do |t|
       t.string :name

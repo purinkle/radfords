@@ -1,4 +1,4 @@
-class RemovePayTypeFromOrders < ActiveRecord::Migration
+class RemovePayTypeFromOrders < ActiveRecord::Migration[4.2]
   def up
     remove_column :orders, :pay_type
   end

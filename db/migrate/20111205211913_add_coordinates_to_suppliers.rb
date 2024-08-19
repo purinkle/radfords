@@ -1,4 +1,4 @@
-class AddCoordinatesToSuppliers < ActiveRecord::Migration
+class AddCoordinatesToSuppliers < ActiveRecord::Migration[4.2]
   def self.up
     add_column :suppliers, :lat, :decimal, precision: 15, scale: 10
     add_column :suppliers, :lng, :decimal, precision: 15, scale: 10
