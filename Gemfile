@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.10"
 
 gem "autoprefixer-rails"
-gem "aws-sdk", "< 3"
+gem "aws-sdk", "< 4"
 gem "bootsnap", require: false
 gem "delayed_job_active_record"
 gem "flutie"
