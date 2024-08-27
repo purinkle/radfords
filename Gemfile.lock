@@ -440,7 +440,7 @@ DEPENDENCIES
   skylight
   spring-commands-rspec
   spring-watcher-listen
-  sprockets (>= 3.0.0)
+  sprockets
   stripe
   suspenders
   timecop
