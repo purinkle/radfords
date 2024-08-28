@@ -24,7 +24,18 @@ fi
 # if [ -z "$CI" ]; then
 # fi
 
-git remote add staging git@heroku.com:radfords-qa.git || true
-git remote add production git@heroku.com:radfords-production.git || true
+if heroku apps:info --app radfords-staging > /dev/null 2>&1; then
+  git remote add staging git@heroku.com:radfords-qa.git || true
+  printf 'You are a collaborator on the "radfords-qa" Heroku app\n'
+else
+  printf 'Ask for access to the "radfords-qa" Heroku app\n'
+fi
+
+if heroku apps:info --app radfords-production > /dev/null 2>&1; then
+  git remote add production git@heroku.com:radfords-production.git || true
+  printf 'You are a collaborator on the "radfords-production" Heroku app\n'
+else
+  printf 'Ask for access to the "radfords-production" Heroku app\n'
+fi
 
 git config heroku.remote staging
