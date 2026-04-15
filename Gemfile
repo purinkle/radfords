@@ -15,11 +15,11 @@ gem "inline_svg"
 gem "jquery-rails"
 gem "kaminari"
 gem "money-rails"
-gem "paperclip"
+gem "paperclip", "~> 5.1.0"
 gem "pg"
 gem "puma", "< 6.0"
 gem "rack-canonical-host"
-gem "rails", "~> 6.0.6"
+gem "rails", "~> 6.1.0"
 gem "recipient_interceptor"
 gem "sass-rails"
 gem "simple_form"
@@ -29,6 +29,10 @@ gem "stripe"
 gem "suspenders"
 gem "title"
 gem "webpacker"
+gem "ffi", "~> 1.16.0"
+gem "logger", "< 1.7"
+gem "minitest", "< 5.25"
+gem "zeitwerk", "< 2.7"
 
 group :development do
   gem "rack-mini-profiler", require: false
@@ -42,7 +46,7 @@ group :development, :test do
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
   gem "dotenv-rails"
-  gem "factory_bot_rails"
+  gem "factory_bot_rails", "~> 6.2.0"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails", "~> 4.1"
@@ -66,6 +70,6 @@ group :production do
   gem "rack-timeout"
 end
 
-gem "bourbon", "~> 6.0.0"
+gem "bourbon", "~> 7.0"
 gem "high_voltage"
 gem "refills", group: %i[development test]
