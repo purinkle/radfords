@@ -16,7 +16,7 @@ module Features
 
       visit root_path
 
-      find("input[type=submit]").click
+      click_button "Add to Basket"
 
       click_link "Remove"
 

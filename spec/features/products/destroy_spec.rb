@@ -62,7 +62,7 @@ describe "deleting products" do
       product = create_product
       expect(Product.count).to eql(1)
       visit product_url(product)
-      find("input[type=submit]").click
+      click_button "Add to Basket"
 
       sign_in
 

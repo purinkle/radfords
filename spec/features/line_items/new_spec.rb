@@ -26,7 +26,7 @@ module Features
 
     def add_line_item
       visit product_url(product)
-      find("input[type=submit]").click
+      click_button "Add to Basket"
     end
   end
 end

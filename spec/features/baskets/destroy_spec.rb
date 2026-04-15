@@ -5,7 +5,7 @@ describe "deleting baskets" do
 
   it "deletes existing basket" do
     visit root_path
-    find("input[type=submit]").click
+    click_button "Add to Basket"
 
     click_button "Empty basket"
 
