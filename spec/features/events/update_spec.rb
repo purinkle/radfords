@@ -25,10 +25,12 @@ describe "updating events" do
       sign_in
       visit edit_event_url(event)
 
-      fill_form_and_submit(:event, :edit, {})
+      fill_in "Name", with: ""
+      fill_in "Location", with: ""
+      click_button "Update Event"
 
       expect(page).to have_title("Edit Event")
-      expect(page).to have_content("Takes place on can't be blank")
+      expect(page).to have_content("Name can't be blank")
     end
   end
 end
