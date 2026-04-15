@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.10"
+ruby "3.2.1"
 
 gem "autoprefixer-rails"
 gem "aws-sdk", "< 3"
@@ -29,10 +29,7 @@ gem "stripe"
 gem "suspenders"
 gem "title"
 gem "webpacker"
-gem "ffi", "~> 1.16.0"
-gem "logger", "< 1.7"
-gem "minitest", "< 5.25"
-gem "zeitwerk", "< 2.7"
+gem "webrick"
 
 group :development do
   gem "rack-mini-profiler", require: false
@@ -46,7 +43,7 @@ group :development, :test do
   gem "bullet"
   gem "bundler-audit", ">= 0.5.0", require: false
   gem "dotenv-rails"
-  gem "factory_bot_rails", "~> 6.2.0"
+  gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails", "~> 4.1"
