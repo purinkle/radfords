@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.cache_classes = false
+  config.enable_reloading = true
   config.action_view.cache_template_loading = true
   config.eager_load = false
   config.public_file_server.enabled = true

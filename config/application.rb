@@ -14,7 +14,7 @@ require "active_storage/engine"
 Bundler.require(*Rails.groups)
 module Radfords
   class Application < Rails::Application
-    config.load_defaults 7.0
+    config.load_defaults 7.1
 
     config.assets.quiet = true
     config.generators do |generate|

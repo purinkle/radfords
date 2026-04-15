@@ -4,7 +4,7 @@ Rails.application.configure do
     ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
   end
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
-  config.cache_classes = true
+  config.enable_reloading = false
   config.eager_load = true
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true

@@ -17,9 +17,9 @@ gem "kaminari"
 gem "money-rails"
 gem "paperclip", "~> 5.1.0"
 gem "pg"
-gem "puma", "< 6.0"
+gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 7.0.0"
+gem "rails", "~> 7.1.0"
 gem "recipient_interceptor"
 gem "sass-rails"
 gem "simple_form"
@@ -46,7 +46,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", "~> 4.1"
+  gem "rspec-rails", "~> 6.0"
 end
 
 group :test do
