@@ -8,7 +8,7 @@ Issues live as GitHub issues in `purinkle/radfords`, driven by the `gh` CLI. See
 
 ### Triage labels
 
-The five canonical roles, each label string equal to its name. See `docs/agents/triage-labels.md`.
+Category and state roles, each label string equal to its name; a triaged issue carries exactly one of each. See `docs/agents/triage-labels.md`.
 
 ### Domain docs
 
