@@ -13,3 +13,7 @@ Category and state roles, each label string equal to its name; a triaged issue c
 ### Domain docs
 
 Single-context: one `CONTEXT.md` and `docs/adr/` at the repo root. See `docs/agents/domain.md`.
+
+### Continuous integration
+
+CircleCI, whose v1.1 API serves the processed config for any build without credentials. See `docs/agents/continuous-integration.md`.
