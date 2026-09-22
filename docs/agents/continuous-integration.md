@@ -20,11 +20,9 @@ Build 1139 shows how far that is from the committed file: the top-level
 the job steps, and the version reads `version: 2` where the committed file says
 `version: 2.1`.
 
-Use `jq` to pull the field out. It lives at `/usr/bin/jq`, needs no version
-manager, and is already the house tool for JSON, because every `gh` call in
-`docs/agents/issue-tracker.md` runs through its `--jq` flag. A bare `ruby`
-fails in this repo, and the `python3` here has no `yaml` module, so neither is
-a good fallback.
+Use `jq` to pull the field out. It is the house tool for JSON in this
+repository, because `docs/agents/issue-tracker.md` already reads `gh` output
+through the `--jq` flag.
 
 ## Schema violations sit at the top of that string
 
