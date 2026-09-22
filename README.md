@@ -51,16 +51,8 @@ settled in [issue 558][]. Take it up there if you want it revisited.
 
 ### Setup
 
-Install bundler before you run the setup script:
-
-    % gem install bundler -v 2.2.15
-
-`bin/setup` opens with `gem install bundler --conservative`, which on Ruby
-2.6.10 asks for the newest bundler and is told that bundler now needs Ruby 3.2
-or later. Installing the pinned version first turns that line into a no-op.
-
-Then run the setup script, which installs the gems and creates and seeds the
-databases:
+Run the setup script, which installs bundler and the gems, then creates and
+seeds the databases:
 
     % ./bin/setup
 
