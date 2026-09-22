@@ -6,8 +6,21 @@
 # Exit if any subcommand fails
 set -e
 
-# Set up Ruby dependencies via Bundler
-gem install bundler --conservative
+# Set up Ruby dependencies via Bundler.
+#
+# RubyGems narrows the bundler versions it will accept down to the one
+# Gemfile.lock names under BUNDLED WITH, so --conservative does not count the
+# bundler that ships with Ruby. Left unpinned it asks for the newest bundler,
+# which needs a Ruby this app does not run on yet. Install the version the
+# lockfile already names, which is the one RubyGems is looking for.
+bundler_version=$(awk '/^BUNDLED WITH$/ { getline; gsub(/[[:space:]]/, ""); print; exit }' Gemfile.lock)
+
+if [ -n "$bundler_version" ]; then
+  gem install bundler -v "$bundler_version" --conservative
+else
+  gem install bundler --conservative
+fi
+
 bundle check || bundle install
 
 # Set up database and add any development seed data
