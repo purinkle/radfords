@@ -19,8 +19,22 @@ Infer the repo from `git remote -v`; `gh` does this automatically when run insid
 
 When set to `yes`, PRs run through the same labels and states as issues, using the `gh pr` equivalents:
 
-- **Read a PR**: `gh pr view <number> --json number,title,state,author,labels,body,comments` and `gh pr diff <number>` for the diff.
-- **List external PRs for triage**: `gh pr list --state open --json number,title,body,labels,author,authorAssociation,comments` then keep only `authorAssociation` of `CONTRIBUTOR`, `FIRST_TIME_CONTRIBUTOR`, or `NONE` (drop `OWNER`/`MEMBER`/`COLLABORATOR`).
+- **Read a PR**: `gh pr view <number> --json number,title,state,author,labels,body,comments` and `gh pr diff <number>` for the diff. For the author's standing with the repo, `gh api 'repos/{owner}/{repo}/pulls/<number>' --jq .author_association`.
+- **List external PRs for triage**:
+
+  ```sh
+  gh api --paginate 'repos/{owner}/{repo}/pulls?state=open' \
+    --jq '.[]
+          | select(.user.type != "Bot")
+          | select(.author_association | IN("CONTRIBUTOR", "FIRST_TIME_CONTRIBUTOR", "NONE"))
+          | {number, title, author: .user.login}'
+  ```
+
+  This is the one bullet in the section that leaves the `gh pr` idiom, because `gh pr` exposes no field for an author's association with the repo. Keep that reason next to the command: tidying the command back to `gh pr` is how the broken version arrived.
+
+  The call exits 0 whether or not anything matches, so empty output means no external PR is waiting rather than a failed command. `--paginate` is what makes that true beyond the first page, which holds 30 pull requests.
+
+  The bot filter reads the account type rather than the login. The `gh pr` JSON layer spells Dependabot `app/dependabot` while REST spells it `dependabot[bot]`, so a login match is a spelling trap. Both spellings carry a type of `Bot`.
 - **Comment / label / close**: `gh pr comment`, `gh pr edit --add-label`/`--remove-label`, `gh pr close`.
 
 GitHub shares one number space across issues and PRs, so a bare `#42` may be either: resolve with `gh pr view 42` and fall back to `gh issue view 42`.
