@@ -78,6 +78,44 @@ and it is absent from build 1133 onwards regardless of branch, while build
 1134 still carries the schema warning. Picking a build between the two is what
 settles a question like that, and it is cheap.
 
+## Read what a step printed
+
+A build number and a step name are enough to fetch the text that step printed.
+List the steps first:
+
+```sh
+build=1148
+curl -s "https://circleci.com/api/v1.1/project/github/purinkle/radfords/$build" \
+  | jq -r '.steps[].actions[] | "\(.step) | \(.name) | \(.status)"'
+```
+
+Each entry in `steps` holds an `actions` array, and each action carries a
+`step` number, a `name` and a `status`. Every step in the build above has one
+action, so a name out of that listing picks a single log.
+
+Then fetch that step's output:
+
+```sh
+build=1148
+url=$(curl -s "https://circleci.com/api/v1.1/project/github/purinkle/radfords/$build" \
+  | jq -r '.steps[].actions[]
+      | select(.name == "Set up the environment")
+      | .output_url')
+curl -s "$url" | jq -r '.[].message'
+```
+
+The `output_url` points at a JSON array whose entries hold the printed text in
+a `message` field. Neither command needs a token or a login, for the reason
+the "Why the endpoint answers at all" section below gives.
+
+A passing build says every step exited zero. The log says what the step did
+on the way there, and the two can differ. Builds 1145 and 1148 both passed, and
+their `Set up the environment` steps disagree. In 1145, bundler finds that the
+version running is not the one the lockfile was generated with, so it installs
+the lockfile's version part way through the step and restarts itself. In 1148
+it installs that version in the step's opening lines and then uses it, with no
+restart anywhere. Only the log tells the two apart.
+
 ## Why the endpoint answers at all
 
 This project still runs the legacy GitHub OAuth integration, which is why its
