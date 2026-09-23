@@ -15,7 +15,9 @@ gem "inline_svg"
 gem "jquery-rails"
 gem "kaminari"
 gem "money-rails"
-gem "paperclip"
+# Paperclip 6 requires aws-sdk-s3, which is aws-sdk 3. Lift this only
+# together with the aws-sdk ceiling above.
+gem "paperclip", "< 6"
 gem "pg"
 gem "puma", "< 6.0"
 gem "rack-canonical-host"
