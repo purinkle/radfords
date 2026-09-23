@@ -62,6 +62,15 @@ describe Event do
     expect(no_location_event).to_not be_valid
   end
 
+  describe "#takes_place_on_date" do
+    it "returns the stored date, where takes_place_on returns a string" do
+      event = Event.new(@attr.merge(takes_place_on: "29 September 2011"))
+
+      expect(event.takes_place_on_date).to eql(Date.new(2011, 9, 29))
+      expect(event.takes_place_on).to be_a(String)
+    end
+  end
+
   describe "#to_s" do
     let(:name) { attributes.fetch(:name) }
 

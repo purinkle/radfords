@@ -27,6 +27,12 @@ class Event < ActiveRecord::Base
     end
   end
 
+  # date_field calls strftime on the value it is handed, and the reader
+  # above gives back a localised String. Forms want the stored Date.
+  def takes_place_on_date
+    read_attribute(:takes_place_on)
+  end
+
   def to_s
     name
   end

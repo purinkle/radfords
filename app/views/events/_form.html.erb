@@ -13,7 +13,11 @@
     <%= f.label :takes_place_on, class: 'control-label' %>
 
     <div class="controls">
-      <%= f.date_field(:takes_place_on, class: 'date_field') %>
+      <%= f.date_field(
+            :takes_place_on,
+            class: 'date_field',
+            value: f.object.takes_place_on_date,
+          ) %>
     </div>
   </div>
 

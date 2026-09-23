@@ -25,7 +25,7 @@ describe "updating events" do
       sign_in
       visit edit_event_url(event)
 
-      fill_form_and_submit(:event, :edit, {})
+      fill_form_and_submit(:event, :edit, takes_place_on: "")
 
       expect(page).to have_title("Edit Event")
       expect(page).to have_content("Takes place on can't be blank")

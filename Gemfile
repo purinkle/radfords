@@ -21,7 +21,7 @@ gem "paperclip", "< 6"
 gem "pg"
 gem "puma", "< 6.0"
 gem "rack-canonical-host"
-gem "rails", "~> 6.0.6"
+gem "rails", "~> 6.1.0"
 gem "recipient_interceptor"
 gem "sass-rails"
 gem "simple_form"
@@ -68,6 +68,6 @@ group :production do
   gem "rack-timeout"
 end
 
-gem "bourbon", "~> 6.0.0"
+gem "bourbon", "~> 7.3.0"
 gem "high_voltage"
 gem "refills", group: %i[development test]
