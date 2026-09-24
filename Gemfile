@@ -55,11 +55,14 @@ group :test do
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
+  # Ruby 2.6 caps selenium-webdriver at 4.1.0, and webdrivers 5.3 is the
+  # first release to look chromedriver up through Chrome for Testing.
+  gem "selenium-webdriver", "~> 4.1.0"
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "timecop"
   gem "vcr"
-  gem "webdrivers"
+  gem "webdrivers", "~> 5.3"
   gem "webmock"
 end
 

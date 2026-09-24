@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  browser-tools: circleci/browser-tools@2.4.2
+
 references:
   install_imagemagick: &install_imagemagick
     run:
@@ -39,6 +42,9 @@ jobs:
     steps:
       - checkout
       - <<: *install_imagemagick
+      # Chrome for Testing ships a chromedriver built for the Chrome beside
+      # it, both on the path. The image itself carries neither.
+      - browser-tools/install_chrome_for_testing
       - <<: *wait_for_postgres
       - <<: *setup
       - <<: *precompile_assets
