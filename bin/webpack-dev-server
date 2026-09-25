@@ -3,6 +3,16 @@
 ENV["RAILS_ENV"] ||= ENV["RACK_ENV"] || "development"
 ENV["NODE_ENV"]  ||= "development"
 
+# The webpack 4 build hashes with md4, which OpenSSL 3 dropped. Webpack
+# itself falls back to a WebAssembly md4, but compression-webpack-plugin asks
+# OpenSSL directly, so the production build needs the legacy provider.
+# bin/webpack and bin/webpack-dev-server carry the same lines, because they
+# start the compiler by different routes.
+# See docs/adr/0001-keep-webpack-4-behind-the-openssl-legacy-provider.md.
+unless ENV["NODE_OPTIONS"].to_s.include?("--openssl-legacy-provider")
+  ENV["NODE_OPTIONS"] = "#{ENV['NODE_OPTIONS']} --openssl-legacy-provider".strip
+end
+
 require "pathname"
 ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile",
   Pathname.new(__FILE__).realpath)

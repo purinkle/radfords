@@ -8,6 +8,37 @@ references:
     run:
       name: Install ImageMagick
       command: sudo apt-get update && sudo apt-get install imagemagick libmagickcore-dev libmagickwand-dev
+  install_node: &install_node
+    run:
+      name: Install Node
+      # The image pins its own Node and this repo said nothing about it, so
+      # CI built on whatever the image happened to ship. Read the version
+      # .tool-versions already names, so there is one place to change.
+      #
+      # nvm is a shell function, not a command, and CircleCI runs each step
+      # in a shell that never sources it. Unpack the official build instead
+      # and put it first on the PATH through $BASH_ENV, which CircleCI does
+      # source before every later step. The image's yarn is a script with a
+      # `env node` shebang, so it follows this Node without being reinstalled.
+      command: |
+        node_version=$(awk '/^nodejs /{ print $2 }' .tool-versions)
+
+        case "$(uname -m)" in
+          x86_64) arch=x64 ;;
+          aarch64) arch=arm64 ;;
+          *) echo "No Node build for $(uname -m)"; exit 1 ;;
+        esac
+
+        url="https://nodejs.org/dist/v$node_version/node-v$node_version-linux-$arch.tar.xz"
+        curl -fsSL --retry 3 "$url" -o /tmp/node.tar.xz
+        sudo mkdir -p /opt/node
+        sudo tar -xJf /tmp/node.tar.xz -C /opt/node --strip-components=1
+
+        echo 'export PATH=/opt/node/bin:$PATH' >> "$BASH_ENV"
+        source "$BASH_ENV"
+
+        echo "node $(node --version) from $(command -v node)"
+        echo "yarn $(yarn --version) from $(command -v yarn)"
   wait_for_postgres: &wait_for_postgres
     run:
       name: Wait for Postgres
@@ -45,6 +76,7 @@ jobs:
       # Chrome for Testing ships a chromedriver built for the Chrome beside
       # it, both on the path. The image itself carries neither.
       - browser-tools/install_chrome_for_testing
+      - <<: *install_node
       - <<: *wait_for_postgres
       - <<: *setup
       - <<: *precompile_assets

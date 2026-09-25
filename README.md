@@ -6,7 +6,7 @@ A local run needs:
 
 * Ruby 2.6.10, pinned in both `.ruby-version` and the `Gemfile`
 * Bundler 2.2.15, pinned by `Gemfile.lock`
-* Node 16.20.2, pinned in `.tool-versions`
+* Node 24.21.0, pinned in `.tool-versions`
 * Yarn 1.x, which is what `yarn.lock` was written by
 * PostgreSQL, running and accepting connections
 
@@ -20,7 +20,7 @@ manager if you do not have them already.
 With [asdf], install the two pinned runtimes:
 
     % asdf install ruby 2.6.10
-    % asdf install nodejs 16.20.2
+    % asdf install nodejs 24.21.0
 
 [asdf]: https://asdf-vm.com
 
