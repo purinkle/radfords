@@ -7,7 +7,7 @@
 
   <ul>
     <% @order.line_items.each do |item| %>
-      <li><%= image_tag(item.product.photo.url(:thumbnail)) %><span><%= item.quantity %>&times; <%= item.product.title %></span></li>
+      <li><%= product_photo_tag(item.product, style: :thumbnail) %><span><%= item.quantity %>&times; <%= item.product.title %></span></li>
     <% end %>
   </ul>
 

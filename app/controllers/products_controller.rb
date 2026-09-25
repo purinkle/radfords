@@ -68,7 +68,6 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :description,
       :photo,
-      :photo_file_name,
       :title
     )
   end

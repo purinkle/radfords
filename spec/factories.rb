@@ -26,7 +26,16 @@ FactoryBot.define do
 
   factory :product do
     description 'Packed full of bar, baz, and plenty of qux.'
-    photo { File.open("spec/support/files/photo.jpg") }
     title 'foo'
+
+    # Attached rather than set as an attribute, so that attributes_for stays a
+    # hash of plain values that Formulaic can fill a form with.
+    after(:build) do |product|
+      product.photo.attach(
+        io: File.open(PhotoFixture::PATH),
+        filename: PhotoFixture::FILENAME,
+        content_type: PhotoFixture::CONTENT_TYPE,
+      )
+    end
   end
 end

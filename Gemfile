@@ -4,20 +4,18 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "2.6.10"
 
 gem "autoprefixer-rails"
-gem "aws-sdk", "< 3"
+gem "aws-sdk-s3", require: false
 gem "bootsnap", require: false
 gem "delayed_job_active_record"
 gem "flutie"
 gem "friendly_id"
 gem "geocoder"
 gem "honeybadger"
+gem "image_processing"
 gem "inline_svg"
 gem "jquery-rails"
 gem "kaminari"
 gem "money-rails"
-# Paperclip 6 requires aws-sdk-s3, which is aws-sdk 3. Lift this only
-# together with the aws-sdk ceiling above.
-gem "paperclip", "< 6"
 gem "pg"
 gem "puma", "< 6.0"
 gem "rack-canonical-host"

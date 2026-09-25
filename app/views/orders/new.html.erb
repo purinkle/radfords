@@ -13,7 +13,7 @@
     <ul>
       <% @basket.line_items.each do |item| %>
         <li>
-          <%= image_tag(item.product.photo.url(:order_summary)) %>
+          <%= product_photo_tag(item.product, style: :order_summary) %>
 
           <div class="info">
             <span class="name">

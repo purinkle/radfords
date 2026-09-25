@@ -3,25 +3,19 @@ class Product < ActiveRecord::Base
 
   has_many :line_items, dependent: :restrict_with_error
 
-  has_attached_file :photo,
-    default_url: "/photos/original/missing_:style.png",
-    storage: :s3,
-    s3_credentials: {
-      bucket: ENV['S3_BUCKET_NAME'],
-      access_key_id: ENV['AWS_ACCESS_KEY_ID'],
-      secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
-    },
-    s3_region: ENV["S3_REGION"],
-    path: "product/:attachment/:id_partition/:style/:filename",
-    url: ":s3_domain_url",
-    styles: {
-      order_summary: "70x70#",
-      preview: "50x50#",
-      show: "584x399#",
-      thumbnail: "215x133#",
-    }
+  # Paperclip cropped each style to exactly these pixels with its "70x70#"
+  # geometry, which is what resize_to_fill does. Named variants would read
+  # better than a constant, but they arrive in Rails 7.0.
+  PHOTO_SIZES = {
+    order_summary: [70, 70],
+    preview: [50, 50],
+    show: [584, 399],
+    thumbnail: [215, 133],
+  }.freeze
 
-  validates_attachment_content_type :photo, content_type: /\Aimage/
+  has_one_attached :photo
+
+  validate :photo_is_an_image
 
   validates_presence_of :title
   validates_uniqueness_of :title
@@ -35,7 +29,20 @@ class Product < ActiveRecord::Base
     title
   end
 
+  def photo_variant(style)
+    photo.variant(resize_to_fill: PHOTO_SIZES.fetch(style))
+  end
+
   private
+
+  # Rails 6.1 has no attachment validations of its own, so this stands in for
+  # Paperclip's validates_attachment_content_type.
+  def photo_is_an_image
+    return unless photo.attached?
+    return if photo.blob.content_type.to_s.start_with?("image/")
+
+    errors.add(:photo, "must be an image")
+  end
 
   def ensure_not_referenced_by_any_line_item
     if line_items.empty?

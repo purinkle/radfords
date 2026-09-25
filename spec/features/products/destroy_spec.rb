@@ -9,12 +9,7 @@ describe "deleting products" do
 
     visit delete_product_url(product)
 
-    VCR.use_cassette(
-      "aws/delete",
-      match_requests_on: [:method, :uri_without_partition_id],
-    ) do
-      click_button("Delete Product")
-    end
+    click_button("Delete Product")
 
     expect(page).to have_title("Products")
     expect(page).to have_content("Product was deleted.")
@@ -41,16 +36,9 @@ describe "deleting products" do
 
       visit delete_product_url(product)
 
-      VCR.use_cassette(
-        "aws/delete",
-        match_requests_on: [:method, :uri_without_partition_id],
-      ) do
-        product.destroy
-      end
+      product.destroy
 
-      VCR.use_cassette("aws", match_requests_on: [:host]) do
-        click_button("Delete Product")
-      end
+      click_button("Delete Product")
 
       expect(page).to have_title("Products")
       expect(page).to have_content("We couldn't find that product.")
@@ -68,12 +56,7 @@ describe "deleting products" do
 
       visit delete_product_url(product)
 
-      VCR.use_cassette(
-        "aws/delete",
-        match_requests_on: [:method, :uri_without_partition_id],
-      ) do
-        click_button("Delete Product")
-      end
+      click_button("Delete Product")
 
       expect(page).to have_title("Delete Product")
       expect(page).to have_content("Line Items present")

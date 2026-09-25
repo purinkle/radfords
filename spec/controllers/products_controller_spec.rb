@@ -5,7 +5,6 @@ describe ProductsController do
     {
       'description' => 'Description of the jam',
       'photo' => 'photo.jpg',
-      'photo_file_name' => '/path/to/photo',
       'title' => 'Jam'
     }
   end
