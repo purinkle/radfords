@@ -2,9 +2,7 @@ require "rails_helper"
 
 describe "shop page" do
   it "lists products" do
-    product = VCR.use_cassette("aws", match_requests_on: [:host]) do
-      create(:product)
-    end
+    product = create(:product)
 
     visit shop_url
 

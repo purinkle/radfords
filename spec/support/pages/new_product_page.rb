@@ -11,10 +11,9 @@ class NewProductPage
   end
 
   def create_product
-    VCR.use_cassette("aws", match_requests_on: [:host]) do
-      fill_form(:product, product)
-      click_on(submit(:product))
-    end
+    fill_form(:product, product)
+    attach_file("Photo", PhotoFixture::PATH)
+    click_on(submit(:product))
   end
 
   def has_error?(text)

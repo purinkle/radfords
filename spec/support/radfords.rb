@@ -10,9 +10,7 @@ module RadfordsTestHelpers
   end
 
   def create_product(options = {})
-    VCR.use_cassette("aws", match_requests_on: [:host]) do
-      create(:product, options)
-    end
+    create(:product, options)
   end
 
   def sign_in
