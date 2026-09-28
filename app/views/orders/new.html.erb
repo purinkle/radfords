@@ -62,7 +62,7 @@
 
 <%= content_for(:javascript) do %>
   <% if Rails.env.test? %>
-    <%= javascript_pack_tag("stripe_stub") %>
+    <%= javascript_include_tag("stripe_stub") %>
   <% else %>
     <%= javascript_include_tag('https://js.stripe.com/v2/') %>
   <% end %>

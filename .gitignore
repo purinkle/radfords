@@ -25,3 +25,7 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+# PROTOTYPE: jsbundling writes here
+/app/assets/builds/*
+!/app/assets/builds/.keep

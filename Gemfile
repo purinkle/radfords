@@ -30,7 +30,7 @@ gem "sprockets"
 gem "stripe"
 gem "suspenders"
 gem "title"
-gem "webpacker"
+gem "jsbundling-rails"
 
 group :development do
   gem "rack-mini-profiler", require: false
