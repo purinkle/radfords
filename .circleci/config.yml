@@ -43,6 +43,20 @@ references:
     run:
       name: Wait for Postgres
       command: dockerize -wait tcp://localhost:5432 -timeout 1m
+  # Gems go under vendor/bundle so there is one directory to cache. The key
+  # carries the Ruby version as well as the lockfile, because a gem built for
+  # one Ruby is useless to another: bundler installs per ABI directory, so a
+  # cache from a different Ruby would restore and then be ignored.
+  restore_gems: &restore_gems
+    restore_cache:
+      keys:
+        - gems-v1-{{ checksum ".ruby-version" }}-{{ checksum "Gemfile.lock" }}
+        - gems-v1-{{ checksum ".ruby-version" }}-
+  save_gems: &save_gems
+    save_cache:
+      key: gems-v1-{{ checksum ".ruby-version" }}-{{ checksum "Gemfile.lock" }}
+      paths:
+        - vendor/bundle
   setup: &setup
     run:
       name: Set up the environment
@@ -65,6 +79,7 @@ jobs:
           PGHOST: localhost
           PGUSER: radfords
           RAILS_ENV: test
+          BUNDLE_PATH: vendor/bundle
       - image: "cimg/postgres:14.4"
         environment:
           POSTGRES_USER: radfords
@@ -78,6 +93,8 @@ jobs:
       - browser-tools/install_chrome_for_testing
       - <<: *install_node
       - <<: *wait_for_postgres
+      - <<: *restore_gems
       - <<: *setup
+      - <<: *save_gems
       - <<: *precompile_assets
       - <<: *run_tests
