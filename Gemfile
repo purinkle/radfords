@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.10"
+ruby "3.4.11"
 
 gem "autoprefixer-rails"
 gem "aws-sdk-s3", require: false
@@ -16,6 +16,13 @@ gem "inline_svg"
 gem "jquery-rails"
 gem "kaminari"
 gem "money-rails"
+# Ruby 3.4 dropped these from the default gems, and Rails 6.1 still reaches
+# for them without declaring them. Drop each one as a later Rails release
+# stops reaching for it.
+gem "csv"
+gem "drb"
+gem "mutex_m"
+gem "observer"
 gem "pg"
 gem "puma", "< 6.0"
 gem "rack-canonical-host"
@@ -53,8 +60,10 @@ group :test do
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
-  # Ruby 2.6 caps selenium-webdriver at 4.1.0, and webdrivers 5.3 is the
-  # first release to look chromedriver up through Chrome for Testing.
+  # webdrivers 5.3.1 caps selenium-webdriver below 4.11, and webdrivers 5.3 is
+  # the first release to look chromedriver up through Chrome for Testing. Ruby
+  # no longer caps it. Selenium manages drivers itself from 4.11, so the exit
+  # from this pair is to drop webdrivers, not to bump it.
   gem "selenium-webdriver", "~> 4.1.0"
   gem "shoulda-matchers"
   gem "simplecov", require: false

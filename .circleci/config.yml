@@ -73,8 +73,23 @@ references:
 jobs:
   build:
     working_directory: ~/radfords
+    # Ruby 3.4 needs more than the 4 GB a medium container gives. On medium,
+    # `bin/setup` drove RAM to 100% and the container was killed part way
+    # through bundle install, every time, with no error in the log. Ruby 2.6
+    # built the same gems inside 4 GB, so this is a cost of the new
+    # interpreter rather than of anything this app asks for.
+    resource_class: large
     docker:
-      - image: "cimg/ruby:2.6-browsers"
+      # Pinned to the exact patch in .ruby-version, so CI and this machine
+      # run the same interpreter. A floating 3.4 tag would drift between them.
+      #
+      # Keep the -browsers variant. Its browsers really are unused, because the
+      # orb below installs the Chrome for Testing the specs drive, and it costs
+      # about half a gigabyte. It also carries yarn, which the plain image does
+      # not and which the asset build needs, so dropping it fails the
+      # precompile on "Yarn not installed". Slim this only together with
+      # installing yarn beside Node below.
+      - image: "cimg/ruby:3.4.11-browsers"
         environment:
           PGHOST: localhost
           PGUSER: radfords
