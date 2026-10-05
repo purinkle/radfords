@@ -16,9 +16,10 @@ gem "inline_svg"
 gem "jquery-rails"
 gem "kaminari"
 gem "money-rails"
-# Ruby 3.4 dropped these from the default gems, and Rails 6.1 still reaches
-# for them without declaring them. Drop each one as a later Rails release
-# stops reaching for it.
+# Ruby 3.4 dropped these from the default gems, or warns that Ruby 4.0 will,
+# and Rails 6.1 still reaches for them without declaring them. Drop each one
+# as a later Rails release stops reaching for it.
+gem "benchmark"
 gem "csv"
 gem "drb"
 gem "mutex_m"
