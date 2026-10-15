@@ -68,6 +68,7 @@ group :test do
   gem "selenium-webdriver", "~> 4.1.0"
   gem "shoulda-matchers"
   gem "simplecov", require: false
+  gem "sinatra"
   gem "timecop"
   gem "vcr"
   gem "webdrivers", "~> 5.3"

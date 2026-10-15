@@ -4,6 +4,7 @@ module Features
   describe "create order" do
     it "show order summary" do
       expect(Order.count).to eql(0)
+      FakeStripe.customer = {"id": "TEST_CUSTOMER_ID"}
 
       create_product
       create_basket
@@ -13,11 +14,7 @@ module Features
 
       fill_form(:order, :new, attributes_for(:order))
 
-      VCR.use_cassette("stripe/customers") do
-        VCR.use_cassette("stripe/charges") do
-          click_button("Place my order")
-        end
-      end
+      click_button("Place my order")
 
       order = Order.last
 
@@ -37,6 +34,14 @@ module Features
       TEXT
       expect(page).to have_content(
         "Thank you for shopping at Radfords of Somerford"
+      )
+      expect(FakeStripe.charges).to contain_exactly(
+        {
+          "amount" => "0",
+          "currency" => "gbp",
+          "customer" => "TEST_CUSTOMER_ID",
+          "description" => "Payment for ##{order.id}"
+        }
       )
     end
 
