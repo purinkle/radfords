@@ -47,8 +47,12 @@ describe ConsoleSandboxByDefault do
       .to eq(%w[console --sandbox --environment=production])
   end
 
-  it "reads the environment given as an argument" do
-    expect(argv_for("console", "production", env: {})).to eq(%w[console --sandbox production])
+  it "reads a shortened environment name, as Rails does" do
+    expect(argv_for("console", "-e", "prod", env: {})).to eq(%w[console --sandbox -e prod])
+  end
+
+  it "ignores an environment given as a bare argument, as Rails 6.1 does" do
+    expect(argv_for("console", "production", env: {})).to eq(%w[console production])
   end
 
   it "lets an option override RAILS_ENV" do

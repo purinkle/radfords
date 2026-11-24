@@ -1,19 +1,18 @@
 class EventsController < ApplicationController
+  before_action :find_event, only: %i[show edit update destroy delete]
+  rescue_from ActiveRecord::RecordNotFound, with: :event_not_found
+
   def index
     @events = Event.all
   end
 
-  def show
-    @event = event
-  end
+  def show; end
 
   def new
     @event = Event.new
   end
 
-  def edit
-    @event = event
-  end
+  def edit; end
 
   def create
     @event = Event.new(event_params)
@@ -21,27 +20,23 @@ class EventsController < ApplicationController
   end
 
   def update
-    @event = event
-    @event.update!(event_params)
-    redirect_to(@event, notice: t(".notice"))
-  rescue ActiveRecord::RecordInvalid
-    render "edit"
+    update_and_show(@event, event_params)
   end
 
   def destroy
-    event.destroy
+    @event.destroy
     redirect_to(events_path, notice: t(".notice"))
   end
 
-  def delete
-    @event = event
-  end
+  def delete; end
 
   private
 
-  def event
-    Event.find(params[:id])
-  rescue ActiveRecord::RecordNotFound
+  def find_event
+    @event = Event.find(params[:id])
+  end
+
+  def event_not_found
     redirect_to(events_path, alert: t("events.not_found"))
   end
 

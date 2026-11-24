@@ -13,19 +13,26 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # Saves a new record and shows it, or shows its form again with the errors.
-  def create_and_show(record)
+  # Saves a new record and shows it, or wherever else it belongs, or shows
+  # its form again with the errors.
+  def create_and_show(record, location = record)
     record.save!
-    redirect_to(record, notice: t(".notice"))
+    redirect_to(location, notice: t(".notice"))
   rescue ActiveRecord::RecordInvalid
     render "new"
   end
 
+  # The same for a change to a record that already exists.
+  def update_and_show(record, attributes, location = record)
+    record.update!(attributes)
+    redirect_to(location, notice: t(".notice"))
+  rescue ActiveRecord::RecordInvalid
+    render "edit"
+  end
+
+  # The basket in the session, or a new one put there.
   def current_basket
-    Basket.with_line_items.find(session[:basket_id])
-  rescue ActiveRecord::RecordNotFound
-    basket = Basket.create
-    session[:basket_id] = basket.id
-    basket
+    Basket.with_line_items.find_by(id: session[:basket_id]) ||
+      Basket.create.tap { |basket| session[:basket_id] = basket.id }
   end
 end

@@ -16,8 +16,8 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_options)
-    build_order
+    @order = Order.new(order_params.merge(basket: current_basket))
+    place_order
     redirect_to root_url, flash: { partial: "thank_you" }
   rescue ActiveRecord::RecordInvalid
     render_new
@@ -25,45 +25,25 @@ class OrdersController < ApplicationController
 
   private
 
-  def build_order
-    order.save!
-    OrderBuilder.build(order, stripe_token)
-    clear_session
-  end
-
-  def clear_session
+  # Saves the order, charges for it, and swaps the basket in the session for
+  # the order, so the home page can thank the customer for it.
+  def place_order
+    @order.save!
+    OrderBuilder.build(@order, params[:stripe_token])
     session[:basket_id] = nil
-    session[:order_id] = order.id
-  end
-
-  attr_reader :order
-
-  def order_options
-    order_params.merge(basket: current_basket)
+    session[:order_id] = @order.id
   end
 
   def order_params
     params.require(:order).permit(
-      :address_line_1,
-      :address_line_2,
-      :address_city,
-      :address_post_code,
-      :address_county,
-      :email,
-      :name
+      :address_line_1, :address_line_2, :address_city, :address_post_code,
+      :address_county, :email, :name
     )
   end
 
   def render_new
-    if current_basket.line_items.empty?
-      redirect_to(shop_url, notice: t("orders.new.notice"))
-      return
-    end
+    return render(:new) if current_basket.line_items.any?
 
-    render action: :new
-  end
-
-  def stripe_token
-    params[:stripe_token]
+    redirect_to(shop_url, notice: t("orders.new.notice"))
   end
 end

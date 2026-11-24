@@ -2,13 +2,13 @@ class LineItemsController < ApplicationController
   skip_before_action :authenticate
 
   def create
-    @basket = current_basket
-    @basket.add_product(product.id).save
+    product = Product.friendly.find(params[:product_id])
+    current_basket.add_product(product.id).save
     redirect_to basket_url
   end
 
   def update
-    item.update item_params
+    item.update(params.require(:line_item).permit(:quantity))
     redirect_to basket_url
   end
 
@@ -19,23 +19,7 @@ class LineItemsController < ApplicationController
 
   private
 
-  def id
-    params.fetch :id
-  end
-
   def item
-    LineItem.find id
-  end
-
-  def item_params
-    params.require(:line_item).permit :quantity
-  end
-
-  def product
-    Product.friendly.find(product_id)
-  end
-
-  def product_id
-    params[:product_id]
+    LineItem.find(params[:id])
   end
 end

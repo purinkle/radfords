@@ -52,7 +52,7 @@ describe ProductsController do
       it "sets the alert flash" do
         delete :destroy, params: { id: "missing" }
 
-        expect(flash[:alert]).to eql I18n.t("products.destroy.alert")
+        expect(flash[:alert]).to eql I18n.t("products.not_found")
       end
     end
   end

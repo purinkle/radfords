@@ -39,6 +39,12 @@ class User < ApplicationRecord
     where(email: email).detect { |user| user.password_matches?(submitted_password) }
   end
 
+  # What a signed cookie keeps to recognise this user on a later request.
+  # authenticate_with_salt takes it back.
+  def remember_token
+    [id, salt]
+  end
+
   def self.authenticate_with_salt(id, cookie_salt)
     find_by(id: id, salt: cookie_salt)
   end

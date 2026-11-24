@@ -105,8 +105,8 @@ en:
     create:
       notice: "You successfully created a product."
     destroy:
-      alert: "We couldn't find that product."
       notice: Product was deleted.
+    not_found: "We couldn't find that product."
     update:
       notice: "Product saved."
   sessions:
@@ -125,7 +125,8 @@ en:
       notice: "You successfully created a supplier."
     destroy:
       notice: "You successfully deleted the supplier."
-    update: "You successfully updated the supplier."
+    update:
+      notice: "You successfully updated the supplier."
   time:
     formats:
       default:

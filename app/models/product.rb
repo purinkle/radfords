@@ -31,6 +31,12 @@ class Product < ApplicationRecord
     photo.variant(resize_to_fill: PHOTO_SIZES.fetch(style))
   end
 
+  # Products with a Paperclip photo that is not on Active Storage yet.
+  scope :paperclip_photos_to_copy, lambda {
+    with_attached_photo.where.not(photo_file_name: nil)
+                       .left_joins(:photo_attachment).where(active_storage_attachments: { id: nil })
+  }
+
   # Paperclip's :id_partition, which padded the id to nine digits and split
   # it into threes, so product 501 kept its photo under 000/000/501. This and
   # attach_paperclip_photo go once the photo_* columns are dropped.
@@ -53,8 +59,7 @@ class Product < ApplicationRecord
   # Rails 6.1 has no attachment validations of its own, so this stands in for
   # Paperclip's validates_attachment_content_type.
   def photo_is_an_image
-    return unless photo.attached?
-    return if photo.blob.content_type.to_s.start_with?("image/")
+    return if !photo.attached? || photo.content_type.to_s.start_with?("image/")
 
     errors.add(:photo, "must be an image")
   end

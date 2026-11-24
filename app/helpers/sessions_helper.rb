@@ -1,16 +1,13 @@
 module SessionsHelper
   def sign_in(user)
-    cookies.permanent.signed[:remember_token] = [user.id, user.salt]
-
-    self.current_user = user
-  end
-
-  def current_user=(user)
+    cookies.permanent.signed[:remember_token] = user.remember_token
     Current.user = user
   end
 
+  # The user whose remember token this request carries, if any.
   def current_user
-    Current.user ||= user_from_remember_token
+    token = cookies.signed[:remember_token]
+    Current.user ||= User.authenticate_with_salt(*token) if token
   end
 
   def signed_in?
@@ -19,36 +16,15 @@ module SessionsHelper
 
   def sign_out
     cookies.delete(:remember_token)
-
-    self.current_user = nil
+    Current.user = nil
   end
 
   def deny_access
-    store_location
+    session[:return_to] = request.fullpath
     redirect_to(signin_path, alert: t("sessions.unauthenticated"))
   end
 
   def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
-
-    clear_return_to
-  end
-
-  private
-
-  def user_from_remember_token
-    User.authenticate_with_salt(*remember_token)
-  end
-
-  def remember_token
-    cookies.signed[:remember_token] || [nil, nil]
-  end
-
-  def store_location
-    session[:return_to] = request.fullpath
-  end
-
-  def clear_return_to
-    session[:return_to] = nil
+    redirect_to(session.delete(:return_to) || default)
   end
 end

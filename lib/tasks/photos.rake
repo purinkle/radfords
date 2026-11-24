@@ -12,8 +12,8 @@ namespace :photos do
     )
     bucket = Aws::S3::Bucket.new(name: ENV.fetch("S3_BUCKET_NAME"), client: client)
     migration = PaperclipPhotoMigration.new(bucket: bucket)
-
     migration.run
-    abort("Some photos did not come across.") unless migration.succeeded?
+
+    abort("These products' photos did not come across: #{migration.failures.join(", ")}.") if migration.failures.any?
   end
 end

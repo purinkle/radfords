@@ -9,41 +9,39 @@
 class ConsoleSandboxByDefault
   COMMANDS = %w[console c].freeze
   SANDBOX_FLAGS = %w[--sandbox -s --no-sandbox].freeze
+  # -e production, -eproduction, --environment production or
+  # --environment=production.
+  ENVIRONMENT_OPTION = /(?:\A|\s)(?:-e\s*|--environment[=\s])(\S+)/
 
   def initialize(argv, env)
-    @command, *@rest = argv
+    @argv = argv
     @env = env
   end
 
   # The arguments to run, with --sandbox added to a production console that
   # did not choose for itself.
   def argv
-    return [command, *rest].compact unless sandbox_by_default?
+    return @argv unless sandbox_by_default?
 
+    command, *rest = @argv
     [command, "--sandbox", *rest]
   end
 
   private
 
-  attr_reader :command, :env, :rest
-
   def sandbox_by_default?
-    COMMANDS.include?(command) && !rails_arguments.intersect?(SANDBOX_FLAGS) && environment == "production"
+    COMMANDS.include?(@argv.first) && !rails_arguments.intersect?(SANDBOX_FLAGS) && production?
   end
 
   # Anything after "--" belongs to IRB, not to Rails.
   def rails_arguments
-    rest.take_while { |argument| argument != "--" }
+    @argv.drop(1).take_while { |argument| argument != "--" }
   end
 
-  def environment
-    environment_option || rails_arguments.find { |argument| !argument.start_with?("-") } ||
-      env["RAILS_ENV"] || env["RACK_ENV"]
-  end
-
-  # -e production, -eproduction, --environment production or
-  # --environment=production.
-  def environment_option
-    rails_arguments.join(" ")[/(?:\A|\s)(?:-e\s*|--environment[=\s])(\S+)/, 1]
+  # Rails reads the environment from -e, then RAILS_ENV, then RACK_ENV, and
+  # takes any leading part of a name, so -e prod is production too.
+  def production?
+    environment = rails_arguments.join(" ")[ENVIRONMENT_OPTION, 1] || @env["RAILS_ENV"] || @env["RACK_ENV"]
+    !environment.to_s.empty? && "production".start_with?(environment)
   end
 end

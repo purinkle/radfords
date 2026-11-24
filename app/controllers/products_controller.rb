@@ -1,71 +1,50 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate, only: :show
+  before_action :find_product, only: %i[show edit delete update destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :product_not_found
 
   def index
     @products = Product.with_attached_photo
   end
 
-  def show
-    @product = product
-  end
+  def show; end
 
   def new
     @product = Product.new
   end
 
-  def edit
-    @product = product
-  end
+  def edit; end
 
   def create
     @product = Product.new(product_params)
     create_and_show(@product)
   end
 
-  def delete
-    @product = product
-  end
+  def delete; end
 
   def update
-    @product = find_product
-
-    if @product.update(product_params)
-      redirect_to product_path(@product), notice: t(".notice")
-    else
-      render "edit"
-    end
+    update_and_show(@product, product_params)
   end
 
   def destroy
-    @product = find_product
-
     if @product.destroy
       redirect_to products_url, notice: t(".notice")
     else
       render :delete
     end
-  rescue ActiveRecord::RecordNotFound
-    redirect_to products_url, alert: t(".alert")
   end
 
   private
 
-  def product
-    find_product
-  rescue ActiveRecord::RecordNotFound
-    flash[:alert] = t("products.destroy.alert")
-    redirect_to products_path
+  def find_product
+    @product = Product.with_attached_photo.friendly.find(params[:id])
   end
 
-  def find_product
-    Product.with_attached_photo.friendly.find(params[:id])
+  def product_not_found
+    redirect_to products_path, alert: t("products.not_found")
   end
 
   def product_params
-    params.require(:product).permit(
-      :description,
-      :photo,
-      :title
-    )
+    params.require(:product).permit(:description, :photo, :title)
   end
 end

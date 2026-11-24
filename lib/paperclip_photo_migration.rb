@@ -4,52 +4,33 @@ require "aws-sdk-s3"
 # and recorded only the file name in the database. Active Storage keeps its own
 # key, so the bytes have to be read from the old path and handed to it.
 class PaperclipPhotoMigration
-  def initialize(bucket:, out: $stdout, err: $stderr)
+  # The ids of the products whose photo did not come across.
+  attr_reader :failures
+
+  def initialize(bucket:, out: $stdout)
     @bucket = bucket
     @out = out
-    @err = err
-    @tally = Hash.new(0)
+    @failures = []
   end
 
-  # Copies every photo across, reporting each product and then a total.
+  # Copies every photo not yet on Active Storage, one line per product.
   def run
-    products = Product.with_attached_photo.where.not(photo_file_name: nil)
-    out.puts "#{products.count} products carry a Paperclip photo."
-    products.find_each { |product| tally[migrate(product)] += 1 }
-    out.puts summary
-  end
-
-  # True once a run has found no photo missing and had none refused.
-  def succeeded?
-    tally.values_at(:missing, :failed).sum.zero?
+    Product.paperclip_photos_to_copy.find_each do |product|
+      @out.puts "#{product.id}: #{copy(product, product.paperclip_photo_key)}."
+    end
   end
 
   private
 
-  attr_reader :bucket, :err, :out, :tally
-
-  def summary
-    attached, skipped, missing, failed = tally.values_at(:attached, :skipped, :missing, :failed)
-    "Attached #{attached}, already done #{skipped}, missing #{missing}, failed #{failed}."
-  end
-
-  def migrate(product)
-    return report(:skipped, product, "already on Active Storage, leaving it alone") if product.photo.attached?
-
-    copy(product, product.paperclip_photo_key)
-  end
-
   def copy(product, key)
-    product.attach_paperclip_photo(bucket.object(key).get)
-    return report(:attached, product, "attached from #{key}") if product.photo.attached?
-
-    report(:failed, product, product.errors.full_messages.to_sentence, to: err)
+    product.attach_paperclip_photo(@bucket.object(key).get)
+    product.photo.attached? ? "attached from #{key}" : failed(product, product.errors.full_messages.to_sentence)
   rescue Aws::S3::Errors::NoSuchKey
-    report(:missing, product, "nothing at #{key}", to: err)
+    failed(product, "nothing at #{key}")
   end
 
-  def report(outcome, product, message, to: out)
-    to.puts "#{product.id}: #{message}."
-    outcome
+  def failed(product, reason)
+    failures << product.id
+    reason
   end
 end
