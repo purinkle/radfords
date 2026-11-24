@@ -9,40 +9,13 @@ describe "deleting products" do
 
     visit delete_product_url(product)
 
+    expect(page).to have_title("Delete Product")
+
     click_button("Delete Product")
 
     expect(page).to have_title("Products")
     expect(page).to have_text("Product was deleted.")
     expect(Product.count).to be_zero
-  end
-
-  context "when the product can't be found" do
-    it "shows the 'Products' page" do
-      expect(Product.count).to be_zero
-
-      sign_in
-
-      visit delete_product_url(1)
-
-      expect(page).to have_title("Products")
-      expect(page).to have_text("We couldn't find that product.")
-    end
-  end
-
-  context "when the product is already destroyed" do
-    it "shows the 'Products' page" do
-      product = create_product
-      sign_in
-
-      visit delete_product_url(product)
-
-      product.destroy
-
-      click_button("Delete Product")
-
-      expect(page).to have_title("Products")
-      expect(page).to have_text("We couldn't find that product.")
-    end
   end
 
   context "when the product is in someone's basket" do

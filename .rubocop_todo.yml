@@ -11,11 +11,6 @@
 FactoryBot/SyntaxMethods:
   Exclude:
     - 'spec/controllers/sessions_controller_spec.rb'
-    - 'spec/features/layouts/header_spec.rb'
-    - 'spec/features/line_items/destroy_spec.rb'
-    - 'spec/features/orders/fulfil_order_spec.rb'
-    - 'spec/features/suppliers/deleting_spec.rb'
-    - 'spec/features/suppliers/updating_spec.rb'
 
 # Offense count: 1
 # Configuration parameters: AllowComments, AllowEmptyLambdas.
@@ -78,7 +73,6 @@ Naming/VariableNumber:
   Exclude:
     - 'app/controllers/orders_controller.rb'
     - 'app/models/order.rb'
-    - 'spec/features/orders/index_spec.rb'
     - 'spec/models/basket_decorator_spec.rb'
     - 'spec/models/basket_spec.rb'
     - 'spec/models/order_spec.rb'
@@ -94,8 +88,6 @@ Performance/Sum:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 RSpec/BeEql:
   Exclude:
-    - 'spec/features/baskets/destroy_in_browser_spec.rb'
-    - 'spec/features/baskets/destroy_spec.rb'
     - 'spec/features/orders/create_in_browser_spec.rb'
     - 'spec/features/orders/new_spec.rb'
     - 'spec/features/products/destroy_spec.rb'
@@ -127,21 +119,10 @@ RSpec/ExampleLength:
   Exclude:
     - 'spec/controllers/events_controller_spec.rb'
     - 'spec/controllers/products_controller_spec.rb'
-    - 'spec/features/baskets/destroy_in_browser_spec.rb'
-    - 'spec/features/baskets/destroy_spec.rb'
-    - 'spec/features/events/destroying_spec.rb'
-    - 'spec/features/events/new_spec.rb'
-    - 'spec/features/events/update_spec.rb'
-    - 'spec/features/line_items/destroy_spec.rb'
-    - 'spec/features/line_items/edit_spec.rb'
     - 'spec/features/orders/create_in_browser_spec.rb'
-    - 'spec/features/orders/fulfil_order_spec.rb'
-    - 'spec/features/orders/index_spec.rb'
     - 'spec/features/orders/new_spec.rb'
     - 'spec/features/products/destroy_spec.rb'
-    - 'spec/features/suppliers/creating_spec.rb'
-    - 'spec/features/suppliers/deleting_spec.rb'
-    - 'spec/features/suppliers/updating_spec.rb'
+    - 'spec/features/sessions/destroying_spec.rb'
 
 # Offense count: 6
 # Configuration parameters: Max, AllowedIdentifiers, AllowedPatterns.
@@ -172,26 +153,13 @@ RSpec/MessageSpies:
 RSpec/MultipleExpectations:
   Exclude:
     - 'spec/controllers/sessions_controller_spec.rb'
-    - 'spec/features/baskets/destroy_in_browser_spec.rb'
-    - 'spec/features/baskets/destroy_spec.rb'
-    - 'spec/features/events/destroying_spec.rb'
-    - 'spec/features/events/new_spec.rb'
     - 'spec/features/events/show_spec.rb'
-    - 'spec/features/events/update_spec.rb'
-    - 'spec/features/line_items/create_in_browser_spec.rb'
     - 'spec/features/orders/create_in_browser_spec.rb'
-    - 'spec/features/orders/fulfil_order_spec.rb'
     - 'spec/features/orders/new_spec.rb'
-    - 'spec/features/pages/shop_spec.rb'
-    - 'spec/features/products/creating_spec.rb'
     - 'spec/features/products/destroy_spec.rb'
     - 'spec/features/products/updating_spec.rb'
-    - 'spec/features/sessions/create_in_browser_spec.rb'
     - 'spec/features/sessions/create_spec.rb'
     - 'spec/features/sessions/destroying_spec.rb'
-    - 'spec/features/suppliers/creating_spec.rb'
-    - 'spec/features/suppliers/deleting_spec.rb'
-    - 'spec/features/suppliers/updating_spec.rb'
     - 'spec/helpers/flashes_helper_spec.rb'
     - 'spec/helpers/sessions_helper_spec.rb'
     - 'spec/models/event_spec.rb'
@@ -329,7 +297,6 @@ Rails/DynamicFindBy:
 # AllowedMethods: order, limit, select, lock
 Rails/FindEach:
   Exclude:
-    - 'spec/features/line_items/edit_spec.rb'
 
 # Offense count: 1
 Rails/HelperInstanceVariable:
