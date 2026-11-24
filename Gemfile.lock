@@ -60,26 +60,28 @@ GEM
       minitest (>= 5.1)
       tzinfo (~> 2.0)
       zeitwerk (~> 2.3)
-    addressable (2.9.0)
+    addressable (2.10.0)
       public_suffix (>= 2.0.2, < 8.0)
     ast (2.4.3)
     autoprefixer-rails (10.4.16.0)
       execjs (~> 2)
     awesome_print (1.9.2)
-    aws-eventstream (1.3.2)
+    aws-eventstream (1.4.1)
     aws-partitions (1.1109.0)
-    aws-sdk-core (3.224.1)
-      aws-eventstream (~> 1, >= 1.3.0)
+    aws-sdk-core (3.272.0)
+      aws-eventstream (~> 1, >= 1.4.1)
       aws-partitions (~> 1, >= 1.992.0)
       aws-sigv4 (~> 1.9)
       base64
+      bigdecimal
       jmespath (~> 1, >= 1.6.1)
       logger
+      rexml (~> 3.4, >= 3.4.2)
     aws-sdk-kms (1.101.0)
       aws-sdk-core (~> 3, >= 3.216.0)
       aws-sigv4 (~> 1.5)
-    aws-sdk-s3 (1.188.0)
-      aws-sdk-core (~> 3, >= 3.224.1)
+    aws-sdk-s3 (1.245.2)
+      aws-sdk-core (~> 3, >= 3.269.0)
       aws-sdk-kms (~> 1)
       aws-sigv4 (~> 1.5)
     aws-sigv4 (1.11.0)
@@ -99,9 +101,9 @@ GEM
     bullet (7.1.6)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
-    bundler-audit (0.7.0.1)
-      bundler (>= 1.2.0, < 3)
-      thor (>= 0.18, < 2)
+    bundler-audit (0.9.3)
+      bundler (>= 1.2.0)
+      thor (~> 1.0)
     byebug (13.0.0)
       reline (>= 0.6.0)
     capybara (3.40.0)
@@ -116,7 +118,6 @@ GEM
     capybara-selenium (0.0.6)
       capybara
       selenium-webdriver
-    childprocess (4.1.0)
     coderay (1.1.3)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -124,7 +125,7 @@ GEM
     crack (1.0.0)
       bigdecimal
       rexml
-    crass (1.0.7)
+    crass (1.0.8)
     csv (3.3.6)
     database_cleaner (2.0.2)
       database_cleaner-active_record (>= 2, < 3)
@@ -246,9 +247,9 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     logger (1.7.0)
-    loofah (2.25.2)
+    loofah (2.25.3)
       crass (~> 1.0.2)
-      nokogiri (>= 1.12.0)
+      nokogiri (>= 1.19.5)
     mail (2.9.1)
       logger
       mini_mime (>= 0.1.1)
@@ -274,9 +275,9 @@ GEM
       monetize (~> 1.9)
       money (~> 6.13)
       railties (>= 3.0)
-    msgpack (1.8.5)
+    msgpack (1.8.7)
     mutex_m (0.3.0)
-    net-imap (0.3.10)
+    net-imap (0.6.8)
       date
       net-protocol
     net-pop (0.1.2)
@@ -286,12 +287,12 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.5)
-    nokogiri (1.19.4)
+    nokogiri (1.19.7)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
-    nokogiri (1.19.4-arm64-darwin)
+    nokogiri (1.19.7-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.19.4-x86_64-linux-gnu)
+    nokogiri (1.19.7-x86_64-linux-gnu)
       racc (~> 1.4)
     observer (0.1.2)
     ostruct (0.6.3)
@@ -312,17 +313,17 @@ GEM
     pry-rails (0.3.9)
       pry (>= 0.10.4)
     public_suffix (7.0.5)
-    puma (5.6.9)
+    puma (8.1.2)
       nio4r (~> 2.0)
     racc (1.8.1)
-    rack (2.2.24)
+    rack (2.2.26)
     rack-canonical-host (1.2.0)
       addressable (> 0, < 3)
       rack (>= 1, < 4)
     rack-mini-profiler (3.0.0)
       rack (>= 1.2.0)
-    rack-proxy (0.7.6)
-      rack
+    rack-proxy (2.0.2)
+      rack (>= 2.0, < 4)
     rack-test (2.2.0)
       rack (>= 1.3)
     rack-timeout (0.6.3)
@@ -345,8 +346,8 @@ GEM
       activesupport (>= 5.0.0)
       minitest
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.7.1)
-      loofah (~> 2.25, >= 2.25.2)
+    rails-html-sanitizer (1.7.2)
+      loofah (~> 2.25, >= 2.25.3)
       nokogiri (>= 1.15.7, != 1.16.7, != 1.16.6, != 1.16.5, != 1.16.4, != 1.16.3, != 1.16.2, != 1.16.1, != 1.16.0.rc1, != 1.16.0)
     railties (6.1.7.10)
       actionpack (= 6.1.7.10)
@@ -450,7 +451,7 @@ GEM
       simplecov (>= 0.22.0)
       tty-which (~> 0.5.0)
       virtus (~> 2.0)
-    rubyzip (2.4.1)
+    rubyzip (3.7.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -461,10 +462,11 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    selenium-webdriver (4.1.0)
-      childprocess (>= 0.5, < 5.0)
-      rexml (~> 3.2, >= 3.2.5)
-      rubyzip (>= 1.2.2)
+    selenium-webdriver (4.54.0)
+      base64 (~> 0.2)
+      logger (~> 1.4)
+      rubyzip (>= 1.2.2, < 4.0)
+      websocket (~> 1.0)
     semantic_range (3.0.0)
     sexp_processor (4.17.6)
     shoulda-matchers (3.1.3)
@@ -478,10 +480,8 @@ GEM
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
-    skylight (4.3.2)
-      skylight-core (= 4.3.2)
-    skylight-core (4.3.2)
-      activesupport (>= 4.2.0)
+    skylight (6.0.4)
+      activesupport (>= 5.2.0)
     spring (2.1.1)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
@@ -528,10 +528,6 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webdrivers (5.3.1)
-      nokogiri (~> 1.6)
-      rubyzip (>= 1.3.0)
-      selenium-webdriver (~> 4.0, < 4.11)
     webmock (3.23.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
@@ -541,6 +537,7 @@ GEM
       rack-proxy (>= 0.6.1)
       railties (>= 5.2)
       semantic_range (>= 2.3.0)
+    websocket (1.2.11)
     websocket-driver (0.8.2)
       base64
       websocket-extensions (>= 0.1.0)
@@ -588,7 +585,7 @@ DEPENDENCIES
   pg
   pry-byebug
   pry-rails
-  puma (< 6.0)
+  puma
   rack-canonical-host
   rack-mini-profiler
   rack-timeout
@@ -605,7 +602,7 @@ DEPENDENCIES
   rubocop-rspec_rails
   rubycritic
   sass-rails
-  selenium-webdriver (~> 4.1.0)
+  selenium-webdriver
   shoulda-matchers
   simple_form
   simplecov
@@ -619,12 +616,11 @@ DEPENDENCIES
   title
   vcr
   web-console
-  webdrivers (~> 5.3)
   webmock
   webpacker
 
 RUBY VERSION
-   ruby 3.4.11p137
+   ruby 3.4.13p195
 
 BUNDLED WITH
    2.6.9

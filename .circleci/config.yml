@@ -89,7 +89,7 @@ jobs:
       # not and which the asset build needs, so dropping it fails the
       # precompile on "Yarn not installed". Slim this only together with
       # installing yarn beside Node below.
-      - image: "cimg/ruby:3.4.11-browsers"
+      - image: "cimg/ruby:3.4.13-browsers"
         environment:
           PGHOST: localhost
           PGUSER: radfords

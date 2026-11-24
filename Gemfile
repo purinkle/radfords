@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.4.11"
+ruby "3.4.13"
 
 gem "autoprefixer-rails"
 gem "aws-sdk-s3", require: false
@@ -28,7 +28,7 @@ gem "observer"
 # later Rails release stops passing it.
 gem "json", "< 3"
 gem "pg"
-gem "puma", "< 6.0"
+gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 6.1.0"
 gem "recipient_interceptor"
@@ -72,16 +72,11 @@ group :test do
   gem "database_cleaner"
   gem "formulaic"
   gem "launchy"
-  # webdrivers 5.3.1 caps selenium-webdriver below 4.11, and webdrivers 5.3 is
-  # the first release to look chromedriver up through Chrome for Testing. Ruby
-  # no longer caps it. Selenium manages drivers itself from 4.11, so the exit
-  # from this pair is to drop webdrivers, not to bump it.
-  gem "selenium-webdriver", "~> 4.1.0"
+  gem "selenium-webdriver"
   gem "shoulda-matchers"
   gem "simplecov", require: false
   gem "timecop"
   gem "vcr"
-  gem "webdrivers", "~> 5.3"
   gem "webmock"
 end
 
