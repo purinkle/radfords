@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_11_24_150722) do
-
+ActiveRecord::Schema[7.0].define(version: 2026_11_24_150722) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,7 +19,7 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -33,7 +32,7 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -44,8 +43,8 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
   end
 
   create_table "baskets", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "order_id"
     t.index ["order_id"], name: "index_baskets_on_order_id"
   end
@@ -55,13 +54,13 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
     t.integer "attempts", default: 0, null: false
     t.text "handler", null: false
     t.text "last_error"
-    t.datetime "run_at"
-    t.datetime "locked_at"
-    t.datetime "failed_at"
+    t.datetime "run_at", precision: nil
+    t.datetime "locked_at", precision: nil
+    t.datetime "failed_at", precision: nil
     t.string "locked_by"
     t.string "queue"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
@@ -69,15 +68,15 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
     t.string "name"
     t.date "takes_place_on"
     t.string "location"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
   end
 
   create_table "line_items", force: :cascade do |t|
     t.integer "product_id"
     t.integer "basket_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.integer "quantity", default: 1
     t.integer "order_id"
   end
@@ -86,8 +85,8 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
     t.text "name"
     t.text "address"
     t.text "email"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", precision: nil
+    t.datetime "updated_at", precision: nil
     t.boolean "viewed", default: false, null: false
   end
 
@@ -95,13 +94,13 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
     t.string "title"
     t.text "description"
     t.string "image_url"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "slug"
     t.string "photo_file_name"
     t.string "photo_content_type"
     t.integer "photo_file_size"
-    t.datetime "photo_updated_at"
+    t.datetime "photo_updated_at", precision: nil
     t.integer "price_pennies", default: 0, null: false
     t.string "price_currency", default: "GBP", null: false
     t.index ["slug"], name: "index_products_on_slug"
@@ -113,8 +112,8 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
     t.string "name"
     t.string "telephone_number"
     t.string "website"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.decimal "lat", precision: 15, scale: 10
     t.decimal "lng", precision: 15, scale: 10
     t.float "latitude"
@@ -124,8 +123,8 @@ ActiveRecord::Schema.define(version: 2026_11_24_150722) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at", precision: nil, null: false
+    t.datetime "updated_at", precision: nil, null: false
     t.string "encrypted_password"
     t.string "salt"
     t.index ["email"], name: "index_users_on_email", unique: true

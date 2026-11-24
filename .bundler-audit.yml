@@ -1,11 +1,10 @@
 ---
-# Every advisory below is in Rails 6.1 itself, which no longer gets security
-# releases. Each is fixed only in a later Rails, so they wait on the upgrade in
-# issue 613. Ignoring them by id keeps this check failing on anything new.
-# Delete each line as the upgrade passes the release that fixes it.
+# Every advisory below is in a Rails gem, and each is fixed only in a later
+# Rails than the one this app runs. They wait on the upgrade in issue 613.
+# Ignoring them by id keeps this check failing on anything new. Delete each
+# line as the upgrade passes the release that fixes it.
 ignore:
   - GHSA-5957-c7qm-m469 # actionmailbox: Possible signature replay in Action Mailbox Mailgun ingress
-  - CVE-2024-54133 # actionpack: Possible Content Security Policy bypass in Action Dispatch
   - GHSA-2586-8ghr-69fj # actionpack: Possible restoration of destroyed sessions in Action Dispatch CacheStore
   - GHSA-gmj8-hvj3-49mw # actionpack: Missing SameSite attribute on session cookies from Action Pack session stores
   - GHSA-r9jg-fmfx-2gv6 # actionpack: Possible cache poisoning in Action Pack content negotiation
