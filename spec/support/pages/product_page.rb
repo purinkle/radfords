@@ -12,6 +12,6 @@ class ProductPage
   end
 
   def visit
-    super "/products/#{product.id}"
+    super("/products/#{product.id}")
   end
 end

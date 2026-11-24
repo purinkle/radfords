@@ -22,20 +22,20 @@ module Features
       order = Order.last
 
       expect(Order.count).to eql(1)
-      expect(page).to have_content("Thank you")
-      expect(page).to have_content("Your order was placed successfully")
-      expect(page).to have_content("You've just purchased this")
+      expect(page).to have_text("Thank you")
+      expect(page).to have_text("Your order was placed successfully")
+      expect(page).to have_text("You've just purchased this")
 
       order.line_items.each do |item|
-        expect(page).to have_content("#{item.quantity}× #{item.product.title}")
+        expect(page).to have_text("#{item.quantity}× #{item.product.title}")
       end
 
-      expect(page).to have_content("Your Order ID is: #{order.id}")
-      expect(page).to have_content <<-TEXT.squish
+      expect(page).to have_text("Your Order ID is: #{order.id}")
+      expect(page).to have_text <<~TEXT.squish
         An email receipt containing information about your order will soon
         follow. Please keep it for your records.
       TEXT
-      expect(page).to have_content(
+      expect(page).to have_text(
         "Thank you for shopping at Radfords of Somerford"
       )
     end
@@ -54,12 +54,12 @@ module Features
 
         expect(Order.count).to be_zero
         expect(page).to have_title("New order")
-        expect(page).to have_content("errors prohibited this from being saved")
-        expect(page).to have_content("Address city can't be blank")
-        expect(page).to have_content("Address line 1 can't be blank")
-        expect(page).to have_content("Address post code can't be blank")
-        expect(page).to have_content("Name can't be blank")
-        expect(page).to have_content("Email can't be blank")
+        expect(page).to have_text("errors prohibited this from being saved")
+        expect(page).to have_text("Address city can't be blank")
+        expect(page).to have_text("Address line 1 can't be blank")
+        expect(page).to have_text("Address post code can't be blank")
+        expect(page).to have_text("Name can't be blank")
+        expect(page).to have_text("Email can't be blank")
       end
     end
 
@@ -71,7 +71,7 @@ module Features
         page.visit
 
         expect(page).to have_title("Shop")
-        expect(page).to have_content("Your basket is empty")
+        expect(page).to have_text("Your basket is empty")
         expect(Order.count).to be_zero
       end
     end

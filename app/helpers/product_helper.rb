@@ -1,10 +1,8 @@
 module ProductHelper
   def product_list(products)
-    partial = 'product_list'
+    partial = "product_list"
 
-    if products.empty?
-      partial = 'no_products'
-    end
+    partial = "no_products" if products.empty?
 
     partial
   end
@@ -13,9 +11,7 @@ module ProductHelper
   # Storage has no such fallback, so every caller goes through here instead.
   # Name a style from Product::PHOTO_SIZES, or leave it out for the full image.
   def product_photo_tag(product, style: nil, **options)
-    unless product.photo.attached?
-      return image_tag("/photos/original/missing_original.png", options)
-    end
+    return image_tag("/photos/original/missing_original.png", options) unless product.photo.attached?
 
     if style
       image_tag(product.photo_variant(style), options)

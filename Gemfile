@@ -23,6 +23,10 @@ gem "csv"
 gem "drb"
 gem "mutex_m"
 gem "observer"
+# RuboCop pulls json into the bundle, and json 3 rejects the quirks_mode
+# option that Rails 6.1 still passes when it encodes. Drop the cap once a
+# later Rails release stops passing it.
+gem "json", "< 3"
 gem "pg"
 gem "puma", "< 6.0"
 gem "rack-canonical-host"
@@ -53,6 +57,13 @@ group :development, :test do
   gem "pry-byebug"
   gem "pry-rails"
   gem "rspec-rails", "~> 4.1"
+  gem "rubocop", require: false
+  gem "rubocop-capybara", require: false
+  gem "rubocop-factory_bot", require: false
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+  gem "rubocop-rspec_rails", require: false
 end
 
 group :test do

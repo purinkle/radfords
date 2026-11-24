@@ -10,7 +10,7 @@ describe "destroying events" do
     click_button("Delete Event")
 
     expect(page).to have_title("Events")
-    expect(page).to have_content("You successfully deleted the event.")
+    expect(page).to have_text("You successfully deleted the event.")
     expect(Event.count).to be_zero
   end
 end

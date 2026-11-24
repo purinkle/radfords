@@ -5,13 +5,13 @@ Capybara.register_driver :chrome do |app|
 end
 
 Capybara.register_driver :headless_chrome do |app|
-  options = ::Selenium::WebDriver::Chrome::Options.new
+  options = Selenium::WebDriver::Chrome::Options.new
   options.add_argument "--window-size=1680,1050"
   # Nothing outside the application under test should answer the browser.
   # Without this the pages fetch Google Maps, and product photos from S3.
   options.add_argument(
     "--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE localhost, " \
-    "EXCLUDE 127.0.0.1",
+    "EXCLUDE 127.0.0.1"
   )
   options.headless!
 
@@ -20,7 +20,7 @@ Capybara.register_driver :headless_chrome do |app|
   Capybara::Selenium::Driver.new(
     app,
     browser: :chrome,
-    capabilities: options,
+    capabilities: options
   )
 end
 
@@ -35,9 +35,9 @@ module ChromedriverBinary
   end
 
   def self.installed_path
-    ENV["PATH"].to_s.split(File::PATH_SEPARATOR).
-      map { |directory| File.join(directory, "chromedriver") }.
-      find { |candidate| File.executable?(candidate) }
+    ENV["PATH"].to_s.split(File::PATH_SEPARATOR)
+               .map { |directory| File.join(directory, "chromedriver") }
+               .find { |candidate| File.executable?(candidate) }
   end
 
   # Fetching a driver is a download, not traffic the application makes, so it
@@ -55,7 +55,7 @@ module ChromedriverBinary
 end
 
 RSpec.configure do |config|
-  config.before(:each, js: true) do
-    ::Selenium::WebDriver::Chrome::Service.driver_path = ChromedriverBinary.path
+  config.before(:each, :js) do
+    Selenium::WebDriver::Chrome::Service.driver_path = ChromedriverBinary.path
   end
 end

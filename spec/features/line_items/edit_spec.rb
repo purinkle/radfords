@@ -9,7 +9,7 @@ module Features
       basket_page.visit
       basket_page.increase_item_quantity
 
-      expect(basket_page).to have_content("2 ×")
+      expect(basket_page).to have_text("2 ×")
     end
 
     it "decreases the item's quantity" do
@@ -20,7 +20,7 @@ module Features
       basket_page.increase_item_quantity
       basket_page.decrease_item_quantity
 
-      expect(basket_page).to have_content("1 ×")
+      expect(basket_page).to have_text("1 ×")
     end
 
     it "only allows positive quantities" do
@@ -30,7 +30,7 @@ module Features
       basket_page.visit
       basket_page.decrease_item_quantity
 
-      expect(basket_page).to have_content("1 ×")
+      expect(basket_page).to have_text("1 ×")
     end
 
     it "keeps the items in the correct order" do

@@ -10,12 +10,12 @@ describe FlashesHelper do
         "error" => "bar",
         "notice" => "baz",
         "quux" => "corge",
-        "success" => "qux",
+        "success" => "qux"
       }
     end
 
     let(:flash) { double("ActionDispatch::Flash", to_hash: flashes) }
-    let(:user_facing_keys) { %w(alert error notice success) }
+    let(:user_facing_keys) { %w[alert error notice success] }
 
     before do
       allow(helper).to receive(:flash).and_return(flash)
@@ -23,7 +23,7 @@ describe FlashesHelper do
 
     it "removes unwanted flashes" do
       expect(keys).to eql(user_facing_keys)
-      expect(keys).to_not include("quux")
+      expect(keys).not_to include("quux")
     end
   end
 end

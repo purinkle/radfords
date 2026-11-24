@@ -3,9 +3,9 @@ require "rails_helper"
 describe EventsController do
   let(:event_params) do
     {
-      'location' => 'Market Square',
-      'name' => 'Farmers\' Market',
-      'takes_place_on' => '01/01/1970'
+      "location" => "Market Square",
+      "name" => "Farmers' Market",
+      "takes_place_on" => "01/01/1970"
     }
   end
 

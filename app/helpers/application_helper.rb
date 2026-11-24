@@ -4,14 +4,14 @@ module ApplicationHelper
   end
 
   def nav_class(controller_name)
-    if controller_name == controller.controller_name
-      "active"
-    end
+    return unless controller_name == controller.controller_name
+
+    "active"
   end
 
   def navbar
-    if signed_in?
-      render(partial: "shared/navbar")
-    end
+    return unless signed_in?
+
+    render(partial: "shared/navbar")
   end
 end

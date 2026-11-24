@@ -3,7 +3,7 @@ require "rails_helper"
 describe LineItem do
   let(:item) { LineItem.new }
 
-  describe '#total_price' do
+  describe "#total_price" do
     subject { item.total_price }
 
     let(:price) { 300 }
@@ -16,7 +16,7 @@ describe LineItem do
       allow(item).to receive(:quantity).and_return(quantity)
     end
 
-    it 'returns the product price multiplied by its quantity' do
+    it "returns the product price multiplied by its quantity" do
       expect(subject).to eql total_price
     end
   end

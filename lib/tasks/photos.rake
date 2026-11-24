@@ -9,7 +9,7 @@ namespace :photos do
     client = Aws::S3::Client.new(
       region: ENV.fetch("S3_REGION"),
       access_key_id: ENV.fetch("AWS_ACCESS_KEY_ID"),
-      secret_access_key: ENV.fetch("AWS_SECRET_ACCESS_KEY"),
+      secret_access_key: ENV.fetch("AWS_SECRET_ACCESS_KEY")
     )
 
     # Paperclip's :id_partition, which padded the id to nine digits and split it
@@ -44,7 +44,7 @@ namespace :photos do
       product.photo.attach(
         io: StringIO.new(object.body.read),
         filename: product.photo_file_name,
-        content_type: product.photo_content_type.presence || object.content_type,
+        content_type: product.photo_content_type.presence || object.content_type
       )
 
       if product.photo.attached?
@@ -57,7 +57,7 @@ namespace :photos do
     end
 
     puts "Attached #{attached}, already done #{skipped}, " \
-      "missing #{missing}, failed #{failed}."
+         "missing #{missing}, failed #{failed}."
     abort("Some photos did not come across.") if missing.positive? || failed.positive?
   end
 end

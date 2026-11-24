@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 Rails.application.routes.draw do
   resource :basket
 
@@ -14,16 +15,16 @@ Rails.application.routes.draw do
   resources :products do
     member { get :delete }
   end
-  resources :sessions, :only => [ :new, :create, :destroy ]
+  resources :sessions, only: %i[new create destroy]
   resources :suppliers, except: :show do
     member { get :delete }
   end
 
-  root :to => 'pages#home'
+  root to: "pages#home"
 
-  get '/outlets',  :to => 'pages#outlets'
-  get '/contact',  :to => 'pages#contact'
-  get '/shop', :to => 'pages#products'
-  get '/signin',   :to => 'sessions#new'
-  get '/signout',  :to => 'sessions#destroy'
+  get "/outlets",  to: "pages#outlets"
+  get "/contact",  to: "pages#contact"
+  get "/shop", to: "pages#products"
+  get "/signin",   to: "sessions#new"
+  get "/signout",  to: "sessions#destroy"
 end

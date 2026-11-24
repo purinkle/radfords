@@ -130,15 +130,15 @@ describe Order do
 
   describe "#basket" do
     it "is the basket associated with the order" do
-      basket = build :basket
-      order = create :order, basket: basket
+      basket = build(:basket)
+      order = create(:order, basket: basket)
 
       expect(order.basket).to be basket
     end
 
     context "when the order is missing a basket" do
       it "is an empty basket" do
-        order = create :order, basket: nil
+        order = create(:order, basket: nil)
 
         expect(order.basket).to have_attributes(line_items: [])
       end
@@ -169,7 +169,7 @@ describe Order do
     end
   end
 
-  describe '#total_price' do
+  describe "#total_price" do
     subject { order.total_price }
 
     let(:item_1) { double(LineItem, total_price: Money.new(395)) }

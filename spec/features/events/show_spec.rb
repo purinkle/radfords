@@ -10,7 +10,7 @@ describe "show event" do
       visit event_url(1)
 
       expect(page).to have_title(I18n.t("titles.events.index"))
-      expect(page).to have_content(I18n.t("events.not_found"))
+      expect(page).to have_text(I18n.t("events.not_found"))
     end
   end
 
@@ -19,7 +19,7 @@ describe "show event" do
       visit event_url(1)
 
       expect(page).to have_title(t("titles.sessions.new"))
-      expect(page).to have_content(t("sessions.unauthenticated"))
+      expect(page).to have_text(t("sessions.unauthenticated"))
     end
   end
 end

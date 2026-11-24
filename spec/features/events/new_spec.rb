@@ -6,7 +6,7 @@ module Features
       NewEventPage.new(
         location: location,
         name: name,
-        takes_place_on: takes_place_on,
+        takes_place_on: takes_place_on
       )
     end
 
@@ -20,9 +20,9 @@ module Features
 
       new_event_page.create
 
-      expect(page).to have_content(name)
-      expect(page).to have_content(takes_place_on)
-      expect(page).to have_content(location)
+      expect(page).to have_text(name)
+      expect(page).to have_text(takes_place_on)
+      expect(page).to have_text(location)
     end
 
     context "when there is no name" do
@@ -35,7 +35,7 @@ module Features
         new_event_page.create
 
         expect(page).to have_title("New Event")
-        expect(page).to have_content("Name can't be blank")
+        expect(page).to have_text("Name can't be blank")
       end
     end
   end

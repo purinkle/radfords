@@ -14,16 +14,16 @@ describe OrderBuilder do
     let(:total_price) { double("Money", cents: price) }
 
     before do
-      allow(ChargesCustomers).to receive(:charge).
-        with(email, stripe_token, price, id)
+      allow(ChargesCustomers).to receive(:charge)
+        .with(email, stripe_token, price, id)
       allow(Mailer).to receive(:order_received).with(order).and_return message
 
       OrderBuilder.build(order, stripe_token)
     end
 
     it "charges the customer" do
-      expect(ChargesCustomers).to have_received(:charge).
-        with(email, stripe_token, price, id)
+      expect(ChargesCustomers).to have_received(:charge)
+        .with(email, stripe_token, price, id)
     end
 
     it "delivers the message" do

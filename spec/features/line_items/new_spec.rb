@@ -12,7 +12,7 @@ module Features
     it "shows the line item in the basket" do
       add_line_item
 
-      expect(page).to have_content("1 ×")
+      expect(page).to have_text("1 ×")
     end
 
     context "when the line item is already in the basket" do
@@ -20,7 +20,7 @@ module Features
 
       it "increases the line item's quantity" do
         add_line_item
-        expect(page).to have_content("2 ×")
+        expect(page).to have_text("2 ×")
       end
     end
 

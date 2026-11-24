@@ -4,7 +4,7 @@ describe LineItemsController do
   describe 'POST "create"' do
     let(:basket) { double(Basket, save: nil) }
     let(:product) { double(Product, id: product_id) }
-    let(:product_id) { '1' }
+    let(:product_id) { "1" }
 
     before do
       allow(basket).to receive(:add_product).with(product_id).and_return(basket)
@@ -12,7 +12,7 @@ describe LineItemsController do
       allow(Product).to receive(:find).with(product_id).and_return(product)
     end
 
-    it 'redirects to the saved basket' do
+    it "redirects to the saved basket" do
       products = class_double("Product")
       allow(Product).to receive(:friendly).and_return(products)
       allow(products).to receive(:find).and_return(product)

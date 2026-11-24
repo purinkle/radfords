@@ -1,11 +1,11 @@
 require "rails_helper"
 
 describe PagesHelper do
-  describe '#product_button' do
+  describe "#product_button" do
     subject { helper.product_button(product) }
 
-    let(:partial) { double('partial') }
-    let(:product) { double('product') }
+    let(:partial) { double("partial") }
+    let(:product) { double("product") }
 
     before do
       allow(helper).to receive(:render).with(

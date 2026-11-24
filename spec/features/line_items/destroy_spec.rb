@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Features
   describe "destroy line item" do
-    let(:user) { FactoryBot.create :user }
+    let(:user) { FactoryBot.create(:user) }
 
     before { create_product }
 
@@ -20,7 +20,7 @@ module Features
 
       click_link "Remove"
 
-      expect(page).to_not have_content("1 ×")
+      expect(page).to have_no_text("1 ×")
     end
   end
 end

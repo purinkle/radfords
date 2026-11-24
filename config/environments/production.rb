@@ -1,7 +1,7 @@
 require Rails.root.join("config/smtp")
 Rails.application.configure do
   if ENV.fetch("HEROKU_APP_NAME", "").include?("qa-pr-")
-    ENV["APPLICATION_HOST"] = ENV["HEROKU_APP_NAME"] + ".herokuapp.com"
+    ENV["APPLICATION_HOST"] = ENV.fetch("HEROKU_APP_NAME", nil) + ".herokuapp.com"
   end
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
   config.cache_classes = true
@@ -23,7 +23,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = SMTP_SETTINGS
   config.i18n.fallbacks = true
   config.active_support.deprecation = :notify
-  config.log_formatter = ::Logger::Formatter.new
+  config.log_formatter = Logger::Formatter.new
   if ENV["RAILS_LOG_TO_STDOUT"].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
@@ -32,7 +32,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   config.middleware.use Rack::Deflater
   config.public_file_server.headers = {
-    "Cache-Control" => "public, max-age=31557600",
+    "Cache-Control" => "public, max-age=31557600"
   }
   config.action_mailer.default_url_options = {
     host: ENV.fetch("APPLICATION_HOST")

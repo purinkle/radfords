@@ -6,7 +6,7 @@ class OrderPage
   end
 
   def fulfil
-    click_button('Fulfil')
+    click_button("Fulfil")
   end
 
   def has_address?

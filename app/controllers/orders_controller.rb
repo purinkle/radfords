@@ -1,5 +1,14 @@
 class OrdersController < ApplicationController
-  skip_before_action :authenticate, only: [:new, :create]
+  skip_before_action :authenticate, only: %i[new create]
+
+  def index
+    @orders = Order.by_created_at
+  end
+
+  def show
+    @order = Order.find(params[:id])
+    @order.update_attribute(:viewed, true)
+  end
 
   def new
     @order = Order.new
@@ -12,15 +21,6 @@ class OrdersController < ApplicationController
     redirect_to root_url, flash: { partial: "thank_you" }
   rescue ActiveRecord::RecordInvalid
     render_new
-  end
-
-  def show
-    @order = Order.find(params[:id])
-    @order.update_attribute(:viewed, true)
-  end
-
-  def index
-    @orders = Order.by_created_at
   end
 
   private
@@ -36,9 +36,7 @@ class OrdersController < ApplicationController
     session[:order_id] = order.id
   end
 
-  def order
-    @order
-  end
+  attr_reader :order
 
   def order_options
     order_params.merge(basket: current_basket)

@@ -6,7 +6,7 @@ describe "destroying sessions" do
 
     click_link "Sign Out"
 
-    expect(page).to have_content("You successfully signed out.")
-    expect(page).to_not have_content("Sign Out")
+    expect(page).to have_text("You successfully signed out.")
+    expect(page).to have_no_text("Sign Out")
   end
 end

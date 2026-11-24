@@ -1,18 +1,18 @@
 require "rails_helper"
 
 describe ApplicationHelper do
-  describe '#humanize_price' do
+  describe "#humanize_price" do
     subject { helper.humanize_price(price) }
 
-    let(:formatted_price) { '£10.95' }
+    let(:formatted_price) { "£10.95" }
     let(:price) { Money.new(1095) }
 
     before do
-      allow(helper).to receive(:humanized_money_with_symbol).
-        with(price, no_cents_if_whole: false).and_return(formatted_price)
+      allow(helper).to receive(:humanized_money_with_symbol)
+        .with(price, no_cents_if_whole: false).and_return(formatted_price)
     end
 
-    it 'returns the formatted price with symbol' do
+    it "returns the formatted price with symbol" do
       expect(subject).to be(formatted_price)
     end
   end

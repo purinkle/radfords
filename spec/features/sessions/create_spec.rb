@@ -8,7 +8,7 @@ describe "creating sessions" do
       fill_form_and_submit(:session, :new, {})
 
       expect(page).to have_title("Sign in")
-      expect(page).to have_content("Invalid email or password.")
+      expect(page).to have_text("Invalid email or password.")
     end
   end
 end

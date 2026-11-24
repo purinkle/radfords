@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "creating sessions in a browser", js: true do
+describe "creating sessions in a browser", :js do
   it "signs the user in" do
     sign_in
 

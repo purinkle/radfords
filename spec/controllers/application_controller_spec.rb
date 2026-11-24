@@ -1,14 +1,14 @@
 require "rails_helper"
 
 describe ApplicationController do
-  describe '#authenticate' do
+  describe "#authenticate" do
     context "when the user's not signed in" do
       before do
         allow(controller).to receive(:deny_access)
-        allow(controller).to receive(:signed_in?) { false }
+        allow(controller).to receive(:signed_in?).and_return(false)
       end
 
-      it 'denies access to the application' do
+      it "denies access to the application" do
         expect(controller).to receive(:deny_access)
         controller.authenticate
       end
@@ -22,8 +22,8 @@ describe ApplicationController do
 
     before do
       session["basket_id"] = id
-      allow(BasketDecorator).to receive(:new).with(basket).
-        and_return(decorated_basket)
+      allow(BasketDecorator).to receive(:new).with(basket)
+                                             .and_return(decorated_basket)
       allow(FindBasket).to receive(:call).with(id: id).and_return(basket)
     end
 

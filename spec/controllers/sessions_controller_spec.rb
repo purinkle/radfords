@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe SessionsController do
   describe 'GET "new"' do
-    it 'should be successful' do
+    it "is successful" do
       get :new
 
       expect(response).to be_successful
@@ -10,9 +10,9 @@ describe SessionsController do
   end
 
   describe 'POST "create"' do
-    describe 'invalid signin' do
-      before (:each) do
-        @attr = { :email => 'email@example.com', :password => 'invalid' }
+    describe "invalid signin" do
+      before do
+        @attr = { email: "email@example.com", password: "invalid" }
       end
 
       it "sets the alert flash" do
@@ -24,20 +24,20 @@ describe SessionsController do
       end
     end
 
-    describe 'with valid email and password' do
-      before (:each) do
+    describe "with valid email and password" do
+      before do
         @user = FactoryBot.create(:user)
-        @attr = { :email => @user.email, :password => @user.password }
+        @attr = { email: @user.email, password: @user.password }
       end
 
-      it 'should sign the user in' do
+      it "signs the user in" do
         post :create, params: { session: @attr }
 
         expect(controller.current_user).to eq(@user)
         expect(controller).to be_signed_in
       end
 
-      it 'should redirect to the new event page' do
+      it "redirects to the new event page" do
         post :create, params: { session: @attr }
 
         expect(response).to redirect_to(events_path)
@@ -56,7 +56,7 @@ describe SessionsController do
       expect(response).to redirect_to(root_path)
     end
 
-    it 'sets the success flash' do
+    it "sets the success flash" do
       delete :destroy
       expect(flash[:success]).to eq("You successfully signed out.")
     end

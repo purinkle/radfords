@@ -7,10 +7,10 @@ describe BasketsController do
     let(:decorator) { double("BasketDecorator") }
 
     before do
-      allow(BasketDecorator).to receive(:new).with(basket).
-        and_return(decorator)
-      allow(FindBasket).to receive(:call).with(id: basket_id).
-        and_return(basket)
+      allow(BasketDecorator).to receive(:new).with(basket)
+                                             .and_return(decorator)
+      allow(FindBasket).to receive(:call).with(id: basket_id)
+                                         .and_return(basket)
     end
 
     it "is successful" do
@@ -21,7 +21,7 @@ describe BasketsController do
   end
 
   describe 'DELETE "destroy"' do
-    it 'redirects to the shop' do
+    it "redirects to the shop" do
       allow(Basket).to receive(:find).with(nil).and_raise(ActiveRecord::RecordNotFound)
 
       delete :destroy, params: { id: "1" }

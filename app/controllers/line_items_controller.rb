@@ -7,13 +7,13 @@ class LineItemsController < ApplicationController
     redirect_to basket_url
   end
 
-  def destroy
-    item.destroy
+  def update
+    item.update item_params
     redirect_to basket_url
   end
 
-  def update
-    item.update item_params
+  def destroy
+    item.destroy
     redirect_to basket_url
   end
 

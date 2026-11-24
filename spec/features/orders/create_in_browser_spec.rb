@@ -1,7 +1,7 @@
 require "rails_helper"
 
 module Features
-  describe "creating orders in a browser", js: true do
+  describe "creating orders in a browser", :js do
     let(:order_page) { NewOrderPage.new }
 
     before do
@@ -21,19 +21,19 @@ module Features
         VCR.use_cassette("stripe/charges") do
           click_button("Place my order")
 
-          expect(page).to have_content("Thank you")
-          expect(page).to have_content("Your order was placed successfully")
+          expect(page).to have_text("Thank you")
+          expect(page).to have_text("Your order was placed successfully")
         end
       end
 
       expect(Order.count).to eql(1)
-      expect(page).to have_content("Your Order ID is: #{Order.last.id}")
+      expect(page).to have_text("Your Order ID is: #{Order.last.id}")
 
       # Only the checkout JavaScript can put a token on the form. Without it
       # the form would post straight to the server with no card at all.
       expect(WebMock).to have_requested(
         :post,
-        "https://api.stripe.com/v1/customers",
+        "https://api.stripe.com/v1/customers"
       ).with(body: hash_including("card" => "tok_test_stub"))
     end
 
@@ -42,9 +42,9 @@ module Features
 
       click_button("Place my order")
 
-      expect(page).to have_content("This card number looks invalid")
-      expect(page).to have_content("Your card's expiration date is invalid")
-      expect(page).to have_content("Your card's security code is invalid")
+      expect(page).to have_text("This card number looks invalid")
+      expect(page).to have_text("Your card's expiration date is invalid")
+      expect(page).to have_text("Your card's security code is invalid")
       expect(Order.count).to be_zero
     end
   end

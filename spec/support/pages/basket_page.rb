@@ -14,7 +14,7 @@ class BasketPage
   end
 
   def visit
-    super "/basket"
+    super("/basket")
   end
 
   private

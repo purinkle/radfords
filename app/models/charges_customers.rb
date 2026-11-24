@@ -9,7 +9,7 @@ class ChargesCustomers
   def charge
     Stripe::Charge.create(
       amount: amount,
-      currency: 'gbp',
+      currency: "gbp",
       customer: customer_id,
       description: "Payment for ##{order_id}"
     )

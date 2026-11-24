@@ -1,17 +1,17 @@
 require "rails_helper"
 
 describe PagesController do
-  before (:each) do
+  before do
     @base_title = "Radfords of Somerford"
   end
 
   describe "GET 'home'" do
-    it "should be successful" do
-      get 'home'
+    it "is successful" do
+      get "home"
       expect(response).to be_successful
     end
 
-    context 'when there is an order ID in the session' do
+    context "when there is an order ID in the session" do
       let(:order) { double(Order) }
       let(:order_id) { 1 }
 
@@ -20,7 +20,7 @@ describe PagesController do
         session[:order_id] = order_id
       end
 
-      it 'removes the order ID from the session' do
+      it "removes the order ID from the session" do
         get :home
         expect(session[:order_id]).to be_nil
       end
@@ -28,7 +28,7 @@ describe PagesController do
   end
 
   describe 'GET "outlets"' do
-    it 'should be successful' do
+    it "is successful" do
       get :outlets
       expect(response).to be_successful
     end

@@ -10,17 +10,17 @@ class Product < ActiveRecord::Base
     order_summary: [70, 70],
     preview: [50, 50],
     show: [584, 399],
-    thumbnail: [215, 133],
+    thumbnail: [215, 133]
   }.freeze
 
   has_one_attached :photo
 
   validate :photo_is_an_image
 
-  validates_presence_of :title
-  validates_uniqueness_of :title
+  validates :title, presence: true
+  validates :title, uniqueness: true
 
-  friendly_id :title, use: [:slugged, :finders]
+  friendly_id :title, use: %i[slugged finders]
   monetize :price_pennies
 
   before_destroy :ensure_not_referenced_by_any_line_item
@@ -45,11 +45,9 @@ class Product < ActiveRecord::Base
   end
 
   def ensure_not_referenced_by_any_line_item
-    if line_items.empty?
-      return true
-    else
-      errors.add(:base, 'Line Items present')
-      return false
-    end
+    return true if line_items.empty?
+
+    errors.add(:base, "Line Items present")
+    false
   end
 end

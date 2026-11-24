@@ -1,7 +1,5 @@
 class AddEmailUniquenessIndex < ActiveRecord::Migration[4.2]
-  def self.up
-  end
+  def self.up; end
 
-  def self.down
-  end
+  def self.down; end
 end

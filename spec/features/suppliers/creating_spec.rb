@@ -11,11 +11,11 @@ describe "creating suppliers" do
     end
 
     expect(page).to have_title("Outlets")
-    expect(page).to have_content("You successfully created a supplier.")
-    expect(page).to have_content(supplier.fetch(:address))
-    expect(page).to have_content(supplier.fetch(:name))
-    expect(page).to have_content(supplier.fetch(:telephone_number))
-    expect(page).to have_content(supplier.fetch(:website))
+    expect(page).to have_text("You successfully created a supplier.")
+    expect(page).to have_text(supplier.fetch(:address))
+    expect(page).to have_text(supplier.fetch(:name))
+    expect(page).to have_text(supplier.fetch(:telephone_number))
+    expect(page).to have_text(supplier.fetch(:website))
   end
 
   context "when the supplier is invalid" do
@@ -26,10 +26,10 @@ describe "creating suppliers" do
       click_on submit(:supplier, :create)
 
       expect(page).to have_title("New Supplier")
-      expect(page).to have_content("errors prohibited this from being saved")
-      expect(page).to have_content("Address can't be blank")
-      expect(page).to have_content("Name can't be blank")
-      expect(page).to have_content("Telephone number can't be blank")
+      expect(page).to have_text("errors prohibited this from being saved")
+      expect(page).to have_text("Address can't be blank")
+      expect(page).to have_text("Name can't be blank")
+      expect(page).to have_text("Telephone number can't be blank")
     end
   end
 end

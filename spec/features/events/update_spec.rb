@@ -13,9 +13,9 @@ describe "updating events" do
     fill_form_and_submit(:event, :edit, updated_event)
 
     expect(page).to have_title(event.name)
-    expect(page).to have_content(event.name)
-    expect(page).to have_content(event.location)
-    expect(page).to have_content(takes_place_on)
+    expect(page).to have_text(event.name)
+    expect(page).to have_text(event.location)
+    expect(page).to have_text(takes_place_on)
   end
 
   context "when the attributes are invalid" do
@@ -28,7 +28,7 @@ describe "updating events" do
       fill_form_and_submit(:event, :edit, takes_place_on: "")
 
       expect(page).to have_title("Edit Event")
-      expect(page).to have_content("Takes place on can't be blank")
+      expect(page).to have_text("Takes place on can't be blank")
     end
   end
 end

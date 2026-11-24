@@ -18,7 +18,7 @@ class NewOrderPage
   end
 
   def visit
-    super "/orders/new"
+    super("/orders/new")
   end
 
   private

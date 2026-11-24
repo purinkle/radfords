@@ -1,7 +1,7 @@
 class FulfilmentsController < ApplicationController
   def create
     Mailer.order_shipped(order).deliver_now
-    redirect_to(order, notice: t('fulfilments.create.notice'))
+    redirect_to(order, notice: t(".notice"))
   end
 
   private

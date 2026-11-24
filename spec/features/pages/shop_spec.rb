@@ -7,6 +7,6 @@ describe "shop page" do
     visit shop_url
 
     expect(page).to have_title("Shop")
-    expect(page).to have_content(product.title)
+    expect(page).to have_text(product.title)
   end
 end

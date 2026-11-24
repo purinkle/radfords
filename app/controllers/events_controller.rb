@@ -1,4 +1,8 @@
 class EventsController < ApplicationController
+  def index
+    @events = Event.all
+  end
+
   def show
     @event = event
   end
@@ -7,20 +11,16 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  def edit
+    @event = event
+  end
+
   def create
     @event = Event.new(event_params)
     @event.save!
     redirect_to(@event, notice: "You successfully created an event.")
   rescue ActiveRecord::RecordInvalid
     render "new"
-  end
-
-  def index
-    @events = Event.all
-  end
-
-  def edit
-    @event = event
   end
 
   def update

@@ -4,7 +4,7 @@ Rails.application.configure do
   config.eager_load = false
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{1.hour.to_i}"
+    "Cache-Control" => "public, max-age=#{1.hour.to_i}"
   }
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -18,6 +18,6 @@ Rails.application.configure do
   config.i18n.raise_on_missing_translations = true
   config.assets.raise_runtime_errors = true
   config.action_mailer.default_url_options = { host: "www.example.com" }
-  config.action_mailer.asset_host = {host: "www.example.com"}
+  config.action_mailer.asset_host = { host: "www.example.com" }
   config.active_job.queue_adapter = :inline
 end

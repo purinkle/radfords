@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
     :address_post_code
   )
 
-  scope :by_created_at, -> { order('created_at desc') }
+  scope :by_created_at, -> { order("created_at desc") }
 
   def address_line_1
     split_address.fetch(0, @address_line_1)
@@ -47,9 +47,7 @@ class Order < ActiveRecord::Base
     super || MissingBasket.new
   end
 
-  def line_items
-    basket.line_items
-  end
+  delegate :line_items, to: :basket
 
   def make_address
     self.address = address_parts.join("\n")

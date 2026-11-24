@@ -9,7 +9,7 @@ class NewSessionPage
   end
 
   def visit
-    super "/signin"
+    super("/signin")
   end
 
   private

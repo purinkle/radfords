@@ -14,8 +14,8 @@ describe "updating products" do
     fill_form_and_submit(:product, :edit, updated_product)
 
     expect(page).to have_title(updated_product.fetch(:title))
-    expect(page).to have_content(updated_product.fetch(:title))
-    expect(page).to have_content(updated_product.fetch(:description))
+    expect(page).to have_text(updated_product.fetch(:title))
+    expect(page).to have_text(updated_product.fetch(:description))
   end
 
   context "when a product with the same name exists" do
@@ -27,8 +27,8 @@ describe "updating products" do
       fill_form_and_submit(:product, :edit, updated_product)
 
       expect(page).to have_title(t("titles.products.edit"))
-      expect(page).to have_content("1 error prohibited this from being saved")
-      expect(page).to have_content("Title has already been taken")
+      expect(page).to have_text("1 error prohibited this from being saved")
+      expect(page).to have_text("Title has already been taken")
     end
   end
 end

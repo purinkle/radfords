@@ -14,10 +14,10 @@ describe "updating suppliers" do
     end
 
     expect(page).to have_title("Outlets")
-    expect(page).to have_content(supplier.address)
-    expect(page).to have_content(supplier.name)
-    expect(page).to have_content(supplier.telephone_number)
-    expect(page).to have_content(supplier.website)
+    expect(page).to have_text(supplier.address)
+    expect(page).to have_text(supplier.name)
+    expect(page).to have_text(supplier.telephone_number)
+    expect(page).to have_text(supplier.website)
   end
 
   context "when the attributes are invalid" do
@@ -35,15 +35,15 @@ describe "updating suppliers" do
           :edit,
           address: "",
           name: "",
-          telephone_number: "",
+          telephone_number: ""
         )
       end
 
       expect(page).to have_title("Edit Supplier")
-      expect(page).to have_content("errors prohibited this from being saved")
-      expect(page).to have_content("Address can't be blank")
-      expect(page).to have_content("Name can't be blank")
-      expect(page).to have_content("Telephone number can't be blank")
+      expect(page).to have_text("errors prohibited this from being saved")
+      expect(page).to have_text("Address can't be blank")
+      expect(page).to have_text("Name can't be blank")
+      expect(page).to have_text("Telephone number can't be blank")
     end
   end
 end

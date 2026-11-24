@@ -2,19 +2,19 @@ class SessionsController < ApplicationController
   skip_before_action :authenticate
 
   def new
-    @title = 'Sign In'
+    @title = "Sign In"
   end
 
   def create
-    user = User.authenticate( params[:session][:email],
-      params[:session][:password] )
+    user = User.authenticate(params[:session][:email],
+                             params[:session][:password])
 
     if user.nil?
       flash[:alert] = "Invalid email or password."
 
-      @title = 'Sign In'
+      @title = "Sign In"
 
-      render 'new'
+      render "new"
     else
       sign_in user
 
@@ -25,6 +25,6 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
 
-    redirect_to root_path, flash: {success: 'You successfully signed out.'}
+    redirect_to root_path, flash: { success: "You successfully signed out." }
   end
 end

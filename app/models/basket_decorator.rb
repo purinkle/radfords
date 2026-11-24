@@ -15,9 +15,7 @@ class BasketDecorator
     @basket
   end
 
-  def total_price
-    @basket.total_price
-  end
+  delegate :total_price, to: :@basket
 
   private
 

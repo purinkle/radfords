@@ -10,7 +10,7 @@ describe "deleting baskets" do
     click_button "Empty basket"
 
     expect(page).to have_title("Your Basket")
-    expect(page).to have_content("Your basket is currently empty.")
+    expect(page).to have_text("Your basket is currently empty.")
     expect(Basket.count).to eql(0)
   end
 end

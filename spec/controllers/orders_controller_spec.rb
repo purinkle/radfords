@@ -9,8 +9,8 @@ describe OrdersController do
 
     before do
       allow(controller).to receive(:current_basket).and_return basket
-      allow(controller).to receive(:t).with("orders.new.notice").
-        and_return notice
+      allow(controller).to receive(:t).with("orders.new.notice")
+                                      .and_return notice
       allow(Order).to receive(:new).and_return order
     end
 
@@ -46,8 +46,8 @@ describe OrdersController do
       allow(controller).to receive(:current_basket).and_return basket
       allow(invalid_order).to receive(:save!).and_raise exception
       allow(Order).to receive(:new).with(order_options).and_return order
-      allow(Order).to receive(:new).with(invalid_options).
-        and_return invalid_order
+      allow(Order).to receive(:new).with(invalid_options)
+                                   .and_return invalid_order
       allow(OrderBuilder).to receive(:build).with(order, stripe_token)
     end
 
@@ -64,7 +64,7 @@ describe OrdersController do
 
       post :create, params: params
 
-      expect(session.fetch :basket_id).to be_nil
+      expect(session.fetch(:basket_id)).to be_nil
     end
 
     it "adds the order ID to the session" do
@@ -72,7 +72,7 @@ describe OrdersController do
 
       post :create, params: params
 
-      expect(session.fetch :order_id).to be id
+      expect(session.fetch(:order_id)).to be id
     end
 
     it "sets the flash" do

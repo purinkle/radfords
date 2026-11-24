@@ -16,7 +16,7 @@ class NewEventPage
       :event,
       location: location,
       name: name,
-      takes_place_on: takes_place_on,
+      takes_place_on: takes_place_on
     )
     click_button "Create Event"
   end

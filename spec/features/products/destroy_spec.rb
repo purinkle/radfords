@@ -12,7 +12,7 @@ describe "deleting products" do
     click_button("Delete Product")
 
     expect(page).to have_title("Products")
-    expect(page).to have_content("Product was deleted.")
+    expect(page).to have_text("Product was deleted.")
     expect(Product.count).to be_zero
   end
 
@@ -25,7 +25,7 @@ describe "deleting products" do
       visit delete_product_url(1)
 
       expect(page).to have_title("Products")
-      expect(page).to have_content("We couldn't find that product.")
+      expect(page).to have_text("We couldn't find that product.")
     end
   end
 
@@ -41,7 +41,7 @@ describe "deleting products" do
       click_button("Delete Product")
 
       expect(page).to have_title("Products")
-      expect(page).to have_content("We couldn't find that product.")
+      expect(page).to have_text("We couldn't find that product.")
     end
   end
 
@@ -59,7 +59,7 @@ describe "deleting products" do
       click_button("Delete Product")
 
       expect(page).to have_title("Delete Product")
-      expect(page).to have_content("Line Items present")
+      expect(page).to have_text("Line Items present")
     end
   end
 end
