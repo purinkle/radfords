@@ -14,11 +14,15 @@ require "active_storage/engine"
 Bundler.require(*Rails.groups)
 module Radfords
   class Application < Rails::Application
-    config.load_defaults 7.0
+    config.load_defaults 7.1
 
     # Kept at 6.1's processor, so product photos are resized exactly as
     # before. docs/adr/0002 says why, and what moving to vips takes.
     config.active_storage.variant_processor = :mini_magick
+
+    # Kept at 7.0's format, so remember tokens signed before 7.1 still read.
+    # docs/adr/0003 says why, and when this can go.
+    config.active_support.use_message_serializer_for_metadata = false
 
     config.assets.quiet = true
     config.generators do |generate|

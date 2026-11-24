@@ -16,8 +16,6 @@ ignore:
   - GHSA-68p9-83h6-5wpj # actionview: Possible XSS vulnerability in Action View tag helpers
   - GHSA-rq8q-p985-fjq7 # actionview: Possible XSS vulnerability in Action View strip_tags
   - GHSA-v6rj-xm57-3p59 # actionview: Possible XSS vulnerability in Action View highlight helper
-  - CVE-2025-55193 # activerecord: Active Record logging vulnerable to ANSI escape injection
-  - CVE-2025-24293 # activestorage: Active Storage allowed transformation methods that were potentially unsafe
   - CVE-2026-122006 # activestorage: Possible arbitrary file write and read in Active Storage image analysis
   - CVE-2026-33173 # activestorage: Rails Active Storage has possible content type bypass via metadata in direct uploads
   - CVE-2026-33174 # activestorage: Rails Active Storage has a possible DoS vulnerability when in proxy mode via Range requests
