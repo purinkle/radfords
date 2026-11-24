@@ -113,3 +113,53 @@ jobs:
       - <<: *save_gems
       - <<: *precompile_assets
       - <<: *run_tests
+  # The checks below read the code and the lockfile, and never run the app,
+  # so they need no database, browser or Node. They still need the gems,
+  # which they share with the build through the same cache.
+  lint:
+    working_directory: ~/radfords
+    # Large for the same reason as the build: installing the gems on Ruby
+    # 3.4 runs out of a medium container's memory with no error in the log.
+    resource_class: large
+    docker:
+      - image: "cimg/ruby:3.4.13"
+        environment:
+          BUNDLE_PATH: vendor/bundle
+    steps:
+      - checkout
+      - <<: *restore_gems
+      - run:
+          name: Install the gems
+          command: bundle install --jobs 4 --retry 3
+      - run:
+          name: Check the code style with RuboCop
+          command: bundle exec rubocop
+  static_analysis:
+    working_directory: ~/radfords
+    resource_class: large
+    docker:
+      - image: "cimg/ruby:3.4.13"
+        environment:
+          BUNDLE_PATH: vendor/bundle
+    steps:
+      - checkout
+      - <<: *restore_gems
+      - run:
+          name: Install the gems
+          command: bundle install --jobs 4 --retry 3
+      - run:
+          name: Check each installed gem against its published checksum
+          command: bundle exec bundler-integrity
+      - run:
+          name: Scan the code for security problems with Brakeman
+          command: bundle exec brakeman --no-pager
+      - run:
+          name: Check the gems for known vulnerabilities
+          command: bundle exec bundle-audit check --update
+
+workflows:
+  build:
+    jobs:
+      - build
+      - lint
+      - static_analysis

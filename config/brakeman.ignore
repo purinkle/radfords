@@ -1,0 +1,13 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Unmaintained Dependency",
+      "check_name": "EOLRails",
+      "fingerprint": "d84924377155b41e094acae7404ec2e521629d86f97b0ff628e3d1b263f8101c",
+      "file": "Gemfile.lock",
+      "message": "Support for Rails 6.1.7.10 ended on 2024-10-01",
+      "note": "Waiting on the Rails 6.1 to 8.1 upgrade in issue 613."
+    }
+  ],
+  "brakeman_version": "8.1.1"
+}
