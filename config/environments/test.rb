@@ -5,7 +5,9 @@ Rails.application.configure do
 
   config.cache_classes = false
   config.action_view.cache_template_loading = true
-  config.eager_load = false
+  # Load the whole app on CI, so a file that fails to load fails the build
+  # even when no spec touches it. Locally, keep single spec runs quick.
+  config.eager_load = ENV["CI"].present?
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
     "Cache-Control" => "public, max-age=#{1.hour.to_i}"
