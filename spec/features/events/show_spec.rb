@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "show event" do
+describe "show event", :aggregate_failures do
   context "when the person is signed in" do
     it "shows the event" do
       event = create(:event)

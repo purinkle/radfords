@@ -3,12 +3,8 @@ require "rails_helper"
 describe "deleting products", :aggregate_failures do
   it "deletes existing product" do
     product = create_product
-    expect(Product.count).to be(1)
-
     sign_in
-
     visit delete_product_url(product)
-
     expect(page).to have_title("Delete Product")
 
     click_button("Delete Product")

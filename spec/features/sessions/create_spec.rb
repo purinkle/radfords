@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "creating sessions" do
+describe "creating sessions", :aggregate_failures do
   it "signs the user in through the browser", :js do
     sign_in
 

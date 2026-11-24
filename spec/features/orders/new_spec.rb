@@ -1,7 +1,7 @@
 require "rails_helper"
 
 module Features
-  describe "create order" do
+  describe "create order", :aggregate_failures do
     it "shows the order form for the basket" do
       product = create_product
       add_product_to_basket
