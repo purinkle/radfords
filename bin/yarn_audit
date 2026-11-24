@@ -1,0 +1,30 @@
+#!/bin/bash
+# Fail on any critical advisory in the JavaScript packages.
+#
+# Yarn 1's exit code is a bitmask of every severity it found, whatever
+# --level says, so it cannot gate on one level alone. Count the advisories
+# --level lets through instead.
+#
+# The gate is critical, not high, because webpack 4 and its toolchain carry
+# dozens of high and moderate advisories that only leaving webpack 4 fixes.
+# docs/adr/0001 explains why it stays for now. Lower the level as that work
+# lands.
+set -u
+
+# Yarn's warnings about resolutions go to stderr, so hide them. A run that
+# never reached the registry has no summary, and must not count as clean.
+report=$(yarn audit --level critical --json 2>/dev/null)
+if ! grep -q '"type":"auditSummary"' <<<"$report"; then
+  echo "yarn audit gave no summary, so the packages were not checked."
+  exit 1
+fi
+
+critical=$(grep -c '"type":"auditAdvisory"' <<<"$report")
+
+if [ "$critical" -gt 0 ]; then
+  grep '"type":"auditAdvisory"' <<<"$report"
+  echo "$critical critical advisories in the JavaScript packages."
+  exit 1
+fi
+
+echo "No critical advisories in the JavaScript packages."

@@ -156,6 +156,18 @@ jobs:
       - run:
           name: Check the gems for known vulnerabilities
           command: bundle exec bundle-audit check --update
+  # The JavaScript counterpart of bundle-audit. It reads only package.json
+  # and yarn.lock, so it needs Node and nothing else. The image's version
+  # matches the nodejs line in .tool-versions.
+  javascript_audit:
+    working_directory: ~/radfords
+    docker:
+      - image: "cimg/node:24.21.0"
+    steps:
+      - checkout
+      - run:
+          name: Check the JavaScript packages for critical vulnerabilities
+          command: bin/yarn_audit
 
 workflows:
   build:
@@ -163,3 +175,4 @@ workflows:
       - build
       - lint
       - static_analysis
+      - javascript_audit
