@@ -19,14 +19,10 @@ describe BasketDecorator do
   end
 
   describe "#line_items" do
-    let(:relation) do
-      double("ActiveRecord::Relation", by_created_at: line_items)
-    end
-
-    let(:basket) { double("Basket", line_items: relation) }
+    let(:basket) { double("Basket", line_items: line_items) }
     let(:line_items) { [] }
 
-    it "returns the basket's line items ordered by creation time" do
+    it "returns the basket's line items" do
       expect(decorator.line_items).to be(line_items)
     end
   end

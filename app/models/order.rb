@@ -30,6 +30,7 @@ class Order < ActiveRecord::Base
   end
 
   scope :by_created_at, -> { order("created_at desc") }
+  scope :with_line_items, -> { includes(basket: Basket::PRELOADS) }
 
   def basket
     super || MissingBasket.new

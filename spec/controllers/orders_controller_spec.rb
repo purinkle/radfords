@@ -100,6 +100,7 @@ describe OrdersController do
     before do
       allow(controller).to receive :authenticate
       allow(order).to receive(:update_attribute).with(:viewed, true)
+      allow(Order).to receive(:with_line_items).and_return(Order)
       allow(Order).to receive(:find).with(id).and_return order
     end
 

@@ -16,6 +16,7 @@ describe PagesController do
       let(:order_id) { 1 }
 
       before do
+        allow(Order).to receive(:with_line_items).and_return(Order)
         allow(Order).to receive(:find).with(order_id).and_return(order)
         session[:order_id] = order_id
       end

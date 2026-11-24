@@ -19,7 +19,7 @@ namespace :photos do
       "product/photos/#{partition}/original/#{product.photo_file_name}"
     end
 
-    products = Product.where.not(photo_file_name: nil).order(:id)
+    products = Product.with_attached_photo.where.not(photo_file_name: nil).order(:id)
     puts "#{products.count} products carry a Paperclip photo."
 
     attached = skipped = missing = failed = 0

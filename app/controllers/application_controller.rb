@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   private
 
   def current_basket
-    Basket.find(session[:basket_id])
+    Basket.with_line_items.find(session[:basket_id])
   rescue ActiveRecord::RecordNotFound
     basket = Basket.create
     session[:basket_id] = basket.id

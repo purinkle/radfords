@@ -7,7 +7,7 @@ class FulfilmentsController < ApplicationController
   private
 
   def order
-    @order ||= Order.find(order_id)
+    @order ||= Order.with_line_items.find(order_id)
   end
 
   def order_id

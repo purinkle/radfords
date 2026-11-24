@@ -34,7 +34,7 @@ describe ProductsController do
     it "destroys the product" do
       products = class_double("Product")
       product = double(:product)
-      allow(Product).to receive(:friendly).and_return(products)
+      allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
       allow(product).to receive(:destroy).with(no_args).once.and_return(true)
       allow(products).to receive(:find).and_return(product)
 
@@ -56,7 +56,7 @@ describe ProductsController do
     it "sets the notice flash" do
       products = class_double("Product")
       product = double(:product)
-      allow(Product).to receive(:friendly).and_return(products)
+      allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
       allow(product).to receive(:destroy).with(no_args).once.and_return(true)
       allow(products).to receive(:find).and_return(product)
 
@@ -102,7 +102,7 @@ describe ProductsController do
 
       it "redirects to the product index page" do
         products = class_double("Product")
-        allow(Product).to receive(:friendly).and_return(products)
+        allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
         allow(products).to receive(:find)
           .and_raise(ActiveRecord::RecordNotFound)
 
@@ -113,7 +113,7 @@ describe ProductsController do
 
       it "sets the alert flash" do
         products = class_double("Product")
-        allow(Product).to receive(:friendly).and_return(products)
+        allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
         allow(products).to receive(:find)
           .and_raise(ActiveRecord::RecordNotFound)
 
@@ -143,7 +143,7 @@ describe ProductsController do
       it "redirects to the product index page" do
         products = class_double("Product")
         allow(products).to receive(:find).and_raise(exception)
-        allow(Product).to receive(:friendly).and_return(products)
+        allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
 
         get :show, params: { id: id }
 
@@ -153,7 +153,7 @@ describe ProductsController do
       it "sets the alert flash" do
         products = class_double("Product")
         allow(products).to receive(:find).and_raise(exception)
-        allow(Product).to receive(:friendly).and_return(products)
+        allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
 
         get :show, params: { id: id }
 
@@ -204,7 +204,7 @@ describe ProductsController do
 
     it "updates the alert flash" do
       products = class_double("Product")
-      allow(Product).to receive(:friendly).and_return(products)
+      allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
       allow(products).to receive(:find).and_return(found_product)
 
       put :update, params: { id: id, product: product_params }
@@ -214,7 +214,7 @@ describe ProductsController do
 
     it "redirects to the show product page" do
       products = class_double("Product")
-      allow(Product).to receive(:friendly).and_return(products)
+      allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
       allow(products).to receive(:find).and_return(found_product)
 
       put :update, params: { id: id, product: product_params }

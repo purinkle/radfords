@@ -10,6 +10,7 @@ describe FulfilmentsController do
     before do
       allow(controller).to receive(:authenticate)
       allow(controller).to receive(:url_for).with(order).and_return(order_url)
+      allow(Order).to receive(:with_line_items).and_return(Order)
       allow(Order).to receive(:find).with(order_id).and_return(order)
       allow(Mailer).to receive(:order_shipped).with(order).and_return(mailer)
     end

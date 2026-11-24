@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate, only: :show
 
   def index
-    @products = Product.all
+    @products = Product.with_attached_photo
   end
 
   def show
@@ -62,7 +62,7 @@ class ProductsController < ApplicationController
   end
 
   def find_product
-    Product.friendly.find(params[:id])
+    Product.with_attached_photo.friendly.find(params[:id])
   end
 
   def product_params

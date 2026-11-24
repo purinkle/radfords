@@ -9,6 +9,7 @@ describe FindBasket do
     let(:options) { { id: "1" } }
 
     before do
+      allow(Basket).to receive(:with_line_items).and_return(Basket)
       allow(Basket).to receive(:where).with(options).and_return([basket])
       allow(EmptyBasket).to receive(:new).and_return(empty_basket)
     end

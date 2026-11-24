@@ -5,13 +5,13 @@ class PagesController < ApplicationController
     @events = Event.limit(3)
 
     order_id = session.delete(:order_id)
-    @order = Order.find(order_id) if order_id
+    @order = Order.with_line_items.find(order_id) if order_id
 
-    @products = Product.page(params[:page])
+    @products = Product.with_attached_photo.page(params[:page])
   end
 
   def products
-    @products = Product.all
+    @products = Product.with_attached_photo
   end
 
   def outlets

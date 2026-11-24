@@ -2,11 +2,11 @@ class OrdersController < ApplicationController
   skip_before_action :authenticate, only: %i[new create]
 
   def index
-    @orders = Order.by_created_at
+    @orders = Order.by_created_at.with_line_items
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.with_line_items.find(params[:id])
     @order.update_attribute(:viewed, true)
   end
 

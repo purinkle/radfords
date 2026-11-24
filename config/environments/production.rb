@@ -1,5 +1,9 @@
 require Rails.root.join("config/smtp")
 Rails.application.configure do
+  # Raise on a lazily loaded association, so every N+1 query is caught
+  # where it is written and the association has to be preloaded instead.
+  config.active_record.strict_loading_by_default = true
+
   if ENV.fetch("HEROKU_APP_NAME", "").include?("qa-pr-")
     ENV["APPLICATION_HOST"] = ENV.fetch("HEROKU_APP_NAME", nil) + ".herokuapp.com"
   end

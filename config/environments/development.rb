@@ -1,4 +1,8 @@
 Rails.application.configure do
+  # Raise on a lazily loaded association, so every N+1 query is caught
+  # where it is written and the association has to be preloaded instead.
+  config.active_record.strict_loading_by_default = true
+
   config.cache_classes = false
   config.eager_load = false
   config.consider_all_requests_local = true

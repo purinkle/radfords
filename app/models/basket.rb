@@ -1,6 +1,13 @@
 class Basket < ActiveRecord::Base
   belongs_to :order, optional: true
-  has_many :line_items, dependent: :destroy
+  # A line item has no callbacks, so delete them in one query rather than
+  # loading each one, which strict loading would refuse.
+  has_many :line_items, -> { order(:created_at, :id) },
+           dependent: :delete_all, inverse_of: :basket
+
+  PRELOADS = { line_items: LineItem::PRELOADS }.freeze
+
+  scope :with_line_items, -> { includes(PRELOADS) }
 
   def add_product(product_id)
     current_item = line_items.find_by_product_id(product_id)
