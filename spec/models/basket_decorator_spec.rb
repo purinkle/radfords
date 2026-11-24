@@ -1,25 +1,24 @@
 require "rails_helper"
 
 describe BasketDecorator do
-  subject(:decorator) { BasketDecorator.new(basket) }
+  subject(:decorator) { described_class.new(basket) }
 
   describe "#item_count" do
-    let(:basket) { double("Basket") }
-    let(:item_1) { double("LineItem", quantity: 2) }
-    let(:item_2) { double("LineItem", quantity: 1) }
-    let(:line_items) { [item_1, item_2] }
-
-    before do
-      allow(decorator).to receive(:line_items).and_return(line_items)
+    let(:basket) { instance_double(Basket, line_items: line_items) }
+    let(:line_items) do
+      [
+        instance_double(LineItem, quantity: 2),
+        instance_double(LineItem, quantity: 1)
+      ]
     end
 
     it "returns the total quantity of line items" do
-      expect(decorator.item_count).to eql 3
+      expect(decorator.item_count).to be 3
     end
   end
 
   describe "#line_items" do
-    let(:basket) { double("Basket", line_items: line_items) }
+    let(:basket) { instance_double(Basket, line_items: line_items) }
     let(:line_items) { [] }
 
     it "returns the basket's line items" do
@@ -28,7 +27,7 @@ describe BasketDecorator do
   end
 
   describe "#to_model" do
-    let(:basket) { double("Basket") }
+    let(:basket) { instance_double(Basket) }
 
     it "returns the basket" do
       expect(decorator.to_model).to be(basket)
@@ -36,8 +35,8 @@ describe BasketDecorator do
   end
 
   describe "#total_price" do
-    let(:basket) { double("Basket", total_price: total_price) }
-    let(:total_price) { double("Money") }
+    let(:basket) { instance_double(Basket, total_price: total_price) }
+    let(:total_price) { Money.new(1095) }
 
     it "returns the basket's total price" do
       expect(decorator.total_price).to be(total_price)

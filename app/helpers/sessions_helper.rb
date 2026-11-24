@@ -6,11 +6,11 @@ module SessionsHelper
   end
 
   def current_user=(user)
-    @current_user = user
+    Current.user = user
   end
 
   def current_user
-    @current_user ||= user_from_remember_token
+    Current.user ||= user_from_remember_token
   end
 
   def signed_in?

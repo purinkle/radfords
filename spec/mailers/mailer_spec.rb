@@ -2,13 +2,13 @@ require "rails_helper"
 
 describe Mailer do
   describe ".order_received" do
-    subject { Mailer.order_received(order) }
+    subject(:mail) { described_class.order_received(order) }
 
     let(:order) do
-      double(
+      instance_double(
         Order,
         address: "",
-        created_at: Time.now,
+        created_at: Time.zone.now,
         email: email,
         id: id,
         line_items: [],
@@ -23,23 +23,23 @@ describe Mailer do
     let(:title) { "Order confirmation for order #{id}" }
 
     it "sends a mail from Denise" do
-      expect(subject.from).to eql([denise])
+      expect(mail.from).to eql([denise])
     end
 
     it "sends a mail to the order email and Denise" do
-      expect(subject.to).to eql([email, denise])
+      expect(mail.to).to eql([email, denise])
     end
 
     it "sends a mail with the correct subject" do
-      expect(subject.subject).to eql(title)
+      expect(mail.subject).to eql(title)
     end
   end
 
   describe ".order_shipped" do
-    subject { Mailer.order_shipped(order) }
+    subject(:mail) { described_class.order_shipped(order) }
 
     let(:order) do
-      double(
+      instance_double(
         Order,
         address: nil,
         email: email,
@@ -54,15 +54,15 @@ describe Mailer do
     let(:title) { "Shipping confirmation for order #{id}" }
 
     it 'sends a mail from "noreply@example.com"' do
-      expect(subject.from).to eql(["rob@purinkle.co.uk"])
+      expect(mail.from).to eql(["rob@purinkle.co.uk"])
     end
 
     it "sends a mail to the order email" do
-      expect(subject.to).to eql([email])
+      expect(mail.to).to eql([email])
     end
 
     it "sends a mail with the correct subject" do
-      expect(subject.subject).to eql(title)
+      expect(mail.subject).to eql(title)
     end
   end
 end

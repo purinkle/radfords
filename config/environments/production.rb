@@ -5,7 +5,7 @@ Rails.application.configure do
   config.active_record.strict_loading_by_default = true
 
   if ENV.fetch("HEROKU_APP_NAME", "").include?("qa-pr-")
-    ENV["APPLICATION_HOST"] = ENV.fetch("HEROKU_APP_NAME", nil) + ".herokuapp.com"
+    ENV["APPLICATION_HOST"] = "#{ENV.fetch("HEROKU_APP_NAME", nil)}.herokuapp.com"
   end
   config.middleware.use Rack::CanonicalHost, ENV.fetch("APPLICATION_HOST")
   config.cache_classes = true
@@ -29,7 +29,7 @@ Rails.application.configure do
   config.active_support.deprecation = :notify
   config.log_formatter = Logger::Formatter.new
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger           = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger = ActiveSupport::TaggedLogging.new(logger)
   end

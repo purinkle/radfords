@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "destroying sessions" do
+describe "destroying sessions", :aggregate_failures do
   it "destroys existing session" do
     sign_in
 

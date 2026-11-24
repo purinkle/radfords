@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe "updating products" do
+describe "updating products", :aggregate_failures do
   let(:attributes) { attributes_for(:product) }
   let(:updated_product) { attributes.merge(title: "Gooseberry Jam") }
 

@@ -2,10 +2,10 @@ require "rails_helper"
 
 describe FulfilmentsController do
   describe 'POST "create"' do
-    let(:order) { double(Order) }
+    let(:order) { instance_double(Order) }
     let(:order_id) { "1" }
     let(:order_url) { "/orders/#{order_id}" }
-    let(:mailer) { double(Mailer, deliver_now: nil) }
+    let(:mailer) { instance_double(ActionMailer::MessageDelivery, deliver_now: nil) }
 
     before do
       allow(controller).to receive(:authenticate)

@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe SessionsHelper do
   describe "#sign_out" do
-    it "deletes the current user from the session" do
+    it "deletes the current user from the session", :aggregate_failures do
       helper.current_user = build_stubbed(:user)
       helper.cookies[:remember_token] = "TEST_REMEMBER_TOKEN"
 

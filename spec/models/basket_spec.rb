@@ -1,47 +1,36 @@
 require "rails_helper"
 
 describe Basket do
-  let(:basket) { Basket.new }
-
   describe "#add_product" do
-    subject { basket.add_product(product_id) }
+    subject(:item) { basket.add_product(product.id) }
 
-    let(:items) do
-      double(
-        "ActiveRecord::Relation",
-        build: new_item,
-        find_by_product_id: found_item
-      )
-    end
+    let(:basket) { create(:basket) }
+    let(:product) { create(:product) }
 
-    let(:found_item) { double(LineItem, :quantity => 1, :quantity= => nil) }
-    let(:new_item) { double(LineItem) }
-    let(:product_id) { "1" }
+    context "when the product is already in the basket" do
+      let!(:found_item) { basket.line_items.create!(product: product, quantity: 1) }
 
-    before do
-      allow(basket).to receive(:line_items).and_return(items)
-    end
-
-    it "returns the found item" do
-      expect(subject).to be(found_item)
+      it "returns the found item" do
+        expect(item).to eq(found_item)
+      end
     end
 
     context "when no item is found" do
-      let(:found_item) { nil }
-
       it "returns a new item" do
-        expect(subject).to be(new_item)
+        expect(item).to be_new_record.and have_attributes(product_id: product.id)
       end
     end
   end
 
   describe "#total_price" do
     it "returns the sum of the line items' prices" do
-      basket = Basket.new
-      item_1 = double("LineItem", total_price: 300)
-      item_2 = double("LineItem", total_price: 600)
-      allow(basket).to receive(:line_items) { [item_1, item_2] }
-      expect(basket.total_price).to eql 900
+      basket = described_class.new
+      line_items = [
+        instance_double(LineItem, total_price: 300),
+        instance_double(LineItem, total_price: 600)
+      ]
+      allow(basket).to receive(:line_items) { line_items }
+      expect(basket.total_price).to be 900
     end
   end
 end

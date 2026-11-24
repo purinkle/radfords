@@ -13,7 +13,7 @@
 
 require "digest"
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   attribute :password, :string
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -31,12 +31,12 @@ class User < ActiveRecord::Base
 
   before_save :encrypt_password
 
-  def has_password?(submitted_password)
+  def password_matches?(submitted_password)
     encrypted_password == encrypt(submitted_password)
   end
 
   def self.authenticate(email, submitted_password)
-    where(email: email).detect { |user| user.has_password?(submitted_password) }
+    where(email: email).detect { |user| user.password_matches?(submitted_password) }
   end
 
   def self.authenticate_with_salt(id, cookie_salt)

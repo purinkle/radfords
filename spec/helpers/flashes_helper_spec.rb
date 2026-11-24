@@ -14,14 +14,14 @@ describe FlashesHelper do
       }
     end
 
-    let(:flash) { double("ActionDispatch::Flash", to_hash: flashes) }
+    let(:flash) { instance_double(ActionDispatch::Flash::FlashHash, to_hash: flashes) }
     let(:user_facing_keys) { %w[alert error notice success] }
 
     before do
       allow(helper).to receive(:flash).and_return(flash)
     end
 
-    it "removes unwanted flashes" do
+    it "removes unwanted flashes", :aggregate_failures do
       expect(keys).to eql(user_facing_keys)
       expect(keys).not_to include("quux")
     end

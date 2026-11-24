@@ -3,7 +3,7 @@ require "rails_helper"
 describe EmptyBasket do
   describe "#line_items" do
     it "is empty" do
-      empty_basket = EmptyBasket.new
+      empty_basket = described_class.new
 
       line_items = empty_basket.line_items
 
@@ -13,7 +13,7 @@ describe EmptyBasket do
 
   describe "#to_partial_path" do
     it "is the partial to render the empty basket" do
-      empty_basket = EmptyBasket.new
+      empty_basket = described_class.new
 
       partial_path = empty_basket.to_partial_path
 

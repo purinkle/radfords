@@ -19,10 +19,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    @product.save!
-    redirect_to(@product, notice: t("products.create"))
-  rescue ActiveRecord::RecordInvalid
-    render "new"
+    create_and_show(@product)
   end
 
   def delete
@@ -32,9 +29,8 @@ class ProductsController < ApplicationController
   def update
     @product = find_product
 
-    flash[:notice] = "Product saved."
     if @product.update(product_params)
-      redirect_to product_path(@product)
+      redirect_to product_path(@product), notice: t(".notice")
     else
       render "edit"
     end
@@ -57,7 +53,7 @@ class ProductsController < ApplicationController
   def product
     find_product
   rescue ActiveRecord::RecordNotFound
-    flash[:alert] = "We couldn't find that product."
+    flash[:alert] = t("products.destroy.alert")
     redirect_to products_path
   end
 

@@ -4,7 +4,7 @@ class BasketDecorator
   end
 
   def item_count
-    item_quantities.inject(0) { |quantity, acc| acc + quantity }
+    item_quantities.sum
   end
 
   def to_model

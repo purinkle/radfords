@@ -1,9 +1,9 @@
 require "rails_helper"
 
-describe "deleting products" do
+describe "deleting products", :aggregate_failures do
   it "deletes existing product" do
     product = create_product
-    expect(Product.count).to eql(1)
+    expect(Product.count).to be(1)
 
     sign_in
 
@@ -21,9 +21,8 @@ describe "deleting products" do
   context "when the product is in someone's basket" do
     it "shows the 'Products' page" do
       product = create_product
-      expect(Product.count).to eql(1)
-      visit product_url(product)
-      find("input[type=submit]").click
+      expect(Product.count).to be(1)
+      add_product_to_basket
 
       sign_in
 

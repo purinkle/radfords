@@ -11,7 +11,7 @@
 #  updated_at       :datetime
 #
 
-class Supplier < ActiveRecord::Base
+class Supplier < ApplicationRecord
   validates :address, presence: true
   validates :name, presence: true
   validates :telephone_number, presence: true

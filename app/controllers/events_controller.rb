@@ -17,23 +17,20 @@ class EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.save!
-    redirect_to(@event, notice: "You successfully created an event.")
-  rescue ActiveRecord::RecordInvalid
-    render "new"
+    create_and_show(@event)
   end
 
   def update
     @event = event
     @event.update!(event_params)
-    redirect_to(@event, notice: "You successfully updated the event.")
+    redirect_to(@event, notice: t(".notice"))
   rescue ActiveRecord::RecordInvalid
     render "edit"
   end
 
   def destroy
     event.destroy
-    redirect_to(events_path, notice: "You successfully deleted the event.")
+    redirect_to(events_path, notice: t(".notice"))
   end
 
   def delete

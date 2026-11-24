@@ -10,14 +10,14 @@
 #  updated_at     :datetime
 #
 
-class Event < ActiveRecord::Base
+class Event < ApplicationRecord
   validates :name, presence: true
   validates :takes_place_on, presence: true
   validates :location, presence: true
 
-  scope :future, -> { where("takes_place_on >= ?", Time.zone.now) }
+  scope :future, -> { where(takes_place_on: Time.zone.now..) }
 
-  default_scope { future.order("takes_place_on") }
+  default_scope { future.order(:takes_place_on) }
 
   def takes_place_on
     date = takes_place_on_date

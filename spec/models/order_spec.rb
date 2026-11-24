@@ -2,15 +2,11 @@ require "rails_helper"
 
 describe Order do
   let(:order) do
-    Order.new(
+    described_class.new(
       address: address,
-      address_line_1: address_line_1,
-      address_line_2: address_line_2,
-      address_city: address_city,
-      address_post_code: address_post_code,
-      address_county: address_county,
-      email: email,
-      name: name
+      email: "alphonso.quiqley@example.com",
+      name: "Alphonso Quigley",
+      **line_attributes
     )
   end
 
@@ -25,105 +21,99 @@ describe Order do
   end
 
   let(:address) { nil }
-  let(:address_city) { nil }
-  let(:address_county) { nil }
-  let(:address_line_1) { nil }
-  let(:address_line_2) { nil }
-  let(:address_post_code) { nil }
-  let(:email) { "alphonso.quiqley@example.com" }
-  let(:name) { "Alphonso Quigley" }
+  let(:line_attributes) { {} }
 
   describe "#address_line_1" do
-    subject { order.address_line_1 }
+    subject(:line) { order.address_line_1 }
 
     let(:address) { joined_address }
-    let(:address_line_1) { "1 Bro Deg" }
+    let(:line_attributes) { { address_line_1: "1 Bro Deg" } }
 
     it "returns the first item in the address" do
-      expect(subject).to eql("G G Batchelor & Son Ltd")
+      expect(line).to eql("G G Batchelor & Son Ltd")
     end
 
     context "when the address is not set" do
       let(:address) { nil }
 
       it "returns address line 1" do
-        expect(subject).to eql address_line_1
+        expect(line).to eql("1 Bro Deg")
       end
     end
   end
 
   describe "#address_line_2" do
-    subject { order.address_line_2 }
+    subject(:line) { order.address_line_2 }
 
     let(:address) { joined_address }
-    let(:address_line_2) { "Pencoed" }
+    let(:line_attributes) { { address_line_2: "Pencoed" } }
 
     it "returns the second item in the address" do
-      expect(subject).to eql("48 Lower Hillmorton Road")
+      expect(line).to eql("48 Lower Hillmorton Road")
     end
 
     context "when the address is not set" do
       let(:address) { nil }
 
       it "returns address line 2" do
-        expect(subject).to eql address_line_2
+        expect(line).to eql("Pencoed")
       end
     end
   end
 
   describe "#address_city" do
-    subject { order.address_city }
+    subject(:line) { order.address_city }
 
     let(:address) { joined_address }
-    let(:address_city) { "Bridgend" }
+    let(:line_attributes) { { address_city: "Bridgend" } }
 
     it "returns the third item in the address" do
-      expect(subject).to eql "Rugby"
+      expect(line).to eql("Rugby")
     end
 
     context "when the address is not set" do
       let(:address) { nil }
 
       it "returns the city" do
-        expect(subject).to eql address_city
+        expect(line).to eql("Bridgend")
       end
     end
   end
 
   describe "#address_post_code" do
-    subject { order.address_post_code }
+    subject(:line) { order.address_post_code }
 
     let(:address) { joined_address }
-    let(:address_post_code) { "CF35 6YS" }
+    let(:line_attributes) { { address_post_code: "CF35 6YS" } }
 
     it "returns the fourth item in the address" do
-      expect(subject).to eql "CV21 3TE"
+      expect(line).to eql("CV21 3TE")
     end
 
     context "when the address is not set" do
       let(:address) { nil }
 
       it "returns the post code" do
-        expect(subject).to eql address_post_code
+        expect(line).to eql("CF35 6YS")
       end
     end
   end
 
   describe "#address_county" do
-    subject { order.address_county }
+    subject(:line) { order.address_county }
 
     let(:address) { joined_address }
-    let(:address_county) { "Glamorgan" }
+    let(:line_attributes) { { address_county: "Glamorgan" } }
 
     it "returns the fifth item in the address" do
-      expect(subject).to eql "Warwickshire"
+      expect(line).to eql("Warwickshire")
     end
 
     context "when the address is not set" do
       let(:address) { nil }
 
       it "returns the county" do
-        expect(subject).to eql address_county
+        expect(line).to eql("Glamorgan")
       end
     end
   end
@@ -146,10 +136,12 @@ describe Order do
   end
 
   describe "#line_items" do
-    let(:basket) { double("Basket", line_items: items) }
     let(:items) { [] }
 
-    before { allow(order).to receive(:basket).and_return(basket) }
+    before do
+      allow(order).to receive(:basket)
+        .and_return(instance_double(Basket, line_items: items))
+    end
 
     it "returns the basket's line items" do
       expect(order.line_items).to be(items)
@@ -157,30 +149,33 @@ describe Order do
   end
 
   describe "#make_address" do
-    let(:address_line_1) { "1 Bro Deg" }
-    let(:made_address) { [address_line_1].join("\n") }
+    let(:line_attributes) { { address_line_1: "1 Bro Deg" } }
 
     before do
       order.make_address
     end
 
     it "sets the address" do
-      expect(order.address).to eql made_address
+      expect(order.address).to eql "1 Bro Deg"
     end
   end
 
   describe "#total_price" do
-    subject { order.total_price }
+    subject(:total_price) { order.total_price }
 
-    let(:item_1) { double(LineItem, total_price: Money.new(395)) }
-    let(:item_2) { double(LineItem, total_price: Money.new(1485)) }
+    let(:line_items) do
+      [
+        instance_double(LineItem, total_price: Money.new(395)),
+        instance_double(LineItem, total_price: Money.new(1485))
+      ]
+    end
 
     before do
-      allow(order).to receive(:line_items).and_return([item_1, item_2])
+      allow(order).to receive(:line_items).and_return(line_items)
     end
 
     it "returns the sum of each line item's total price" do
-      expect(subject).to eql(Money.new(1880))
+      expect(total_price).to eql(Money.new(1880))
     end
   end
 end

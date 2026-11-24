@@ -9,25 +9,19 @@ describe Product do
     end
   end
 
-  describe "#ensure_not_referenced_by_any_line_item" do
-    subject { product.send(:ensure_not_referenced_by_any_line_item) }
+  describe "#destroy" do
+    let(:product) { create(:product) }
 
-    let(:line_items) { [] }
-
-    before do
-      allow(product).to receive(:line_items).once.with(no_args)
-                                            .and_return(line_items)
+    it "deletes a product no basket holds" do
+      expect(product.destroy).to be_destroyed
     end
 
-    it "returns true" do
-      expect(subject).to be true
-    end
+    context "when a basket holds the product" do
+      before { create(:basket).line_items.create!(product: product) }
 
-    context "when the product belongs to a line item" do
-      let(:line_items) { [double("line item")] }
-
-      it "returns false" do
-        expect(subject).to be false
+      it "refuses, and says why", :aggregate_failures do
+        expect(product.destroy).to be(false)
+        expect(product.errors.full_messages).to eq(["Line Items present"])
       end
     end
   end

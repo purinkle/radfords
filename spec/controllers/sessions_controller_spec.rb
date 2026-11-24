@@ -11,34 +11,30 @@ describe SessionsController do
 
   describe 'POST "create"' do
     describe "invalid signin" do
-      before do
-        @attr = { email: "email@example.com", password: "invalid" }
-      end
+      let(:attr) { { email: "email@example.com", password: "invalid" } }
 
       it "sets the alert flash" do
         allow(User).to receive(:authenticate)
 
-        post :create, params: { session: @attr }
+        post :create, params: { session: attr }
 
         expect(flash[:alert]).to eql "Invalid email or password."
       end
     end
 
     describe "with valid email and password" do
-      before do
-        @user = FactoryBot.create(:user)
-        @attr = { email: @user.email, password: @user.password }
-      end
+      let(:user) { create(:user) }
+      let(:attr) { { email: user.email, password: user.password } }
 
-      it "signs the user in" do
-        post :create, params: { session: @attr }
+      it "signs the user in", :aggregate_failures do
+        post :create, params: { session: attr }
 
-        expect(controller.current_user).to eq(@user)
+        expect(controller.current_user).to eq(user)
         expect(controller).to be_signed_in
       end
 
       it "redirects to the new event page" do
-        post :create, params: { session: @attr }
+        post :create, params: { session: attr }
 
         expect(response).to redirect_to(events_path)
       end

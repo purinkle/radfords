@@ -10,7 +10,7 @@ class SuppliersController < ApplicationController
   def create
     @supplier = Supplier.new(supplier_params)
     @supplier.save!
-    redirect_to(outlets_path, notice: "You successfully created a supplier.")
+    redirect_to(outlets_path, notice: t(".notice"))
   rescue ActiveRecord::RecordInvalid
     render "new"
   end
@@ -25,7 +25,7 @@ class SuppliersController < ApplicationController
 
   def destroy
     supplier.destroy
-    redirect_to(outlets_path, notice: "You successfully deleted the supplier.")
+    redirect_to(outlets_path, notice: t(".notice"))
   end
 
   private

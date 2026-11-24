@@ -2,10 +2,10 @@ require "rails_helper"
 
 describe FindBasket do
   describe ".call" do
-    subject { FindBasket.call(options) }
+    subject(:found) { described_class.call(options) }
 
-    let(:basket) { double("Basket") }
-    let(:empty_basket) { double("EmptyBasket") }
+    let(:basket) { instance_double(Basket) }
+    let(:empty_basket) { instance_double(EmptyBasket) }
     let(:options) { { id: "1" } }
 
     before do
@@ -15,14 +15,14 @@ describe FindBasket do
     end
 
     it "returns the found basket" do
-      expect(subject).to be(basket)
+      expect(found).to be(basket)
     end
 
     context "when a basket can't be found" do
       let(:basket) { nil }
 
       it "returns a missing basket" do
-        expect(subject).to be(empty_basket)
+        expect(found).to be(empty_basket)
       end
     end
   end

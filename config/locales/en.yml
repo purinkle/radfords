@@ -29,7 +29,13 @@ en:
         "%a %m/%d/%y"
 
   events:
+    create:
+      notice: "You successfully created an event."
+    destroy:
+      notice: "You successfully deleted the event."
     not_found: "We couldn't find the event you were looking for."
+    update:
+      notice: "You successfully updated the event."
   fulfilments:
     create:
       notice: Shipment notification email sent
@@ -96,11 +102,18 @@ en:
     home:
       title: Home
   products:
-    create: "You successfully created a product."
+    create:
+      notice: "You successfully created a product."
     destroy:
       alert: "We couldn't find that product."
       notice: Product was deleted.
+    update:
+      notice: "Product saved."
   sessions:
+    create:
+      alert: "Invalid email or password."
+    destroy:
+      success: "You successfully signed out."
     unauthenticated: "You need to sign in or sign up before continuing."
   shared:
     navbar:
@@ -108,6 +121,10 @@ en:
     product_button:
       add_to_basket: Add to Basket
   suppliers:
+    create:
+      notice: "You successfully created a supplier."
+    destroy:
+      notice: "You successfully deleted the supplier."
     update: "You successfully updated the supplier."
   time:
     formats:

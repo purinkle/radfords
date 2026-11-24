@@ -2,9 +2,9 @@ require "rails_helper"
 
 describe BasketsController do
   describe 'GET "show"' do
-    let(:basket) { double("Basket") }
+    let(:basket) { instance_double(Basket) }
     let(:basket_id) { "1" }
-    let(:decorator) { double("BasketDecorator") }
+    let(:decorator) { instance_double(BasketDecorator) }
 
     before do
       allow(BasketDecorator).to receive(:new).with(basket)

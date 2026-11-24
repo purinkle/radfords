@@ -1,4 +1,4 @@
-class Product < ActiveRecord::Base
+class Product < ApplicationRecord
   extend FriendlyId
 
   has_many :line_items, dependent: :restrict_with_error
@@ -23,14 +23,29 @@ class Product < ActiveRecord::Base
   friendly_id :title, use: %i[slugged finders]
   monetize :price_pennies
 
-  before_destroy :ensure_not_referenced_by_any_line_item
-
   def to_s
     title
   end
 
   def photo_variant(style)
     photo.variant(resize_to_fill: PHOTO_SIZES.fetch(style))
+  end
+
+  # Paperclip's :id_partition, which padded the id to nine digits and split
+  # it into threes, so product 501 kept its photo under 000/000/501. This and
+  # attach_paperclip_photo go once the photo_* columns are dropped.
+  def paperclip_photo_key
+    partition = format("%09d", id).scan(/\d{3}/).join("/")
+    "product/photos/#{partition}/original/#{photo_file_name}"
+  end
+
+  # Attaches the bytes of the S3 object Paperclip stored this photo in.
+  def attach_paperclip_photo(object)
+    photo.attach(
+      io: StringIO.new(object.body.read),
+      filename: photo_file_name,
+      content_type: photo_content_type.presence || object.content_type
+    )
   end
 
   private
@@ -42,12 +57,5 @@ class Product < ActiveRecord::Base
     return if photo.blob.content_type.to_s.start_with?("image/")
 
     errors.add(:photo, "must be an image")
-  end
-
-  def ensure_not_referenced_by_any_line_item
-    return true if line_items.empty?
-
-    errors.add(:base, "Line Items present")
-    false
   end
 end

@@ -1,11 +1,15 @@
 class ChangeDatatypesOnOrdersFromStringToText < ActiveRecord::Migration[4.2]
   def up
-    change_column :orders, :email, :text, limit: nil
-    change_column :orders, :name, :text, limit: nil
+    change_table :orders, bulk: true do |t|
+      t.change :email, :text, limit: nil
+      t.change :name, :text, limit: nil
+    end
   end
 
   def down
-    change_column :orders, :email, :string
-    change_column :orders, :name, :string
+    change_table :orders, bulk: true do |t|
+      t.change :email, :string
+      t.change :name, :string
+    end
   end
 end

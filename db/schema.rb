@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2026_09_25_160302) do
+ActiveRecord::Schema.define(version: 2026_11_24_150722) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 2026_09_25_160302) do
     t.integer "price_pennies", default: 0, null: false
     t.string "price_currency", default: "GBP", null: false
     t.index ["slug"], name: "index_products_on_slug"
+    t.index ["title"], name: "index_products_on_title", unique: true
   end
 
   create_table "suppliers", force: :cascade do |t|
@@ -127,6 +128,7 @@ ActiveRecord::Schema.define(version: 2026_09_25_160302) do
     t.datetime "updated_at", null: false
     t.string "encrypted_password"
     t.string "salt"
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

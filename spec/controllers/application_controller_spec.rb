@@ -9,15 +9,16 @@ describe ApplicationController do
       end
 
       it "denies access to the application" do
-        expect(controller).to receive(:deny_access)
         controller.authenticate
+
+        expect(controller).to have_received(:deny_access)
       end
     end
   end
 
   describe "#find_basket" do
-    let(:basket) { double("Basket") }
-    let(:decorated_basket) { double("BasketDecorator") }
+    let(:basket) { instance_double(Basket) }
+    let(:decorated_basket) { instance_double(BasketDecorator) }
     let(:id) { "1" }
 
     before do

@@ -4,7 +4,6 @@ describe ProductsController do
   let(:product_params) do
     {
       "description" => "Description of the jam",
-      "photo" => "photo.jpg",
       "title" => "Jam"
     }
   end
@@ -14,16 +13,9 @@ describe ProductsController do
   end
 
   describe 'GET "delete"' do
-    let(:id) { "foo" }
-    let(:params) { { id: id } }
-
-    before do
-      allow(Product).to receive(:find).with(id).and_raise(ActiveRecord::RecordNotFound)
-    end
-
     context "when no product is found" do
       it "redirects to the index products page" do
-        get :delete, params: params
+        get :delete, params: { id: "foo" }
 
         expect(response).to redirect_to(products_path)
       end
@@ -31,53 +23,34 @@ describe ProductsController do
   end
 
   describe 'DELETE "destroy"' do
+    let!(:product) { create(:product) }
+
     it "destroys the product" do
-      products = class_double("Product")
-      product = double(:product)
-      allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
-      allow(product).to receive(:destroy).with(no_args).once.and_return(true)
-      allow(products).to receive(:find).and_return(product)
-
-      expect(product).to receive(:destroy).and_return(true)
-
-      delete :destroy, params: { id: "1" }
+      expect { delete :destroy, params: { id: product.slug } }
+        .to change(Product, :count).by(-1)
     end
 
     it "redirects to the products index" do
-      product = double(:product)
-      allow(product).to receive(:destroy).and_return(true)
-      allow(Product).to receive(:find).with("1").and_return(product)
-
-      delete :destroy, params: { id: "1" }
+      delete :destroy, params: { id: product.slug }
 
       expect(response).to redirect_to products_url
     end
 
     it "sets the notice flash" do
-      products = class_double("Product")
-      product = double(:product)
-      allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
-      allow(product).to receive(:destroy).with(no_args).once.and_return(true)
-      allow(products).to receive(:find).and_return(product)
-
-      delete :destroy, params: { id: "1" }
+      delete :destroy, params: { id: product.slug }
 
       expect(flash[:notice]).to eql I18n.t("products.destroy.notice")
     end
 
     context "when the product can't be found" do
       it "redirects to the products index" do
-        allow(Product).to receive(:find).with("1").and_raise(ActiveRecord::RecordNotFound)
-
-        delete :destroy, params: { id: "1" }
+        delete :destroy, params: { id: "missing" }
 
         expect(response).to redirect_to products_url
       end
 
       it "sets the alert flash" do
-        allow(Product).to receive(:find).with("1").and_raise(ActiveRecord::RecordNotFound)
-
-        delete :destroy, params: { id: "1" }
+        delete :destroy, params: { id: "missing" }
 
         expect(flash[:alert]).to eql I18n.t("products.destroy.alert")
       end
@@ -85,39 +58,15 @@ describe ProductsController do
   end
 
   describe 'GET "edit"' do
-    let(:found_product) { double(:found_product) }
-    let(:id) { "foo" }
-    let(:invalid_id) { "2" }
-    let(:params) { { id: id } }
-    let(:product) { double(:product) }
-
-    before do
-      stub_const("Product", product)
-      allow(product).to receive(:find).with(id).and_return(found_product)
-      allow(product).to receive(:find).with(invalid_id).and_raise(ActiveRecord::RecordNotFound)
-    end
-
     context "when no product is found" do
-      let(:id) { invalid_id }
-
       it "redirects to the product index page" do
-        products = class_double("Product")
-        allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
-        allow(products).to receive(:find)
-          .and_raise(ActiveRecord::RecordNotFound)
-
-        get :edit, params: params
+        get :edit, params: { id: "missing" }
 
         expect(response).to redirect_to(products_path)
       end
 
       it "sets the alert flash" do
-        products = class_double("Product")
-        allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
-        allow(products).to receive(:find)
-          .and_raise(ActiveRecord::RecordNotFound)
-
-        get :edit, params: params
+        get :edit, params: { id: "missing" }
 
         expect(flash[:alert]).to eql("We couldn't find that product.")
       end
@@ -125,37 +74,15 @@ describe ProductsController do
   end
 
   describe 'GET "show"' do
-    let(:exception) { ActiveRecord::RecordNotFound }
-    let(:id) { "foo" }
-    let(:invalid_id) { "2" }
-    let(:found_product) { double(:found_product) }
-    let(:product) { double(:product) }
-
-    before do
-      allow(product).to receive(:find).with(id).and_return(found_product)
-      allow(product).to receive(:find).with(invalid_id).and_raise(exception)
-      stub_const("Product", product)
-    end
-
     context "when no product is found" do
-      let(:id) { invalid_id }
-
       it "redirects to the product index page" do
-        products = class_double("Product")
-        allow(products).to receive(:find).and_raise(exception)
-        allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
-
-        get :show, params: { id: id }
+        get :show, params: { id: "missing" }
 
         expect(response).to redirect_to(products_path)
       end
 
       it "sets the alert flash" do
-        products = class_double("Product")
-        allow(products).to receive(:find).and_raise(exception)
-        allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
-
-        get :show, params: { id: id }
+        get :show, params: { id: "missing" }
 
         expect(flash[:alert]).to eql("We couldn't find that product.")
       end
@@ -163,23 +90,20 @@ describe ProductsController do
   end
 
   describe "POST 'create'" do
-    it "sets the notice flash" do
-      product = Product.new
-      allow(product).to receive(:save!).and_return(true)
-      allow(controller).to receive(:authenticate)
-      allow(Product).to receive(:new).and_return(product)
+    let(:product) { Product.new }
 
+    before do
+      allow(product).to receive(:save!).and_return(true)
+      allow(Product).to receive(:new).and_return(product)
+    end
+
+    it "sets the notice flash" do
       post :create, params: { product: product_params }
 
       expect(flash[:notice]).to eql "You successfully created a product."
     end
 
     it "redirects to the product's page" do
-      product = Product.new
-      allow(product).to receive(:save!).and_return(true)
-      allow(controller).to receive(:authenticate)
-      allow(Product).to receive(:new).and_return(product)
-
       post :create, params: { product: product_params }
 
       expect(response).to redirect_to product
@@ -187,39 +111,18 @@ describe ProductsController do
   end
 
   describe 'PUT "update"' do
-    let(:found_product) { double(:found_product) }
-    let(:id) { "foo" }
-    let(:product) { double(:product) }
-    let(:title) { double(:title) }
-    let(:update) { true }
-
-    before do
-      allow(found_product).to receive(:update)
-        .and_return(update)
-
-      allow(found_product).to receive(:title).and_return(title)
-      allow(product).to receive(:find).with(id).and_return(found_product)
-      stub_const("Product", product)
-    end
+    let(:product) { create(:product) }
 
     it "updates the alert flash" do
-      products = class_double("Product")
-      allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
-      allow(products).to receive(:find).and_return(found_product)
-
-      put :update, params: { id: id, product: product_params }
+      put :update, params: { id: product.slug, product: product_params }
 
       expect(flash[:notice]).to eql("Product saved.")
     end
 
     it "redirects to the show product page" do
-      products = class_double("Product")
-      allow(Product).to receive_messages(with_attached_photo: Product, friendly: products)
-      allow(products).to receive(:find).and_return(found_product)
+      put :update, params: { id: product.slug, product: product_params }
 
-      put :update, params: { id: id, product: product_params }
-
-      expect(response).to redirect_to(product_path(found_product))
+      expect(response).to redirect_to(product_path(product))
     end
   end
 end

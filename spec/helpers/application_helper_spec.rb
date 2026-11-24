@@ -2,7 +2,7 @@ require "rails_helper"
 
 describe ApplicationHelper do
   describe "#humanize_price" do
-    subject { helper.humanize_price(price) }
+    subject(:humanized_price) { helper.humanize_price(price) }
 
     let(:formatted_price) { "£10.95" }
     let(:price) { Money.new(1095) }
@@ -13,17 +13,18 @@ describe ApplicationHelper do
     end
 
     it "returns the formatted price with symbol" do
-      expect(subject).to be(formatted_price)
+      expect(humanized_price).to be(formatted_price)
     end
   end
 
   describe "#navbar" do
     it "renders the navbar partial" do
       allow(helper).to receive(:signed_in?).and_return(true)
-
-      expect(helper).to receive :render
+      allow(helper).to receive(:render)
 
       helper.navbar
+
+      expect(helper).to have_received(:render)
     end
 
     context "when the user is not signed in" do

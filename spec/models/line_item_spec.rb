@@ -1,23 +1,21 @@
 require "rails_helper"
 
 describe LineItem do
-  let(:item) { LineItem.new }
+  let(:item) { described_class.new }
 
   describe "#total_price" do
-    subject { item.total_price }
+    subject(:total_price) { item.total_price }
 
     let(:price) { 300 }
-    let(:product) { double("Product", price: price) }
+    let(:product) { instance_double(Product, price: price) }
     let(:quantity) { 4 }
-    let(:total_price) { price * quantity }
 
     before do
-      allow(item).to receive(:product).and_return(product)
-      allow(item).to receive(:quantity).and_return(quantity)
+      allow(item).to receive_messages(product: product, quantity: quantity)
     end
 
     it "returns the product price multiplied by its quantity" do
-      expect(subject).to eql total_price
+      expect(total_price).to eql price * quantity
     end
   end
 end

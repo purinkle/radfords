@@ -1,10 +1,6 @@
 require "rails_helper"
 
 describe PagesController do
-  before do
-    @base_title = "Radfords of Somerford"
-  end
-
   describe "GET 'home'" do
     it "is successful" do
       get "home"
@@ -12,7 +8,7 @@ describe PagesController do
     end
 
     context "when there is an order ID in the session" do
-      let(:order) { double(Order) }
+      let(:order) { instance_double(Order) }
       let(:order_id) { 1 }
 
       before do

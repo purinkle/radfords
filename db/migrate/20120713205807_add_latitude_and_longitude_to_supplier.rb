@@ -1,6 +1,8 @@
 class AddLatitudeAndLongitudeToSupplier < ActiveRecord::Migration[4.2]
   def change
-    add_column :suppliers, :latitude, :float
-    add_column :suppliers, :longitude, :float
+    change_table :suppliers, bulk: true do |t|
+      t.float :latitude
+      t.float :longitude
+    end
   end
 end

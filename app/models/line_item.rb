@@ -1,4 +1,4 @@
-class LineItem < ActiveRecord::Base
+class LineItem < ApplicationRecord
   belongs_to :basket
   belongs_to :order, optional: true
   belongs_to :product

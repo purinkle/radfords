@@ -1,4 +1,4 @@
-class Order < ActiveRecord::Base
+class Order < ApplicationRecord
   has_one :basket, dependent: :destroy
 
   validates(
@@ -29,7 +29,7 @@ class Order < ActiveRecord::Base
     define_method(line) { split_address.fetch(index) { super() } }
   end
 
-  scope :by_created_at, -> { order("created_at desc") }
+  scope :by_created_at, -> { order(created_at: :desc) }
   scope :with_line_items, -> { includes(basket: Basket::PRELOADS) }
 
   def basket

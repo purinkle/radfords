@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.with_line_items.find(params[:id])
-    @order.update_attribute(:viewed, true)
+    @order.update(viewed: true)
   end
 
   def new

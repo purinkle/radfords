@@ -1,8 +1,5 @@
-include ActionDispatch::TestProcess
-
 FactoryBot.define do
-  factory :basket do
-  end
+  factory :basket
 
   factory :event do
     name { "Macclesfield Farmers Market" }

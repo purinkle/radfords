@@ -2,8 +2,8 @@ require "rails_helper"
 
 describe LineItemsController do
   describe 'POST "create"' do
-    let(:basket) { double(Basket, save: nil) }
-    let(:product) { double(Product, id: product_id) }
+    let(:basket) { instance_double(Basket, save: nil) }
+    let(:product) { instance_double(Product, id: product_id) }
     let(:product_id) { "1" }
 
     before do
@@ -13,7 +13,7 @@ describe LineItemsController do
     end
 
     it "redirects to the saved basket" do
-      products = class_double("Product")
+      products = class_double(Product)
       allow(Product).to receive(:friendly).and_return(products)
       allow(products).to receive(:find).and_return(product)
 
@@ -25,7 +25,7 @@ describe LineItemsController do
 
   describe "DELETE 'destroy'" do
     let(:id) { "1" }
-    let(:item) { double("LineItem", destroy: nil) }
+    let(:item) { instance_double(LineItem, destroy: nil) }
     let(:params) { { id: id } }
 
     before { allow(LineItem).to receive(:find).with(id).and_return item }
@@ -45,7 +45,7 @@ describe LineItemsController do
 
   describe "PUT 'update'" do
     let(:id) { "1" }
-    let(:item) { double "LineItem" }
+    let(:item) { instance_double(LineItem) }
     let(:item_params) { { "quantity" => "2" } }
     let(:params) { { id: id, line_item: item_params } }
 

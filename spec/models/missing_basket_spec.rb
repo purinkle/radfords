@@ -1,10 +1,10 @@
 require "rails_helper"
 
 describe MissingBasket do
-  subject(:basket) { MissingBasket.new }
+  subject(:basket) { described_class.new }
 
   describe "#line_items" do
-    let(:none) { double("ActiveRecord::Relation") }
+    let(:none) { instance_double(ActiveRecord::Relation) }
 
     before do
       allow(LineItem).to receive(:none).and_return(none)

@@ -1,9 +1,3 @@
-inherit_from: .rubocop_todo.yml
-
-inherit_mode:
-  merge:
-    - Exclude
-
 plugins:
   - rubocop-capybara
   - rubocop-factory_bot
@@ -32,3 +26,36 @@ Style/StringLiterals:
 
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+
+# The order form and the orders table number the address lines.
+Naming/VariableNumber:
+  AllowedPatterns:
+    - \Aaddress_line_\d\z
+
+# RSpec cops, tuned for this suite's specs.
+
+# A feature spec walks a whole scenario: act, then check several things on
+# the page. Eight lines fits those; a multi-line hash of form fields or a
+# chained call is one step, so it counts as one line.
+RSpec/ExampleLength:
+  Max: 8
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+    - method_call
+
+# Rails writes each environment file as one long configure block.
+Metrics/BlockLength:
+  AllowedMethods:
+    - configure
+
+# Gems generate these migrations, and a migration runs once and is never
+# edited after, so splitting its methods buys nothing.
+Metrics/AbcSize:
+  Exclude:
+    - db/migrate/**/*
+
+Metrics/MethodLength:
+  Exclude:
+    - db/migrate/**/*

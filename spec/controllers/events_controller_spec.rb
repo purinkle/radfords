@@ -10,9 +10,10 @@ describe EventsController do
   end
 
   describe 'POST "create"' do
+    before { allow(controller).to receive(:authenticate) }
+
     it "saves the event" do
       event = Event.new
-      allow(controller).to receive(:authenticate)
       allow(event).to receive(:save!)
       allow(Event).to receive(:new).and_return(event)
 
@@ -24,7 +25,6 @@ describe EventsController do
     it "redirects to the event's page" do
       event = Event.new
       allow(event).to receive(:save!).and_return(true)
-      allow(controller).to receive(:authenticate)
       allow(Event).to receive(:new).and_return(event)
 
       post :create, params: { event: event_params }
@@ -35,7 +35,6 @@ describe EventsController do
     it "sets the notice flash" do
       event = Event.new
       allow(event).to receive(:save!).and_return(true)
-      allow(controller).to receive(:authenticate)
       allow(Event).to receive(:new).and_return(event)
 
       post :create, params: { event: event_params }
@@ -45,9 +44,10 @@ describe EventsController do
   end
 
   describe "PUT 'update'" do
+    before { allow(controller).to receive(:authenticate) }
+
     it "updates the event" do
       event = Event.new
-      allow(controller).to receive(:authenticate)
       allow(event).to receive(:update!)
       allow(Event).to receive(:find).and_return(event)
 
@@ -59,7 +59,6 @@ describe EventsController do
     it "redirects to the event's page" do
       event = Event.new
       allow(event).to receive(:update!).and_return(true)
-      allow(controller).to receive(:authenticate)
       allow(Event).to receive(:find).and_return(event)
 
       put :update, params: { id: "1", event: event_params }
@@ -70,7 +69,6 @@ describe EventsController do
     it "sets the notice flash" do
       event = Event.new
       allow(event).to receive(:update!).and_return(true)
-      allow(controller).to receive(:authenticate)
       allow(Event).to receive(:find).and_return(event)
 
       put :update, params: { id: "1", event: event_params }
@@ -80,9 +78,10 @@ describe EventsController do
   end
 
   describe "GET 'delete'" do
+    before { allow(controller).to receive(:authenticate) }
+
     context "when an event can't be found" do
       it "sets the alert flash" do
-        allow(controller).to receive(:authenticate)
         allow(Event).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
 
         get :delete, params: { id: "1" }
@@ -92,7 +91,6 @@ describe EventsController do
       end
 
       it "redirects to the events page" do
-        allow(controller).to receive(:authenticate)
         allow(Event).to receive(:find).and_raise(ActiveRecord::RecordNotFound)
 
         get :delete, params: { id: "1" }
@@ -103,9 +101,10 @@ describe EventsController do
   end
 
   describe "DELETE 'destroy'" do
+    before { allow(controller).to receive(:authenticate) }
+
     it "destroys the event" do
       event = Event.new
-      allow(controller).to receive(:authenticate)
       allow(event).to receive(:destroy)
       allow(Event).to receive(:find).and_return(event)
 
@@ -116,7 +115,6 @@ describe EventsController do
 
     it "redirects to the events index" do
       event = Event.new
-      allow(controller).to receive(:authenticate)
       allow(Event).to receive(:find).and_return(event)
 
       delete :destroy, params: { id: "1" }
@@ -126,7 +124,6 @@ describe EventsController do
 
     it "sets the notice flash" do
       event = Event.new
-      allow(controller).to receive(:authenticate)
       allow(Event).to receive(:find).and_return(event)
 
       delete :destroy, params: { id: "1" }

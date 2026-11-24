@@ -2,10 +2,10 @@ require "rails_helper"
 
 describe PagesHelper do
   describe "#product_button" do
-    subject { helper.product_button(product) }
+    subject(:button) { helper.product_button(product) }
 
-    let(:partial) { double("partial") }
-    let(:product) { double("product") }
+    let(:partial) { "<form></form>".html_safe }
+    let(:product) { instance_double(Product) }
 
     before do
       allow(helper).to receive(:render).with(
@@ -15,7 +15,7 @@ describe PagesHelper do
     end
 
     it "renders the partial" do
-      expect(subject).to be(partial)
+      expect(button).to be(partial)
     end
   end
 end

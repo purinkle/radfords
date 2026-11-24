@@ -20,13 +20,13 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
 
-    redirect_to root_path, flash: { success: "You successfully signed out." }
+    redirect_to root_path, flash: { success: t(".success") }
   end
 
   private
 
   def sign_in_failed
-    flash.now[:alert] = "Invalid email or password."
+    flash.now[:alert] = t("sessions.create.alert")
     @title = "Sign In"
     render "new"
   end

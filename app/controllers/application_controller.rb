@@ -13,6 +13,14 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Saves a new record and shows it, or shows its form again with the errors.
+  def create_and_show(record)
+    record.save!
+    redirect_to(record, notice: t(".notice"))
+  rescue ActiveRecord::RecordInvalid
+    render "new"
+  end
+
   def current_basket
     Basket.with_line_items.find(session[:basket_id])
   rescue ActiveRecord::RecordNotFound
