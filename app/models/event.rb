@@ -20,9 +20,8 @@ class Event < ActiveRecord::Base
   default_scope { future.order("takes_place_on") }
 
   def takes_place_on
-    return unless read_attribute(:takes_place_on)
-
-    I18n.l(read_attribute(:takes_place_on), format: :event)
+    date = takes_place_on_date
+    I18n.l(date, format: :event) if date
   end
 
   # date_field calls strftime on the value it is handed, and the reader

@@ -1,0 +1,4 @@
+paths:
+  - app
+  - lib
+no_browser: true

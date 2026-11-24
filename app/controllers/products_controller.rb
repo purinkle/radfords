@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.friendly.find(params[:id])
+    @product = find_product
 
     flash[:notice] = "Product saved."
     if @product.update(product_params)
@@ -41,27 +41,28 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    begin
-      @product = Product.friendly.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-      redirect_to products_url, alert: t(".alert")
-      return
-    end
+    @product = find_product
 
     if @product.destroy
       redirect_to products_url, notice: t(".notice")
     else
       render :delete
     end
+  rescue ActiveRecord::RecordNotFound
+    redirect_to products_url, alert: t(".alert")
   end
 
   private
 
   def product
-    Product.friendly.find(params[:id])
+    find_product
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = "We couldn't find that product."
     redirect_to products_path
+  end
+
+  def find_product
+    Product.friendly.find(params[:id])
   end
 
   def product_params

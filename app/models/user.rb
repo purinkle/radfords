@@ -14,7 +14,7 @@
 require "digest"
 
 class User < ActiveRecord::Base
-  attr_accessor :password
+  attribute :password, :string
 
   email_regex = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
 
@@ -36,17 +36,11 @@ class User < ActiveRecord::Base
   end
 
   def self.authenticate(email, submitted_password)
-    user = find_by_email(email)
-
-    return nil if user.nil?
-
-    user if user.has_password?(submitted_password)
+    where(email: email).detect { |user| user.has_password?(submitted_password) }
   end
 
   def self.authenticate_with_salt(id, cookie_salt)
-    user = find_by_id(id)
-
-    user && user.salt == cookie_salt ? user : nil
+    find_by(id: id, salt: cookie_salt)
   end
 
   private
@@ -57,14 +51,10 @@ class User < ActiveRecord::Base
   end
 
   def encrypt(string)
-    secure_hash("#{salt}--#{string}")
+    Digest::SHA2.hexdigest("#{salt}--#{string}")
   end
 
   def make_salt
-    secure_hash("#{Time.now.utc}--#{password}")
-  end
-
-  def secure_hash(string)
-    Digest::SHA2.hexdigest(string)
+    Digest::SHA2.hexdigest("#{Time.now.utc}--#{password}")
   end
 end

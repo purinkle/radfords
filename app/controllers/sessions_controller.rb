@@ -6,19 +6,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate(params[:session][:email],
-                             params[:session][:password])
+    credentials = params.require(:session)
+    user = User.authenticate(credentials[:email], credentials[:password])
 
-    if user.nil?
-      flash[:alert] = "Invalid email or password."
-
-      @title = "Sign In"
-
-      render "new"
-    else
+    if user
       sign_in user
-
       redirect_back_or events_path
+    else
+      sign_in_failed
     end
   end
 
@@ -26,5 +21,13 @@ class SessionsController < ApplicationController
     sign_out
 
     redirect_to root_path, flash: { success: "You successfully signed out." }
+  end
+
+  private
+
+  def sign_in_failed
+    flash.now[:alert] = "Invalid email or password."
+    @title = "Sign In"
+    render "new"
   end
 end

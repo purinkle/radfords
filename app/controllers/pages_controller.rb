@@ -4,10 +4,8 @@ class PagesController < ApplicationController
   def home
     @events = Event.limit(3)
 
-    if session[:order_id]
-      @order = Order.find(session[:order_id])
-      session[:order_id] = nil
-    end
+    order_id = session.delete(:order_id)
+    @order = Order.find(order_id) if order_id
 
     @products = Product.page(params[:page])
   end

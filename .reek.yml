@@ -1,0 +1,39 @@
+---
+detectors:
+  IrresponsibleModule:
+    enabled: false
+  LongParameterList:
+    enabled: true
+    exclude: []
+    max_params: 4
+    overrides:
+      initialize:
+        max_params: 5
+  DataClump:
+    max_copies: 3
+    min_clump_size: 3
+  UncommunicativeMethodName:
+    # The address lines are numbered on the order form and in the mailers.
+    accept:
+      - address_line_1
+      - address_line_2
+
+# Rails hands a view its state through the controller's and the mailer's
+# instance variables, and helpers are plain functions mixed into the view.
+# These are the detectors reek's own Rails advice switches off for that.
+directories:
+  "app/controllers":
+    InstanceVariableAssumption:
+      enabled: false
+    TooManyInstanceVariables:
+      enabled: false
+  "app/helpers":
+    UtilityFunction:
+      enabled: false
+  "app/mailers":
+    InstanceVariableAssumption:
+      enabled: false
+
+exclude_paths:
+  - spec/
+  - config/
