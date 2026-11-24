@@ -11,6 +11,7 @@ plugins:
   - rubocop-rails
   - rubocop-rspec
   - rubocop-rspec_rails
+  - rubocop-rubycw
 
 AllCops:
   NewCops: enable

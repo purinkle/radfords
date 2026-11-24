@@ -26,6 +26,14 @@ module Radfords
       generate.test_framework :rspec
       generate.view_specs false
     end
+    # Hand every Ruby file a generator writes straight to RuboCop, so
+    # generated code arrives already in this app's style.
+    config.generators.after_generate do |files|
+      parsable_files = files.filter { |file| file.end_with?(".rb") }
+      unless parsable_files.empty?
+        system("bundle exec rubocop -A --fail-level=E #{parsable_files.shelljoin}", exception: true)
+      end
+    end
     config.action_controller.action_on_unpermitted_parameters = :raise
     config.active_job.queue_adapter = :delayed_job
   end
