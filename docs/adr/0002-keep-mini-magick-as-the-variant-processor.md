@@ -29,6 +29,17 @@ view.
 
 None of that is worth taking on in the same pull request as a Rails upgrade.
 
+## Even without vips, libvips matters
+
+From Rails 7.2.4, Active Storage refuses to boot if the `ruby-vips` gem
+finds a libvips older than 8.13, because only 8.13 and later can block
+image loaders that are unsafe with uploaded files. `image_processing` always
+brings `ruby-vips`, so this applies even though the app never uses vips.
+With no libvips installed at all, Active Storage leaves vips unused and boots.
+
+CircleCI's image ships an older libvips, so the build removes it. Any
+machine that runs the app needs either libvips 8.13 or later, or none.
+
 ## What switching takes
 
 - Install libvips on CircleCI beside, or instead of, ImageMagick.

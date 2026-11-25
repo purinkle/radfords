@@ -30,7 +30,7 @@ gem "json", "< 3"
 gem "pg"
 gem "puma"
 gem "rack-canonical-host"
-gem "rails", "~> 7.1.6"
+gem "rails", "~> 7.2.4"
 gem "recipient_interceptor"
 gem "sass-rails"
 gem "simple_form"
@@ -59,7 +59,7 @@ group :development, :test do
   gem "factory_bot_rails"
   gem "pry-byebug"
   gem "pry-rails"
-  gem "rspec-rails", "~> 6.1"
+  gem "rspec-rails", "~> 7.1"
   gem "rubocop", require: false
   gem "rubocop-capybara", require: false
   gem "rubocop-factory_bot", require: false
